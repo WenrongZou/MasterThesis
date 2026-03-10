@@ -1,0 +1,206 @@
+\section{Definitions}
+
+We choose to formalize definition of formal group laws in Lean using the definition in
+\ref{Defn formal group}, since this is equivalent to definitions in other references and more
+easier to check in practice. \par
+
+The following is our definition of formal group laws in Lean:
+\href{https://github.com/WenrongZou/FormalGroupLaws/blob/main/FormalGroupLaws/Basic.lean}{\faExternalLink}
+\begin{lstlisting}
+@[ext]
+structure FormalGroup (R : Type*) [CommRing R] where
+  toFun : MvPowerSeries (Fin 2) R
+    /- Constant coefficient of `F` is zero. -/
+    zero_constantCoeff : constantCoeff toFun = 0
+    /- Coefficient of `X` and `Y` is 1. -/
+    lin_coeff_X : coeff (single 0 1) toFun = 1
+    lin_coeff_Y : coeff (single 1 1) toFun = 1
+    /- Associativity condition: `F (F (X, Y), Z) = F (X, F (Y, Z))`.-/
+    assoc : subst ![subst ![Y₀, Y₁] toFun, Y₂] toFun = subst ![Y₀, subst ![Y₁, Y₂] toFun] toFun (S := R)
+\end{lstlisting}
+
+In Mathlib, \lstinline{MvPowerSeries σ R} is the ring of multivariate power series with intermediates indexed by \lstinline{σ}. And \lstinline{Fin n} is a type and there are $n$ different elements in this type. To be specific, an element in \lstinline{Fin n} is a \lstinline{i : ℕ} with a proof \lstinline{i < n}. And \lstinline{MvPowerSeries.X (i : σ)} is the intermediate indexed by \lstinline{i} and in name space of \lstinline{MvPowerSeries} we could abbreviate \lstinline{MvPowerSeries.X} to be \lstinline{X}.
+Therefore, \lstinline{X 0, X 1, X 2} are all three intermediates in \lstinline{MvPowerSeries (Fin 3) R}. The \lstinline{Y₀, Y₁, Y₂} is an abbreviation for \lstinline{X 0, X 1, X 2} in \lstinline{MvPowerSeries (Fin 3) R}. The expression \lstinline{![a, b]} in the associativity condition is a map from \lstinline{Fin 2} to \lstinline{α} where \lstinline{a b : α}. 
+And \lstinline{subst} is a function used to express the substitution of (multivariate) power series. For instance, $f(g(X_I))$ is expressed as \lstinline{f.subst g} and $F(f(X_I), g(X_I))$ is expressed as \lstinline{F.subst ![f, g]}. 
+
+%%%%%%%%%%%%%%%%%%%%% how to expree Y\1 here
+
+For the definition for commutative formal group laws, the only additional condition is commutativity condition. \href{https://github.com/WenrongZou/FormalGroupLaws/blob/main/FormalGroupLaws/Basic.lean}{\faExternalLink}
+\begin{lstlisting}
+@[ext]
+structure CommFormalGroup (R : Type*) [CommRing R] extends FormalGroup R where
+/- Commutativity condition: `F(X,Y) = F(Y,X)`.-/
+comm : toFun = subst ![X₁, X₀] toFun
+\end{lstlisting}
+
+Here, \lstinline{X₀, X₁} is an abbreviation for \lstinline{X 0, X 1} in \lstinline{MvPowerSeries (Fin 2) R}. 
+
+Mathematically, a commutative formal group is a formal group, this statement is called coercions in Lean. An instance about this is as follows:
+\begin{lstlisting}
+/-- A commutative formal group law is a formal group law.-/
+instance : Coe (CommFormalGroup R) (FormalGroup R) where
+coe := CommFormalGroup.toFormalGroup
+\end{lstlisting}
+
+Given a formal group law, it defines a group structure on \lstinline{MvPowerSeries σ R}. To be precise, let \lstinline{(F : FormalGroup R) (f₀ f₁ : MvPowerSeries σ R)}, 
+the addition of \lstinline{f₀ f₁} is defined as \lstinline{subst ![f₀, f₁] F.toFun}. In Lean, a simpler notation related to this can written as, 
+\begin{lstlisting}
+abbrev add (F : FormalGroup R) (f g : MvPowerSeries σ R) : MvPowerSeries σ R := subst ![f, g] F.toFun
+\end{lstlisting}
+
+%%%% very weird here!!!. 
+
+In the environment of \lstinline{namespace FormalGroup}, \lstinline{+[F]} is the addition with respect to \lstinline{F : FormalGroup R}. To be specific, given two multivariate power series $f, g \in R[\![X_I]\!]$ where $I$ is index set, and the constant coefficient of $f, g$ are zero, 
+\lstinline{f +[R] g} means $F(f,g)$. 
+
+With this notation, we can rewrite the associativity condition and the commutativity condition in the \lstinline{namespace FormalGroup} as follows:
+\begin{lstlisting}
+/-- The addition under the sense of formal group `F` is associative. -/
+theorem add_assoc {F : FormalGroup R} {Z₀ Z₁ Z₂ : MvPowerSeries σ R} (hZ₀ : constantCoeff Z₀ = 0) (hZ₁ : constantCoeff Z₁ = 0) (hZ₂ : constantCoeff Z₂ = 0):
+Z₀ +[F] Z₁ +[F] Z₂ = Z₀ +[F] (Z₁ +[F] Z₂) := ...
+\end{lstlisting}
+
+\begin{lstlisting}
+theorem add_comm {F : FormalGroup R} (hF : F.comm) {Z₀ Z₁ : MvPowerSeries σ R}
+(hZ₀ : constantCoeff Z₀ = 0) (hZ₁ : constantCoeff Z₁ = 0):
+  Z₀ +[F] Z₁ = Z₁ +[F] Z₀ := ...
+\end{lstlisting}
+
+To make sense that formal group law $F$ defines a formal addition, we should verify that there is a unit in the addition group, which means 
+$F(X,0)=X$ and $F(0,Y)= Y$. Furthermore, we should prove there exists a unique (addition) inverse element. \par 
+
+The existence of additional unit in $F$ sense is formalized as the following two theorems. 
+\begin{lstlisting}
+theorem zero_left : subst ![0, PowerSeries.X] F.toFun = PowerSeries.X (R := R) := ...
+
+theorem zero_right : subst ![PowerSeries.X, 0] F.toFun = PowerSeries.X (R := R) := ... 
+\end{lstlisting}
+
+%%%%%%% how to emphysis these theorem is in namespace FormalGroup
+Using the same notation of formal group addition, I generalized the theorems about to the following two theorems.  
+
+\begin{lstlisting}
+theorem zero_add (h : constantCoeff f = 0) : 0 +[F] f = f := 
+
+theorem add_zero (h : constantCoeff f = 0) : f +[F] 0 = f := 
+\end{lstlisting}
+
+Here, the name \lstinline{zero_add} means that zero adds some a multivariate power series \lstinline{f} equal to \lstinline{f} itself , which is a standard naming convention in Mathlib. In order to distinguish this theorem to other theorem with the same name, we put this theorem in the \lstinline{namespace FormalGroup}
+
+\subsection{Examples of formal groups}
+
+The basic examples of formal group laws are additive formal group law $\bfG_a$ and multiplicative formal group law $\bfG_m$. We formalized them via our definition of \lstinline{FormalGroup R} 
+\begin{lstlisting}
+def Gₐ : CommFormalGroup R where
+  toFun := X₀ + X₁
+  ... 
+
+def Gₘ : CommFormalGroup R where
+  toFun := X₀ + X₁ + X₀ * X₁
+  ...
+\end{lstlisting}
+
+
+\subsection{Function between formal groups}
+
+According to \ref{defn: pushforward of coeff ring}, given two commutative ring $R, R'$ and a ring
+homomorphism $\phi : R \to R'$, let a formal group law $F$ over $R$, then $\phi_* F$ is a formal
+group law over $R'$. The construction of the push forward of the coefficient ring in Lean:\href{https://github.com/WenrongZou/FormalGroupLaws/blob/main/FormalGroupLaws/Basic.lean}{\faExternalLink}
+\begin{lstlisting}
+def map {R : Type*} [CommRing R] {R' : Type*} [CommRing R'] 
+    (f : R →+* R') (F : FormalGroup R): FormalGroup R' where
+  toFun := F.toFun.map f 
+  ...
+\end{lstlisting}
+
+Let $R$ be a commutative ring and $T$ be a subring of $R$. Given a (multivariate) power series $f$ over $R$ with the assumption that all coefficients of $f$ in the subring of $T$, then $f$ can be considered as a (multivariate) power series over $T$. We define this function as \lstinline{MvPowerSeries.toSubring} which follow the APIs in polynomial as inspiration. 
+
+\begin{lstlisting}
+variable [Ring R] (p : MvPowerSeries σ R) (T : Subring R) (hp : ∀ n, p.coeff n ∈ T)
+
+def MvPowerSeries.toSubring : MvPowerSeries σ T := fun n => ⟨p.coeff n, hp n⟩
+\end{lstlisting}
+
+According to the definition, the coefficients of them should be the same after coercion. And the \lstinline{@[simp]} tag in the following theorem means that this theorem could be automatically applied if we use tactic \lstinline{simp} to simplify the expression. 
+
+\begin{lstlisting}
+@[simp]
+theorem coeff_toSubring {n : σ →₀ ℕ} : (p.toSubring T hp).coeff n = p.coeff n := rfl
+\end{lstlisting}
+
+Given a formal group law $F$ over ring $R$ with the assumption that all coefficients of $F$ are in the subring $T$, then $F$ is a formal group law over $T$. 
+
+\begin{lstlisting}
+def FormalGroup.toSubring (F : FormalGroup R) (hF : ∀ n, F.toFun n ∈ T) : FormalGroup T where
+  toFun := F.toFun.toSubring _ hF
+  ...
+\end{lstlisting}
+
+Similarly, we could also define \lstinline{CommFormalGroup.toSubring}. Since we have a coercion from \lstinline{CommFormalGroup R} to \lstinline{FormalGroup R}, we only need to check commutativity condition. 
+
+\begin{lstlisting}
+lemma CommFormalGroup.toSubring_comm (F : CommFormalGroup R) (hF : ∀ n, F.toFun n ∈ T) :
+    F.toFun.toSubring _ hF = (F.toFun.toSubring _ hF).subst ![X₁, X₀] := ...
+
+def CommFormalGroup.toSubring (F : CommFormalGroup R) (hF : ∀ n, F.toFun n ∈ T) :
+    CommFormalGroup T where
+  toFun := F.toFun.toSubring _ hF
+  zero_constantCoeff := ((F : FormalGroup R).toSubring _ hF).zero_constantCoeff
+  lin_coeff_X := ((F : FormalGroup R).toSubring _ hF).lin_coeff_X
+  lin_coeff_Y := ((F : FormalGroup R).toSubring _ hF).lin_coeff_Y
+  assoc := ((F : FormalGroup R).toSubring _ hF).assoc
+  comm := F.toSubring_comm _ hF
+\end{lstlisting}
+
+\subsection{Homomorphism and Isomorphism}
+
+Firstly, we need the API for \lstinline{PowerSeries.toMvPowerSeries} which is inspired by a similar API in polynomial. 
+\begin{lstlisting}
+noncomputable
+def Polynomial.toMvPolynomial (i : σ) : R[X] →ₐ[R] MvPolynomial σ R :=
+  aeval (MvPolynomial.X i)
+\end{lstlisting}
+Given a power series $p(X) \in R[\![X]\!]$ and an index $i \in I$ where $I$ is index set, this is a function mapping $p(X)$ to $p(X_i) \in R[\![X_I]\!]$. 
+
+\begin{lstlisting}
+def PowerSeries.toMvPowerSeries (f : PowerSeries R) (i : σ) : MvPowerSeries σ R :=
+  f.subst (MvPowerSeries.X i)
+\end{lstlisting}
+
+For the definition of homomorphism \ref{defn: hom of formal group law} between two formal group laws,
+it is defined as \lstinline{structure} in Lean:
+\href{https://github.com/WenrongZou/FormalGroupLaws/blob/main/FormalGroupLaws/Basic.lean#L856-L863}{\faExternalLink}
+\begin{lstlisting}
+@[ext]
+structure FormalGroupHom  (G₁ G₂ : FormalGroup R) where
+  toFun : PowerSeries R
+  zero_constantCoeff : toFun.constantCoeff = 0
+  hom : toFun.subst (G₁.toFun) = G₂.toFun.subst (R := R) toFun.toMvPowerSeries
+\end{lstlisting}
+
+Since two formal group homomorphisms are the same if and only if their underlying functions are the same. Therefore, we add a tag \lstinline{@[ext]} to the structure. When \lstinline{@[ext]} is applied to a structure, it generates an \lstinline{.ext} theorem and applies the \lstinline{@[ext]} attribute to it. The result is an \lstinline{.ext} and an \lstinline{.ext_iff} theorem with the \lstinline{.ext} theorem registered for the \lstinline{ext} tactic.
+
+The isomorphism of two formal groups is defined as two formal group homomorphisms which are inverse to each other. 
+\begin{lstlisting}
+@[ext]
+structure FormalGroupIso (G₁ G₂ : FormalGroup R) where
+  toHom : FormalGroupHom G₁ G₂
+  invHom : FormalGroupHom G₂ G₁
+  left_inv : (PowerSeries.subst toHom.toFun) ∘ (PowerSeries.subst invHom.toFun) = id
+  right_inv : (PowerSeries.subst invHom.toFun) ∘ (PowerSeries.subst toHom.toFun) = id
+\end{lstlisting}
+
+Here we also add a tag \lstinline{@[ext]} for the \lstinline{structure FormalGroupIso} and we will automatically have a theorem 
+
+\begin{lstlisting}
+variable {G₁ G₂ : FormalGroup R} {x y : FormalGroupIso G₁ G₂}
+
+theorem FormalGroupIso.ext_iff :
+    x = y ↔ x.toHom = y.toHom ∧ x.invHom = y.invHom := ...
+\end{lstlisting}
+
+To show that two formal group isomorphisms are the same, it is enough to show that their \lstinline{toHom} is the same. Indeed, if we have \lstinline{x.toHom = y.toHom}, then \lstinline{x.invHom = y.invHom} are the same since \lstinline{invHom} is the substitution inversion of \lstinline{toHom} and the substitution inverse is unique. And the following theorem is more convenient to use in practice. 
+
+\begin{lstlisting}
+theorem FormalGroupIso.ext_iff' : x = y ↔ x.toHom = y.toHom := ...
+\end{lstlisting}

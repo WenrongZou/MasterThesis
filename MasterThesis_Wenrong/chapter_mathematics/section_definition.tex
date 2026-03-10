@@ -1,0 +1,94 @@
+\section{Definition and basic properties of one dimensional
+Formal Group Laws}
+
+\begin{definition}
+    Let $R$ be a commutative ring. A one dimensional Formal Group Law is a formal power series $F(X, Y) \in R[\![X,Y]\!]$ with the following properties:
+    \begin{enumerate}
+        \item $F(X,Y)$ is of the form
+        \begin{equation}
+            F(X,Y) = X + Y + \sum_{i, j\ge 1}c_{ij} X^i Y^j
+        \end{equation}
+        \item $F(X,Y)$ satisfies associativity condition, namely
+        \begin{equation}
+            F(F(X,Y),Z) = F(X,F(Y,Z))
+        \end{equation}
+    \end{enumerate}
+    Furthermore, if $F(X,Y)$ satisfies $F(X,Y) = F(Y,X)$, then it is called
+    a commutative formal group law.
+    \label{Defn formal group}
+\end{definition}
+
+\begin{remark}
+    Under this definition, it can be proved that $F(X,0) = X$ and $F(0,Y) = 0$, which may be used as part of the definition in other references.
+    Therefore, given a formal group law $F(X,Y) \in R[\![X,Y]\!]$, it can be written as
+    $F(X,Y)= X + Y*G_1(X,Y)$ and $F(X,Y) = Y + X * G_2(X,Y)$,
+    for some $G_1(X,Y), G_2(X,Y) \in R [\![X,Y]\!]$.
+\end{remark}
+
+\begin{proof}[Proof of equivalence of the definition]
+    Let $f (X) = F(X,0)$, then we have \[F(F(X,0),0)= F(X,F(0,0))= F(X,0)\] which means that $f \circ f = f$.  Composing both sides with $f^{-1}$, then we have $f = \id$.
+    This is our desired result for $F(X,0) = X$. And $F(0,X)= 0$ holds via the similar proof.
+\end{proof}
+
+\begin{example}
+    There are two basic commutative formal group laws:
+    \begin{align}
+        & \bfG_a (X,Y) = X + Y \quad \text{(the additive formal group law.)} \\
+        & \bfG_m (X,Y) = X + Y + XY \quad \text{(the multiplicative formal group laws.)}
+    \end{align}
+
+\end{example}
+
+\begin{lemma}
+    Let $F(X, Y)$ be a formal group law over a ring $R$. Then there exists a power series
+    $i(X) = - X + b_2 X^2 + \cdots \in R [\![X]\!]$ such that $F(X, i(X)) = 0$ and $F(i(X),X) = 0$. \\
+    In particular, the left inverse and right inverse is the same and the inverse is unique.
+\end{lemma}
+
+\begin{proof}
+    Let $i(X) = \sum_{j= 1}^\infty b_j X ^ j$ and we inductively choose $b_j$ to satisfy $F(X,i(X)) = 0$. \par
+    First, we choose $b_1$ to be $-1$ and then $F(X, i(X)) = 0 \modd \deg 2 $. Assume that $b_1, \ldots b_n$ is already defined and $F(X, i(X)) = 0 \mod \deg (n+1)$, then we choose $b_{n+1}$
+    to be the minus $n+1$-th coefficient of $F(X, i_n(X))$, where
+    $i_n(X)= \sum_{j = 1}^n b_j X ^ j$. Therefore, $F(X, i_{n+1}(X)) = 0 \mod \deg (n+2)$, where $i_{n+1}(X) = i_n(X) + b_{n+1}X ^{n+1}$. Repeating these process, we get the desired series $i(X)$ and $F(X,i(X)) = 0$. We could use a similar process to define $i'(X)$ and
+    $F(i'(X), X) = 0$. \par
+    Since $F(X,Y)$ is a formal group law, then we have
+    \[ i'(X) = F(i'(X), 0) = F(i'(X), F(X, i(X))) = F(F(i'(X), X), i(X)) =
+    F(0,i(X)) = i(X)
+    \]
+    Therefore, `left inverse' and `right inverse' of $X$ is the same.
+\end{proof}
+
+Combining the result above, given a formal group law $F(X,Y)$, then it defines a group structure for multivariate power series in $R[\![X_I]\!]$ with zero constant coefficient, where $I$ is any finite index set.
+
+\begin{definition}
+    Let $F(X,Y)$ and $G(X,Y)$ be two formal group laws over ring $R$. A \textit{homomorphism}
+    $F(X,Y) \to G(X,Y)$ is a power series $\alpha (X) = a_1 X + a_2 X^ 2 + \cdots \in R[\![X]\!]$ such that
+    \begin{equation}
+        \alpha (F(X,Y))= G(\alpha(X), \alpha(Y))
+    \end{equation}
+    The homomorphism $\alpha$ is an \textit{isomorphism} if there exists a homomorphism
+    $\beta(X) : G(X,Y) \to F(X,Y)$ such that $\alpha (\beta(X)) = \beta (\alpha (X))= X$.
+    \label{defn: hom of formal group law}
+\end{definition}
+
+\begin{lemma}
+    The homomorphism $\alpha(X) : F(X,Y) \to G(X,Y) $ is an isomorphism if and only
+    if $a_1$ is a unit in the ring, where $\alpha (X) = a_1 X + a_2 X^2 + \cdots $.
+\end{lemma}
+
+\begin{proof}
+    Given that $\alpha (X)$ is a power series with $a_1$ unit, then we have a power series $\beta (X)$, such that $\alpha (\beta (X)) =\beta (\alpha (X)) = X$. And we should prove this $\beta (X)$ is a formal group homomorphism from $G(X,Y)$ to $F(X,Y)$, namely $\beta (G(X,Y)) = F (\beta (X), \beta (Y))$. \par
+    Since $\alpha (X)$ is homomorphism from $F(X,Y)$ to $G(X,Y)$, then $$\alpha (F(\beta(X), \beta (Y))) = G(\alpha (\beta (X)), \alpha (\beta (Y))) = G(X,Y).$$
+    The desired equality is followed by pre-composing above equation with
+    $\beta (X)$.
+\end{proof}
+
+\begin{definition}
+    Let $F(X,Y)$ be a formal group law over ring $R$ and let $\phi : R \to R'$ be a ring homomorphism. Suppose $F(X,Y) = X + Y + \sum_{i, j \ge 1} c_{ij} X ^i Y^j$, then by applying
+    $\phi$ to the coefficients of $F(X,Y)$ then we can obtain a formal group law
+    \begin{equation}
+        \phi_* F(X,Y) = X + Y + \sum \phi (c_{ij}) X ^i Y^j
+    \end{equation}
+    \label{defn: pushforward of coeff ring}
+\end{definition}
+

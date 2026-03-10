@@ -1,0 +1,114 @@
+\documentclass[11pt, a4paper, UKenglish]{scrreprt}
+
+\usepackage[UKenglish]{babel}
+\usepackage{MA_Titlepage}
+\usepackage{geometry, amsmath, amsthm,amsfonts,amssymb,stmaryrd, mathrsfs, graphicx, amsopn}
+\usepackage{bbm}
+% \usepackage{fancyhdr}
+\usepackage{fullpage}
+\usepackage{tikz-cd}
+\usepackage{enumitem}
+\usepackage[all]{xy}
+\usepackage{listings}                   % Code Listings.
+\usetikzlibrary{patterns}
+\usetikzlibrary{decorations.pathreplacing,calligraphy,decorations.pathmorphing}
+\usetikzlibrary{intersections}
+
+\usetikzlibrary{matrix,decorations.pathreplacing,calc}
+
+
+% to get rid of an error
+\usepackage{bookmark}
+
+%% lean
+\usepackage[utf8x]{inputenc}
+\usepackage{amssymb, upgreek}
+
+\usepackage{color}
+\definecolor{keywordcolor}{rgb}{0.7, 0.1, 0.1}   % red
+\definecolor{commentcolor}{rgb}{0.4, 0.4, 0.4}   % grey
+\definecolor{tacticcolor}{rgb}{0.0, 0.1, 0.6}    % blue
+\definecolor{symbolcolor}{rgb}{0.0, 0.1, 0.6}    % blue
+\definecolor{sortcolor}{rgb}{0.1, 0.5, 0.1}      % green
+\definecolor{errorcolor}{rgb}{1, 0, 0}           % bright red
+\definecolor{stringcolor}{rgb}{0.5, 0.3, 0.2}    % brown
+
+\usepackage{listings}
+\def\lstlanguagefiles{lstlean.tex}
+\lstset{language=lean}
+%% lean
+
+%colors for lean syntax
+% \definecolor{keywordcolor}{rgb}{0.7, 0.1, 0.1}   % red
+% \definecolor{tacticcolor}{rgb}{0.0, 0.1, 0.6}    % blue
+% \definecolor{commentcolor}{rgb}{0.4, 0.4, 0.4}   % grey
+% \definecolor{symbolcolor}{rgb}{0.0, 0.1, 0.6}    % blue
+% \definecolor{sortcolor}{rgb}{0.1, 0.5, 0.1}      % green
+% \definecolor{attributecolor}{rgb}{0.7, 0.1, 0.1} % red
+
+% % To display lean code
+% \def\lstlanguagefiles{lstlean.tex}
+% % set default language
+% \lstset{language=lean, extendedchars=true}
+
+\usepackage{cprotect}
+
+
+%set up for hyperref
+% to get the external link symbol
+\usepackage{fontawesome}
+
+\usepackage{hyperref}                   % Referenzen innerhalb des Dokuments anklickbar machen. Achtung: Muss das letzte Paket im Präambel sein.
+\hypersetup{                            % Optionen von hyperref Einstellen.
+    colorlinks=true,                    % gefärbte Links an Stelle von Boxen.
+    linkcolor=black,                     % Farbe interner Links.
+    citecolor=black,                     % Farbe von Referenzen.
+    urlcolor=black                       % Farbe von Internetlinks.
+}
+
+
+%Name of the author of the thesis
+\authornew{Wenrong Zou}
+%Date of birth of the Author
+\geburtsdatum{3rd December 2001}
+%Place of Birth
+\geburtsort{Fujian, China}
+%Date of submission of the thesis
+\date{\today}
+
+%Name of the Advisor
+% z.B.: Prof. Dr. Peter Koepke
+\betreuer{Advisor: Prof. Dr. X Y}
+%name of the second advisor of the thesis
+\zweitgutachter{Second Advisor: Prof. Dr. X Y}
+
+%Name of the Insitute of the advisor
+%z.B.: Mathematisches Institut
+\institut{Mathematical Institute}
+%\institut{Mathematisches Institut}
+%\institut{Institut f\"ur Angewandte Mathematik}
+%\institut{Institut f\"ur Numerische Simulation}
+%\institut{Forschungsinstitut f\"ur Diskrete Mathematik}
+%Title of the thesis
+\title{Formalization of Formal Group Laws}
+%Do not change!
+\ausarbeitungstyp{Master's Thesis  Mathematics}
+
+\input{thesis_macros.tex}
+
+
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\input{chapter_mathematics/mathematics_part.tex}
+
+\input{chapter_lean/lean_part.tex}
+\clearpage
+
+\bibliographystyle{plain}
+\bibliography{refs}
+
+\end{document}
