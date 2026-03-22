@@ -1,0 +1,76 @@
+\section{Height}
+
+In this section, we will discuss the definition and properties of height of a formal group law.
+Let $F(X,Y)$ be a commutative formal group law over ring $R$, fixed throughout this section.
+
+\begin{definition}
+    For any for natural number $n$, we define $n$-series $[n](X)\in R[\![X]\!]$ as follows,
+    \begin{enumerate}
+        \item $[0](X) = 0$.
+        \item $[n+ 1](X) = F([n](X), X)$.
+    \end{enumerate}
+\end{definition}
+
+
+\begin{proposition}
+    For any natural number $n$, $n$-series $[n](X)$ is a formal group homomorphism from $F(X,Y)$ to
+    $F(X,Y)$, i.e. $[n](F(X,Y)) = F ([n](X), [n](Y))$.
+    \label{prop: nseries_end}
+\end{proposition}
+
+\begin{proof}
+    We use indution on $n$ to prove it. For the base case $n = 0, 1$, it follows easily.
+    Assume that the result holds for some natural number $k$, now consider the case for $k+1$.
+    \begin{align*}
+        [k+1]F(X,Y) &= F([k]F(X,Y), F(X,Y)) \\
+            & = F(F([k](X), [k]Y), F(Y,X)) \\
+            & = F ([k](X), F([k](Y), F(Y,X)))
+    \end{align*}
+    And then we focus on the term $F([k](Y), F(Y,X))$.
+    \begin{equation*}
+        F([k](Y), F(Y,X)) = F(F([k](Y), Y), X) = F([k+1](Y), X) = F(X,[k+1](Y))
+    \end{equation*}
+    Then we have that
+    \begin{align*}
+        [k+1]F(X,Y) & = F ([k](X), F(X,[k+1](Y))) \\
+            & = F (F ([k](X), X), [k+1](Y)) \\
+            & = F ([k+1](X), [k+1](Y))
+    \end{align*}
+\end{proof}
+
+\begin{remark}
+    Via induction, we could deduce that $[n](X) = nX + O(X^2)$. As a result, for a ring $R$ of
+    characteristic $p$, we have $[p](X) = a X ^ k + O(X ^ {k+1})$ for some $k> 1$. Since $[p](X)$ is
+    formal group endomorphism, then we have the following proposition
+\end{remark}
+
+\begin{proposition}
+    Assume $R$ of characteristic $p$, then  $[p](X) = 0$ or
+    $[p](X) = a X ^ {p^n} + O (X ^ {p^n + 1})$.
+\end{proposition}
+
+From now on, we fix a prime number $p$,
+
+\begin{definition}
+    Let $v_n$ be the $p^n$-th coefficient of the $p$-series $[p](X)$. We say
+    $F(X,Y)$ has height $\ge n$, if $v_i = 0$ for all $i < n$. And we say $F(X,Y)$ has height
+    $n$ if $v_n$ is invertible in $R$. In particular, we say $F(X,Y)$ has infinity height
+    if $[p](X) = 0$.
+\end{definition}
+
+\begin{remark}
+    From the remark above, we have that $v_0 = p$. Then $F(X,Y)$ has height $\ge 1$ if and only if
+    $p = 0$ in $R$, which is equivalent to either $R$ of characteristic $p$ or $R$ is trivial. And
+    $F(X,Y)$ has height $0$ if and only if $p$ is invertible in $R$.
+\end{remark}
+
+\begin{example}
+    Assume that $R$ of characteristic $p$, the $p$-series for mulplicative formal group
+    $\GG_m(X,Y) = (1 + X)(1 + Y) - 1$ is $[p](X) = (1 + X)^p - 1 = X ^ p$, then $\GG_m(X,Y)$
+    has height $1$. For the additive formal group law $\GG_a(X,Y)$ the $p$-series
+    $[p](X) = p X = 0$, then $\GG_a(X,Y)$ has infinity height.
+\end{example}
+
+\begin{proposition}
+    Let $F(X,Y)$ and $G(X,Y)$ be formal group laws over ring $R$, then $F(X,Y)$ and
+\end{proposition}
