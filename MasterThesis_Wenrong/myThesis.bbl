@@ -1,9 +1,72 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{Carneiro2019}
+Mario Carneiro.
+\newblock {\em The Type Theory of Lean}.
+\newblock Master's thesis, Carnegie Mellon University, 2019.
+\newblock Available online at
+  \url{https://github.com/digama0/lean-type-theory}.
+
+\bibitem{cassels1967algebraic}
+J.~W.~S. Cassels and A.~Fr{\"o}hlich, editors.
+\newblock {\em Algebraic Number Theory}.
+\newblock Academic Press, London, 1967.
+
+\bibitem{Coquand1986}
+Thierry Coquand.
+\newblock {\em An analysis of Girard's paradox}.
+\newblock Phd thesis, INRIA, 1986.
+
+\bibitem{demoura2015lean}
+Leonardo de~Moura, Soonho Kong, Jeremy Avigad, Floris van Doorn, and Jakob von
+  Raumer.
+\newblock The lean theorem prover (system description).
+\newblock In {\em Automated Deduction -- CADE-25}, pages 378--388. Springer
+  International Publishing, 2015.
+
+\bibitem{deMoura2021}
+Leonardo de~Moura and Sebastian Ullrich.
+\newblock The lean 4 theorem prover and programming language.
+\newblock In {\em Automated Deduction -- CADE 28}, pages 625--635. Springer
+  International Publishing, 2021.
+
+\bibitem{hazewinkel1978formal}
+Michiel Hazewinkel.
+\newblock {\em Formal Groups and Applications}, volume~78 of {\em Pure and
+  Applied Mathematics}.
+\newblock Academic Press, New York, 1978.
 
 \bibitem{lam1999lectures}
 Tsit-Yuen Lam.
 \newblock {\em Lectures on Modules and Rings}, volume 189 of {\em Graduate
   Texts in Mathematics}.
 \newblock Springer-Verlag, New York, 1999.
+
+\bibitem{LubinTate1965}
+Jonathan Lubin and John Tate.
+\newblock Formal complex multiplication in local fields.
+\newblock {\em Annals of Mathematics}, 81(2):380--387, Mar 1965.
+
+\bibitem{lurielecture12}
+Jacob Lurie.
+\newblock Chromatic homotopy theory (math 252x), lecture 12.
+\newblock Harvard University Lecture Notes, 2010.
+\newblock Accessed: 2026-03-22.
+
+\bibitem{lurielecture13}
+Jacob Lurie.
+\newblock Chromatic homotopy theory (math 252x), lecture 13.
+\newblock Harvard University Lecture Notes, 2010.
+
+\bibitem{lurielecture14}
+Jacob Lurie.
+\newblock Chromatic homotopy theory (math 252x), lecture 14.
+\newblock Harvard University Lecture Notes, 2010.
+
+\bibitem{silverman2009arithmetic}
+Joseph~H. Silverman.
+\newblock {\em The Arithmetic of Elliptic Curves}, volume 106 of {\em Graduate
+  Texts in Mathematics}.
+\newblock Springer, New York, 2nd edition, 2009.
 
 \end{thebibliography}

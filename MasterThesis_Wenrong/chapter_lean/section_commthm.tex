@@ -1,2 +1,67 @@
 \section{Commutative Lemma}
 
+In this section, we will discuss some formalization of the commutative result in the previous
+chapter. Fix a formal group law $F(X,Y)$ over $R$ thoughout this section.
+First, we fix some environmental variables.
+
+\begin{lstlisting}
+variable {R : Type*} [CommRing R] (F : FormalGroup R) [Nontrivial R] {σ : Type*}
+\end{lstlisting}
+
+According to the definition of commutativity of formal group law, we have that $F(X,Y)$ is
+commutative if and only if the coefficients of $X^i Y^j$ and $X^j Y^i$ coincide.
+
+\begin{lstlisting}
+theorem comm_iff_coeff_symm :
+  F.comm ↔ ∀ (i j : ℕ), coeff (single 0 i + single 1 j) F.toFun
+    = coeff (single 0 j + single 1 i) F.toFun := by
+\end{lstlisting}
+
+A precommutator of a formal group law \lstinline|F| is a multivariate power series
+\lstinline|X +[F] Y +[F] (-X)|. Typically, a commutator of a group law is defined to be
+$x y x^{-1} y ^{-1}$ where $x, y$ are elements of group $G$ and a group is commutative if and only
+if its commutator is zero.
+A formal group law $F(X,Y)$ is commutative if and only if the precommutator equals to
+\lstinline|Y|.
+
+\begin{lstlisting}
+def preCommutator (f g : MvPowerSeries σ R) := f +[F] g +[F] (addInv F f)
+
+def commutator : MvPowerSeries (Fin 2) R :=
+    X₀ +[F] X₁ +[F] (addInv F X₀) +[F] (addInv F X₁)
+
+lemma preCommutator_ne_of_nonComm (h : ¬ F.comm) :
+    preCommutator F X₀ X₁ ≠ X₁ := by
+
+lemma comm_iff_commutator_eq_zero : F.comm ↔ commutator F = 0 := by
+\end{lstlisting}
+
+Now we could formalize the lemma \ref{lem: non_com_hom} and lemma \ref{lem: target_com}.
+
+\begin{lstlisting}
+theorem exists_nonzero_hom_to_Ga_or_Gm_of_not_comm (h : ¬ F.comm) :
+    (∃ (α : FormalGroupHom F (Gₐ (R := R))), α.toFun ≠ 0) ∨
+    (∃ (α : FormalGroupHom F (Gₘ (R := R))), α.toFun ≠ 0) :=
+
+theorem comm_of_exists_nonzero_hom_to_comm (F' : FormalGroup R) [IsDomain R]
+    (α : FormalGroupHom F F') (ha : α.toFun ≠ 0) :
+    F'.comm → F.comm := by
+\end{lstlisting}
+
+The instance \lstinline|IsDomain R| means \lstinline|R| is an integral domain.
+Here \lstinline|Gₐ|, \lstinline|Gₘ| are the abbreviation of the additive and multiplicative formal group law.
+And \lstinline|(R := R)| in the parentheses means that here we want the coefficient ring of the
+formal group laws to be ring \lstinline|R|.
+
+Therefore, we could deduce that any formal group law over a domain $R$ is commutative with a
+neat proof.
+
+\begin{lstlisting}
+theorem comm_of_isDomain [IsDomain R] : F.comm := by
+  by_contra hc
+  obtain ⟨α, ha⟩| ⟨α, ha⟩ := exists_nonzero_hom_to_Ga_or_Gm_of_not_comm F hc
+  · exact hc ((comm_of_exists_nonzero_hom_to_comm _ _ α ha) Gₐ.comm)
+  · exact hc ((comm_of_exists_nonzero_hom_to_comm _ _ α ha) Gₘ.comm)
+\end{lstlisting}
+
+

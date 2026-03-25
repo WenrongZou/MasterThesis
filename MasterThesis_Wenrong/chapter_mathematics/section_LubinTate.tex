@@ -75,6 +75,8 @@ field, $\pi$ be a uniformizer of $\calO_K$.
         F_f(F_f(X,Y),Z) &= F_f(X, F_f(Y,Z)) \label{eq: lubin-Tate_assoc}
     \end{align}
      As a result, $F_f(X,Y)$ is a commutative formal group law over $\calO_K$.
+
+    \label{thm: Lubin_Tate}
 \end{theorem}
 
 \begin{proof}
@@ -277,7 +279,45 @@ $\pi \in \calO_K$, we define a group homomorphism $r_\pi : K^\times \to \Gal(L_\
     \item Given a $u \in U_K$, we define $r_\pi (u)$ acts as $[u^{-1}]_f$ on $L_\pi$ and
         acts as identity on $\Kun$.
 \end{itemize}
-Next we will prove that the field $L_\pi$ and the homomorphism $r_\pi$ are independent of the
+Next it can be proved that the field $L_\pi$ and the homomorphism $r_\pi$ are independent of the
 uniformizer $\pi$ and it is a maximal abelian extension of $K$. Moreover, $r_\pi$ coincides with
 the local reciprocity map in local class field theory, i.e. for all $a \in \calO_K$,
-$r_\pi(a) = (a, L_\pi \Kun / K ^ \times)$.
+$r_\pi(a) = (a, L_\pi \Kun / K ^ \times)$. The references of these can be found in
+\cite{LubinTate1965} and \cite{cassels1967algebraic}.
+
+\section{Connection with functional equation lemma}
+
+In this section, we will discuss some connection between the formal group law obtain by
+functional equation lemma and Lubin-Tate formal group law. Throughout this section
+we fix a nonarchimedean local field $K$, let $\calO_K$ be its ring of integer,
+$\pi$ be a uniformizer, $q$ be the cardinality of the
+residue field of $\calO_K$.
+
+\begin{proposition}
+    The Lubin-Tate formal group laws $F_f$ associated to $f\in \calF_\pi$ are in one to one
+    correspondence with the formal group law obtained by functional equation with
+    parameters $I = (\pi), \sigma = \id, s_1 = \pi^{-1}$ and $\forall i \ge 2, s_i = 0$.
+    The functional equation in the sense of these parameters is
+    \[ f_g(X) = g(X) + \pi^ {-1}f_g(X ^ q). \]
+    And this correspondence is given by
+    \[g(X) \mapsto f_g^{-1}(\pi f_g(X)) \in \calF_\pi. \]
+\end{proposition}
+
+\begin{proof}
+    The integrality of coefficient in $f_g^{-1}(\pi f_g(X))$ follows from
+    functional equation lemma. Multiplying $\pi$ at the both sides of the functional equation,
+    we have that
+    \[ \pi f_g(X) = \pi g(X) + \pi^{-1} \pi f_g(X). \]
+    Then $\pi f_g(X) = f_{\pi g}(X)$. According to the second part of the functional
+    equation lemma, we have that
+    \[f_g^{-1} (\pi f_g(X)) = f_g^{-1} (f_{\pi g}(X)) \in \calO_K[\![X]\!]. \]
+    The formal group law obtained by the functional equation lemma is
+    \[ F(X,Y) = f_g^{-1} (f_g(X) + f_g(Y)) . \]
+    By the existence and uniqueness in the theorem \ref{thm: Lubin_Tate}, it is enough
+    to check $f_g^{-1}(\pi f_g(X))$ is homomorphism for $F(X,Y)$. This can be done as follows:
+    \begin{align*}
+        f_g^{-1} (\pi f_g(F(X,Y))) &= f_g^{-1} (\pi f_g(f_g^{-1} (f_g(X) + f_g(Y)))) \\
+            & = f_g^{-1} (\pi f_g(X) + \pi f_g(Y)) \\
+            & = F(f_g^{-1}(\pi f_g(X)), f_g^{-1}(\pi f_g(Y))).
+    \end{align*}
+\end{proof}

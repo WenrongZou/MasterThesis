@@ -1,0 +1,63 @@
+\section{Logarithm}
+
+In this section, we will discuss formal logarithm on formal group law. Consider
+integrating an invariant differential form, we expect that it will give us a homomorphism
+to the additive group. However, integration will introduce denominators. In the case
+of characteristic $0$ or torsion free, things work as we expect.
+
+From now on, we fix a torsion free ring $R$, let $K = R \otimes \QQ$.
+
+\begin{definition}
+Let $F$ be a formal group law over $R$, $\omega(X)$ be its normalized invariant differential.
+We denote $\omega(X) = (1 + a_1 X + a_2 X ^ 2 + \cdots) dX$, then the formal logarithm of $F$
+is defined to be
+    \[ \log_F (X) := \int \omega = X + \frac{a_1}{2} X^ 2 + \frac{a_2}{3} X ^ 3 + \cdots \in K [\![X]\!] \]
+Since the coefficient of $X$ in $\log_F(X)$ is $1$, which is invertible in $K$, then
+$\exp_F (X)$ is defined to be the unique power series over $K$ satisfying
+    \[ \exp_F( \log_F (X)) = X. \]
+\end{definition}
+
+\begin{example}
+    The normalized invariant differential on $\bfG_a$ is $dX$, then we have
+    \[ \log_{\bfG_a} (X) = X, \ \exp_{\bfG_a}(X) = X. \]
+    The normalized invariant differential on $\bfG_m$ is $(1 + X) ^ {-1} dX$, then we have
+    \[ \log_{\bfG_m} (X) = \sum_{n=1}^{\infty} \frac{(-1)^{n-1}X ^ n}{n}  \]
+    \[ \exp_{\bfG_m} (X) = \sum_{n=1}^{\infty} \frac{X^n}{n!} \]
+\end{example}
+
+As we expect, the formal logarithm on $F$ is a homomorphism from $F$ to $\bfG_a$.
+However, since $\log_F$ introduce denominators, this is no longer a homomorphism over $R$,
+it is a homomorphism over $K$. Moreover, it is a isomorphism over $K$.
+
+\begin{proposition}
+    Let $F$ be a formal group law over $R$, then $\log_F(X)$ is a formal group isomorphism from
+    $F$ to $\bfG_a$ over $K$.
+\end{proposition}
+
+\begin{proof}
+    Let $\omega(X)$ be the normalized invariant differential for $F$. Then we have
+    \[\omega \circ F = \omega .\]
+    Integrating this, we have
+    \[\log_F(F(X,Y)) = \log_F(X) + C(Y). \]
+    where $C(Y) \in K[\![Y]\!]$. Let $X = 0$ in above, we have
+    \[ C(Y) = \log_F (0) + C (Y) = \log_F(F(0,Y)) = \log_F (Y). \]
+    Then we have that
+    \[\log_F(F(X,Y)) = \log_F(X) + \log_F(Y). \]
+    which proves that $\log_F(X)$ is a homomorphism from $F$ to $\bfG_a$. Furthermore,
+    since $\exp_F$ is its inverse, then $\exp_F$ is homomorphism from $\bfG_a$ to $F$.
+    Therefore, $\log_F$ is an isomorphism.
+\end{proof}
+
+\begin{corollary}
+    Let $R$ be a torsion free ring, then every formal group law over $R$ is commutative.
+\end{corollary}
+
+\begin{proof}
+    The assumption that $R$ is torsion free guarantee the existence of $\log_F$ and $\exp_F$.
+    Then
+        \[F(X,Y) = \exp_F(\log_F(X) + \log_F(Y)). \]
+    Therefore, we have that $F(X,Y) = F(Y,X)$.
+\end{proof}
+
+There is some more discussion of the form of coefficient of $\log_F$ and $\exp_F$ in
+\cite{silverman2009arithmetic}.

@@ -133,8 +133,27 @@ Before we start to prove the theorem, we should discuss some lemmas first.
     $\bfG_a(X,Y)$ or $\bfG_m(X,Y)$. According to lemma $\ref{lem: target_com}$ and
     $\bfG_a(X,Y), \bfG_m (X,Y)$ is commutative formal group law, then $F(X,Y)$ is commutative. This
     leads to a contradiction.\par
-    Thirdly, we prove the sufficiency for the case $R$ is $\ZZ$-torsion free.
+    Thirdly, the proof of sufficiency for the case $R$ is $\ZZ$-torsion free follows directly
+    by computation on the associativity condition of formal group law.
+    We will discuss it latter in the section invariant differential.
+    Also it could be found in \cite{hazewinkel1978formal}. \par
+    Now we prove the sufficiency of the condition on $R$ for theorem \ref{comm_thm}.\par
+    Given a prime ideal $\gothp$ in $R$, consider the ring homomorphism $\phi : R \to R / \gothp$.
+    Since $R / \gothp$ is an integral domain, then $\phi_* F(X,Y)$ is commutative. If we denote
+    $F(X,Y) = \sum_{i, j} a_{ij} X ^ i Y ^ j$, then it follows that
+    $\phi_* (a_{ij} - a_{ji}) = 0 \in R / \gothp$, which is equivalent to
+    $a_{ij} - a_{ji} \in \gothp$. And it holds for all prime ideal $\gothp$, then
+    \begin{equation*}
+        a_{ij} - a_{ji} \in \bigcap _{\gothp \ prime} \gothp
+    \end{equation*}
 
+    Therefore, for any $i, j$, $a_{ij} - a_{ji}$ is nilpotent in $R$.
 
+    Consider the ring homomorphism $\phi_\infty : R \to R \otimes_{\ZZ} \QQ$. Since
+    $R \otimes_\ZZ \QQ$ is $\ZZ$-torsion free, then $\phi_{\infty *} F(X,Y)$ is commutative.
+    Therefore, $\phi_\infty (a_{ij} - a_{ji}) = 0 \in R \otimes_\ZZ \QQ$, which means
+    $a_{ij} -a_{ji}$ is $\ZZ$-torsion. Since there is no non-zero element in $R$, which is
+    nilpotent and $\ZZ$-torsion at the same time. It follows that for any $i,j$,
+    $a_{ij} - a_{ji} = 0$, which implies $F(X,Y)$ is commutative.
 
 \end{proof}

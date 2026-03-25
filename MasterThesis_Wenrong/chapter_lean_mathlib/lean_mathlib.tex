@@ -1,0 +1,223 @@
+\chapter{Lean and Mathlib}
+\label{chap:introduction}
+
+The practice of mathematics is fundamentally rooted in the rigorous verification of proofs.
+However, as mathematical theories grow increasingly complex, the traditional peer-review process
+becomes strained. The digitization and formal verification of mathematics offer a modern solution
+to this problem, allowing mathematicians to verify their results with absolute certainty using
+software.
+
+This chapter introduces the Lean theorem prover and the mathematics library in the software
+system called \lstinline|Mathlib|.
+
+\section{The Lean Theorem Prover}
+\label{sec:lean_theorem_prover}
+
+Lean is a functional programming language and interactive theorem prover initially developed
+by Leonardo de Moura at Microsoft Research in 2013 \cite{demoura2015lean}. The current version, Lean 4,
+is a complete reimplementation that serves simultaneously as a proof assistant and a
+general-purpose, practically efficient programming language.
+
+At its logical core, Lean is based on a variant of dependent type theory known as the
+Calculus of Inductive Constructions (CIC). In this framework, propositions are represented
+as types, and proofs are represented as terms of those types—a correspondence known as the
+Curry-Howard isomorphism.
+
+To prove a theorem in Lean is to construct a term of the corresponding type. Lean's kernel,
+a small and highly trusted piece of code, checks that this term is well-typed. If the kernel
+accepts the term, the proof is logically sound. This minimizes the trusted code base; users
+do not need to trust the complex tactics or automation used to generate the proof, only the
+kernel that verifies the final proof term.
+
+% Unlike traditional computer algebra systems (such as Mathematica or SageMath) which
+% primarily perform numerical and symbolic computations, interactive theorem provers
+% like Lean are designed to reason about abstract mathematical concepts, properties, and
+% logical deductions.
+
+\section{Dependent Type Theory}
+\label{sec:dependent_type_theory}
+
+Traditional set theory (such as Zermelo-Fraenkel with Choice, ZFC) has historically served
+as the foundation of mathematics. However, dependent type theory provides a more natural
+environment for machine verification.
+
+In Lean's type theory, every expression has a specific type. The defining feature of
+\textit{dependent} type theory is that types can depend on terms. For example,
+the type of a vector of length $n$, denoted \lstinline|Vector a n|, depends on the natural
+number $n$. This allows for highly expressive typing where the properties of mathematical
+objects are baked directly into their definitions.
+
+% Lean distinguishes between two fundamental universes:
+% \begin{itemize}
+%     \item \texttt{Prop}: The universe of logical propositions. Types residing in \texttt{Prop} are
+%     subject to proof irrelevance, meaning any two proofs of the same proposition are considered
+%     definitionally equal.
+%     \item \texttt{Type}: The universe of data and mathematical structures
+%     (e.g., natural numbers, rings, manifolds).
+% \end{itemize}
+
+Moreover, even types themselves have types. The type of propositions \lstinline|Prop| is also
+of type \lstinline|Type|. As to not run into a paradox called Girard's paradox there is a hierarchy of
+types in \cite{Coquand1986}.
+The type of \lstinline|Type| is \lstinline|Type 1|, the type of \lstinline|Type 1|
+is \lstinline|Type 2| and so on. These are call type-universe. We can also say \lstinline|R| is a
+type in an arbitrary univer and we denote it as \lstinline|R : Type*|.
+
+\section{Inductive type and Quotient type}
+
+\subsection{Inductive type}
+
+In the Lean proving system, the vast majority of mathematical objects, data structures, and
+logical propositions are defined as \textit{inductive types}.
+
+An inductive type is defined by specifying its universe level and a comprehensive list of its
+\textit{constructors}. Mathematically, inductive types are ``freely generated''
+by these constructors. Here are several examples in Mathlib
+
+\begin{lstlisting}
+inductive Nat where
+  | zero : Nat
+  | succ (n : Nat) : Nat
+
+inductive List (α : Type u) where
+  | nil : List α
+  | cons (head : α) (tail : List α) : List α
+
+inductive Option (α : Type u) where
+  /-- No value. -/
+  | none : Option α
+  /-- Some value of type `α`. -/
+  | some (val : α) : Option α
+\end{lstlisting}
+
+In the inductive construction of \lstinline|List|, \lstinline|nil| means the empty list,
+usually written \lstinline|[]|. And the inductive construction of \lstinline|List| is that:
+the list whose first element is \lstinline|head|, where \lstinline|tail| is the rest of the list.
+Usually written \lstinline|head :: tail|.
+
+Because inductive types are freely generated, Lean automatically enforces two strict rules, often
+referred to as the ``no confusion'' properties \cite{deMoura2021}:
+\begin{enumerate}
+    \item Injectivity of Constructors: If $\texttt{succ}(a) = \texttt{succ}(b)$, then $a = b$.
+    \item Disjointness of Constructors: Different constructors can never produce the same value.
+    For example, $\texttt{zero} \neq \texttt{succ}(a)$ for any $a$.
+\end{enumerate}
+
+These properties are what allow functions to be defined via pattern matching and recursive
+evaluation. Is each type in Lean an inductive type? The answer is almost but not.
+Every type in Lean is either an inductive type, or defined in terms of
+universes (like the type \lstinline|Type 2|), functions and quotient types.
+
+\subsection{Quotient types}
+In abstract algebra and topology, it is frequently necessary to construct a new
+space by ``gluing'' elements of a base space together according to an equivalence relation $\sim$.
+
+If one were to attempt to define a quotient type as a standard inductive type, they would
+face a contradiction. One might try to provide a constructor
+$\texttt{mk} : \alpha \to \text{Quotient}$, but because inductive constructors are strictly
+injective, Lean would enforce that if $a \neq b$, then $\texttt{mk}(a) \neq \texttt{mk}(b)$.
+This entirely defeats the purpose of a quotient, where we explicitly want
+$\texttt{mk}(a) = \texttt{mk}(b)$ whenever $a \sim b$.
+
+To resolve this, Lean does not treat quotients as inductive types.
+Instead, it extends its core type theory with a set of primitive axioms
+specifically designed for quotienting \cite{Carneiro2019}.
+
+Lean introduces four foundational constants to handle quotients for any type
+$\alpha$ and relation $r : \alpha \to \alpha \to \texttt{Prop}$:
+
+\begin{enumerate}
+    \item \lstinline|Quot| is the built-in quotient type.
+    \item \lstinline|Quot.mk| places elements of the underlying type \lstinline|α| into the quotient.
+    \item \lstinline|Quot.lift| allows the definition of functions from the quotient to some other type.
+    \item \lstinline|Quot.ind| is used to write proofs about quotients by assuming that all elements are constructed
+        with \lstinline|Quot.mk|.
+\end{enumerate}
+
+\begin{lstlisting}
+axiom Quot.sound : ∀ {α : Sort u} {r : α → α → Prop} {a b : α},
+    r a b → Quot.mk r a = Quot.mk r b
+\end{lstlisting}
+
+By utilizing \texttt{Quot.sound}, Lean intentionally breaks the injectivity rule that governs inductive types, allowing for true mathematical equivalence classes. Functions out of quotient types are then defined using \texttt{Quot.lift}, which requires the user to provide a proof that the function respects the underlying equivalence relation (i.e., the function is well-defined).
+
+% \section{Mathlib: The Mathematical Library}
+% \label{sec:mathlib}
+
+% The power of an interactive theorem prover depends heavily on the extent of its standard library. For Lean, this is \textsf{mathlib}, a massive, community-driven repository of formalized mathematics.
+
+% Unlike other theorem provers that often split theories into disconnected libraries, \textsf{mathlib} is heavily integrated and monolithic. This design choice ensures that different areas of mathematics can interact seamlessly. A theorem proven in topology can be immediately applied to algebraic geometry without needing to bridge incompatible definitions of fundamental structures.
+
+% \textsf{mathlib} covers a vast array of topics, including but not limited to:
+% \begin{itemize}
+%     \item Abstract algebra (groups, rings, modules, category theory)
+%     \item Analysis (topology, measure theory, functional analysis)
+%     \item Geometry (manifolds, schemes)
+%     \item Combinatorics and number theory
+% \end{itemize}
+
+% Furthermore, \textsf{mathlib} relies heavily on Lean's typeclass inference system. This system allows Lean to automatically synthesize required mathematical structures—for instance, automatically deducing that the product of two topological spaces is a topological space, or identifying the correct multiplicative inverse operation for an element in a ring.
+
+% By building upon the rigorous foundations of Lean 4 and the extensive mathematical scaffolding of \textsf{mathlib}, this thesis contributes to the ongoing effort to digitize modern mathematics.
+
+\section{Structures, Classes, and Type Class Inference}
+\label{sec:structures_classes_inference}
+
+To effectively formalize mathematics, a system must be able to organize abstract concepts—such
+as groups, rings, and topological spaces—in a modular and extensible way. Lean achieves this
+using structures and type classes.
+
+\subsection{Structures and Classes}
+In Lean, a \lstinline|structure| is an inductive type with a single constructor, akin to a record
+in traditional programming languages. It allows users to bundle data (such as mathematical
+operations) and propositions (such as axioms) into a single cohesive object. For example,
+a group can be defined as a structure containing a carrier type, a multiplication operation,
+an identity element, an inverse operation, and the explicit proofs that these operations
+satisfy the standard group axioms.
+
+A \lstinline|class| is simply a \lstinline|structure| that has been registered with Lean's type
+class resolution system. In mathematical formalization, we almost exclusively use classes
+to define algebraic and topological properties. By doing so, we define generic interfaces
+that many different specific types (e.g., the integers, polynomials, or matrices) can instantiate.
+
+\subsection{Type Class Inference}
+Type class inference is the automated mechanism by which Lean synthesizes missing
+mathematical context. When a theorem or definition requires an instance of a class—denoted by
+square brackets in Lean's syntax, such as \lstinline|[Ring R]|—Lean searches its
+environment to automatically construct and inject the required instance.
+
+This system is the absolute backbone of mathematical notation and generic reasoning in Lean.
+For instance, the addition symbol \lstinline|+| is defined via a fundamental type class called
+\lstinline|Add|. When Lean encounters the expression \lstinline|a + b| for variables
+\lstinline|a b : R|, it implicitly triggers type class inference to find an instance of
+\lstinline|Add R|. If \lstinline|R| is known to be a ring via a local assumption,
+Lean seamlessly infers the correct addition operation without the user needing to
+manually specify it. This mechanism allows formalized mathematics to remain readable
+and closely resemble traditional pen-and-paper mathematics.
+
+\subsection{The Algebraic Hierarchy}
+In \textsf{mathlib}, mathematical structures are organized into a massive, heavily intertwined
+algebraic hierarchy. This hierarchy is built using class extension.
+\begin{lstlisting}
+class Semiring (α : Type u) extends NonUnitalSemiring α, NonAssocSemiring α, MonoidWithZero α
+
+class Ring (R : Type u) extends Semiring R, AddCommGroup R, AddGroupWithOne R
+
+class CommRing (α : Type u) extends Ring α, CommMonoid α
+\end{lstlisting}
+
+For instance,
+the \lstinline|CommRing| (commutative ring) class extends the \lstinline|Ring| class, which in
+turn extends both \lstinline|Semiring|, \lstinline|AddCommGroup| and \lstinline|AddGroupWithOne|,
+cascading all the way down to basic operational classes like \lstinline|Mul| and \lstinline|Add|.
+
+Because of this hierarchy, a theorem proven for a \lstinline|Monoid| is automatically applicable
+to a \lstinline|Group|, a \lstinline|Ring|, or a \lstinline|Field|. Type class inference handles
+this ``forgetful inheritance'' automatically. When a theorem requires a \lstinline|Monoid| but is
+given a \lstinline|Ring|, Lean's type class synthesis systematically the hierarchy to
+extract the underlying \lstinline|Monoid| structure.
+
+Designing and maintaining this hierarchy is one of the most significant software engineering
+achievements within the \textsf{mathlib} project. It ensures maximal theorem reuse, preventing
+mathematicians from having to prove the same fundamental lemmas multiple times across different
+domains of algebra.
