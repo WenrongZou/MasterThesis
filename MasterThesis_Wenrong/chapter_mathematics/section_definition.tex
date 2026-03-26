@@ -1,14 +1,14 @@
-\section{Definition and basic properties of one dimensional
+\section{Definition and Basic Properties of One-Dimensional
 Formal Group Laws}
 
 \begin{definition}[{\cite[Definition 1.1]{hazewinkel1978formal}}]
-    Let $R$ be a commutative ring. A one dimensional Formal Group Law is a formal power series $F(X, Y) \in R[\![X,Y]\!]$ with the following properties:
+    Let $R$ be a commutative ring. A one-dimensional formal group law is a formal power series $F(X, Y) \in R[\![X,Y]\!]$ with the following properties:
     \begin{enumerate}
         \item $F(X,Y)$ is of the form
         \begin{equation}
             F(X,Y) = X + Y + \sum_{i, j\ge 1}c_{ij} X^i Y^j
         \end{equation}
-        \item $F(X,Y)$ satisfies associativity condition, namely
+        \item $F(X,Y)$ satisfies the associativity condition, namely
         \begin{equation}
             F(F(X,Y),Z) = F(X,F(Y,Z))
         \end{equation}
@@ -19,22 +19,22 @@ Formal Group Laws}
 \end{definition}
 
 \begin{remark}
-    Under this definition, it can be proved that $F(X,0) = X$ and $F(0,Y) = 0$, which may be used as part of the definition in other references.
+    Under this definition, one can prove that $F(X,0) = X$ and $F(0,Y) = Y$, which are used as part of the definition in other references.
     Therefore, given a formal group law $F(X,Y) \in R[\![X,Y]\!]$, it can be written as
     $F(X,Y)= X + Y*G_1(X,Y)$ and $F(X,Y) = Y + X * G_2(X,Y)$,
     for some $G_1(X,Y), G_2(X,Y) \in R [\![X,Y]\!]$.
 \end{remark}
 
 \begin{proof}[Proof of equivalence of the definition]
-    Let $f (X) = F(X,0)$, then we have \[F(F(X,0),0)= F(X,F(0,0))= F(X,0)\] which means that $f \circ f = f$.  Composing both sides with $f^{-1}$, then we have $f = \id$.
-    This is our desired result for $F(X,0) = X$. And $F(0,X)= 0$ holds via a similar proof.
+    Let $f(X) = F(X,0)$. Then we have \[F(F(X,0),0)= F(X,F(0,0))= F(X,0),\] which means that $f \circ f = f$. Composing both sides with $f^{-1}$ gives $f = \id$.
+    This is the desired result for $F(X,0) = X$. Also, $F(0,X)= X$ follows from a similar proof.
 \end{proof}
 
 \begin{example}
     There are two basic commutative formal group laws:
     \begin{align}
         & \bfG_a (X,Y) = X + Y \quad \text{(the additive formal group law.)} \\
-        & \bfG_m (X,Y) = X + Y + XY \quad \text{(the multiplicative formal group laws.)}
+        & \bfG_m (X,Y) = X + Y + XY \quad \text{(the multiplicative formal group law.)}
     \end{align}
 
 \end{example}
@@ -48,22 +48,22 @@ Formal Group Laws}
 \end{lemma}
 
 \begin{proof}
-    Let $i(X) = \sum_{j= 1}^\infty b_j X ^ j$ and we inductively choose $b_j$ to satisfy $F(X,i(X)) = 0$. \par
-    First, we choose $b_1$ to be $-1$ and then $F(X, i(X)) = 0 \modd \deg 2 $. Assume that $b_1, \ldots b_n$ is already defined and $F(X, i(X)) = 0 \mod \deg (n+1)$, then we choose $b_{n+1}$
-    to be the minus $n+1$-th coefficient of $F(X, i_n(X))$, where
-    $i_n(X)= \sum_{j = 1}^n b_j X ^ j$. Therefore, $F(X, i_{n+1}(X)) = 0 \mod \deg (n+2)$, where $i_{n+1}(X) = i_n(X) + b_{n+1}X ^{n+1}$. Repeating these process, we get the desired series $i(X)$ and $F(X,i(X)) = 0$. We could use a similar process to define $i'(X)$ and
+    Let $i(X) = \sum_{j= 1}^\infty b_j X ^ j$, and choose $b_j$ inductively so that $F(X,i(X)) = 0$. \par
+    First, choose $b_1 = -1$. Then $F(X, i(X)) = 0 \mod \deg 2$. Assume that $b_1, \ldots, b_n$ are already defined and $F(X, i(X)) = 0 \mod \deg (n+1)$. Then choose $b_{n+1}$
+    to be minus the $(n+1)$-st coefficient of $F(X, i_n(X))$, where
+    $i_n(X)= \sum_{j = 1}^n b_j X ^ j$. Therefore, $F(X, i_{n+1}(X)) = 0 \mod \deg (n+2)$, where $i_{n+1}(X) = i_n(X) + b_{n+1}X ^{n+1}$. Repeating this process, we obtain the desired series $i(X)$ with $F(X,i(X)) = 0$. We can use a similar process to define $i'(X)$ and
     $F(i'(X), X) = 0$. \par
-    Since $F(X,Y)$ is a formal group law, then we have
+    Since $F(X,Y)$ is a formal group law, we have
     \[ i'(X) = F(i'(X), 0) = F(i'(X), F(X, i(X))) = F(F(i'(X), X), i(X)) =
     F(0,i(X)) = i(X)
     \]
-    Therefore, `left inverse' and `right inverse' of $X$ is the same.
+    Therefore, the left inverse and right inverse of $X$ are the same.
 \end{proof}
 
-Combining the result above, given a formal group law $F(X,Y)$, then it defines a group structure for multivariate power series in $R[\![X_I]\!]$ with zero constant coefficient, where $I$ is any finite index set.
+Combining the result above, a formal group law $F(X,Y)$ defines a group structure on multivariate power series in $R[\![X_I]\!]$ with zero constant coefficient, where $I$ is any finite index set.
 
 \begin{definition}[{\cite[Definition 1.4]{hazewinkel1978formal}}]
-    Let $F(X,Y)$ and $G(X,Y)$ be two formal group laws over ring $R$. A \textit{homomorphism}
+    Let $F(X,Y)$ and $G(X,Y)$ be two formal group laws over a ring $R$. A \textit{homomorphism}
     $F(X,Y) \to G(X,Y)$ is a power series $\alpha (X) = a_1 X + a_2 X^ 2 + \cdots \in R[\![X]\!]$ such that
     \begin{equation}
         \alpha (F(X,Y))= G(\alpha(X), \alpha(Y))
@@ -79,37 +79,37 @@ Combining the result above, given a formal group law $F(X,Y)$, then it defines a
 \end{lemma}
 
 \begin{proof}
-    Given that $\alpha (X)$ is a power series with $a_1$ unit, then we have a power series
-    $\beta (X)$, such that $\alpha (\beta (X)) =\beta (\alpha (X)) = X$. And we should prove
+    Given that $\alpha (X)$ is a power series with $a_1$ a unit, there exists a power series
+    $\beta (X)$ such that $\alpha (\beta (X)) =\beta (\alpha (X)) = X$. We need to prove that
     this $\beta (X)$ is a formal group homomorphism from $G(X,Y)$ to $F(X,Y)$, namely
     $\beta (G(X,Y)) = F (\beta (X), \beta (Y))$. \par
-    Since $\alpha (X)$ is homomorphism from $F(X,Y)$ to $G(X,Y)$, then
+    Since $\alpha (X)$ is a homomorphism from $F(X,Y)$ to $G(X,Y)$,
     \[ \alpha (F(\beta(X), \beta (Y))) = G(\alpha (\beta (X)), \alpha (\beta (Y))) = G(X,Y).\]
-    The desired equality is followed by pre-composing above equation with $\beta (X)$.
+    The desired equality follows by pre-composing the above equation with $\beta (X)$.
 \end{proof}
 
-One of the most important endomorphism of a formal group is $n$-series.
+One of the most important endomorphisms of a formal group is the $n$-series.
 
 \begin{definition}[{\cite[Definition 1.5]{hazewinkel1978formal}}]
-    Let $F(X,Y)$ be a formal group law over ring $R$ and let $\phi : R \to R'$ be a ring homomorphism. Suppose $F(X,Y) = X + Y + \sum_{i, j \ge 1} c_{ij} X ^i Y^j$, then by applying
-    $\phi$ to the coefficients of $F(X,Y)$ then we can obtain a formal group law
+    Let $F(X,Y)$ be a formal group law over a ring $R$, and let $\phi : R \to R'$ be a ring homomorphism. Suppose $F(X,Y) = X + Y + \sum_{i, j \ge 1} c_{ij} X ^i Y^j$. By applying
+    $\phi$ to the coefficients of $F(X,Y)$, we obtain a formal group law
     \begin{equation}
         \phi_* F(X,Y) = X + Y + \sum \phi (c_{ij}) X ^i Y^j
     \end{equation}
     \label{defn: pushforward of coeff ring}
 \end{definition}
 
-Therefore, there is a functor from commutative ring category to type, which maps a commutative ring
-$R$ to all formal group law over $R$. Given a ring homomorphism $\phi : R \to S$, the definition
-above provides us a map from formal group law over $R$ to formal group law over $S$.
+Therefore, there is a functor from the category of commutative rings to \textbf{Type}, which maps a commutative ring
+$R$ to all formal group laws over $R$. Given a ring homomorphism $\phi : R \to S$, the definition
+above provides a map from formal group laws over $R$ to formal group laws over $S$.
 
 \begin{definition}[$n$-series {\cite[Definition 1.4.5]{hazewinkel1978formal}}]
-    For any for natural number $n$, we define $n$-series $[n](X)\in R[\![X]\!]$ as follows,
+    For any natural number $n$, we define the $n$-series $[n](X)\in R[\![X]\!]$ as follows:
     \begin{enumerate}
         \item $[0](X) = 0$.
         \item $[n+ 1](X) = F([n](X), X)$.
     \end{enumerate}
-    Moreover, $[-n](X) = i ([n](X))$, where $i(X)$ is the power series in lemma
+    Moreover, $[-n](X) = i ([n](X))$, where $i(X)$ is the power series in Lemma
     \ref{lem: additive inverse}.
 \end{definition}
 
@@ -121,18 +121,18 @@ above provides us a map from formal group law over $R$ to formal group law over 
 \end{proposition}
 
 \begin{proof}
-    We use indution on $n$ to prove it. For the base case $n = 0, 1$, it follows easily.
-    Assume that the result holds for some natural number $k$, now consider the case for $k+1$.
+    We use induction on $n$ to prove it. For the base cases $n = 0,1$, the result follows immediately.
+    Assume that the result holds for some natural number $k$. Now consider the case $k+1$.
     \begin{align*}
         [k+1]F(X,Y) &= F([k]F(X,Y), F(X,Y)) \\
             & = F(F([k](X), [k]Y), F(Y,X)) \\
             & = F ([k](X), F([k](Y), F(Y,X)))
     \end{align*}
-    And then we focus on the term $F([k](Y), F(Y,X))$.
+    Next, we focus on the term $F([k](Y), F(Y,X))$.
     \begin{equation*}
         F([k](Y), F(Y,X)) = F(F([k](Y), Y), X) = F([k+1](Y), X) = F(X,[k+1](Y))
     \end{equation*}
-    Then we have that
+    Hence, we have
     \begin{align*}
         [k+1]F(X,Y) & = F ([k](X), F(X,[k+1](Y))) \\
             & = F (F ([k](X), X), [k+1](Y)) \\
@@ -141,15 +141,15 @@ above provides us a map from formal group law over $R$ to formal group law over 
 \end{proof}
 
 \begin{remark}
-    Via induction, we could deduce that $[n](X) = nX + O(X^2)$. As a result, for a ring $R$ of
+    By induction, we deduce that $[n](X) = nX + O(X^2)$. As a result, for a ring $R$ of
     characteristic $p$, we have $[p](X) = a X ^ k + O(X ^ {k+1})$ for some $k> 1$.
 \end{remark}
 
 \begin{proposition}
-    Assume $R$ of characteristic $p$, then  $[p](X) = 0$ or
+    Assume $R$ is of characteristic $p$. Then $[p](X) = 0$ or
     $[p](X) = a X ^ {p^n} + O (X ^ {p^n + 1})$.
 \end{proposition}
 
 \begin{proof}
-    Proof can be found in corollary \ref{cor: p_series_form}.
+    The proof can be found in Corollary \ref{cor: p_series_form}.
 \end{proof}

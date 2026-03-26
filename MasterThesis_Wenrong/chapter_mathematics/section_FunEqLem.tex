@@ -1,16 +1,16 @@
 \section{Functional Equation Lemma}
 
-In this section, we will discuss the functional equation lemma for formal group laws, and this can be used to construct some non-isomorphic formal group laws and construction of universal formal group law. \par
+In this section, we discuss the functional equation lemma for formal group laws. This lemma can be used to construct some non-isomorphic formal group laws and a universal formal group law. \par
 
-To begin with, we need some ingredients. Let $R$ be a subring of $K$, $\sigma : K \to K$ is a ring homomorphism, $I$ is an ideal of $R$, $p$ is a prime number, $q$ is a power of this prime number, and $s_1, s_2, \ldots $ are elements of $K$. \par
-Those ingredients are suppose to satisfy the following conditions:
+To begin, we need the following ingredients. Let $R$ be a subring of $K$, $\sigma : K \to K$ is a ring homomorphism, $I$ is an ideal of $R$, $p$ is a prime number, $q$ is a power of this prime number, and $s_1, s_2, \ldots $ are elements of $K$. \par
+These ingredients are assumed to satisfy the following conditions:
 % \begin{align}
 
 % \end{align}
 \begin{enumerate}
 
     \item $\sigma (R) \subset R$
-    \item $\forall a \in R, \sigma (a) \equiv a ^ q \mod I$ \label{property : frobenuis}
+    \item $\forall a \in R, \sigma (a) \equiv a ^ q \mod I$ \label{property : frobenius}
     \item $p \in I$
     \item $\forall i, \ s_i I \subset R$ \label{property 4}
     \item $\forall b \in K, r \in \mathbb{N}$, $I ^ r b \subset I \Rightarrow I ^ r \sigma (b) \subset I.$
@@ -35,7 +35,7 @@ $\sigma^i$ to the coefficients.
 \end{definition}
 
 \begin{remark}
-    Compared the coefficient both sides, there is a recursive formula for the coefficient of $f_g(X)$.
+    By comparing coefficients on both sides, there is a recursive formula for the coefficients of $f_g(X)$.
     \begin{equation}
         a _n = b _n + s_1 \sigma(a_{n/ q}) + \cdots + s _r \sigma^ r(a _{n / q ^ r}) =
         b_n + \sum_ {i = 1} ^ r s_i \sigma^i (a _ {n / q ^ i})
@@ -44,9 +44,9 @@ $\sigma^i$ to the coefficients.
     where $f_g(X) = \sum _{i = 1} ^ \infty a _i X ^ i$ and $n = q ^ r m$, $q$ does not divide $m$. In particular, if $q$ does not divide $n$, then $a_n = b _n$.
 \end{remark}
 
-Functional equation lemma is about the integrality of the coefficient of $f_g(X)$ and other power series related to this.
+The functional equation lemma concerns the integrality of the coefficients of $f_g(X)$ and related power series.
 
-Before we start to discuss about the functional equation integrality lemma, let's discuss some technical lemma first.
+Before discussing the functional equation integrality lemma, we first present several technical lemmas.
 
 \begin{lemma}
     Let $f _g(X) = \sum_{i = 1} ^ \infty a _n X ^ n$, and let $n = q ^ r m$ where $m$ is not divisible by $q$, then $a _n I^r \subset R$.
@@ -61,9 +61,9 @@ Before we start to discuss about the functional equation integrality lemma, let'
         \label{refinement property 5}
     \end{equation}
     \indent We do induction with respect to $r$ (multiplicity of $q$ in $n$). \par
-    Assume that the result holds for number less than $r + 1$, now consider those $n$ such that the multiplicity of $q$ in $n$ is $r + 1$.
+    Assume that the result holds for all numbers less than $r + 1$; now consider those $n$ such that the multiplicity of $q$ in $n$ is $r + 1$.
     According to our recursive formula, the coefficient $a_n$ can be expressed as $$a _n = b_n + \sum_ {i = 1} ^ {r + 1} s_i \sigma^i (a _ {n / q ^ i}).$$ Combining the result \ref{refinement property 5} and the property \ref{property 4}, it is enough to prove $$\forall i \in [1, r + 1], a_{n / q ^i} I ^ {r + 1} \in I.$$
-    According to induction hypothesis and the fact that the multiplicity of $q$ in ${n/ q^i}$ is less than $r + 1$,
+    According to the induction hypothesis and the fact that the multiplicity of $q$ in ${n/ q^i}$ is less than $r + 1$,
     then $\forall i \in [1, r + 1], a_{n / q ^i} I ^ {r} \in R$. This implies that $a_{n/q ^i} I ^ {r + 1} \in I$.
 \end{proof}
 
@@ -78,7 +78,7 @@ Before we start to discuss about the functional equation integrality lemma, let'
 \begin{proof}
     First we prove that $F(X_J)^{q^r} \equiv G(X_J)^{q^r} \mod I ^ {i + r}$, and then our goal is followed by taking pow at both sides. \par
     The case for $r =0$ is trivial. We do induction on $r$. Assume that
-    the result hold for $r$, namely $F(X_J)^{q^r} \equiv G(X_J)^{q^r} \mod I ^ {i + r}$. Therefore, $F(X_J) ^ {q^r} = G(X_J)^{q^r} + H(X_J)$, where all coefficients of $H(X_J)$ are in $I^{i + r}$. And we have the following equality
+    the result holds for $r$, namely $F(X_J)^{q^r} \equiv G(X_J)^{q^r} \mod I ^ {i + r}$. Therefore, $F(X_J) ^ {q^r} = G(X_J)^{q^r} + H(X_J)$, where all coefficients of $H(X_J)$ are in $I^{i + r}$. And we have the following equality
     \begin{align*}
         F(X_J)^{q^{r+1}} = (F(X_J)^{q^r})^q &= (G(X_J)^{q^r} + H(X_J))^q \\
         &= (G(X_J)^{q^r})^q + H(X_J) ^ q + q G(X_J)^{q^r} H(X_J) \alpha (X_J)
@@ -94,7 +94,7 @@ Before we start to discuss about the functional equation integrality lemma, let'
 \end{lemma}
 
 \begin{proof}
-    The case for $I = R$ is trivial. Now, we assume that $I \subsetneq R$. Then $R / I$ is of characteristic $p$, since $p \in I$. Given that property \ref{property : frobenuis}, then we have
+    The case for $I = R$ is trivial. Now, we assume that $I \subsetneq R$. Then $R / I$ has characteristic $p$, since $p \in I$. Given property \ref{property : frobenius}, then we have
     \begin{equation*}
         G(X_J) ^{q^l} \equiv \sigma^l_*G(X_J^{q^l}) \mod I
     \end{equation*}
@@ -169,9 +169,9 @@ under $\mod (R)$
     &= g(G(X))+ \sum_{i = 1}^\infty s_i \sigma^i_*(f_{\bar{g}}(X^{q^i}))\\
     &= g(G(X)) + f_{\bar{g}}(X) - \bar{g}(X)
 \end{align*}
-where $f(X) = \sum a_iX^i$ And we can use the induction and the same argument in part 1 to prove all coefficient in $G(X)$ is in $R$.\\
+where $f(X) = \sum a_iX^i$. We can use induction and the same argument as in Part 1 to prove that all coefficients of $G(X)$ are in $R$.\\
 Proof of part 3: Denote $\hat{f}(X) = f(h(X))$. By the functional equation \ref{equation: recurFunEq}, we only need to prove that
-$\hat{f}(X) - \sum_{i= 1}^\infty s_i \sigma^i_*\hat{f}(X^{q^i})$ has all its coefficient in $R$. We have the following congruence:
+$\hat{f}(X) - \sum_{i= 1}^\infty s_i \sigma^i_*\hat{f}(X^{q^i})$ has all its coefficients in $R$. We have the following congruence:
 \begin{align*}
     \hat{f}(X) - \sum_{i= 1}^\infty s_i \sigma^i_*\hat{f}(X^{q^i}) &=
     f(h(X)) - \sum_{i= 1}^\infty s_i \sigma^i_*f(\sigma^i_*h(X^{q^i})) \\
@@ -180,22 +180,22 @@ $\hat{f}(X) - \sum_{i= 1}^\infty s_i \sigma^i_*\hat{f}(X^{q^i})$ has all its coe
     &= f(h(X)) - \sum_{i= 1}^\infty s_i \sigma^i_*f(h(X)^{q^i}) \\
     &=g(h(X)) \equiv 0
 \end{align*}
-all the congruence above is under the $\mod R$ sense. And the last term
-have all coefficient in $R$. \\
+All congruences above are understood modulo $R$.
+The last term has all coefficients in $R$. \\
 
-Proof of part 4: The implication direction : assume $\alpha (X) \equiv \beta (X) \mod I^r R[\![ X]\!]$,  then $\beta (X) \in R [\![X]\!]$. According to the lemma \ref{lemma: tech_lem pow_congruence}, we have that $\alpha (X)^n\equiv \beta (X)^n \mod I^{r + t}$, where $t$ is the multiplicity of $q$ in $n$. Let $f(X) = \sum_{i=1}^\infty a_i X ^i $,  according to the lemma \ref{lemma : tech_lemma_one}, we have that $a_n\alpha(X)^t \equiv a_n\beta(X)^t \mod I ^ r$, where $t$ is multiplicity of $q$ in $n$. Therefore, $f(\alpha (X)) \equiv f(\beta(X)) \mod I ^ r$. \\
+Proof of part 4: For the forward implication: assume $\alpha (X) \equiv \beta (X) \mod I^r R[\![ X]\!]$,  then $\beta (X) \in R [\![X]\!]$. According to the lemma \ref{lemma: tech_lem pow_congruence}, we have that $\alpha (X)^n\equiv \beta (X)^n \mod I^{r + t}$, where $t$ is the multiplicity of $q$ in $n$. Let $f(X) = \sum_{i=1}^\infty a_i X ^i $,  according to the lemma \ref{lemma : tech_lemma_one}, we have that $a_n\alpha(X)^t \equiv a_n\beta(X)^t \mod I ^ r$, where $t$ is multiplicity of $q$ in $n$. Therefore, $f(\alpha (X)) \equiv f(\beta(X)) \mod I ^ r$. \\
 For the reverse direction, assume that $f(\alpha (X)) \equiv f(\beta (X)) \mod I^r R[\![ X]\!]$.\\
 First, we prove the following result,
 \begin{equation}
     \alpha (X) \equiv 0 \mod I ^ r \Rightarrow f^{-1}(\alpha (X)) \equiv 0 \mod I ^ r
     \label{eq: implication_f_inv}
 \end{equation}
-Let $\gamma(X) = f^{-1}(\alpha (X))$, then $\alpha (X) = f(\gamma (X))$. Let $\gamma_n (X)$ be the truncation of degree $n + 1$ of $\gamma (X)$, and we use induction to prove all $\gamma_n(X) \in I^rR[\![X]\!]$. For $k = 1, 2$ is trivial. Assume that the result holds for $k$, namely $\gamma_k(X) \equiv 0 \mod I^r$ now we consider $\gamma_{k+1}(X)$. According to the functional equation and definition of $\gamma (X)$, we have
+Let $\gamma(X) = f^{-1}(\alpha (X))$, then $\alpha (X) = f(\gamma (X))$. Let $\gamma_n (X)$ be the truncation of degree $n + 1$ of $\gamma (X)$, and we use induction to prove all $\gamma_n(X) \in I^rR[\![X]\!]$. The cases $k = 1, 2$ are trivial. Assume that the result holds for $k$, namely $\gamma_k(X) \equiv 0 \mod I^r$; now we consider $\gamma_{k+1}(X)$. According to the functional equation and definition of $\gamma (X)$, we have
 \begin{equation}
     \alpha(X) = g(\gamma(X)) + \sum_{i=1}^\infty s_i \sigma ^ i_* f(\gamma(X) ^ {q^i})
     \label{eq: decomp alpha gamma}
 \end{equation}
-I would claim:
+We claim:
 \begin{equation}
     \sum_{i=1}^\infty s_i \sigma ^ i_* f(\gamma(X) ^ {q^i}) \in I ^ r R[\![X]\!] \mod \deg (k + 2).
     \label{eq: claim_trunc}
@@ -210,14 +210,14 @@ which is equivalent to
     \sigma^i (a_n) \gamma(X)^{q^i n} \in I^{r+1} R [\![X]\!] \mod \deg (k + 2)
     \label{eq: sigma_gamma_mem}
 \end{equation}
-where $f (X) = \sum_{i=1} ^ \infty a_n X ^ n$. Since $\gamma (X)^{q^in} \equiv \gamma_k (X) ^ {q^i n} \mod \deg (k+2)$ and lemma \ref{lemma : tech_lemma_one}, we have the congruence \ref{eq: sigma_gamma_mem}. Now we proved the result \ref{eq: implication_f_inv}.\\
+where $f (X) = \sum_{i=1} ^ \infty a_n X ^ n$. Since $\gamma (X)^{q^in} \equiv \gamma_k (X) ^ {q^i n} \mod \deg (k+2)$ and lemma \ref{lemma : tech_lemma_one}, we have the congruence \ref{eq: sigma_gamma_mem}. This proves the result \ref{eq: implication_f_inv}.\\
 By assumption $f(\alpha (X)) - f(\beta(X)) \in I^r R[\![X]\!]$, we have that
 $\delta (X) := f^{-1} (f(\beta (X)) - f(\alpha(X))) \in I^r R[\![X]\!]$. Then
 \begin{align*}
     f (\beta (X)) &=  f(\delta (X)) + f(\alpha (X))\\
     \beta (X) & = f^{-1} (f(\delta (X)) + f(\alpha (X)))
 \end{align*}
-It is easy to prove that $f^{-1}(f(X) + f(Y))$ is a formal group law, then
+It is straightforward to prove that $f^{-1}(f(X) + f(Y))$ is a formal group law, then
 \begin{equation}
     \beta (X) = f^{-1} (f(\delta (X)) + f(\alpha (X))) = \alpha (X) + \delta (X) G(\delta(X), \alpha (X)).
 \end{equation}
