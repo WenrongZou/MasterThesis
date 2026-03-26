@@ -1,14 +1,13 @@
 \section{Functional Equation Lemma}
 
-In this section, we discuss the functional equation lemma for formal group laws. This lemma can be used to construct some non-isomorphic formal group laws and a universal formal group law. \par
+In this section, we discuss the functional equation lemma for formal group laws. This lemma
+can be used to construct some non-isomorphic formal group laws and a universal
+formal group law. \par
 
 To begin, we need the following ingredients. Let $R$ be a subring of $K$, $\sigma : K \to K$ is a ring homomorphism, $I$ is an ideal of $R$, $p$ is a prime number, $q$ is a power of this prime number, and $s_1, s_2, \ldots $ are elements of $K$. \par
 These ingredients are assumed to satisfy the following conditions:
-% \begin{align}
 
-% \end{align}
 \begin{enumerate}
-
     \item $\sigma (R) \subset R$
     \item $\forall a \in R, \sigma (a) \equiv a ^ q \mod I$ \label{property : frobenius}
     \item $p \in I$
@@ -16,13 +15,7 @@ These ingredients are assumed to satisfy the following conditions:
     \item $\forall b \in K, r \in \mathbb{N}$, $I ^ r b \subset I \Rightarrow I ^ r \sigma (b) \subset I.$
 \end{enumerate}
 
-% $\sigma (R) \subset R$, $\forall a \in R, \sigma (a) \equiv a ^ q \mod \mathfrak{a}$, $p \in \mathfrak{a}$, $\forall i, \ s_i\mathfrak{a} \subset R$, and also we require that
-% $\forall b \in K, r \in \mathbb{N}$
-% \begin{equation*}
-%     \mathfrak{a} ^ r b \subset \mathfrak{a} \Rightarrow \mathfrak{a} ^ r \sigma (b) \subset \mathfrak{a}.
-% \end{equation*}
-
-\begin{definition}
+\begin{definition}[{\cite[Definition 2.1.8]{hazewinkel1978formal}}]
 Let $g (X) = \sum_{i = 1}^\infty b_i X ^ i $ be a power series in one variable with coefficients
 in $R$, then define the \textbf{recursion function} to be the unique solution of the following
 functional equation,
@@ -41,10 +34,12 @@ $\sigma^i$ to the coefficients.
         b_n + \sum_ {i = 1} ^ r s_i \sigma^i (a _ {n / q ^ i})
         \label{eq: coeff_RecurFun}
     \end{equation}
-    where $f_g(X) = \sum _{i = 1} ^ \infty a _i X ^ i$ and $n = q ^ r m$, $q$ does not divide $m$. In particular, if $q$ does not divide $n$, then $a_n = b _n$.
+    where $f_g(X) = \sum _{i = 1} ^ \infty a _i X ^ i$ and $n = q ^ r m$, $q$ does not divide $m$.
+    In particular, if $q$ does not divide $n$, then $a_n = b _n$.
 \end{remark}
 
-The functional equation lemma concerns the integrality of the coefficients of $f_g(X)$ and related power series.
+The functional equation lemma concerns the integrality of the coefficients of $f_g(X)$ and
+related power series.
 
 Before discussing the functional equation integrality lemma, we first present several technical lemmas.
 
@@ -101,7 +96,7 @@ Before discussing the functional equation integrality lemma, we first present se
     We get the goal congruence by above congruence and lemma \ref{lemma: tech_lem pow_congruence}.
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}[{\cite[Chap.~1, Definition 2.2]{hazewinkel1978formal}}]
 Let $g (X) = \sum_{i = 1} ^ \infty b _i X ^i$, $h(X) = \sum_{n = 1} ^ \infty c_n X ^ n$ be two power series in one variable over $R$, suppose that $b_1$ is invertible in $R$, then
 \begin{enumerate}
   \item the power series $F_g(X, Y) = f^{-1}_g(f_g(X) + f _g(Y))$ has its coefficients in $R$.
