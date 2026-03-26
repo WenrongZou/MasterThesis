@@ -1,7 +1,7 @@
 \section{Definition and basic properties of one dimensional
 Formal Group Laws}
 
-\begin{definition}
+\begin{definition}[{\cite[Definition 1.1]{hazewinkel1978formal}}]
     Let $R$ be a commutative ring. A one dimensional Formal Group Law is a formal power series $F(X, Y) \in R[\![X,Y]\!]$ with the following properties:
     \begin{enumerate}
         \item $F(X,Y)$ is of the form
@@ -27,7 +27,7 @@ Formal Group Laws}
 
 \begin{proof}[Proof of equivalence of the definition]
     Let $f (X) = F(X,0)$, then we have \[F(F(X,0),0)= F(X,F(0,0))= F(X,0)\] which means that $f \circ f = f$.  Composing both sides with $f^{-1}$, then we have $f = \id$.
-    This is our desired result for $F(X,0) = X$. And $F(0,X)= 0$ holds via the similar proof.
+    This is our desired result for $F(X,0) = X$. And $F(0,X)= 0$ holds via a similar proof.
 \end{proof}
 
 \begin{example}
@@ -41,8 +41,10 @@ Formal Group Laws}
 
 \begin{lemma}
     Let $F(X, Y)$ be a formal group law over a ring $R$. Then there exists a power series
-    $i(X) = - X + b_2 X^2 + \cdots \in R [\![X]\!]$ such that $F(X, i(X)) = 0$ and $F(i(X),X) = 0$. \\
-    In particular, the left inverse and right inverse is the same and the inverse is unique.
+    $i(X) = - X + b_2 X^2 + \cdots \in R [\![X]\!]$ such that $F(X, i(X)) = 0$ and $F(i(X),X) = 0$.
+
+    In particular, the left inverse and right inverse are the same and the inverse is unique.
+    \label{lem: additive inverse}
 \end{lemma}
 
 \begin{proof}
@@ -60,7 +62,7 @@ Formal Group Laws}
 
 Combining the result above, given a formal group law $F(X,Y)$, then it defines a group structure for multivariate power series in $R[\![X_I]\!]$ with zero constant coefficient, where $I$ is any finite index set.
 
-\begin{definition}
+\begin{definition}[{\cite[Definition 1.4]{hazewinkel1978formal}}]
     Let $F(X,Y)$ and $G(X,Y)$ be two formal group laws over ring $R$. A \textit{homomorphism}
     $F(X,Y) \to G(X,Y)$ is a power series $\alpha (X) = a_1 X + a_2 X^ 2 + \cdots \in R[\![X]\!]$ such that
     \begin{equation}
@@ -86,9 +88,9 @@ Combining the result above, given a formal group law $F(X,Y)$, then it defines a
     The desired equality is followed by pre-composing above equation with $\beta (X)$.
 \end{proof}
 
-One of the most important endomorphism of formal group is $n$-series.
+One of the most important endomorphism of a formal group is $n$-series.
 
-\begin{definition}
+\begin{definition}[{\cite[Definition 1.5]{hazewinkel1978formal}}]
     Let $F(X,Y)$ be a formal group law over ring $R$ and let $\phi : R \to R'$ be a ring homomorphism. Suppose $F(X,Y) = X + Y + \sum_{i, j \ge 1} c_{ij} X ^i Y^j$, then by applying
     $\phi$ to the coefficients of $F(X,Y)$ then we can obtain a formal group law
     \begin{equation}
@@ -101,12 +103,14 @@ Therefore, there is a functor from commutative ring category to type, which maps
 $R$ to all formal group law over $R$. Given a ring homomorphism $\phi : R \to S$, the definition
 above provides us a map from formal group law over $R$ to formal group law over $S$.
 
-\begin{definition}[$n$-series]
+\begin{definition}[$n$-series {\cite[Definition 1.4.5]{hazewinkel1978formal}}]
     For any for natural number $n$, we define $n$-series $[n](X)\in R[\![X]\!]$ as follows,
     \begin{enumerate}
         \item $[0](X) = 0$.
         \item $[n+ 1](X) = F([n](X), X)$.
     \end{enumerate}
+    Moreover, $[-n](X) = i ([n](X))$, where $i(X)$ is the power series in lemma
+    \ref{lem: additive inverse}.
 \end{definition}
 
 
@@ -138,11 +142,14 @@ above provides us a map from formal group law over $R$ to formal group law over 
 
 \begin{remark}
     Via induction, we could deduce that $[n](X) = nX + O(X^2)$. As a result, for a ring $R$ of
-    characteristic $p$, we have $[p](X) = a X ^ k + O(X ^ {k+1})$ for some $k> 1$. Since $[p](X)$ is
-    formal group endomorphism, then we have the following proposition
+    characteristic $p$, we have $[p](X) = a X ^ k + O(X ^ {k+1})$ for some $k> 1$.
 \end{remark}
 
 \begin{proposition}
     Assume $R$ of characteristic $p$, then  $[p](X) = 0$ or
     $[p](X) = a X ^ {p^n} + O (X ^ {p^n + 1})$.
 \end{proposition}
+
+\begin{proof}
+    Proof can be found in corollary \ref{cor: p_series_form}.
+\end{proof}
