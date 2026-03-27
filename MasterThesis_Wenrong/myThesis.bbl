@@ -42,16 +42,16 @@ Tsit-Yuen Lam.
   Texts in Mathematics}.
 \newblock Springer-Verlag, New York, 1999.
 
+\bibitem{lazard1955sur}
+Michel Lazard.
+\newblock Sur les groupes de {Lie} formels {\`a} un param{\`e}tre.
+\newblock {\em Bulletin de la Soci{\'e}t{\'e} Math{\'e}matique de France},
+  83:251--274, 1955.
+
 \bibitem{LubinTate1965}
 Jonathan Lubin and John Tate.
 \newblock Formal complex multiplication in local fields.
 \newblock {\em Annals of Mathematics}, 81(2):380--387, Mar 1965.
-
-\bibitem{lurielecture12}
-Jacob Lurie.
-\newblock Chromatic homotopy theory (math 252x), lecture 12.
-\newblock Harvard University Lecture Notes, 2010.
-\newblock Accessed: 2026-03-22.
 
 \bibitem{lurielecture13}
 Jacob Lurie.

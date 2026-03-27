@@ -1,11 +1,11 @@
-\section{Definition and properties of Lubin-Tate formal group}
+\section{Definition and Properties of Lubin-Tate Formal Groups}
 
 Let $K$ be a field complete with respect to a discrete valuation, with finite
 residue field. For instance, $K$ is a nonarchimedean local field. Let $\calO_K$ be
-the ring of integral of field $K$ and let $q$ be the cardinality of the residue
-field, $\pi$ be a uniformizer of $\calO_K$.
+the ring of integers of $K$, let $q$ be the cardinality of the residue
+field, and let $\pi$ be a uniformizer of $\calO_K$.
 
-\begin{definition}
+\begin{definition}[{\cite[Chap.~6 Definition 3.3]{cassels1967algebraic}}]
     Let $\calF_\pi$ denote the set of power series $f(X) \in \calO_K[\![X]\!]$ which
     satisfy the two conditions:
     \begin{align}
@@ -16,9 +16,11 @@ field, $\pi$ be a uniformizer of $\calO_K$.
 
 \end{definition}
 
-\begin{lemma}
+\begin{lemma}[{\cite[Chap.~6 Proposition 5]{cassels1967algebraic}}]
     Let $f(X)$ and $g(X)$ be elements of $\calF_\pi$ and let $L(X_1, \ldots, X_n)
-    = \sum_{i = 1}^n a_i X_i$ be a linear form with coefficients in $\calO_K$. Then there
+    = \sum_{i = 1}^n a_i X_i$ be a linear form with coefficients in $\calO_K$.
+
+    Then there
     exists $F(X_1, \ldots, X_n)$ with coefficients in $\calO_K$ such that
     \begin{align}
         F (X_1, \ldots, X_n) &\equiv  L(X_1, \ldots, X_n) (\modd \ \deg 2) \\
@@ -34,13 +36,13 @@ field, $\pi$ be a uniformizer of $\calO_K$.
         F_k(X_1, \ldots , X_n) &\equiv L (X_1, \ldots, X_n) (\modd \deg 2) \\
         f(F_k(X_1, \ldots , X_n)) &\equiv F_k(g(X_1), \ldots, g(X_n)) (\modd \deg (k + 1))
     \end{align*}\par
-    And the existence and uniqueness of $F(X_1, \ldots, X_n)$ follows from this. \par
+    The existence and uniqueness of $F(X_1, \ldots, X_n)$ then follow from this. \par
     For $k = 1$, we take $F_1(X_1, \ldots, X_n) = L(X_1, \ldots, X_n)$. \par
     Now assume that the result holds for $k$. Write $f (F_k(X_1,\ldots, X_n )) \equiv
-        F_k(g(X_1), \ldots, g(X_n)) + E_{k+1} (\modd \deg (k+2))$. According to hypothesis
-        assumption, $E_{k+1}$ is homogeneous of degree $k + 1$. \par
+        F_k(g(X_1), \ldots, g(X_n)) + E_{k+1} (\modd \deg (k+2))$. According to the induction
+        hypothesis, $E_{k+1}$ is homogeneous of degree $k + 1$. \par
     On the other hand, since the uniqueness of $F_k(X_1, \ldots, X_n)$, then
-    $F_{k+1}(X_1,\ldots,X_n)$ should be of forms $F_{k+1}(X_1,\ldots, X_n) =
+    $F_{k+1}(X_1,\ldots,X_n)$ should be of the form $F_{k+1}(X_1,\ldots, X_n) =
         F_k(X_1, \ldots, X_n) + \phi_{k+1}(X_1, \ldots, X_n)$, where
         $\phi_{k+1}(X_1, \ldots, X_n)$ is homogeneous of degree $k+1$, due to the definition of
         $\calF_\pi$. Then we have
@@ -50,7 +52,7 @@ field, $\pi$ be a uniformizer of $\calO_K$.
         F_{k+1}(g(X_1), \ldots, g(X_n)) &\equiv  F_k(g(X_1), \ldots, g(X_n)) +
         \pi ^ {k+1} \phi_{k+1} (X_1, \ldots, X_n) (\modd \deg (k + 2))
     \end{align*}
-    The last congruence is due to $\phi_{k+1}$ is homogeneous of degree $k+1$, i.e.
+    The last congruence follows from the fact that $\phi_{k+1}$ is homogeneous of degree $k+1$, i.e.
     $\phi_{k+1} (g(X_1), \ldots, g(X_n)) = \pi ^ {k+1} \phi_{k+1} (X_1, \ldots, X_n)$.
     Therefore, we conclude that
     \begin{equation}
@@ -68,7 +70,7 @@ field, $\pi$ be a uniformizer of $\calO_K$.
 \end{definition}
 
 
-\begin{theorem}[Lubin-Tate Formal Group Laws]
+\begin{theorem}[Lubin-Tate Formal Group Laws {\cite[Chap.~6 Proposition 1]{cassels1967algebraic}}]
     For power series $f \in \calF_\pi$, we have
     \begin{align}
         F_f(X,Y) &= F_f(Y,X) \label{eq: lubin_Tate_comm} \\
@@ -88,12 +90,12 @@ field, $\pi$ be a uniformizer of $\calO_K$.
     Therefore, by the uniqueness in Lemma \ref{lemma: constructive_lemma_lubin_Tate},
     $F(X,Y) = G(X,Y) = F(Y,X)$. \par
     For equation \ref{eq: lubin-Tate_assoc}, let $G_1(X,Y,Z) = F_f(F_f(X,Y),Z)$ and
-    $G_2(X,Y,Z) = F_f(X,F_f(Y,Z))$, we could check that $G_i(X,Y,Z) \equiv X+Y+Z (\modd \deg 2)$ and
+    $G_2(X,Y,Z) = F_f(X,F_f(Y,Z))$, and we can check that $G_i(X,Y,Z) \equiv X+Y+Z (\modd \deg 2)$ and
     \begin{equation*}
         f(G_i(X,Y,Z)) = G_i(f(X),f(Y),f(Z))
     \end{equation*}
     Then by the uniqueness in Lemma \ref{lemma: constructive_lemma_lubin_Tate},
-    we conclude the desire equation.
+    we conclude the desired equation.
 \end{proof}
 
 
@@ -107,7 +109,7 @@ field, $\pi$ be a uniformizer of $\calO_K$.
     In particular, denote $[a]_{f}$ instead of $[a]_{f,f}$ to simplify the notation.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}[{\cite[Chap.~6 Proposition 2]{cassels1967algebraic}}]
     For each $a \in \calO_K$ and $f, g \in \calF_\pi$, the power series $[a]_{f,g}(X)$ is a
     formal group homomorphism from $F_g(X,Y)$ to $F_f(X,Y)$, i.e.
     $[a]_{f,g} F_g(X,Y) = F_f([a]_{f,g}(X), [a]_{f,g} (Y))$.
@@ -120,10 +122,10 @@ field, $\pi$ be a uniformizer of $\calO_K$.
         h\circ F_g(g(X),g(Y)) &= h\circ g(F_g(X,Y)) = f \circ h (F_f(X,Y)) \\
         F_f(h(g(X), h(g(Y)))) &= F_f(f(h(X)), f(h(Y))) = f \circ F_f(h(X), h(Y))
     \end{align*}
-    Then the result follows from the uniqueness in the Lemma \ref{lemma: constructive_lemma_lubin_Tate}.
+    Then the result follows from uniqueness in Lemma \ref{lemma: constructive_lemma_lubin_Tate}.
     \end{proof}
 
-\begin{theorem}
+\begin{theorem}[{\cite[Theorem 1]{LubinTate1965}}]
     Let $a, b \in \calO_K$, $f, g, h \in \calF_\pi$, then $[a]_{f,g} ([b]_{g,h}(X)) = [ab]_{f,h} (X) $.
 \end{theorem}
 
@@ -135,7 +137,7 @@ field, $\pi$ be a uniformizer of $\calO_K$.
      Then  we have $[ab]_{f,h}$ and $[a]_{f,g} \circ [b]_{g,h}$ are solutions satisfying these conditions. By the uniqueness of Lemma \ref{lemma: constructive_lemma_lubin_Tate}, they coincide.
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}[{\cite[Theorem 1]{LubinTate1965}}]
     Let $a, b \in \calO_K$, $f, g \in \calF_\pi$, then
     $F_f([a]_{f,g}(X), [b]_{f,g}(X)) = [a+b]_{f,g} (X) $.
 \end{theorem}
@@ -150,10 +152,10 @@ field, $\pi$ be a uniformizer of $\calO_K$.
         $F_f([a]_{f,g}(X), [b]_{f,g}(X)) = [a+b]_{f,g} (X) $.
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}[{\cite[Chap.~6 Proposition 4]{cassels1967algebraic}}]
     Let $f,g\in \calF_\pi$, then $F_f$ is isomorphic to $F_g$, and there is a unique strong
     isomorphism from $F_f$ to $F_g$. This means that the Lubin-Tate formal group $F_f$ is
-    independent of $f \in F_\pi$, depends only on $\pi$.
+    independent of $f \in F_\pi$, and depends only on $\pi$.
     \label{thm: Lubin_Tate_independet_f_g}
 \end{theorem}
 
@@ -162,7 +164,7 @@ field, $\pi$ be a uniformizer of $\calO_K$.
 \end{proof}
 
 \begin{remark}
-    Let $L$ be an algebraic extension of $K$, let $\gothm_L$ be the maximal ideal in the ring of integers of $L$. Given elements $x_1, \ldots, x_n \in \gothm_L$ and a formal series $G(X_1, \ldots, X_n) \in \calO_K[\![X_1, \ldots, X_n]\!]$, the series $G(x_1, \ldots, x_n)$ will converge an element in $\gothm_L$ if the constant term of $G(X_1, \ldots, X_n)$ is zero. By above theorem, for each power series $f\in \calF_\pi$ this
+    Let $L$ be an algebraic extension of $K$, let $\gothm_L$ be the maximal ideal in the ring of integers of $L$. Given elements $x_1, \ldots, x_n \in \gothm_L$ and a formal series $G(X_1, \ldots, X_n) \in \calO_K[\![X_1, \ldots, X_n]\!]$, the series $G(x_1, \ldots, x_n)$ converges to an element in $\gothm_L$ if the constant term of $G(X_1, \ldots, X_n)$ is zero. By above theorem, for each power series $f\in \calF_\pi$ this
     determines an $\calO_K$-module structure on the set $\gothm_L$. To be precisely, addition and scalar multiplication are defined by
     \begin{align}
         x + y &= F_f(x,y) \\
@@ -172,12 +174,12 @@ field, $\pi$ be a uniformizer of $\calO_K$.
 \end{remark}
 
 \section{Application of Lubin-Tate formal groups}
-Fix an algebraic closure of $\overline{K}$ of $K$ and $K^{sep}$ be a separable closure. Given
+Fix an algebraic closure $\overline{K}$ of $K$, and let $K^{sep}$ be a separable closure. Given
 a $f\in \calF_\pi$, for each integer $n \ge 1$, let $f^n(X)$ be $n$-th iterate of $f(X)$.
 Let $\Lambda_{f,n}$ be the set of all roots of $f^n(X)$ in $\overline{K}$ and let
 $K(\Lambda_{f,n})$ be the field generated over $K$ by these elements.
 Moreover, we have the fact that for any $f,g\in \calF_\pi$, $\lambda \in \Lambda_{f,m}$ if and only
-if $[1]_{g,f} (\lambda) \in \Lambda_{g,m}$. This means that field $K(\Lambda_{f,n})$ is independent of $f$ and it
+if $[1]_{g,f} (\lambda) \in \Lambda_{g,m}$. This means that the field $K(\Lambda_{f,n})$ is independent of $f$ and
 depends only on uniformizer $\pi$. Therefore, we denote $K(\Lambda_{f,n})$ as $L_{\pi,n}$.
 The same argument holds for $K(\Lambda_f)$.
 Additionally, let $\Lambda_f = \bigcup_{n=1}^\infty \Lambda _{f,n} $, $L_\pi = K(\Lambda_f)$,
@@ -185,18 +187,19 @@ $G_{\pi,n} = \Gal(L_{\pi,n}/K)$, $G_\pi = \varprojlim G_{f,n}$. \par
 According to the remark $\ref{rem: A-module}$, $F_f$ defines a $\calO_K$ structure on
 $\gothm_{K^{sep}}$ and we denote this $\calO_K$-module as $M_f(\Ksep)$. Then $\Lambda_{f,n}$ is those
 elements in $\lambda \in \gothm_{K^{sep}}$ such that $\pi ^n \lambda = 0$.
-\begin{theorem}
+
+\begin{theorem}[{\cite[Chap.~6 Theorem 3]{cassels1967algebraic}}]
     The $\calO_K$-module $\Lambda_{f,n}$ is isomorphic to $\calO_K/ \pi^n \calO_K$ and
     $\calO_K$-module $\Lambda_f$ is isomorphic to $K / \calO_K $.
     \label{thm: Lam_iso_K_quot_O}
 \end{theorem}
 
-In order to prove this theorem, we need a result about divisible module over PID.
+In order to prove this theorem, we need a result about divisible modules over a PID.
 
 \begin{theorem}[Structure theorem of divisible module over PID]
     Let $R$ be a principal ideal domain and $K$ be its field of fractions. Then every divisible
     $R$-module is isomorphic to a direct sum of $K$ and copies of the injective hulls
-    of simple module $R/ (p)$ varying prime elements $p\in R$. \par
+    of the simple module $R/ (p)$, varying over prime elements $p\in R$. \par
     Let $M$ be a divisible $R$-module, then $M$ can be written as follows:
     \[M \cong (\bigoplus_{i \in I} K) \oplus (\bigoplus_{p \ prime} \bigoplus_{j \in J_p}
         E(R / (p)))  \]
@@ -211,7 +214,7 @@ In order to prove this theorem, we need a result about divisible module over PID
 \end{theorem}
 
 \begin{proof}
-   The proof of structure of divisible module can be found in chapter 3 in $\cite{lam1999lectures}$.
+   The proof of the structure theorem for divisible modules can be found in Chapter 3 of $\cite{lam1999lectures}$.
 \end{proof}
 
 \begin{proof}[Proof of theorem $\ref{thm: Lam_iso_K_quot_O}$]
@@ -222,30 +225,30 @@ In order to prove this theorem, we need a result about divisible module over PID
     $f'(X) = q X^{q-1} + \pi \neq 0$, then $\Lambda_{f, 1}$ consists of $q$ distinct roots
     of the $X^q + \pi X = 0 $. For any given $\alpha \in \gothm_{K^{sep}}$, since
     $\pi X + X ^ q = \alpha$ is separable, then $\Lambda_{f,1} \subset \gothm_{\Ksep}$. This means
-    that for any given $\alpha \in \gothm_\Ksep$, there exist a $\beta$ such that
+    that for any given $\alpha \in \gothm_\Ksep$, there exists a $\beta$ such that
     $\pi \cdot \beta = \alpha$ in $M_f(\Ksep)$. It follows that for any given $r \in \calO_K$,
     $r M_f(\Ksep) = M_f (\Ksep)$ which means that $M_f(\Ksep)$ is divisible $\calO_K$-module. Then
     $\Lambda_f$ is a divisible torsion $\calO_K$-module. Since $\calO_K$ is a PID, then we know that
     $\Lambda_f$ is isomorphic to $K/ \calO_K$. Indeed, $\Lambda_f$ is torsion module
     then there is no copies of $K$. Since $\pi$ is the only prime element in $\calO_K$ and
-    $(\calO_K) _ {(\pi)} \cong \calO_K$, then $\Lambda_f$ is a copies of $K/ \calO_K$. Moreover,
+    $(\calO_K) _ {(\pi)} \cong \calO_K$, then $\Lambda_f$ is a copy of $K/ \calO_K$. Moreover,
     $\Lambda_{f,1}$ is a one dimensional vector space over residue field $k$ (since $\Lambda_{f,1}$
     has the same cardinality of residue field $k$), then $\Lambda_f \cong K / \calO_K$. Last claim
     follows by the fact that $|J| = \dim_k M_f(\Ksep)[\pi] = \dim_k \Lambda_{f,1} = 1$, where $J$
     is the index set of copies of $K/ \calO_K$.
 \end{proof}
 
-There is a natural homomorphism $\Gal (\Ksep/ K) \to \End(\Lambda_f)$, this is due to the
-properties by the action of element in a Galois group on roots of a polynomial. Moreover,
+There is a natural homomorphism $\Gal (\Ksep/ K) \to \End(\Lambda_f)$, this follows from
+the action of elements in the Galois group on roots of a polynomial. Moreover,
 since $\Lambda _f \cong K / \calO_K$ and $\End(K/\calO_K) \cong \calO_K$, then it induces a
 homomorphism $\Gal(\Ksep/ K) \to \Aut(K / \calO_K) \cong U_K$.
 
-\begin{theorem}
+\begin{theorem}[{\cite[Chap.~6 Theorem 3]{cassels1967algebraic}}]
     The natural homomorphism $\Gal(\Ksep/K) \to \Aut (\Lambda_f)$ is an isomorphism.
 \end{theorem}
 
 \begin{proof}
-    This map is injection due to our definition, then it remain to prove it is a surjection.
+    This map is injective by definition; it remains to prove that it is surjective.
     We have an injection $\Gal(L_{\pi,n}/ K) \to U_K/ U _K^n$, where $U_K = 1 + \pi ^ n \calO_K$.
     Let $\alpha \in \Lambda_{f,n}$ be a primitive element, namely those elements such that
     $[\pi ^ {n - 1}]_f \alpha \neq 0$ or $\pi ^ {n - 1} \cdot \alpha \neq 0$ in $M_f(\Ksep)$.
@@ -260,7 +263,7 @@ homomorphism $\Gal(\Ksep/ K) \to \Aut(K / \calO_K) \cong U_K$.
     \[ \Gal(\Ksep/K) \cong \varprojlim \Gal(L_{\pi,n}/ K) \cong \varprojlim U_K / U_K^n \cong U_K. \]
 \end{proof}
 
-\begin{corollary}
+\begin{corollary}[{\cite[Chap.~6 Theorem 3]{cassels1967algebraic}}]
     The element $\pi$ is a norm from $L_{\pi,n}$.
 \end{corollary}
 
@@ -269,33 +272,33 @@ homomorphism $\Gal(\Ksep/ K) \to \Aut(K / \calO_K) \cong U_K$.
     monic polynomial with constant coefficient $\pi$, then the norm $-\alpha$ is $\pi$.
 \end{proof}
 
-Let $\Kun$ be the maximal unramified extension of $K$. Since $L_\pi$ is totally ramified extension
-of $K$, then $L_\pi$ and $\Kun$ is linearly disjoint. As a result, the Galois group
-$\Gal(L_\pi \Kun/K)$ is a product of $\Gal(L_\pi/K)$ and $\Gal(\Kun/K)$. Given a uniformizer element
+Let $\Kun$ be the maximal unramified extension of $K$. Since $L_\pi$ is a totally ramified extension
+of $K$, $L_\pi$ and $\Kun$ are linearly disjoint. As a result, the Galois group
+$\Gal(L_\pi \Kun/K)$ is a product of $\Gal(L_\pi/K)$ and $\Gal(\Kun/K)$. Given a uniformizer
 $\pi \in \calO_K$, we define a group homomorphism $r_\pi : K^\times \to \Gal(L_\pi \Kun / K)$ such that
 \begin{itemize}
     \item $r_\pi (\pi)$ acts as identity on $L_\pi$ and acts as Frobenius automorphism $\sigma$ on
         $\Kun$.
-    \item Given a $u \in U_K$, we define $r_\pi (u)$ acts as $[u^{-1}]_f$ on $L_\pi$ and
+    \item Given a $u \in U_K$, we define $r_\pi (u)$ to act as $[u^{-1}]_f$ on $L_\pi$ and
         acts as identity on $\Kun$.
 \end{itemize}
-Next it can be proved that the field $L_\pi$ and the homomorphism $r_\pi$ are independent of the
-uniformizer $\pi$ and it is a maximal abelian extension of $K$. Moreover, $r_\pi$ coincides with
+Next, one can prove that the field $L_\pi$ and the homomorphism $r_\pi$ are independent of the
+uniformizer $\pi$, and that $L_\pi$ is a maximal abelian extension of $K$. Moreover, $r_\pi$ coincides with
 the local reciprocity map in local class field theory, i.e. for all $a \in \calO_K$,
 $r_\pi(a) = (a, L_\pi \Kun / K ^ \times)$. The references of these can be found in
 \cite{LubinTate1965} and \cite{cassels1967algebraic}.
 
 \section{Connection with functional equation lemma}
 
-In this section, we will discuss some connection between the formal group law obtain by
-functional equation lemma and Lubin-Tate formal group law. Throughout this section
-we fix a nonarchimedean local field $K$, let $\calO_K$ be its ring of integer,
+In this section, we discuss the connection between the formal group laws obtained from the
+functional equation lemma and Lubin--Tate formal group laws. Throughout this section
+we fix a nonarchimedean local field $K$, let $\calO_K$ be its ring of integers,
 $\pi$ be a uniformizer, $q$ be the cardinality of the
 residue field of $\calO_K$.
 
 \begin{proposition}
-    The Lubin-Tate formal group laws $F_f$ associated to $f\in \calF_\pi$ are in one to one
-    correspondence with the formal group law obtained by functional equation with
+    The Lubin-Tate formal group laws $F_f$ associated to $f\in \calF_\pi$ are in one-to-one
+    correspondence with formal group laws obtained by the functional equation with
     parameters $I = (\pi), \sigma = \id, s_1 = \pi^{-1}$ and $\forall i \ge 2, s_i = 0$.
     The functional equation in the sense of these parameters is
     \[ f_g(X) = g(X) + \pi^ {-1}f_g(X ^ q). \]
@@ -304,8 +307,8 @@ residue field of $\calO_K$.
 \end{proposition}
 
 \begin{proof}
-    The integrality of coefficient in $f_g^{-1}(\pi f_g(X))$ follows from
-    functional equation lemma. Multiplying $\pi$ at the both sides of the functional equation,
+    The integrality of the coefficients in $f_g^{-1}(\pi f_g(X))$ follows from the
+    functional equation lemma. Multiplying both sides of the functional equation by $\pi$,
     we have that
     \[ \pi f_g(X) = \pi g(X) + \pi^{-1} \pi f_g(X). \]
     Then $\pi f_g(X) = f_{\pi g}(X)$. According to the second part of the functional
@@ -314,7 +317,7 @@ residue field of $\calO_K$.
     The formal group law obtained by the functional equation lemma is
     \[ F(X,Y) = f_g^{-1} (f_g(X) + f_g(Y)) . \]
     By the existence and uniqueness in the theorem \ref{thm: Lubin_Tate}, it is enough
-    to check $f_g^{-1}(\pi f_g(X))$ is homomorphism for $F(X,Y)$. This can be done as follows:
+    to check that $f_g^{-1}(\pi f_g(X))$ is a homomorphism for $F(X,Y)$. This can be done as follows:
     \begin{align*}
         f_g^{-1} (\pi f_g(F(X,Y))) &= f_g^{-1} (\pi f_g(f_g^{-1} (f_g(X) + f_g(Y)))) \\
             & = f_g^{-1} (\pi f_g(X) + \pi f_g(Y)) \\
