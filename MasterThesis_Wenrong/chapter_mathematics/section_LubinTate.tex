@@ -1,4 +1,4 @@
-\section{Definition and Properties of Lubin-Tate Formal Groups}
+\section{Definition and Properties}
 
 Let $K$ be a field complete with respect to a discrete valuation, with finite
 residue field. For instance, $K$ is a nonarchimedean local field. Let $\calO_K$ be
@@ -160,12 +160,19 @@ field, and let $\pi$ be a uniformizer of $\calO_K$.
 \end{theorem}
 
 \begin{proof}
-    Take a unit $a \in \calO_K$, then $[a]_{f,g} \circ [a^{-1}]_{g,f} = [1]_f$ and $[a ^ {-1}]_{g,f} \circ [a]_{f,g} = [1]_g $. And the unique strong isomorphism is $[1]_{f,g}$.
+    Take a unit $a \in \calO_K$, then $[a]_{f,g} \circ [a^{-1}]_{g,f} = [1]_f$ and
+    $[a ^ {-1}]_{g,f} \circ [a]_{f,g} = [1]_g $. And the unique strong isomorphism is
+    $[1]_{f,g}$.
 \end{proof}
 
 \begin{remark}
-    Let $L$ be an algebraic extension of $K$, let $\gothm_L$ be the maximal ideal in the ring of integers of $L$. Given elements $x_1, \ldots, x_n \in \gothm_L$ and a formal series $G(X_1, \ldots, X_n) \in \calO_K[\![X_1, \ldots, X_n]\!]$, the series $G(x_1, \ldots, x_n)$ converges to an element in $\gothm_L$ if the constant term of $G(X_1, \ldots, X_n)$ is zero. By above theorem, for each power series $f\in \calF_\pi$ this
-    determines an $\calO_K$-module structure on the set $\gothm_L$. To be precisely, addition and scalar multiplication are defined by
+    Let $L$ be an algebraic extension of $K$, let $\gothm_L$ be the maximal ideal in the
+    ring of integers of $L$. Given elements $x_1, \ldots, x_n \in \gothm_L$ and a formal
+    series $G(X_1, \ldots, X_n) \in \calO_K[\![X_1, \ldots, X_n]\!]$, the series
+    $G(x_1, \ldots, x_n)$ converges to an element in $\gothm_L$ if the constant term of
+    $G(X_1, \ldots, X_n)$ is zero. By above theorem, for each power series $f\in \calF_\pi$ this
+    determines an $\calO_K$-module structure on the set $\gothm_L$. To be precisely, addition
+    and scalar multiplication are defined by
     \begin{align}
         x + y &= F_f(x,y) \\
         ax &= [a]_f (x)
@@ -173,7 +180,7 @@ field, and let $\pi$ be a uniformizer of $\calO_K$.
     \label{rem: A-module}
 \end{remark}
 
-\section{Application of Lubin-Tate formal groups}
+\section{Applications}
 Fix an algebraic closure $\overline{K}$ of $K$, and let $K^{sep}$ be a separable closure. Given
 a $f\in \calF_\pi$, for each integer $n \ge 1$, let $f^n(X)$ be $n$-th iterate of $f(X)$.
 Let $\Lambda_{f,n}$ be the set of all roots of $f^n(X)$ in $\overline{K}$ and let
@@ -196,7 +203,7 @@ elements in $\lambda \in \gothm_{K^{sep}}$ such that $\pi ^n \lambda = 0$.
 
 In order to prove this theorem, we need a result about divisible modules over a PID.
 
-\begin{theorem}[Structure theorem of divisible module over PID]
+\begin{theorem}[Structure theorem of divisible module over PID {\cite{matlis1958injective}}]
     Let $R$ be a principal ideal domain and $K$ be its field of fractions. Then every divisible
     $R$-module is isomorphic to a direct sum of $K$ and copies of the injective hulls
     of the simple module $R/ (p)$, varying over prime elements $p\in R$. \par
@@ -214,7 +221,8 @@ In order to prove this theorem, we need a result about divisible modules over a 
 \end{theorem}
 
 \begin{proof}
-   The proof of the structure theorem for divisible modules can be found in Chapter 3 of $\cite{lam1999lectures}$.
+   The proof of the structure theorem for divisible modules can be found in Chapter 3 of
+   $\cite{lam1999lectures}$ or Theorem 2.5 and Proposition 3.1 in \cite{matlis1958injective}.
 \end{proof}
 
 \begin{proof}[Proof of theorem $\ref{thm: Lam_iso_K_quot_O}$]

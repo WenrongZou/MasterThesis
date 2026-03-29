@@ -1,13 +1,13 @@
 \section{Universal formal group laws}
 
-In this section, we will discuss some formalization related to universal formal group laws.
-We fixed some environmental variables.
+In this section, we discuss some formalization related to universal formal group laws.
+We fix some environmental variables.
 
 \begin{lstlisting}
 variable {R : Type u} [CommRing R] (U : FormalGroup R)
 \end{lstlisting}
 
-To begin with, we make a functor from commutative ring category to type which maps commutative ring
+To begin with, we define a functor from the category of commutative rings to \textbf{Type}, which maps a commutative ring
 $R$ to formal group laws over $R$.
 
 \begin{lstlisting}
@@ -18,15 +18,15 @@ def FGL : CommRingCat.{u} ⥤ Type u where
   map_comp f g := by ext F : 1; simp [FormalGroup.map]
 \end{lstlisting}
 
-The symbol \lstinline|⥤| is a notation for a functor between two categories. A functor in Lean
-require four constructors including \lstinline|obj, map, map_id, map_comp|. Given a object
-\lstinline|R| of type \lstinline|CommRingCat|, \lstinline|obj R| simply mean all formal group over ring
+The symbol \lstinline|⥤| is notation for a functor between two categories. A functor in Lean
+requires four constructors: \lstinline|obj, map, map_id, map_comp|. Given an object
+\lstinline|R| of type \lstinline|CommRingCat|, \lstinline|obj R| means all formal groups over the ring
 \lstinline|R|. Moreover, given a morphism in \lstinline|CommRingCat|, namely
-\lstinline|f : X ⟶ Y|, \lstinline|map f| is the pushforward map we defined before.
+\lstinline|f : X ⟶ Y|, \lstinline|map f| is the pushforward map defined before.
 
-Recall that a one dimensional formal group law $F(X,Y)$ over $L$ is called a universal formal group law iff
+Recall that a one-dimensional formal group law $F(X,Y)$ over $L$ is called a universal formal group law if and only if,
 for any formal group law $G(X,Y)$ over $R$, there is a unique ring homomorphism
-$\phi : L \to R$, such that $\phi_*F(X,Y) = G(X,Y)$.
+$\phi : L \to R$ such that $\phi_*F(X,Y) = G(X,Y)$.
 
 \begin{lstlisting}
 def IsUniversal : Prop :=
@@ -34,19 +34,19 @@ def IsUniversal : Prop :=
 \end{lstlisting}
 
 \lstinline|IsUniversal| is formalized as a definition of type \lstinline|Prop| for a formal group
-law. The \lstinline|{R : Type u}| and \lstinline|{T : Type u}| mean that we make this two
-variables implicit. The reason that we could make them implicit is that \lstinline|R| and
-\lstinline|T| are able to be infered by \lstinline|U| and \lstinline|F| respectively.
-And the definition is in the name space of \lstinline|FormalGroup|, so
-we use \lstinline|U.IsUniversal| to express $U$ is a universal formal group law.
+law. The \lstinline|{R : Type u}| and \lstinline|{T : Type u}| mean that we make these two
+variables implicit. The reason that we can make them implicit is that \lstinline|R| and
+\lstinline|T| can be inferred from \lstinline|U| and \lstinline|F|, respectively.
+The definition is in the namespace \lstinline|FormalGroup|, so
+we use \lstinline|U.IsUniversal| to express that $U$ is a universal formal group law.
 
-Under the assumption that \lstinline|U.IsUniversal|, then we have the following theorem
+Under the assumption \lstinline|U.IsUniversal|, we have the following theorem:
 
 \begin{lstlisting}
 theorem FGL_representable (h : U.IsUniversal) : FGL.IsCorepresentedBy U (X := of R) := ...
 \end{lstlisting}
 
-First, let's explain briefly about the API \lstinline|IsCorepresentedBy|.
+First, we briefly explain the API \lstinline|IsCorepresentedBy|.
 
 \begin{lstlisting}
 @[mk_iff]
@@ -58,9 +58,9 @@ structure _root_.CategoryTheory.Functor.IsCorepresentedBy
 A presheaf
 \lstinline|F| is represented by \lstinline|X| with universal element \lstinline|x : F.obj X|
 if the natural transformation \lstinline|F ⟶ yoneda.obj X| induced by \lstinline|x| is an
-isomorphism. For better universe generality, we state this manually as for every \lstinline|Y|, the
-induced map \lstinline|(X ⟶ Y) → F.obj Y| is bijective. And attributting a tag
-\lstinline|@[mk_iff]| will automatically generate a theorem as follows:
+isomorphism. For better universe generality, we state this manually: for every \lstinline|Y|, the
+induced map \lstinline|(X ⟶ Y) → F.obj Y| is bijective. Adding the tag
+\lstinline|@[mk_iff]| automatically generates a theorem as follows:
 
 \begin{lstlisting}
 CategoryTheory.Functor.isCorepresentedBy_iff.{u, v, w} {C : Type u}
@@ -68,6 +68,6 @@ CategoryTheory.Functor.isCorepresentedBy_iff.{u, v, w} {C : Type u}
     F.IsCorepresentedBy x ↔ ∀ {Y : C}, Function.Bijective fun f ↦ F.map f x
 \end{lstlisting}
 
-Therefore, the theorem says that let $U$ be a universal formal group law over $R$, then for any
+Therefore, this theorem says that if $U$ is a universal formal group law over $R$, then for any
 commutative ring $S$, there is a bijection between $\mathcal{H}om_{Ring}(R, S)$ and
 formal group laws over $S$.

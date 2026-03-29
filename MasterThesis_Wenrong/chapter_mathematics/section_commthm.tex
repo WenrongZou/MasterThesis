@@ -25,13 +25,18 @@ Before proving the theorem, we first discuss some lemmas.
     \begin{equation}
         H(X,Y) = Y + \sum _{i=1}^\infty r_n(X) Y ^ n
     \end{equation}
-    with $r_n(X) \neq 0$ for some $n$. Since $H(0,Y) = Y$, we have $r_n(0) = 0$ for all $n$. By
+
+    with $r_n(X) \neq 0$ for some $n$. Otherwise, $H(X,Y) = Y$, which means that $F(X,Y)$
+    is commutative. Since $H(0,Y) = Y$, we have $r_n(0) = 0$ for all $n$. By
     associativity of $F(X,Y)$, we have
+
     \begin{equation}
         H(X_1,H(X_2,Y)) = H(X_1+_F X_2, Y)
         \label{eq: H eq}
     \end{equation}
-    Let $i$ be the least integer such that $r_i(X) \neq 0$. \\
+
+    Let $i$ be the least integer such that $r_i(X) \neq 0$.
+
     For the case $i = 1$, we have
     \begin{equation*}
         H(X,Y) \equiv (1+ r_1(X)) Y\quad  (\modd Y ^ 2)

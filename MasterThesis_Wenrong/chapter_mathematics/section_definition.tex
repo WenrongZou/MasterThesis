@@ -48,10 +48,14 @@ Formal Group Laws}
 \end{lemma}
 
 \begin{proof}
-    Let $i(X) = \sum_{j= 1}^\infty b_j X ^ j$, and choose $b_j$ inductively so that $F(X,i(X)) = 0$. \par
-    First, choose $b_1 = -1$. Then $F(X, i(X)) = 0 \mod \deg 2$. Assume that $b_1, \ldots, b_n$ are already defined and $F(X, i(X)) = 0 \mod \deg (n+1)$. Then choose $b_{n+1}$
-    to be minus the $(n+1)$-st coefficient of $F(X, i_n(X))$, where
-    $i_n(X)= \sum_{j = 1}^n b_j X ^ j$. Therefore, $F(X, i_{n+1}(X)) = 0 \mod \deg (n+2)$, where $i_{n+1}(X) = i_n(X) + b_{n+1}X ^{n+1}$. Repeating this process, we obtain the desired series $i(X)$ with $F(X,i(X)) = 0$. We can use a similar process to define $i'(X)$ and
+    Let $i(X) = \sum_{j= 1}^\infty b_j X ^ j$, and choose $b_j$ inductively so that
+    $F(X,i(X)) = 0$. \par
+    First, choose $b_1 = -1$. Then $F(X, i(X)) = 0 \mod \deg 2$. Assume that
+    $b_1, \ldots, b_n$ are already defined and $F(X, i(X)) = 0 \mod \deg (n+1)$.
+    Then choose $b_{n+1}$ to be minus the $(n+1)$-th coefficient of $F(X, i_n(X))$, where
+    $i_n(X)= \sum_{j = 1}^n b_j X ^ j$. Therefore, $F(X, i_{n+1}(X)) = 0 \mod \deg (n+2)$,
+    where $i_{n+1}(X) = i_n(X) + b_{n+1}X ^{n+1}$. Repeating this process, we obtain the desired
+    series $i(X)$ with $F(X,i(X)) = 0$. We can use a similar process to define $i'(X)$ and
     $F(i'(X), X) = 0$. \par
     Since $F(X,Y)$ is a formal group law, we have
     \[ i'(X) = F(i'(X), 0) = F(i'(X), F(X, i(X))) = F(F(i'(X), X), i(X)) =
@@ -68,6 +72,7 @@ Combining the result above, a formal group law $F(X,Y)$ defines a group structur
     \begin{equation}
         \alpha (F(X,Y))= G(\alpha(X), \alpha(Y))
     \end{equation}
+    An endomorphism is a homomorphism $F(X,Y) \to F(X,Y)$.
     The homomorphism $\alpha$ is an \textit{isomorphism} if there exists a homomorphism
     $\beta(X) : G(X,Y) \to F(X,Y)$ such that $\alpha (\beta(X)) = \beta (\alpha (X))= X$.
     \label{defn: hom of formal group law}
@@ -89,19 +94,6 @@ Combining the result above, a formal group law $F(X,Y)$ defines a group structur
 \end{proof}
 
 One of the most important endomorphisms of a formal group is the $n$-series.
-
-\begin{definition}[{\cite[Definition 1.5]{hazewinkel1978formal}}]
-    Let $F(X,Y)$ be a formal group law over a ring $R$, and let $\phi : R \to R'$ be a ring homomorphism. Suppose $F(X,Y) = X + Y + \sum_{i, j \ge 1} c_{ij} X ^i Y^j$. By applying
-    $\phi$ to the coefficients of $F(X,Y)$, we obtain a formal group law
-    \begin{equation}
-        \phi_* F(X,Y) = X + Y + \sum \phi (c_{ij}) X ^i Y^j
-    \end{equation}
-    \label{defn: pushforward of coeff ring}
-\end{definition}
-
-Therefore, there is a functor from the category of commutative rings to \textbf{Type}, which maps a commutative ring
-$R$ to all formal group laws over $R$. Given a ring homomorphism $\phi : R \to S$, the definition
-above provides a map from formal group laws over $R$ to formal group laws over $S$.
 
 \begin{definition}[$n$-series {\cite[Definition 1.4.5]{hazewinkel1978formal}}]
     For any natural number $n$, we define the $n$-series $[n](X)\in R[\![X]\!]$ as follows:
@@ -153,3 +145,19 @@ above provides a map from formal group laws over $R$ to formal group laws over $
 \begin{proof}
     The proof can be found in Corollary \ref{cor: p_series_form}.
 \end{proof}
+
+\begin{definition}[{\cite[Definition 1.5]{hazewinkel1978formal}}]
+    Let $F(X,Y)$ be a formal group law over a ring $R$, and let $\phi : R \to R'$ be a ring homomorphism. Suppose $F(X,Y) = X + Y + \sum_{i, j \ge 1} c_{ij} X ^i Y^j$. By applying
+    $\phi$ to the coefficients of $F(X,Y)$, we obtain a formal group law
+    \begin{equation}
+        \phi_* F(X,Y) = X + Y + \sum \phi (c_{ij}) X ^i Y^j
+    \end{equation}
+    \label{defn: pushforward of coeff ring}
+\end{definition}
+
+\begin{remark}
+    There is a functor from the category of commutative rings to \textbf{Type}, which maps a commutative ring
+    $R$ to all formal group laws over $R$. Given a ring homomorphism $\phi : R \to S$, the definition
+    above provides a map from formal group laws over $R$ to formal group laws over $S$.
+
+\end{remark}

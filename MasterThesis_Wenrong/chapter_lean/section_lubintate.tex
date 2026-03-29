@@ -1,8 +1,8 @@
 \section{Lubin-Tate Theory}
 
-In this section, we will discuss some formalization of Lubin-Tate formal group law.
-Let $K$ be a nonarchimedean local field, $\calO_K$ be its ring of integers, $\pi$ be
-a uniformizer. Since $K$ is a nonarchimedean local field, then the residue field of
+In this section, we discuss some formalization of Lubin--Tate formal group laws.
+Let $K$ be a nonarchimedean local field, let $\calO_K$ be its ring of integers, and let $\pi$ be
+a uniformizer. Since $K$ is a nonarchimedean local field, the residue field of
 $\calO_K$ is finite.
 
 \begin{lstlisting}
@@ -13,7 +13,7 @@ instance : Fintype (IsLocalRing.ResidueField 𝒪[K]) :=
   Fintype.ofFinite (IsLocalRing.ResidueField 𝒪[K])
 \end{lstlisting}
 
-The instance \lstinline|[ValuativeRel K]| is that the class to talk about the
+The instance \lstinline|[ValuativeRel K]| is the class used to discuss the
 case where \lstinline|K| is equipped with an equivalence class of valuations.
 \lstinline|[IsNonarchimedeanLocalField K]| means that \lstinline|K| is a nonarchimedean
 local field.

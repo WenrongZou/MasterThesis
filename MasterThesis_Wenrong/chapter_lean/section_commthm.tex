@@ -1,14 +1,14 @@
 \section{Commutative Lemma}
 
-In this section, we will discuss some formalization of the commutative result in the previous
-chapter. Fix a formal group law $F(X,Y)$ over $R$ thoughout this section.
+In this section, we discuss the formalization of some commutativity results from the previous
+chapter. Fix a formal group law $F(X,Y)$ over $R$ throughout this section.
 First, we fix some environmental variables.
 
 \begin{lstlisting}
 variable {R : Type*} [CommRing R] (F : FormalGroup R) [Nontrivial R] {σ : Type*}
 \end{lstlisting}
 
-According to the definition of commutativity of formal group law, we have that $F(X,Y)$ is
+According to the definition of commutativity for formal group laws, we have that $F(X,Y)$ is
 commutative if and only if the coefficients of $X^i Y^j$ and $X^j Y^i$ coincide.
 
 \begin{lstlisting}
@@ -19,9 +19,9 @@ theorem comm_iff_coeff_symm :
 
 A precommutator of a formal group law \lstinline|F| is a multivariate power series
 \lstinline|X +[F] Y +[F] (-X)|. Typically, a commutator of a group law is defined to be
-$x y x^{-1} y ^{-1}$ where $x, y$ are elements of group $G$ and a group is commutative if and only
+$x y x^{-1} y ^{-1}$, where $x, y$ are elements of a group $G$, and a group is commutative if and only
 if its commutator is zero.
-A formal group law $F(X,Y)$ is commutative if and only if the precommutator equals to
+A formal group law $F(X,Y)$ is commutative if and only if the precommutator is equal to
 \lstinline|Y|.
 
 \begin{lstlisting}
@@ -36,7 +36,7 @@ lemma preCommutator_ne_of_nonComm (h : ¬ F.comm) :
 lemma comm_iff_commutator_eq_zero : F.comm ↔ commutator F = 0 := by
 \end{lstlisting}
 
-Now we could formalize the lemma \ref{lem: non_com_hom} and lemma \ref{lem: target_com}.
+Now we can formalize Lemma \ref{lem: non_com_hom} and Lemma \ref{lem: target_com}.
 
 \begin{lstlisting}
 theorem exists_nonzero_hom_to_Ga_or_Gm_of_not_comm (h : ¬ F.comm) :
@@ -48,12 +48,12 @@ theorem comm_of_exists_nonzero_hom_to_comm (F' : FormalGroup R) [IsDomain R]
     F'.comm → F.comm := by
 \end{lstlisting}
 
-The instance \lstinline|IsDomain R| means \lstinline|R| is an integral domain.
-Here \lstinline|Gₐ|, \lstinline|Gₘ| are the abbreviation of the additive and multiplicative formal group law.
-And \lstinline|(R := R)| in the parentheses means that here we want the coefficient ring of the
-formal group laws to be ring \lstinline|R|.
+The instance \lstinline|IsDomain R| means that \lstinline|R| is an integral domain.
+Here \lstinline|Gₐ| and \lstinline|Gₘ| are abbreviations for the additive and multiplicative formal group laws.
+The notation \lstinline|(R := R)| means that the coefficient ring of the
+formal group laws is \lstinline|R|.
 
-Therefore, we could deduce that any formal group law over a domain $R$ is commutative with a
+Therefore, we can deduce that any formal group law over a domain $R$ is commutative with a
 neat proof.
 
 \begin{lstlisting}

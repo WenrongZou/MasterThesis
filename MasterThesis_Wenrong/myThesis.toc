@@ -7,28 +7,28 @@
 \contentsline {section}{\numberline {1.5}Invariant differential}{12}{section.1.5}%
 \contentsline {section}{\numberline {1.6}Logarithm}{14}{section.1.6}%
 \contentsline {section}{\numberline {1.7}Height}{15}{section.1.7}%
-\contentsline {chapter}{\numberline {2}Lubin-Tate Theory}{17}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Definition and Properties of Lubin-Tate Formal Groups}{17}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Application of Lubin-Tate formal groups}{19}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Connection with functional equation lemma}{21}{section.2.3}%
-\contentsline {chapter}{\numberline {3}Lean and Mathlib}{22}{chapter.3}%
-\contentsline {section}{\numberline {3.1}The Lean Theorem Prover}{22}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Dependent Type Theory}{22}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Inductive type and Quotient type}{23}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Inductive type}{23}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Quotient types}{23}{subsection.3.3.2}%
-\contentsline {section}{\numberline {3.4}Structures, Classes, and Type Class Inference}{24}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Structures and Classes}{24}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Type Class Inference}{24}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}The Algebraic Hierarchy}{25}{subsection.3.4.3}%
-\contentsline {chapter}{\numberline {4}Lean formalization of Formal Group Laws}{26}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Definitions}{26}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Examples of formal groups}{27}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Function between formal groups}{28}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}Homomorphism and Isomorphism}{29}{subsection.4.1.3}%
-\contentsline {section}{\numberline {4.2}Functional Equation Lemma}{31}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Universal formal group laws}{33}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Commutative Lemma}{34}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Lubin-Tate Theory}{35}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Height}{35}{section.4.6}%
+\contentsline {chapter}{\numberline {2}Lubin-Tate Theory}{18}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Definition and Properties}{18}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Applications}{20}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Connection with functional equation lemma}{22}{section.2.3}%
+\contentsline {chapter}{\numberline {3}Lean and Mathlib}{23}{chapter.3}%
+\contentsline {section}{\numberline {3.1}The Lean Theorem Prover}{23}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Dependent Type Theory}{23}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Inductive type and Quotient type}{24}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Inductive type}{24}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Quotient types}{24}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4}Structures, Classes, and Type Class Inference}{25}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Structures and Classes}{25}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Type Class Inference}{25}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}The Algebraic Hierarchy}{26}{subsection.3.4.3}%
+\contentsline {chapter}{\numberline {4}Lean formalization of Formal Group Laws}{27}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Definitions}{27}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Examples of formal groups}{28}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Functions Between Formal Groups}{29}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Homomorphism and Isomorphism}{30}{subsection.4.1.3}%
+\contentsline {section}{\numberline {4.2}Functional Equation Lemma}{32}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Universal formal group laws}{34}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Commutative Lemma}{35}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Lubin-Tate Theory}{36}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Height}{36}{section.4.6}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
