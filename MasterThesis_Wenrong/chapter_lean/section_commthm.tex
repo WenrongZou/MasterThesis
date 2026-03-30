@@ -2,7 +2,7 @@
 
 In this section, we discuss the formalization of some commutativity results from the previous
 chapter. Fix a formal group law $F(X,Y)$ over $R$ throughout this section.
-First, we fix some environmental variables.
+First, we fix some ambient variables.
 
 \begin{lstlisting}
 variable {R : Type*} [CommRing R] (F : FormalGroup R) [Nontrivial R] {σ : Type*}
@@ -19,7 +19,7 @@ theorem comm_iff_coeff_symm :
 
 A precommutator of a formal group law \lstinline|F| is a multivariate power series
 \lstinline|X +[F] Y +[F] (-X)|. Typically, a commutator of a group law is defined to be
-$x y x^{-1} y ^{-1}$, where $x, y$ are elements of a group $G$, and a group is commutative if and only
+$x y x^{-1} y^{-1}$, where $x, y$ are elements of a group $G$, and a group is commutative if and only
 if its commutator is zero.
 A formal group law $F(X,Y)$ is commutative if and only if the precommutator is equal to
 \lstinline|Y|.
@@ -53,7 +53,7 @@ Here \lstinline|Gₐ| and \lstinline|Gₘ| are abbreviations for the additive an
 The notation \lstinline|(R := R)| means that the coefficient ring of the
 formal group laws is \lstinline|R|.
 
-Therefore, we can deduce that any formal group law over a domain $R$ is commutative with a
+Therefore, we can deduce that any formal group law over a domain $R$ is commutative, with a
 neat proof.
 
 \begin{lstlisting}
@@ -63,5 +63,4 @@ theorem comm_of_isDomain [IsDomain R] : F.comm := by
   · exact hc ((comm_of_exists_nonzero_hom_to_comm _ _ α ha) Gₐ.comm)
   · exact hc ((comm_of_exists_nonzero_hom_to_comm _ _ α ha) Gₘ.comm)
 \end{lstlisting}
-
 

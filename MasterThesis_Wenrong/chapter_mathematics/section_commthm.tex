@@ -9,17 +9,17 @@ are commutative. More precisely,
     \label{comm_thm}
 \end{theorem}
 
-Before proving the theorem, we first discuss some lemmas.
+Before proving the theorem, we first discuss several lemmas.
 
 \begin{lemma}[{\cite[Chap.~1 Lemma 6.2.1]{hazewinkel1978formal}}]
     Let $F(X,Y)$ be a non-commutative one-dimensional formal group law over a ring
-    $R$. Then there is a nonzero homomorphism from $F(X,Y)$ into $\bfG_a(X,Y)$ or into
+    $R$. Then there exists a nonzero homomorphism from $F(X,Y)$ into $\bfG_a(X,Y)$ or into
     $\bfG_m(X,Y)$.
     \label{lem: non_com_hom}
 \end{lemma}
 
 \begin{proof}
-    For simplicity, we denote $F(X,Y)$ by $X +_F Y$ and the inverse $i(X)$ by $-_F X$.
+    For simplicity, we denote $F(X,Y)$ by $X +_F Y$ and its inverse $i(X)$ by $-_F X$.
     Let $H(X,Y) = X + _F Y + (-_F X)$. We have $H(0,Y) = Y$. Since $F(X,Y)$ is non-commutative,
     we have
     \begin{equation}
@@ -55,7 +55,7 @@ Before proving the theorem, we first discuss some lemmas.
         r_1(X_1+_F X_2) = r_1(X_1) + r_1(X_2) + r_1(X_1) r_1(X_2).
     \end{equation}
     This means $r_1(X)$ is a formal group homomorphism from $F$ to $\bfG_m$. \par
-    For the case $i > 1 $, we have
+    For the case $i > 1$, we have
     \begin{equation*}
         H(X,Y) \equiv Y + r_i(X) Y ^ i \quad (\modd Y ^ {i + 1})
     \end{equation*}
@@ -72,7 +72,7 @@ Before proving the theorem, we first discuss some lemmas.
 \end{proof}
 
 \begin{lemma}[{\cite[Chap.~1 Lemma 6.2.11]{hazewinkel1978formal}}]
-    Let $R$ be an integral domain and let $F, F'$ be one-dimensional formal group laws
+    Let $R$ be an integral domain, and let $F, F'$ be one-dimensional formal group laws
     over $R$. Suppose there exists a homomorphism
     $\alpha(X): F(X,Y) \to F'(X,Y)$ and $F'(X,Y)$ is commutative. Then $F(X,Y)$ is
     commutative.
@@ -81,7 +81,7 @@ Before proving the theorem, we first discuss some lemmas.
 
 \begin{proof}
     Let $r$ be the order of $\alpha (X) = \sum_{n=1} ^ \infty a_n X^n$, i.e. the least $n$ such
-    that $a_n$ does not equal zero. Let $C(X,Y) = X +_F Y +_F (-_F X) +_F (-_F Y) $ be the
+    that $a_n$ is nonzero. Let $C(X,Y) = X +_F Y +_F (-_F X) +_F (-_F Y) $ be the
     commutator of $X$ and $Y$ with respect to $F$. \par
     We can prove that a formal group law $F$ is commutative if and only if the commutator
     $C(X,Y)$ with respect to $F$ is zero. \par
@@ -121,7 +121,7 @@ Before proving the theorem, we first discuss some lemmas.
 
 \begin{proof}[Proof of Commutativity theorem \ref{comm_thm}]
     First, we prove the necessity of the condition on $R$.\par
-    Let $0 \neq a \in R$ be an element of $R$ that is nilpotent and $\ZZ$-torsion. Then there is
+    Let $0 \neq a \in R$ be an element of $R$ that is nilpotent and $\ZZ$-torsion. Then there exists
     a formal group law $F(X,Y)$ over $R$ such that $F(X,Y)$ is non-commutative. \par
     Let $n$ be the least integer such that $n a = 0$. Then $n>1$ and there exists a prime number
     $p$ such that $p \mid n$. Let $b = \frac{n}{p} a$. Then $b\neq 0$ and $p b = 0$, since $n$ is
@@ -133,19 +133,19 @@ Before proving the theorem, we first discuss some lemmas.
     Therefore, $F(X,Y)$ is a non-commutative formal group law over $R$. \par
     Secondly, we prove sufficiency for the case where $R$ is an integral domain. Let $F(X,Y)$ be a formal
     group law over $R$, where $R$ is an integral domain. Suppose that $F(X,Y)$ is non-commutative.
-    Then, by Lemma $\ref{lem: non_com_hom}$, there is a nonzero formal group homomorphism from $F(X,Y)$ to
+    Then, by Lemma $\ref{lem: non_com_hom}$, there exists a nonzero formal group homomorphism from $F(X,Y)$ to
     $\bfG_a(X,Y)$ or $\bfG_m(X,Y)$. Since $\bfG_a(X,Y)$ and $\bfG_m (X,Y)$ are commutative formal group laws,
     Lemma $\ref{lem: target_com}$ implies that $F(X,Y)$ is commutative. This
     leads to a contradiction.\par
 
     Thirdly, the proof of sufficiency for the case where $R$ is $\ZZ$-torsion free follows directly
-    from computation on the associativity condition of a formal group law.
-    There is a proof later in Corollary \ref{cor: torsion_free_comm}.
+    from computations involving the associativity condition of a formal group law.
+    A proof is given later in Corollary \ref{cor: torsion_free_comm}.
     It can also be found in {\cite[Chap.~1 Lemma 6.1.3]{hazewinkel1978formal}}. \par
 
-    Now we prove the sufficiency of the condition on $R$ for theorem \ref{comm_thm}.\par
+    Now we prove the sufficiency of the condition on $R$ for Theorem \ref{comm_thm}.\par
     Given a prime ideal $\gothp$ in $R$, consider the ring homomorphism $\phi : R \to R / \gothp$.
-    Since $R / \gothp$ is an integral domain, then $\phi_* F(X,Y)$ is commutative. If we denote
+    Since $R / \gothp$ is an integral domain, $\phi_* F(X,Y)$ is commutative. If we denote
     $F(X,Y) = \sum_{i, j} a_{ij} X ^ i Y ^ j$, then it follows that
     $\phi_* (a_{ij} - a_{ji}) = 0 \in R / \gothp$, which is equivalent to
     $a_{ij} - a_{ji} \in \gothp$. Since this holds for all prime ideals $\gothp$, we have
@@ -156,10 +156,10 @@ Before proving the theorem, we first discuss some lemmas.
     Therefore, for any $i, j$, $a_{ij} - a_{ji}$ is nilpotent in $R$.
 
     Consider the ring homomorphism $\phi_\infty : R \to R \otimes_{\ZZ} \QQ$. Since
-    $R \otimes_\ZZ \QQ$ is $\ZZ$-torsion free, then $\phi_{\infty *} F(X,Y)$ is commutative.
+    $R \otimes_\ZZ \QQ$ is $\ZZ$-torsion free, $\phi_{\infty *} F(X,Y)$ is commutative.
     Therefore, $\phi_\infty (a_{ij} - a_{ji}) = 0 \in R \otimes_\ZZ \QQ$, which means
     $a_{ij} -a_{ji}$ is $\ZZ$-torsion. Since there is no nonzero element in $R$ that is
-    nilpotent and $\ZZ$-torsion at the same time, it follows that for any $i,j$,
+    nilpotent and $\ZZ$-torsion at the same time, it follows that for any $i, j$,
     $a_{ij} - a_{ji} = 0$, which implies $F(X,Y)$ is commutative.
 
 \end{proof}

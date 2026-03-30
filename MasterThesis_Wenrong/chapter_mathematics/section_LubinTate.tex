@@ -82,7 +82,7 @@ field, and let $\pi$ be a uniformizer of $\calO_K$.
 \end{theorem}
 
 \begin{proof}
-    For equation \ref{eq: lubin_Tate_comm}, let $G (X,Y)= F(Y,X)$, then $G(X,Y)
+    For equation \ref{eq: lubin_Tate_comm}, let $G (X,Y)= F(Y,X)$. Then $G(X,Y)
     \equiv X+Y (\modd \deg 2)$ and
     \begin{equation*}
         f(G(X,Y)) = f(F(Y,X)) = F(f(Y),f(X)) = G(f(X),f(Y))
@@ -94,7 +94,7 @@ field, and let $\pi$ be a uniformizer of $\calO_K$.
     \begin{equation*}
         f(G_i(X,Y,Z)) = G_i(f(X),f(Y),f(Z))
     \end{equation*}
-    Then by the uniqueness in Lemma \ref{lemma: constructive_lemma_lubin_Tate},
+    Then, by uniqueness in Lemma \ref{lemma: constructive_lemma_lubin_Tate},
     we conclude the desired equation.
 \end{proof}
 
@@ -106,7 +106,7 @@ field, and let $\pi$ be a uniformizer of $\calO_K$.
         [a]_{f,g} (X) &\equiv aX (\modd \deg 2) \\
         f([a]_{f,g}(X)) &= [a]_{f, g}(g(X))
     \end{align}
-    In particular, denote $[a]_{f}$ instead of $[a]_{f,f}$ to simplify the notation.
+    In particular, we write $[a]_{f}$ instead of $[a]_{f,f}$ to simplify notation.
 \end{definition}
 
 \begin{theorem}[{\cite[Chap.~6 Proposition 2]{cassels1967algebraic}}]
@@ -116,7 +116,7 @@ field, and let $\pi$ be a uniformizer of $\calO_K$.
 \end{theorem}
 
 \begin{proof}
-    For simplicity, we denote $[a]_{f,g}$ as $h$. We have $h(F_g(X,Y)) \equiv aX+aY
+    For simplicity, we denote $[a]_{f,g}$ by $h$. We have $h(F_g(X,Y)) \equiv aX+aY
     (\modd \deg 2)$, $F_f(h(X), h(Y)) \equiv aX+ aY (\modd \deg 2)$ and
     \begin{align*}
         h\circ F_g(g(X),g(Y)) &= h\circ g(F_g(X,Y)) = f \circ h (F_f(X,Y)) \\
@@ -134,7 +134,7 @@ field, and let $\pi$ be a uniformizer of $\calO_K$.
     \begin{equation*}
         f \circ ([a]_{f, g} \circ [b]_{g,h}) = [a]_{f,g} \circ (g \circ [b]_{g,h}) = [a]_{f,g}\circ [b]_{g,h} \circ h
     \end{equation*}
-     Then  we have $[ab]_{f,h}$ and $[a]_{f,g} \circ [b]_{g,h}$ are solutions satisfying these conditions. By the uniqueness of Lemma \ref{lemma: constructive_lemma_lubin_Tate}, they coincide.
+    Thus, $[ab]_{f,h}$ and $[a]_{f,g} \circ [b]_{g,h}$ are solutions satisfying these conditions. By uniqueness in Lemma \ref{lemma: constructive_lemma_lubin_Tate}, they coincide.
 \end{proof}
 
 \begin{theorem}[{\cite[Theorem 1]{LubinTate1965}}]
@@ -153,9 +153,9 @@ field, and let $\pi$ be a uniformizer of $\calO_K$.
 \end{proof}
 
 \begin{theorem}[{\cite[Chap.~6 Proposition 4]{cassels1967algebraic}}]
-    Let $f,g\in \calF_\pi$, then $F_f$ is isomorphic to $F_g$, and there is a unique strong
+    Let $f,g\in \calF_\pi$, then $F_f$ is isomorphic to $F_g$, and there exists a unique strong
     isomorphism from $F_f$ to $F_g$. This means that the Lubin-Tate formal group $F_f$ is
-    independent of $f \in F_\pi$, and depends only on $\pi$.
+    independent of $f \in \calF_\pi$, and depends only on $\pi$.
     \label{thm: Lubin_Tate_independet_f_g}
 \end{theorem}
 
@@ -170,8 +170,8 @@ field, and let $\pi$ be a uniformizer of $\calO_K$.
     ring of integers of $L$. Given elements $x_1, \ldots, x_n \in \gothm_L$ and a formal
     series $G(X_1, \ldots, X_n) \in \calO_K[\![X_1, \ldots, X_n]\!]$, the series
     $G(x_1, \ldots, x_n)$ converges to an element in $\gothm_L$ if the constant term of
-    $G(X_1, \ldots, X_n)$ is zero. By above theorem, for each power series $f\in \calF_\pi$ this
-    determines an $\calO_K$-module structure on the set $\gothm_L$. To be precisely, addition
+    $G(X_1, \ldots, X_n)$ is zero. By the theorem above, for each power series $f\in \calF_\pi$, this
+    determines an $\calO_K$-module structure on the set $\gothm_L$. More precisely, addition
     and scalar multiplication are defined by
     \begin{align}
         x + y &= F_f(x,y) \\
@@ -226,8 +226,8 @@ In order to prove this theorem, we need a result about divisible modules over a 
 \end{proof}
 
 \begin{proof}[Proof of theorem $\ref{thm: Lam_iso_K_quot_O}$]
-    The first claim follows by the fact that $\Lambda_{f,n}$ is the $\pi^n$-torsion of
-        $\calO_K$-module $M_f(\Ksep)$. \par
+    The first claim follows from the fact that $\Lambda_{f,n}$ is the $\pi^n$-torsion of
+        the $\calO_K$-module $M_f(\Ksep)$. \par
     According to theorem \ref{thm: Lubin_Tate_independet_f_g}, we are free to choose
     $f\in \calF_\pi$ as we please. We take $f(X)= \pi X + X ^ q$. Since
     $f'(X) = q X^{q-1} + \pi \neq 0$, then $\Lambda_{f, 1}$ consists of $q$ distinct roots
@@ -246,7 +246,7 @@ In order to prove this theorem, we need a result about divisible modules over a 
     is the index set of copies of $K/ \calO_K$.
 \end{proof}
 
-There is a natural homomorphism $\Gal (\Ksep/ K) \to \End(\Lambda_f)$, this follows from
+There is a natural homomorphism $\Gal (\Ksep/ K) \to \End(\Lambda_f)$; this follows from
 the action of elements in the Galois group on roots of a polynomial. Moreover,
 since $\Lambda _f \cong K / \calO_K$ and $\End(K/\calO_K) \cong \calO_K$, then it induces a
 homomorphism $\Gal(\Ksep/ K) \to \Aut(K / \calO_K) \cong U_K$.

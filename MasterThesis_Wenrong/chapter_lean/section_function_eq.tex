@@ -1,7 +1,7 @@
 \section{Functional Equation Lemma}
 
 In this section, we discuss the formalization of the functional equation lemma.
-To begin with, we formalize the data involved in the functional equation lemma as follows.
+To begin, we formalize the data involved in the lemma as follows.
 \begin{lstlisting}
 variable {K : Type*} [CommRing K] {R : Subring K} {I : Ideal R}
   {p t q : ℕ} [hp : Fact (Nat.Prime p)] (ht : t ≠ 0) (hq : q = p ^ t)
@@ -9,11 +9,11 @@ variable {K : Type*} [CommRing K] {R : Subring K} {I : Ideal R}
 \end{lstlisting}
 Let $K$ be a commutative ring, $R$ a subring of $K$, and $I$ an
 ideal of $R$. Let $p, q, t$ be natural numbers, where $p$ is a prime
-number and $q$ can be written as $q = p ^ t$ with nonzero $t$. Let $\sigma$ be a ring
+number and $q$ can be written as $q = p ^ t$ with $t \neq 0$. Let $\sigma$ be a ring
 endomorphism of $K$, and let $s$ be a sequence of elements in $K$.
 
 According to equation $\ref{eq: coeff_RecurFun}$, we can inductively define a
-function \lstinline{RecurFunAux} using equation $\ref{eq: coeff_RecurFun}$ and then obtain a power series
+function \lstinline{RecurFunAux} and then obtain a power series
 using the API \lstinline{PowerSeries.mk}. We then prove that it satisfies
 the functional equation $\ref{equation: recurFunEq}$, namely
 \[f_g(X) = g(X) + \sum_{i=1}^{\infty} s_i \sigma_*^i f_g (X^{q ^ i}).\]
@@ -28,19 +28,19 @@ def RecurFunAux (hg : g.constantCoeff = 0) : ℕ → K
 def RecurFun := PowerSeries.mk (RecurFunAux ht hq σ s hg)
 \end{lstlisting}
 
-In order to inductively define \lstinline|RecurFunAux|, we prove that
+To inductively define \lstinline|RecurFunAux|, we prove that
 for all \lstinline|j ∈ Icc 1 (multiplicity q (k + 1))|,
 \lstinline|((k + 1) / (q ^ (j : ℕ))) < k + 1| in the motive of \lstinline|k + 1|. Therefore,
 we need to use \lstinline|Finset.attach|, which enables us to use the property
 \lstinline|j ∈ Icc 1 (multiplicity q (k + 1))|. To be precise,
 let \lstinline|s| be a finite set; \lstinline{Finset.attach s} takes the elements of \lstinline|s|
-and forms a new set of elements of the subtype \lstinline|{x // x ∈ s}|. With the property
+and forms a new set of elements in the subtype \lstinline|{x // x ∈ s}|. With the property
 \lstinline|j ∈ Icc 1 (multiplicity q (k + 1))|, we can prove that
 \lstinline|((k + 1) / (q ^ (j : ℕ))) < k + 1|. Otherwise,
 \lstinline|(RecurFunAux hg ((k + 1) / (q ^ (j : ℕ))))| is not valid.
 
-To state the formalization of the functional equation, we need APIs related to \lstinline|expand|,
-which is an algebraic homomorphism that expands a
+To state the formal equation, we need APIs related to \lstinline|expand|,
+which is an algebra homomorphism that expands a
 (multivariate) power series by a nonzero factor $p$. We discuss these APIs first.
 
 \begin{lstlisting}
@@ -51,7 +51,12 @@ noncomputable def expand : MvPowerSeries σ R →ₐ[R] MvPowerSeries σ R :=
   substAlgHom (HasSubst.X_pow hp)
 \end{lstlisting}
 
-We formalize functional equation $\ref{equation: recurFunEq}$ as follows.
+\lstinline|substAlgHom| is an algebra homomorphism that substitutes multivariate
+power series into a multivariate power series. \lstinline|HasSubst.X_pow| means that
+taking a nonzero power of \lstinline|X| lies in the family of power series that
+can be substituted.
+
+We formalize the functional equation $\ref{equation: recurFunEq}$ as follows.
 \begin{lstlisting}
 theorem FunEq_of_RecurFun [TopologicalSpace K] [T2Space K] (hs₀ : s 0 = 0) :
     let f := RecurFun ht hq σ s hg
@@ -65,8 +70,8 @@ Let $R$ be a subring of $K$. Then \lstinline|R.subtype|
 is a canonical ring homomorphism from $R$ to $K$. \lstinline|PowerSeries.expand p hp f| expands a power
 series \lstinline|f| by a nonzero factor $p$.
 
-The theorem \lstinline|coeff_one_RecurFun| states that the 1st coefficient of $g$
-equals the 1st coefficient of $f_g(X)$. With the assumption
+The theorem \lstinline|coeff_one_RecurFun| states that the first coefficient of $g$
+equals the first coefficient of $f_g(X)$. With the assumption
 \lstinline|(hg_unit : IsUnit (g.coeff 1))|,
 we obtain \lstinline|IsUnit ((RecurFun ht hq σ s hg).coeff 1)|. Therefore, there is a substitution inverse
 of $f_g(X)$, denoted by $f_g^{-1}(X)$.
@@ -91,14 +96,14 @@ def inv_add_RecurFun :=
         (RecurFun ht hq σ s hg).toMvPowerSeries 1)
 \end{lstlisting}
 
-The API \lstinline|inv_add_RecurFun| is the multivariate power series
+The API \lstinline|inv_add_RecurFun| denotes the multivariate power series
 $F_g(X,Y) = f_g^{-1}(f_g(X) + f_g(Y))$. Also,
 \lstinline|(RecurFun ht hq σ s hg).toMvPowerSeries (0 : Fin 2)| represents the multivariate
 power series $f_g(X)$, where $X$ is the first indeterminate variable in a bivariate power
 series. Similarly, \lstinline|(RecurFun ht hq σ s hg).toMvPowerSeries 1| represents $f_g(Y)$.
 
 Recall that the first part of the functional equation lemma $\ref{thm: fun_eq}$ says that
-$F_g(X,Y)$ has coefficients in $R$. Moreover, this is a commutative formal group law by
+$F_g(X,Y)$ has coefficients in $R$. Moreover, it is a commutative formal group law by
 the definition of $F_g(X,Y)$. The first part of the functional equation lemma is formalized as follows.
 
 \begin{lstlisting}
@@ -106,30 +111,32 @@ theorem coeff_inv_add_mem_Subring [UniformSpace K] [T2Space K] [DiscreteUniformi
     (hs₀ : s 0 = 0) : ∀ n, (inv_add_RecurFun ht hq σ s hg hg_unit).coeff n ∈ R := ...
 \end{lstlisting}
 
-Next, we first prove that $F_g(X,Y)$ is a formal group law over $K$. The associativity condition
+Next, we prove that $F_g(X,Y)$ is a formal group law over $K$. The associativity condition
 follows from
 \[F_g(F_g(X,Y), Z) = f_g^{-1} (f_g(X) + f_g(Y) + f_g(Z))=  F_g(X, F_g(Y,Z))\]
 
 Then we use the API \lstinline|FormalGroup.toSubring| and the theorem
 \lstinline|coeff_inv_add_mem_Subring| to obtain a formal group law
-\lstinline|CommFormalGroup.InvAdd_RecurFun| over $R$.
+\lstinline|FormalGroup.InvAdd_RecurFun| over $R$.
 
 \begin{lstlisting}
-def CommFormalGroup.InvAdd_RecurFun_Aux : CommFormalGroup K where
+def FormalGroup.InvAdd_RecurFun_Aux : FormalGroup K where
   toFun := inv_add_RecurFun ht hq σ s hg hg_unit
   ...
 
-def CommFormalGroup.InvAdd_RecurFun [UniformSpace K] [T2Space K]
-    [DiscreteUniformity K] (hs₀ : s 0 = 0) : CommFormalGroup R :=
-  (CommFormalGroup.InvAdd_RecurFun_Aux ht hq σ s hg hg_unit).toSubring _
+def FormalGroup.InvAdd_RecurFun [UniformSpace K] [T2Space K]
+    [DiscreteUniformity K] (hs₀ : s 0 = 0) : FormalGroup R :=
+  (FormalGroup.InvAdd_RecurFun_Aux ht hq σ s hg hg_unit).toSubring _
     (coeff_inv_add_mem_Subring ...)
+
+instance : (InvAdd_RecurFun ..).IsComm := sorry
 \end{lstlisting}
 
 Recall that the second part of the functional equation lemma $\ref{thm: fun_eq}$ states that,
-for any power series $g, g'$ over $R$ with the assumption that the constant coefficients of $g,g'$
-are zero, then $f_{g'}^{-1} (f_g(X))$ has coefficients in $R$. The second part of the functional equation lemma
-is formalized as follows. In the lemma below, \lstinline|f_g'| is the power series $f_{g'}(X)$ and \lstinline|G| is
-$f_{g'}^{-1}(f_g(X))$.
+for any power series $g, g'$ over $R$ with the assumption that the constant coefficients of $g$ and $g'$
+are zero, $f_{g'}^{-1} (f_g(X))$ has coefficients in $R$. The second part of the functional equation lemma
+is formalized as follows. In the lemma below, for simplicity, we denote $f_{g'}(X)$ by
+\lstinline|f_g'| and $f_{g'}^{-1}(f_g(X))$ by \lstinline|G|.
 
 \begin{lstlisting}
 lemma coeff_inv_RecurFun_g'_mem_Subring [UniformSpace K] [T2Space K]
@@ -166,9 +173,11 @@ theorem congr_equiv [UniformSpace K] [T2Space K] [DiscreteUniformity K]
 \end{lstlisting}
 
 I briefly explain some details in Part Four of the functional equation lemma.
-To begin with, \lstinline|α.coeff n - β.coeff n| is an element in $K$, since $\alpha$ is
+To begin with, \lstinline|α.coeff n - β.coeff n| is an element of $K$, since $\alpha$ is
 a power series over $R$ and $\beta$ is a power series over $K$. Therefore, we need to formalize it
-as an element in a set of $K$ rather than in an ideal of $R$.
-Secondly, \lstinline|R.subtype '' ↑(I ^ r)| is a set of elements in $K$ that is the image of $I^r$
-under the natural algebraic map $R \to K$. Moreover, the symbol \lstinline|↑| is necessary
+as an element of a subset of $K$ rather than as an element of an ideal of $R$.
+Secondly, \lstinline|R.subtype '' ↑(I ^ r)| is a subset of $K$ that is the image of $I^r$
+under the natural ring homomorphism $R \to K$. Moreover, the symbol \lstinline|↑| is necessary
 since there is a coercion from \lstinline|Ideal R| to \lstinline|Set R|.
+
+The proof of the above theorem can be found in the GitHub repository.

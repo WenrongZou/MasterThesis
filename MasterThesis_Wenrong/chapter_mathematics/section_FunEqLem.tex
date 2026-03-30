@@ -1,7 +1,7 @@
 \section{Functional Equation Lemma}
 
 In this section, we discuss the functional equation lemma for formal group laws. This lemma
-can be used to construct some non-isomorphic formal group laws and a universal
+can be used to construct non-isomorphic formal group laws and a universal
 formal group law. \par
 
 To begin, we need the following ingredients. Let $R$ be a subring of $K$, $\sigma : K \to K$ be a
@@ -20,7 +20,7 @@ These ingredients are assumed to satisfy the following conditions:
 
 \begin{definition}[{\cite[Definition 2.1.8]{hazewinkel1978formal}}]
 Let $g (X) = \sum_{i = 1}^\infty b_i X ^ i $ be a power series in one variable with coefficients
-in $R$, then define the \textbf{recursion function} to be the unique solution of the following
+in $R$. Define the \textbf{recursion function} to be the unique solution of the following
 functional equation,
 \begin{equation}
     f_g(X)= g(X)+ \sum_{i = 1}^\infty s_i \sigma_*^i f_g (X^{q ^ i})
@@ -72,7 +72,7 @@ is invertible in $R$, then
     over the ring $R$.
 \end{remark}
 
-Before discussing the proof the functional equation integrality lemma, we first present several
+Before discussing the proof of the functional equation integrality lemma, we first present several
 technical lemmas.
 
 \begin{lemma}[{\cite[Chap.~1, Lemma 2.4.1]{hazewinkel1978formal}}]
@@ -87,7 +87,7 @@ technical lemmas.
         I ^ r b \subset I \Rightarrow I ^ r \sigma ^ j (b) \subset I.
         \label{refinement property 5}
     \end{equation}
-    \indent We do induction with respect to $r$ (multiplicity of $q$ in $n$). \par
+    \indent We proceed by induction on $r$ (the multiplicity of $q$ in $n$). \par
     Assume that the result holds for all numbers less than $r + 1$; now consider those $n$
     such that the multiplicity of $q$ in $n$ is $r + 1$.
     According to our recursive formula, the coefficient $a_n$ can be expressed as
@@ -96,7 +96,7 @@ technical lemmas.
     prove \[\forall i \in [1, r + 1], a_{n / q ^i} I ^ {r + 1} \in I.\]
     According to the induction hypothesis and the fact that the multiplicity of $q$
     in ${n/ q^i}$ is less than $r + 1$,
-    then $\forall i \in [1, r + 1], a_{n / q ^i} I ^ {r} \in R$. This implies that
+    we have $\forall i \in [1, r + 1], a_{n / q ^i} I ^ {r} \in R$. This implies that
     $a_n \in I$.
 \end{proof}
 
@@ -111,8 +111,8 @@ technical lemmas.
 \end{lemma}
 
 \begin{proof}
-    First we prove that $F(X_J)^{q^r} \equiv G(X_J)^{q^r} (\modd I ^ {i + r})$, and then our
-    goal is followed by taking some power at both sides. \par
+    First we prove that $F(X_J)^{q^r} \equiv G(X_J)^{q^r} (\modd I ^ {i + r})$, and then the
+    goal follows by taking powers on both sides. \par
     The case for $r =0$ is trivial. We do induction on $r$. Assume that
     the result holds for $r$, namely $F(X_J)^{q^r} \equiv G(X_J)^{q^r} (\modd I ^ {i + r})$.
     Therefore, $F(X_J) ^ {q^r} = G(X_J)^{q^r} + H(X_J)$, where all coefficients of $H(X_J)$
@@ -121,8 +121,8 @@ technical lemmas.
         F(X_J)^{q^{r+1}} = (F(X_J)^{q^r})^q &= (G(X_J)^{q^r} + H(X_J))^q \\
         &= (G(X_J)^{q^r})^q + H(X_J) ^ q + q G(X_J)^{q^r} H(X_J) \alpha (X_J)
     \end{align*}
-    for some $\alpha (X_J) \in R [\![X_J]\!]$. And the last equality follows from $q$
-    is a prime power. Our result is given by the following two congruences
+    for some $\alpha (X_J) \in R [\![X_J]\!]$. The last equality follows from the fact that $q$
+    is a prime power. Our result is given by the following two congruences:
     $H(X_J)^q \equiv 0 (\modd I ^ {i + r + 1})$ and $qH(X_J) \equiv 0 (\modd I ^ {i + r + 1})$.
 \end{proof}
 
@@ -140,12 +140,12 @@ technical lemmas.
     \begin{equation*}
         G(X_J) ^{q^l} \equiv \sigma^l_*G(X_J^{q^l}) (\modd I)
     \end{equation*}
-    We get the goal congruence by above congruence and lemma \ref{lemma: tech_lem pow_congruence}.
+    We obtain the goal congruence from the above congruence and Lemma \ref{lemma: tech_lem pow_congruence}.
 \end{proof}
 
 \begin{proof}[Proof of Functional Equation Lemma]
 For simplicity, we write $F (X, Y)$ and $f (X)$ for $F_g(X, Y)$ and $f_g(X)$ respectively. Let $F_i(X,Y)$ be the
-homogeneous component of $F(X,Y)$ of degree $i$. And we denote
+homogeneous component of $F(X,Y)$ of degree $i$. We denote
 $g(X) = \sum_{i = 1}^{\infty} b_i X ^ i$ and $f(X) = \sum_{n=1}^{\infty}a_n X ^ n$ throughout
 the proof of this theorem.
 
@@ -163,7 +163,7 @@ Suppose that $F_1(X, Y), \ldots , F_{n - 1} (X, Y) \in R [\![X, Y]\!]$. And we h
     f (F (X, Y)) &= f (X) + f (Y)  \\
     \sigma_*^i f(\sigma_*^i F(X, Y)) &= \sigma_*^i f (X) + \sigma_*^i f (Y).
 \end{align*}
-by the recursion formula, $f (X) = g (X) + \sum_ {n = 1} ^ \infty s_n\sigma _*^n f (X ^ {q ^ n})$,
+By the recursion formula, $f (X) = g (X) + \sum_ {n = 1} ^ \infty s_n\sigma _*^n f (X ^ {q ^ n})$,
 substituting $F(X, Y)$ into $X$, and writing $f(X)=\sum _{n = 1} ^ \infty a_n X ^ n$, we obtain that
 \begin{equation}
     f (F(X, Y)) = g (F(X, Y)) + \sum _{i = 1} ^ \infty s_i \sum _{n = 1} ^ \infty \sigma ^ i (a _n) (F(X, Y))^{q ^i n}
@@ -173,7 +173,7 @@ Next by the second technical lemma, we have
     s_i \sigma ^i (a_n) F (X, Y)^{q ^ i n} \equiv s_i\sigma ^ i(a_n)
         (\sigma _* ^ i F (X ^ {q ^ i}, Y ^ {q ^ i})) ^ n (\modd (R, \deg (n + 1)))
 \end{equation}
-then we have that under the sense of $(\modd (R, \deg (n + 1)))$
+then, modulo $(R, \deg (n + 1))$, we have
 \begin{align*}
     f(F(X, Y)) & \equiv g (F(X, Y)) + \sum_ {i = 1} ^ \infty s _i \sum_{n = 1} ^ \infty
     \sigma ^i (a_n) (\sigma _*^i F(X^{q ^ i}, Y ^{q^i})) ^ n \\
@@ -187,14 +187,14 @@ Since $g(X) \equiv b_1 X (\modd \deg \ 2)$, then
 \begin{equation*}
     g (F(X, Y)) \equiv b_1F_n (X, Y) (\modd R, \deg (n + 1))
 \end{equation*}
-use the equation $f(F(X,Y)) = f (X) + f (Y)$, and the congruence above, we have that
+Using the equation $f(F(X,Y)) = f (X) + f (Y)$ and the congruence above, we have
 \[b_1 F_n(X,Y) \equiv 0 (\modd R, \deg (n + 1) )\] and $b_1$ is invertible in $R$,
 then we get the result.
 
-Proof of part 2: Write $G(X) = f_g^{-1}(f_{h}(X))$. Let $G_i(X)$ be homogeneous
-component of degree $i$ in $G(X)$. We prove that for all $i$, $G_i$ has its coefficient in
+Proof of part 2: Write $G(X) = f_g^{-1}(f_{h}(X))$. Let $G_i(X)$ be the homogeneous
+component of degree $i$ in $G(X)$. We prove that for all $i$, $G_i$ has coefficients in
 $R$. Assume that this result holds for all $i < n $, now consider the case for $i = n$,
-then we have under the sense of $(\modd R, \deg (n + 1))$.
+then, modulo $(\modd R, \deg (n + 1))$, we have
 \begin{align*}
     f_{h}(X) &= f(G(X)) \\
     &= g(G(X)) + \sum_{i = 1}^\infty s_i \sigma^i_*f(G(X)^{q^i})\\
@@ -209,7 +209,7 @@ Then we have that $g(G(X)) \equiv h(X) (\modd R, \deg (n + 1))$. And since
 
 \[h (X) \equiv g(G(X)) \equiv b_1 G_n(X). (\modd R, \deg (n + 1) ). \]
 
-Since $b_1$ is invertible, then $G_n(X)$ has its coefficient in $R$.
+Since $b_1$ is invertible, $G_n(X)$ has coefficients in $R$.
 
 Proof of part 3: Denote $\hat{f}(X) = f(h(X))$. By the functional
 equation \ref{equation: recurFunEq}, we only need to prove that
@@ -236,7 +236,7 @@ of $q$ in $n$. Therefore, $f(\alpha (X)) \equiv f(\beta(X)) \mod I ^ r$.
 
 For the reverse direction, assume that $f(\alpha (X)) \equiv f(\beta (X)) (\modd I^r R[\![ X]\!])$.
 
-First, we prove the following result,
+First, we prove the following result:
 
 \begin{equation}
     \alpha (X) \equiv 0 (\modd I ^ r) \Rightarrow f^{-1}(\alpha (X)) \equiv 0 (\modd I ^ r)
@@ -261,12 +261,12 @@ We claim that:
     \label{eq: claim_trunc}
 \end{equation}
 
-And we consider the $k+1$-th coefficient at both equation \ref{eq: decomp alpha gamma}, then we
+Considering the $(k+1)$-th coefficient on both sides of equation \ref{eq: decomp alpha gamma}, we
 have $b_1 * c_{k+1} \in I ^ r$, where $\gamma(X) = \sum_{i=1}^\infty c_i X^i$ and
 $g(X) = \sum_{i=1}^\infty b_i X ^ i$. Since $b_1$ is a unit in $R$, then $c_{k+1} \in I ^ r$.
 
 Proof of claim \ref{eq: claim_trunc} above. According to the
-lemma \ref{lemma: tech_lem pow_congruence} and hypothesis assumption, we have that
+lemma \ref{lemma: tech_lem pow_congruence} and the hypothesis, we have
 $\gamma_k(X) ^n \equiv 0 (\modd I ^{r + t})$, where $t$ is multiplicity of $q$ in $n$.
 By the assumption \ref{property 4}, it is enough to prove that
 
@@ -286,7 +286,7 @@ Since
 lemma \ref{lemma : tech_lemma_one}, we have the congruence \ref{eq: sigma_gamma_mem}.
 This proves the result \ref{eq: implication_f_inv}.
 
-By assumption $f(\alpha (X)) - f(\beta(X)) \in I^r R[\![X]\!]$, we have that
+By assumption, $f(\alpha (X)) - f(\beta(X)) \in I^r R[\![X]\!]$, so we have
 \[\delta (X) := f^{-1} (f(\beta (X)) - f(\alpha(X))) \in I^r R[\![X]\!].\]
 Then
 
@@ -295,12 +295,12 @@ Then
     \beta (X) & = f^{-1} (f(\delta (X)) + f(\alpha (X)))
 \end{align*}
 
-It is straightforward to prove that $f^{-1}(f(X) + f(Y))$ is a formal group law, then
+It is straightforward to prove that $f^{-1}(f(X) + f(Y))$ is a formal group law. Hence,
 
 \begin{equation}
     \beta (X) = f^{-1} (f(\delta (X)) + f(\alpha (X))) = \alpha (X) + \delta (X) G(\delta(X), \alpha (X)).
 \end{equation}
-for some $G(X,Y) \in R [\![X,Y]\!]$. Since $\delta(X) \in I^r R[\![X]\!]$, then
+for some $G(X,Y) \in R [\![X,Y]\!]$. Since $\delta(X) \in I^r R[\![X]\!]$,
 $\beta (X) \equiv \alpha (X) (\modd I^r R[\![X]\!])$.
 
 
