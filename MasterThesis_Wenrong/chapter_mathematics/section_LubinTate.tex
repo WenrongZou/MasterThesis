@@ -9,8 +9,8 @@ field, and let $\pi$ be a uniformizer of $\calO_K$.
     Let $\calF_\pi$ denote the set of power series $f(X) \in \calO_K[\![X]\!]$ which
     satisfy the two conditions:
     \begin{align}
-        f(X) &\equiv \pi X \ (\modd \ \deg 2) \\
-        f(X) &\equiv X ^ q \ (\modd \ \pi)
+        f(X) &\equiv \pi X \pmod{\deg 2}, \\
+        f(X) &\equiv X ^ q \pmod{\pi}.
         \label{Lubin_Tate_condition}
     \end{align}
 
@@ -23,8 +23,8 @@ field, and let $\pi$ be a uniformizer of $\calO_K$.
     Then there
     exists $F(X_1, \ldots, X_n)$ with coefficients in $\calO_K$ such that
     \begin{align}
-        F (X_1, \ldots, X_n) &\equiv  L(X_1, \ldots, X_n) (\modd \ \deg 2) \\
-        f(F(X_1, \ldots, X_n)) &= F(g(X_1), \ldots, g(X_n))
+        F (X_1, \ldots, X_n) &\equiv  L(X_1, \ldots, X_n) \pmod{\deg 2}, \\
+        f(F(X_1, \ldots, X_n)) &= F(g(X_1), \ldots, g(X_n)).
     \end{align}
     \label{lemma: constructive_lemma_lubin_Tate}
 \end{lemma}
@@ -33,13 +33,13 @@ field, and let $\pi$ be a uniformizer of $\calO_K$.
     We use induction to prove that for all $k \in \NN$, there exists a unique multivariate
     polynomial $F_k(X_1, \ldots, X_n)$ of degree $k$ and
     \begin{align*}
-        F_k(X_1, \ldots , X_n) &\equiv L (X_1, \ldots, X_n) (\modd \deg 2) \\
-        f(F_k(X_1, \ldots , X_n)) &\equiv F_k(g(X_1), \ldots, g(X_n)) (\modd \deg (k + 1))
+        F_k(X_1, \ldots , X_n) &\equiv L (X_1, \ldots, X_n) \pmod{\deg 2}, \\
+        f(F_k(X_1, \ldots , X_n)) &\equiv F_k(g(X_1), \ldots, g(X_n)) \pmod{\deg (k + 1)}.
     \end{align*}\par
     The existence and uniqueness of $F(X_1, \ldots, X_n)$ then follow from this. \par
     For $k = 1$, we take $F_1(X_1, \ldots, X_n) = L(X_1, \ldots, X_n)$. \par
     Now assume that the result holds for $k$. Write $f (F_k(X_1,\ldots, X_n )) \equiv
-        F_k(g(X_1), \ldots, g(X_n)) + E_{k+1} (\modd \deg (k+2))$. According to the induction
+        F_k(g(X_1), \ldots, g(X_n)) + E_{k+1} \pmod{\deg (k+ 2)}$. According to the induction
         hypothesis, $E_{k+1}$ is homogeneous of degree $k + 1$. \par
     On the other hand, since the uniqueness of $F_k(X_1, \ldots, X_n)$, then
     $F_{k+1}(X_1,\ldots,X_n)$ should be of the form $F_{k+1}(X_1,\ldots, X_n) =
@@ -48,9 +48,9 @@ field, and let $\pi$ be a uniformizer of $\calO_K$.
         $\calF_\pi$. Then we have
     \begin{align*}
         f(F_{k+1}(X_1, \ldots, X_n)) &\equiv F_k(g(X_1), \ldots, g(X_n)) +
-        \pi \phi_{k+1}(X_1, \ldots, X_n) (\modd \deg (k+2)) \\
+        \pi \phi_{k+1}(X_1, \ldots, X_n) \pmod{\deg (k + 2)}, \\
         F_{k+1}(g(X_1), \ldots, g(X_n)) &\equiv  F_k(g(X_1), \ldots, g(X_n)) +
-        \pi ^ {k+1} \phi_{k+1} (X_1, \ldots, X_n) (\modd \deg (k + 2))
+        \pi ^ {k+1} \phi_{k+1} (X_1, \ldots, X_n) \pmod{\deg (k + 2)}.
     \end{align*}
     The last congruence follows from the fact that $\phi_{k+1}$ is homogeneous of degree $k+1$, i.e.
     $\phi_{k+1} (g(X_1), \ldots, g(X_n)) = \pi ^ {k+1} \phi_{k+1} (X_1, \ldots, X_n)$.
@@ -64,8 +64,8 @@ field, and let $\pi$ be a uniformizer of $\calO_K$.
 \begin{definition}
     For any $f \in \calF_\pi$, we let $F_f(X,Y)$ be the unique solution of
     \begin{align}
-        F_f(X,Y) &\equiv X + Y (\modd \ \deg 2) \\
-        f(F_f(X,Y)) &= F_f(f(X), f(Y))
+        F_f(X,Y) &\equiv X + Y \pmod{\deg 2}, \\
+        f(F_f(X,Y)) &= F_f(f(X), f(Y)).
     \end{align}
 \end{definition}
 
@@ -83,14 +83,14 @@ field, and let $\pi$ be a uniformizer of $\calO_K$.
 
 \begin{proof}
     For equation \ref{eq: lubin_Tate_comm}, let $G (X,Y)= F(Y,X)$. Then $G(X,Y)
-    \equiv X+Y (\modd \deg 2)$ and
+    \equiv X+Y \pmod{\deg 2}$ and
     \begin{equation*}
         f(G(X,Y)) = f(F(Y,X)) = F(f(Y),f(X)) = G(f(X),f(Y))
     \end{equation*}
     Therefore, by the uniqueness in Lemma \ref{lemma: constructive_lemma_lubin_Tate},
     $F(X,Y) = G(X,Y) = F(Y,X)$. \par
     For equation \ref{eq: lubin-Tate_assoc}, let $G_1(X,Y,Z) = F_f(F_f(X,Y),Z)$ and
-    $G_2(X,Y,Z) = F_f(X,F_f(Y,Z))$, and we can check that $G_i(X,Y,Z) \equiv X+Y+Z (\modd \deg 2)$ and
+    $G_2(X,Y,Z) = F_f(X,F_f(Y,Z))$, and we can check that $G_i(X,Y,Z) \equiv X+Y+Z \pmod{\deg 2}$ and
     \begin{equation*}
         f(G_i(X,Y,Z)) = G_i(f(X),f(Y),f(Z))
     \end{equation*}
@@ -103,8 +103,8 @@ field, and let $\pi$ be a uniformizer of $\calO_K$.
     For each $a \in \calO_K$ and $f, g \in \calF_\pi$, let $[a]_{f,g} (X)$ be the unique
     solution of
     \begin{align}
-        [a]_{f,g} (X) &\equiv aX (\modd \deg 2) \\
-        f([a]_{f,g}(X)) &= [a]_{f, g}(g(X))
+        [a]_{f,g} (X) &\equiv aX \pmod{\deg 2}, \\
+        f([a]_{f,g}(X)) &= [a]_{f, g}(g(X)).
     \end{align}
     In particular, we write $[a]_{f}$ instead of $[a]_{f,f}$ to simplify notation.
 \end{definition}
@@ -117,7 +117,7 @@ field, and let $\pi$ be a uniformizer of $\calO_K$.
 
 \begin{proof}
     For simplicity, we denote $[a]_{f,g}$ by $h$. We have $h(F_g(X,Y)) \equiv aX+aY
-    (\modd \deg 2)$, $F_f(h(X), h(Y)) \equiv aX+ aY (\modd \deg 2)$ and
+    \pmod{\deg 2}$, $F_f(h(X), h(Y)) \equiv aX+ aY \pmod{\deg 2}$ and
     \begin{align*}
         h\circ F_g(g(X),g(Y)) &= h\circ g(F_g(X,Y)) = f \circ h (F_f(X,Y)) \\
         F_f(h(g(X), h(g(Y)))) &= F_f(f(h(X)), f(h(Y))) = f \circ F_f(h(X), h(Y))
@@ -130,7 +130,7 @@ field, and let $\pi$ be a uniformizer of $\calO_K$.
 \end{theorem}
 
 \begin{proof}
-    We have $[a]_{f,g} ([b]_{g,h}(X)) \equiv abX (\modd \deg 2)$ and
+    We have $[a]_{f,g} ([b]_{g,h}(X)) \equiv abX \pmod{\deg 2}$ and
     \begin{equation*}
         f \circ ([a]_{f, g} \circ [b]_{g,h}) = [a]_{f,g} \circ (g \circ [b]_{g,h}) = [a]_{f,g}\circ [b]_{g,h} \circ h
     \end{equation*}
@@ -143,7 +143,7 @@ field, and let $\pi$ be a uniformizer of $\calO_K$.
 \end{theorem}
 
 \begin{proof}
-    Notice that $F_f([a]_{f,g}(X), [b]_{f,g}(X)) \equiv (a+b)X (\modd \deg 2)$ and
+    Notice that $F_f([a]_{f,g}(X), [b]_{f,g}(X)) \equiv (a+b)X \pmod{\deg 2}$ and
     \begin{equation*}
         f(F_f([a]_{f,g}(X), [b]_{f,g}(X))) = F_f(f\circ [a]_{f,g}(X), f\circ [b]_{f,g}(X))
             = F_f([a]_{f,g}\circ f(X), [b]_{f,g}\circ f(X))

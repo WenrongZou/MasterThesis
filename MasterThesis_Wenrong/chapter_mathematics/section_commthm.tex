@@ -39,16 +39,16 @@ Before proving the theorem, we first discuss several lemmas.
 
     For the case $i = 1$, we have
     \begin{equation*}
-        H(X,Y) \equiv (1+ r_1(X)) Y\quad  (\modd Y ^ 2)
+        H(X,Y) \equiv (1+ r_1(X)) Y \pmod{Y ^ 2}
     \end{equation*}
     Combining this with equation $\ref{eq: H eq}$, we have
 
     \begin{equation}
         H(X_1, H(X_2,Y)) \equiv (1 + r_1(X_1)) H(X_2,Y) \equiv (1+ r_1(X_1)) (1 + r_1(X_2)) Y
-        \quad (\modd  Y ^ 2)
+        \pmod{Y ^ 2}
     \end{equation}
     \begin{equation}
-        H(X_1+_F X_2, Y) \equiv (1+ r_1(X_1+_F X_2)) Y \quad (\modd Y ^ 2)
+        H(X_1+_F X_2, Y) \equiv (1+ r_1(X_1+_F X_2)) Y \pmod{Y ^ 2}
     \end{equation}
     Therefore, $(1 + r_1(X_1)) (1+ r_1(X_2)) = 1 + r_1(X_1 + _F X_2)$, i.e.
     \begin{equation}
@@ -57,15 +57,15 @@ Before proving the theorem, we first discuss several lemmas.
     This means $r_1(X)$ is a formal group homomorphism from $F$ to $\bfG_m$. \par
     For the case $i > 1$, we have
     \begin{equation*}
-        H(X,Y) \equiv Y + r_i(X) Y ^ i \quad (\modd Y ^ {i + 1})
+        H(X,Y) \equiv Y + r_i(X) Y ^ i \pmod{Y ^ {i+ 1}}
     \end{equation*}
     According to equation $\ref{eq: H eq}$, we have
     \begin{equation}
         H (X_1, H(X_2, Y)) \equiv H(X_2, Y) + r_i(X_1) H(X_2, Y) ^ i \equiv Y + r_i(X_2)Y ^ i +
-            r_i(X_1) Y ^ i \quad (\modd Y ^ i).
+            r_i(X_1) Y ^ i \pmod{Y ^ i}.
     \end{equation}
     \begin{equation}
-        H (X_1+_F X_2, Y) \equiv Y + r_i(X_1+_F X_2) Y ^ i \quad (\modd Y ^ {i + 1}).
+        H (X_1+_F X_2, Y) \equiv Y + r_i(X_1+_F X_2) Y ^ i \pmod{Y ^ {i + 1}}.
     \end{equation}
     Therefore, $r_i(X_1+_F X_2) = r_i(X_1) + r_i(X_2)$, which means $r_i(X)$ is a formal group
     homomorphism from $F$ to $\bfG_a$.
@@ -89,7 +89,7 @@ Before proving the theorem, we first discuss several lemmas.
     Suppose $F$ is non-commutative, i.e. $C(X,Y) \neq 0$. Let $C_n(X,Y)$ be the homogeneous
     component in $C(X,Y)$ of degree $n$, and let $m$ be the least integer such that
     $C_m(X,Y)$ is non-zero. We have
-    \[ \alpha (C(X,Y)) \equiv a_r C_m(X,Y) ^ r \quad (\modd \deg (mr + 1)) \]
+    \[ \alpha (C(X,Y)) \equiv a_r C_m(X,Y) ^ r \pmod{\deg (mr + 1)}. \]
     Since $a_r \in R$ and $R$ is an integral domain, this term is non-zero, which contradicts
     the assumption that $\alpha (C(X,Y))= 0$.
 \end{proof}
