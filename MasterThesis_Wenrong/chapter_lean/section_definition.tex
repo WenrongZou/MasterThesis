@@ -140,7 +140,8 @@ theorem subst_addInv_eq_zero : F.toFun.subst ![X, (addInv_X F)] = 0 := by
 
 \subsection{Examples of formal groups}
 
-The basic examples of formal group laws are the additive formal group law $\bfG_a$ and the multiplicative formal group law $\bfG_m$. We formalize them using our definition of \lstinline{FormalGroup R}.
+The basic examples of formal group laws are the additive formal group law $\GG_a$ and the
+multiplicative formal group law $\GG_m$. We formalize them using our definition of \lstinline{FormalGroup R}.
 \begin{lstlisting}
 def Gₐ : FormalGroup R where
   toFun := X₀ + X₁

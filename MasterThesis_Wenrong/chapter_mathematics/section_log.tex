@@ -1,51 +1,55 @@
-\section{Logarithm}
+\section{The formal logarithm}
 
 In this section, we discuss the formal logarithm of a formal group law. By
-integrating an invariant differential form, we expect to obtain a homomorphism
-to the additive group. However, integration introduces denominators. In the case
-of characteristic $0$, or over torsion-free rings, things work as expected.
+integrating an invariant differential form, we could hope to obtain a homomorphism
+to the additive group. However, this does not work out in general, because integration introduces
+denominators. In the case that
+$R$ of characteristic $0$, or torsion-free rings, let $F$ be a formal group over $R$,
+we obtain a formal group homomorphism from $F$ to additive formal group law $\GG_a$ over a ring
+$K \coloneqq R \otimes \QQ$.
 
 From now on, we fix a torsion-free ring $R$ and let $K = R \otimes \QQ$.
 
 \begin{definition}[{\cite[Chap.~4 Definition 5.1]{silverman2009arithmetic}}]
 Let $F$ be a formal group law over $R$, and let $\omega(X)$ be its normalized invariant differential.
-Write $\omega(X) = (1 + a_1 X + a_2 X ^ 2 + \cdots) dX$. Then the formal logarithm of $F$
+Write $\omega(X) = (1 + a_1 X + a_2 X ^ 2 + \cdots) dX$. Then \emph{the formal logarithm} of $F$
 is defined by
     \[ \log_F (X) := \int \omega = X + \frac{a_1}{2} X^ 2 + \frac{a_2}{3} X ^ 3 + \cdots \in K [\![X]\!] \]
-Since the coefficient of $X$ in $\log_F(X)$ is $1$, which is invertible in $K$,
-$\exp_F (X)$ is defined to be the unique power series over $K$ satisfying
+Since the coefficient of $X$ in $\log_F(X)$ is $1$, which is invertible in $K$.
+Then $\log_F(X)$ is invertible w.r.t. composition in $K[\![X]\!]$ and we can define $\exp_F (X)$ to
+be the unique power series over $K$ satisfying
     \[ \exp_F( \log_F (X)) = X. \]
 \end{definition}
 
 \begin{example}
-    The normalized invariant differential on $\bfG_a$ is $dX$, so we have
-    \[ \log_{\bfG_a} (X) = X, \ \exp_{\bfG_a}(X) = X. \]
-    The normalized invariant differential on $\bfG_m$ is $(1 + X) ^ {-1} dX$, so we have
-    \[ \log_{\bfG_m} (X) = \sum_{n=1}^{\infty} \frac{(-1)^{n-1}X ^ n}{n}  \]
-    \[ \exp_{\bfG_m} (X) = \sum_{n=1}^{\infty} \frac{X^n}{n!} \]
+    The normalized invariant differential on $\GG_a$ is $dX$, so we have
+    \[ \log_{\GG_a} (X) = X, \ \exp_{\GG_a}(X) = X. \]
+    The normalized invariant differential on $\GG_m$ is $(1 + X) ^ {-1} dX$, so we have
+    \[ \log_{\GG_m} (X) = \sum_{n=1}^{\infty} \frac{(-1)^{n-1}X ^ n}{n} \quad \text{and} \]
+    \[ \exp_{\GG_m} (X) = \sum_{n=1}^{\infty} \frac{X^n}{n!}. \]
 \end{example}
 
-As expected, the formal logarithm of $F$ is a homomorphism from $F$ to $\bfG_a$.
-However, since $\log_F$ introduces denominators, this is no longer a homomorphism over $R$;
-it is a homomorphism over $K$. Moreover, it is an isomorphism over $K$.
+% Therefore, the formal logarithm $\log_F$ is a homomorphism from $F$ to $\GG_a$ over $K$.
+% Actually, it is an isomorphism over $K$.
 
 \begin{proposition}[{\cite[Chap.~4 Proposition 5.2]{silverman2009arithmetic}}]
     Let $F$ be a formal group law over $R$. Then $\log_F(X)$ is a formal group isomorphism from
-    $F$ to $\bfG_a$ over $K$.
+    $F$ to $\GG_a$ over $K$.
 \end{proposition}
 
 \begin{proof}
     Let $\omega(X)$ be the normalized invariant differential for $F$. Then we have
     \[\omega \circ F = \omega .\]
-    Integrating this, we have
+    Integrating this with respect to $X$, we have
     \[\log_F(F(X,Y)) = \log_F(X) + C(Y). \]
-    where $C(Y) \in K[\![Y]\!]$. Let $X = 0$ in the above equation. Then we have
+    where $C(Y) \in K[\![Y]\!]$. Substitute $X = 0$ in the above equation. Then we have
     \[ C(Y) = \log_F (0) + C (Y) = \log_F(F(0,Y)) = \log_F (Y). \]
     Hence,
     \[\log_F(F(X,Y)) = \log_F(X) + \log_F(Y). \]
-    This proves that $\log_F(X)$ is a homomorphism from $F$ to $\bfG_a$. Furthermore,
-    since $\exp_F$ is its inverse, $\exp_F$ is a homomorphism from $\bfG_a$ to $F$.
-    Therefore, $\log_F$ is an isomorphism.
+    This proves that $\log_F(X)$ is a homomorphism from $F$ to $\GG_a$.
+    Since the coefficient of $X$ in $\log_F$ is invertible in $K$,
+    by Lemma \ref{lem: hom_iff_coeff_unit}, $\log_F$ is a formal group isomorphism
+    from $F$ to $\GG_a$.
 \end{proof}
 
 \begin{corollary}
@@ -54,9 +58,9 @@ it is a homomorphism over $K$. Moreover, it is an isomorphism over $K$.
 \end{corollary}
 
 \begin{proof}
-    The assumption that $R$ is torsion free guarantees the existence of $\log_F$ and $\exp_F$.
+    The assumption that $R$ is torsion-free guarantees the existence of $\log_F$ and $\exp_F$.
     Then
-        \[F(X,Y) = \exp_F(\log_F(X) + \log_F(Y)). \]
+        \[F(X,Y) = \exp_F (\log_F (F(X,Y))) = \exp_F(\log_F(X) + \log_F(Y)). \]
     Therefore, we have $F(X,Y) = F(Y,X)$.
 \end{proof}
 

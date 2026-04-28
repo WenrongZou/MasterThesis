@@ -1,16 +1,18 @@
 \section{Height}
 
+In this section, we fix a prime number $p$ and a field $k$ with characteristic $p$.
+Let $F$ be a commutative formal group law over $k$. In this section,
+unless otherwise specified, all formal group laws are assumed to be
+commutative.
+
 In this section, we discuss the definition and properties of the height of a formal group law.
-Let $F(X,Y)$ be a commutative formal group law over a ring $R$, fixed throughout this section.
 
-From now on, we fix a prime number $p$ and assume that $R$ has characteristic $p$.
-
-\begin{definition}[Height of homomorphism {\cite[Chap.~4 Definition 7.1]{silverman2009arithmetic}}]
-    Let $F, G$ be formal group laws over $R$, and let $f \in R[\![X]\!]$ be a homomorphism from
-    $F(X,Y)$ to $G(X,Y)$. Then the height of $f$, denoted by $\htt(f)$, is the largest number $h$
-    such that
-    \[f(X) = g(X ^ {p ^ h})\]
-    for some power series $g(X)$ over $R$. In particular, if $f= 0$, then we say $\htt(f) = \infty$.
+\begin{definition}[Height of homomorphism, {\cite[Chap.~4 Definition 7.1]{silverman2009arithmetic}}]
+    Let $F, G$ be formal group laws over $k$, and let $f \in R[\![X]\!]$ be a homomorphism from
+    $F(X,Y)$ to $G(X,Y)$. Then the \emph{height of homomorphism} $f$, denoted by $\htt(f)$,
+    is the largest number $h$ such that
+    \[f(X) = g(X ^ {p ^ h}), \]
+    for some power series $g(X)$ over $R$. If $f= 0$, then we set $\htt(f) = \infty$.
 \end{definition}
 
 \begin{remark}
@@ -18,104 +20,222 @@ From now on, we fix a prime number $p$ and assume that $R$ has characteristic $p
         \[[m](X) = m X + \cdots\]
 \end{remark}
 
-\begin{definition}[Height of formal group]
-    The height of a formal group law $F$ is defined to be the height of the $p$-series $[p]_F(X)$,
-    denoted by $\htt (F)$.
-    More precisely, let $v_n$ be the $p^n$-th coefficient of the $p$-series $[p](X)$. We say
-    $F(X,Y)$ has height $n$ if $v_i = 0$ for all $i < n$ and $v_n \neq 0$ in $R$.
-    In particular, we say $F(X,Y)$ has infinite height
-    if $[p](X) = 0$.
-\end{definition}
-
-
-\begin{remark}
-    From the remark above, we have $v_0 = p$. Then $F(X,Y)$ has height $\ge 1$ if and only if
-    $p = 0$ in $R$, which is equivalent to saying either $R$ has characteristic $p$ or $R$ is trivial.
-    Also, $F(X,Y)$ has height exactly $0$ if and only if $p$ is invertible in $R$.
-\end{remark}
-
-\begin{example}
-    The $p$-series for the multiplicative formal group
-    $\bfG_m(X,Y) = (1 + X)(1 + Y) - 1$ is $[p](X) = (1 + X)^p - 1 = X ^ p$, so $\bfG_m(X,Y)$
-    has height exactly $1$. For the additive formal group law $\bfG_a(X,Y)$, the $p$-series is
-    $[p](X) = p X = 0$, so $\bfG_a(X,Y)$ has infinite height.
-\end{example}
-
-\begin{proposition}
-    Let $F(X,Y)$ and $G(X,Y)$ be formal group laws over a ring $R$. Then $F(X,Y)$ and $G(X,Y)$ have
-    the same height.
-\end{proposition}
-
-\begin{proof}
-    Let $g(X,Y)$ be a formal group isomorphism from $F(X,Y)$ to $G(X,Y)$,
-    and let $[p]_F(X)$ and $[p]_G(X)$ be the $p$-series for $F(X,Y)$ and $G(X,Y)$, respectively.
-    Note that
-    \begin{equation*}
-        [p]_G (X) = (g \circ [p]_F \circ g^{-1}) (X)
-    \end{equation*}
-    It follows that the heights of $F(X,Y)$ and $G(X,Y)$ are the same.
-\end{proof}
-
-\begin{remark}
-    The additive and multiplicative formal groups are isomorphic over a ring $R$ of
-    characteristic $p$.
-\end{remark}
-
-\begin{proposition}[{\cite[Chap.~4 Proposition 7.3]{silverman2009arithmetic}}]
-    Let $F,G,H$ be formal group laws over $R$, and let
-    \[F \stackrel{f}{\longrightarrow} G \stackrel{g}{\longrightarrow} H \]
-    be a chain of homomorphisms defined over $R$. Then
-    \[\htt(g \circ f) = \htt(f) + \htt (g) \]
-\end{proposition}
-
-\begin{proof}
-    Denote $f (X) = f_1 (X ^ {p ^ {\htt (f)}})$ and $g(X) = g_1 (X ^ {p ^ {\htt (g)}})$. Then
-    \[(g\circ f) (X) = g_1 (f_1 (X ^ {p ^ {\htt (f)}}) ^ {\htt (g)})
-        = g_1 (\tilde{f}_1(X ^ {\htt(f) + \htt(g)}))\]
-    where $\tilde{f}_1 (X) = \frob ^ {\htt(g)}_* f_1(X)$, namely raising each coefficient of
-    $f_1$ to the $p^{\htt(g)}$-th power.
-\end{proof}
-
 \begin{proposition}[{\cite[Chap.~4 Proposition 7.2]{silverman2009arithmetic}}]
-    Let $F, G$ be formal group laws over $R$, and let $f$ be a homomorphism from $F$ to $G$ defined over
-    $R$. Then
+    Let $F, G$ be formal group laws over $k$, and let $f$ be a nonzero
+    homomorphism from $F$ to $G$ defined over
+    $k$. Then
     \begin{enumerate}
-        \item If $f'(0) = 0$, then $f(X) = f_1(X ^ p)$ for some $f_1(X) \in R[\![X]\!]$. That is,
+        \item If $f'(0) = 0$, then $f(X) = f_1(X ^ p)$ for some $f_1(X) \in k[\![X]\!]$. That is,
             $\htt(f) \ge 1$.
+        \item There is a natural number $m$ such that $f(X) = h(X^{p^m})$ such that
+            $h'(0) \neq 0$.
         \item Write $f(X) = g(X^ {p^{\htt(f)}})$. Then $g'(0) \neq 0$.
     \end{enumerate}
+    \label{prop: equiv_def_height}
 \end{proposition}
 
 \begin{proof}
-    The proof of this proposition needs results discussed in the section on
-    invariant differentials.
-
-
-    For the first part of this proposition, let $\omega_F, \omega_G$ be the normalized invariant differentials of $F$ and $G$,
+    \textit{Proof of Part (1):} let $\omega_F, \omega_G$ be the normalized invariant differentials of $F$ and $G$,
     respectively. According to Corollary \ref{cor: omega_hom_a}, we have
     \begin{align*}
         0 &= f'(0) \omega_F \\
          & = \omega_G \circ f
     \end{align*}
+
     If we write $\omega_G(X) = P_G(X) dX$, then we have
     \[ \omega_G \circ f(X) = \omega_G(f(X)) = P_G(f(X)) f'(X) dX. \]
-    Then $f'(X) = 0$, since $P_G(X)$ is of the form $(1 + \cdots)$.
 
-    For the second part of this proposition, we first denote $q = p ^ {\htt(f)}$
-    and $F_q = \phi_* F$, where $\phi$ is a ring endomorphism,
+    Then $f'(X) = 0$, since $P_G(X)$ is of the form $(1 + O(X))$.
+    It follows that there is $f_1(X)$ such that
+    $f(X) = f_1(X^p)$.
+
+    \textit{Proof of Part (2):} if $f'(0) \neq 0$, then take $m$ to be $0$.
+    If $f'(0) = 0$, then by the Part (1) of this proposition, we have that
+    $f(X) = f_1(X ^ p)$ for some $f_1(X) \in k[\![X]\!]$. If $f_1'(0) = 0$, then
+    we just take $m = 1$. If $f_1'(0) = 0$, we denote $F_p = \varphi_* F$,
+    where $\varphi$ is an endomorphism of $k$,
+    mapping $a \mapsto a ^ p$. Then $F_p$ is also a formal group law. Now we
+    claim that $f_1(X)$ is a homomorphism from $F_p$ to G. We prove this claim
+    by the following calculation:
+    \begin{align*}
+        f_1(F_p(X,Y)) & = f_1 (F(X,Y) ^ p)\\
+        & = f_1 (X ^ p) \circ F \\
+        & = f(X) \circ F \\
+        & = f_1 \circ F.
+    \end{align*}
+
+    Then again by the Part (1) of this proposition, we have that there is a $f_2(X) \in k[\![X]\!]$,
+    such that $f_1(X) = f_2(X^p)$. Recall that the order of a nonzero power series
+    is defined to be the least natural number $n$ sucht that the $n$-th coefficient
+    of it is nonzero. Notice that the order $f_i$ decline after each process.
+    Then repeating this process at most $n$ times where $n$ is the order
+    of $f(X)$, we will get a natural number $m$ satisfying the condition.
+
+
+    \textit{Proof of Part (3):} we first denote $q = p ^ {\htt(f)}$
+    and $F_q = \phi_* F$, where $\phi$ is an endomorphism of $k$,
     mapping $a \mapsto a ^ {q}$. Then $F_q$ is also a formal group law. Now we claim that
     $g(X)$ is a homomorphism from $F_q$ to $G$. We prove this claim by the following calculation:
     \begin{align*}
         g(F_q(X,Y)) & = g (F(X,Y) ^ q)\\
         & = g (X ^ q) \circ F \\
         & = f(X) \circ F \\
-        & = g \circ F
+        & = g \circ F.
     \end{align*}
-    The first equation is guaranteed by the characteristic of $R$.
+    The first equation is guaranteed by the characteristic of $k$.
     If $g'(0) \neq 0$, then by the first assertion of the proposition, there is a
     $g_1(X)$ such that $g(X) = g'(X ^ p)$. It follows that $f(X) = g_1(X^{p^{\htt(f) + 1}})$, which
     contradicts the definition of the height of $f$.
 \end{proof}
+
+\begin{remark}
+    If we write $f(X) = \sum_{n=1}^{\infty} a_n X ^ n$.
+    Let $n$ be the least postive integer such that $a_n$ is nonzero, by Part (2) and (3) of the
+    Proposition \ref{prop: equiv_def_height},
+    $n$ is of the form $p ^ t$ for some natural number $t$.
+    Then we have a alternative description of height of formal group
+    homomorphism $f(X)$ from $F$ to $G$, that is the height of $f(X)$ can be
+    defined to be the this $t$.
+    \label{rem: alter_def_height}
+\end{remark}
+
+\begin{definition}[Height of formal group]
+    The \emph{height of a formal group law} $F$ is defined to be the height of
+    the $p$-series $[p]_F(X)$, denoted by $\htt (F)$.
+    % More precisely, let $v_n$ be the $p^n$-th coefficient of the $p$-series $[p](X)$. We say
+    % $F(X,Y)$ has height $n$ if $v_i = 0$ for all $i < n$ and $v_n \neq 0$ in $R$.
+    % In particular, we say $F(X,Y)$ has infinite height
+    % if $[p](X) = 0$.
+\end{definition}
+
+
+% \begin{remark}
+%     From the remark above, we have $v_0 = p$. Then $F(X,Y)$ has height $\ge 1$ if and only if
+%     $p = 0$ in $R$, which is equivalent to saying either $R$ has characteristic $p$ or $R$ is trivial.
+%     Also, $F(X,Y)$ has height exactly $0$ if and only if $p$ is invertible in $R$.
+% \end{remark}
+
+\begin{example}
+    The $p$-series for the multiplicative formal group
+    $\GG_m(X,Y) = (1 + X)(1 + Y) - 1$ is $[p](X) = (1 + X)^p - 1 = X ^ p$, so $\GG_m(X,Y)$
+    has height exactly $1$. For the additive formal group law $\GG_a(X,Y)$, the $p$-series is
+    $[p](X) = p X = 0$, so $\GG_a(X,Y)$ has infinite height.
+\end{example}
+
+\begin{proposition}
+    Let $F(X,Y)$ and $G(X,Y)$ be isomorphic formal group laws over $k$. Then $F(X,Y)$ and $G(X,Y)$ have
+    the same height.
+\end{proposition}
+
+\begin{proof}
+    Let $g(X)$ be a formal group isomorphism from $F(X, Y)$ to $G(X, Y)$,
+    and let $[p]_F(X)$ and $[p]_G(X)$ be the $p$-series for $F(X, Y)$ and $G(X, Y)$,
+    respectively. Note that
+    \[ [p]_G(X) = (g \circ [p]_F \circ g^{-1})(X). \]
+    Therefore, $[p]_F(X)$ and $[p]_G(X)$ have the same order, and the coefficients of
+    their lowest-degree non-zero terms are equal. By Remark \ref{rem: alter_def_height},
+    it follows that the heights of $F(X, Y)$ and $G(X, Y)$ are the same.
+\end{proof}
+
+% \begin{remark}
+%     The additive and multiplicative formal groups are isomorphic over a ring $R$ of
+%     characteristic $p$.
+% \end{remark}
+
+\begin{proposition}
+    Let $F, G$ be formal group law over $k$. Assume that
+    $\htt(F) \neq \htt(G)$, then there is only zero homomorphism from $F$ to $G$.
+\end{proposition}
+
+\begin{proof}
+    We prove the proposition by contradiction. Assume that there is a nonzero homomorphism $f$
+    from $F$ to $G$. Note that
+
+    \[ f([p]_F(X)) = [p]_G (f(X)). \]
+
+    This is impossible, since the orders of $[p]_F(X)$ and $[p]_G(X)$ are
+    different and $f(X) \neq 0$.
+\end{proof}
+
+\begin{proposition}[{\cite[Chap.~4 Proposition 7.3]{silverman2009arithmetic}}]
+    Let $F,G,H$ be formal group laws over $k$, and let
+    \[F \stackrel{f}{\longrightarrow} G \stackrel{g}{\longrightarrow} H \]
+    be a chain of homomorphisms defined over $k$. Then
+    \[\htt(g \circ f) = \htt(f) + \htt (g). \]
+
+    \label{prop: height_mul}
+\end{proposition}
+
+\begin{proof}
+    Denote $f (X) = f_1 (X ^ {p ^ {\htt (f)}})$ and $g(X) = g_1 (X ^ {p ^ {\htt (g)}})$. Then
+    \[(g\circ f) (X) = g_1 (f_1 (X ^ {p ^ {\htt (f)}}) ^ {\htt (g)})
+        = g_1 (\tilde{f}_1(X ^ {\htt(f) + \htt(g)}))\]
+    where $\tilde{f}_1 (X)$ is obtained from $f_1(X)$ raising each coefficient of
+    $f_1(X)$ to the $p^{\htt(g)}$-th power.
+\end{proof}
+
+\begin{lemma}
+    Let $R$ be a commutative ring, $I, J$ be an index set and
+    $F \in R[\![X_I]\!]$. Let $f_i, i\in I$ be a set of power series in
+    $R[\![X_J]\!]$ with the property that the constant
+    coefficient of each $f_i, i\in I$ is nilpotent in $R$.
+    Let $G(X_J)$ be the power series obtained by substituting
+    $f_i$ into $F$. Then we have that
+    the order of $G(X_J)$ is at least the multiplication of the order of $F$
+    and the least of the order of $f_i$.
+
+    \label{lem: order_subst}
+\end{lemma}
+
+\begin{proof}
+    Recall that for any power series $f(X)$, the order of $f(X)$ is at least
+    $n$ is equivalent to for all $j < n$, the $j$-th homogeneous component
+    $f(X)$ is zero.
+
+    Then it is enough to show that for any $j$ less than the multiplication of
+    the order of $F$ and the least of the order of $f_i$, then the $j$-th homogeneous
+    component of $G$ is zero. However, the least possible nonzero homogeneous component in
+    $G(X)$ is at least of degree the multiplication of
+    the order of $F$ and the least of the order of $f_i$.
+\end{proof}
+
+\begin{proposition}[{\cite{hazewinkel1978formal}, Definition 18.3.2}]
+    Let $F$ be a formal group law over $k$, $f$ and $g$ be two formal group
+    endomorphisms of $F$. Then $F(f, g)$ is an endomorphism of $F$ and
+    $\htt (F(f,g)) \ge \min \{\htt (f), \htt(g)\}$.
+    \label{prop: height_add}
+\end{proposition}
+
+\begin{proof}
+    First, we show that $F(f,g)$ is an endomorphism of $F$. It follows from
+    the following calculation:
+    \begin{align*}
+        F(f(X), g(X)) \circ F(X,Y) &= F(f(F(X,Y)), g(F(X,Y))) \\
+        & = F(F(f(X),f(Y)), F(g(X), g(Y))) \\
+        & = F(F(f(X), g(X)), F(f(Y), g(Y))) \\
+        & = F(X,Y) \circ F(f(X), g(X)).
+    \end{align*}
+    By Lemma \ref{lem: order_subst} the fact that order of $F(X,Y)$ is $1$,
+    then the order $F(f(X), g(X))$ is lower order $f$ and $g$. Therefore,
+    by Remark \ref{rem: alter_def_height}, it follows that
+    $\htt (F(f,g)) \ge \min \{\htt (f), \htt(g)\}$.
+\end{proof}
+
+\begin{remark}
+    Let $i(X)$ be the additive inverse of formal group law $F$, i.e. the power
+    series such that $F(X, i(X)) = 0$.
+    Note that
+    \[i(X) \circ F(X,Y) = i(F(X,Y)) = F(i(Y), i(X)) = F(i(X), i(Y)). \]
+
+    Then $i(X)$ is an endomorphism of $F$. By Proposition \ref{prop: height_add} and
+    \ref{prop: height_mul}, we have that set of all endomorphisms over $k$ of $F$ form a
+    ring, denote as $\End_k(F)$. The multiplication is given by composition of power series and the addition
+    of $f, g \in \End_k(F)$ is defined to be $F(f,g)$. And the height function
+    $\htt$ defines a valuation on the ring $\End_k(F)$.
+\end{remark}
+
+Let $k$ be an algebraic closed field with characteristic $p$,
+formal group laws over $k$ is classified by the heights of them.
 
 \begin{theorem}[Lazard {\cite[Theorem IV]{lazard1955sur}}]
     Let $k$ be an algebraically closed field of characteristic $p$. Then two formal group laws

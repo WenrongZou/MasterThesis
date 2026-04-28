@@ -1,5 +1,5 @@
-\section{Definition and Basic Properties of One-Dimensional
-Formal Group Laws}
+\section{Definition and basic properties of one-dimensional
+formal group laws}
 
 Let $R$ be a commutative ring throughtout this chapter.
 
@@ -41,8 +41,8 @@ Let $R$ be a commutative ring throughtout this chapter.
 \begin{example}
     Two examples of commutative formal group laws are:
     \begin{align}
-        & \bfG_a (X,Y) = X + Y \quad \text{(the additive formal group law)} \\
-        & \bfG_m (X,Y) = X + Y + XY \quad \text{(the multiplicative formal group law)}
+        & \GG_a (X,Y) = X + Y \quad \text{(the additive formal group law)} \\
+        & \GG_m (X,Y) = X + Y + XY \quad \text{(the multiplicative formal group law)}
     \end{align}
     %% TODO: explain why there are called additive or multiplicative formal group law.
 \end{example}
@@ -133,6 +133,7 @@ Let $R$ be a commutative ring throughtout this chapter.
 \begin{lemma}
     The homomorphism $\alpha(X) : F(X,Y) \to G(X,Y) $ is an isomorphism if and only
     if $a_1$ is a unit in $R$, where $\alpha (X) = \sum_{i=1}^{\infty} a_i X ^ i $.
+    \label{lem: hom_iff_coeff_unit}
 \end{lemma}
 
 \begin{proof}
@@ -197,6 +198,44 @@ One of the most important endomorphisms of a commutative formal group is the $n$
     By induction, we deduce that $[n](X) = nX + O(X^2)$. As a result, for a ring $R$ of
     characteristic $p$, we have $[p](X) = a X ^ k + O(X ^ {k+1})$ for some $k> 1$.
 \end{remark}
+
+\begin{example}
+    The $p$-series of additive formal group law is $[p]_{\GG_a} (X) = p X$.
+    The $p$-series of multiplicative formal group law is $[p]_{\GG_m}(X) = (1+X)^p - 1$.
+\end{example}
+
+\begin{proposition}
+    Assume that $R$ is of characteristic $p$ and nontrivial. Then the additive formal group law
+    $\GG_a$ and the multiplicative formal group law $\GG_m$ over $R$ are not isomorphic.
+\end{proposition}
+
+\begin{proof}
+    Assume that $\GG_a$ is isomorphic to $\GG_m$, then there is a formal group
+    isomorphism $f(X)$ from $\GG_a$ to $\GG_m$.
+    By the definition of homomorphism of formal group law, we have that
+
+    \[ f([p]_{\GG_a}(X)) = [p]_{\GG_m}(f(X)). \]
+
+    Note that
+
+    \[[p]_{\GG_a}(X) = pX = 0 \quad \text{and} \quad [p]_{\GG_m} = (1+X) ^ p - 1 = X ^ p.\]
+
+    Then we have
+
+    \[f([p]_{\GG_a}(X)) = f(0) = 0 \quad \text{and} \quad [p]_{\GG_m}(f(X)) = (f(X))^p. \]
+
+    Therefore, we have the equality
+    \begin{equation}
+        (f(X)) ^ p = 0.
+        \label{eq: pow_zero}
+    \end{equation}
+
+    If we write
+    $f(X) = \sum_{n=1}^{\infty} a_n X ^ n$, then $a_1$ is invertible in $R$, because $f$ is
+    a formal group isomorphism. By equation \eqref{eq: pow_zero}, we have that $a_1 ^ p = 0$, which
+    contradicts to $a_1$ is invertible in $R$.
+
+\end{proof}
 
 \begin{proposition}
     Assume $R$ is of characteristic $p$. Then $[p](X) = 0$ or

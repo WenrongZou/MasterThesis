@@ -1,53 +1,63 @@
-\section{Invariant differential}
+\section{Invariant differentials}
 
-Let $F$ be a formal group law over $R$. In this setting, a differential form is of the form
-$P(X) d X$ for some $P(X) \in R[\![X]\!]$. In this section, we discuss those
+Let $F$ be a formal group law over $R$. In this setting, a differential form is an expression
+of the form
+$P(X) \, dX$ for some $P(X) \in R[\![X]\!]$. In this section, we discuss those
 differential forms that respect the group structure of $F$.
 
 \begin{definition}[{\cite[Chap.~4 Definition 4.1]{silverman2009arithmetic}}]
-    An invariant differential on a formal group law $F$ over $R$ is a differential form
-    $\omega (X) = P(X)dX$ with $P(X) \in R[\![X]\!]$ satisfying
+    An \emph{invariant differential} on a formal group law $F$ over a ring $R$ is a differential form
+    $\omega (X) = P(X)\, dX$ with $P(X) \in R[\![X]\!]$ satisfying
     \[\omega(X) \circ F(X,Y) = \omega (X).\]
     To be precise, $P(F(X,Y)) F_X (X,Y) = P(X)$, where $F_X(X,Y)$ is the partial derivative of
-    $F$ with respect to its first variable. An invariant differential is called normalized
+    $F$ with respect to its first variable. An invariant differential is called \emph{normalized}
     if $P(0) = 1$.
 \end{definition}
 
-Recall that a power series $f$ over $R$ is invertible in the ring of power series
+Recall that a power series $f$ over $R$ is invertible in $R[\![X]\!]$
 if and only if its constant coefficient is invertible in $R$.
 
 \begin{proposition}[{\cite[Chap.~4 Proposition 4.2]{silverman2009arithmetic}}]
     Let $F$ be a formal group law over $R$. Then there exists a unique normalized invariant
     differential on $F$. It is given by the formula
-    \[ \omega (X) = F_X (0,X) ^ {-1} dX. \]
+    \[ \omega (X) = F_X (0,X) ^ {-1} \, dX. \]
     Moreover, every invariant differential on $F$ can be written as $a \omega$ for some $a \in R$.
 \end{proposition}
 
 \begin{proof}
-    Write $\omega (X) = P(X) dX$. Since $\omega$ is invariant, we must have
+    Write $\omega (X) = P(X)\, dX$. Since $\omega$ is invariant, we must have
     \[ P(F(X,Y)) F_X(X,Y) = P (X). \]
     Let $X = 0$ in the above equation and use the fact that $F(0 ,Y) = Y$.
     Then we have
     \[ P(Y) F_X(0, Y) = P (0). \]
-    Since $F_X(0,Y)$ is of the form $(1 + \cdots)$, $F_X(0,Y)$ is invertible in
-    $R[\![Y]\!]$. It follows that $P(X)$ is completely determined by the value $P(0)$.
+    Since $F_X(0,Y)$ is of the form $(1 + O(Y))$, $F_X(0,Y)$ is invertible in
+    $R[\![Y]\!]$. Here $O(Y)$ is a power series of order at least $1$. Then
+    \begin{equation}
+        P(Y) = P(0) F_X(0,Y) ^ {-1}.
+        \label{eq: diff_eq}
+    \end{equation}
+    i.e. $P(X)$ is completely determined by the value $P(0)$.
     Therefore, it is enough to verify that
-    \[ \omega = F_X(0,X) ^ {-1} dX \]
+    \[ \omega = F_X(0,X) ^ {-1}\, dX. \]
     is a normalized invariant differential.
 
-    It is equivalent to show
-    \[ F_X(0, F(X,Y)) ^{-1} F_X(X,Y) = F_X(0,X) ^ {-1}. \]
+    It is normalized since $F_X(0,X)$ is of the form $(1 + O(X))$. Hence, we just need to
+    show that $\omega$ is invariant, i.e.
+    \[ F_X(0, F(Y,Z)) ^{-1} F_X(Y,Z) = F_X(0,Y) ^ {-1}. \]
     Consider the associativity condition $F(F(X,Y),Z) = F(X,F(Y,Z))$ and differentiate it
     with respect to $X$. Then we have
     \[F_X(X,F(Y,Z)) = F_X(F(X,Y), Z) F_X(X,Y). \]
     Taking $X = 0$ above, we have
     \[F_X(0,F(Y,Z)) = F_X(Y,Z) F_X(0,Y). \]
-    This is exactly what we want. It is normalized since $F_X(0,X)$ is of the form $(1 + \cdots)$.
+    This is exactly what we want.
+
+    Finally, by equation \eqref{eq: diff_eq}, it follows that every invariant differential is
+    of form $a \omega$.
 \end{proof}
 
 \begin{example}
-    The normalized invariant differential on $\bfG_a$ is $dX$, and the normalized invariant
-    differential on $\bfG_m$ is $(1 + X) ^{-1} dX = \sum_{n=0}^{\infty} (-1)^n X ^ n d X$.
+    The normalized invariant differential on $\GG_a$ is $dX$, and the normalized invariant
+    differential on $\GG_m$ is $(1 + X) ^{-1}\, dX = \sum_{n=0}^{\infty} (-1)^n X ^ n\, d X$.
 \end{example}
 
 \begin{corollary}[{\cite[Chap.~4 Corollary 4.3]{silverman2009arithmetic}}]
@@ -76,16 +86,22 @@ if and only if its constant coefficient is invertible in $R$.
 
 \begin{proof}
     Let $\omega$ be the normalized invariant differential on $F$. We have discussed before
-    that $[p](X) = pX + \cdots$. Then by Corollary \ref{cor: omega_hom_a}, we have
+    that $[p](X) = pX + O(X^2)$. Then by Corollary \ref{cor: omega_hom_a},
+    together with $[p]'(0) = p$, we have
     \[ \omega \circ [p] = p \omega. \]
-    If we denote $\omega \circ [p] (X) = P(X) [p]' (X) dX$, then $P(X)$ is of the form $(1 + \cdots)$
-    since $\omega$ is a normalized invariant differential on $F$. Since $P(X)$ is invertible, we have
+    If we write $\omega(X) = P(X) \, dX$, then
+    \[\omega \circ [p] (X) = P(X) [p]'(X) \, dX. \]
+    It follows that $P(X) [p]'(X) \, dX = p \omega(X) = p P(X)\, dX. $
+    Since $\omega$ is a normalized invariant differential on $F$, then $P(X)$ is of the
+    form $(1 + O(X))$. It follows that $P(X)$ is invertible in
+    $R[\![X]\!]$. Therefore, we have
     \[[p]'(X) \in p R[\![X]\!]. \]
-    Then each coefficient $a_n$ of $[p](X)$ satisfies either
-    $p \mid n$ or $a_n \in p R$.
+    If we denote $[p](X) = \sum_{n=1}^{\infty} a_n X ^ n$. Then for each $n \in \NN_{>0}$
+    such that $p \nmid n$, then $a_n \in p R$.
+    % $a_n$ satisfies either $p \mid n$ or $a_n \in p R$.
 \end{proof}
 
-\begin{remark}
+\begin{example}
     Assume that $R$ is a ring of characteristic $p$. Then the $p$-series $[p]$ has the form
     $[p](X) = g(X ^ p)$ for some $g(X) \in R [\![X]\!]$.
-\end{remark}
+\end{example}

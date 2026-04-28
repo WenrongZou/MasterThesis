@@ -1,5 +1,11 @@
 \begin{thebibliography}{10}
 
+\bibitem{anderson1992rings}
+Frank~W. Anderson and Kent~R. Fuller.
+\newblock {\em Rings and Categories of Modules}, volume~13 of {\em Graduate
+  Texts in Mathematics}.
+\newblock Springer-Verlag, New York, 2 edition, 1992.
+
 \bibitem{Carneiro2019}
 Mario Carneiro.
 \newblock {\em The Type Theory of Lean}.

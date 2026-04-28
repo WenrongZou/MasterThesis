@@ -1,6 +1,5 @@
 \section{Commutativity theorem}
-In this section, we prove that `almost all' one-dimensional formal groups
-are commutative. More precisely,
+In this section, we provide a commutativity criterion for formal group laws. More precisely,
 
 \begin{theorem}[{\cite[Chap.~1 Theorem 6.1]{hazewinkel1978formal}}]
     Let $R$ be a ring. Then every one-dimensional formal group law over $R$ is commutative if
@@ -9,66 +8,105 @@ are commutative. More precisely,
     \label{comm_thm}
 \end{theorem}
 
-Before proving the theorem, we first discuss several lemmas.
+To prove this theorem, we need some auxiliary lemmas.
 
-\begin{lemma}[{\cite[Chap.~1 Lemma 6.2.1]{hazewinkel1978formal}}]
-    Let $F(X,Y)$ be a non-commutative one-dimensional formal group law over a ring
-    $R$. Then there exists a nonzero homomorphism from $F(X,Y)$ into $\bfG_a(X,Y)$ or into
-    $\bfG_m(X,Y)$.
-    \label{lem: non_com_hom}
+\begin{lemma}
+    Let $F$ be a formal group law over a commutative ring $R$, then we have the following results:
+    \begin{enumerate}
+        \item $F$ is commutative if and only if $F(X, F(Y, i(X))) = Y$.
+        \item $F$ is commutative if and only if $F(X, F(Y, F(i(X), i(Y)))) = 0$.
+    \end{enumerate}
+    \label{lem: comm_iff}
 \end{lemma}
 
 \begin{proof}
+    By definition,
+    \[
+    \begin{aligned}
+        F \text{is commutative} \iff F(X,Y) = F(Y,X).
+    \end{aligned} \]
+    \textit{Proof of Part (1):}
+    \[
+    \begin{aligned}
+        F(X,Y) = F(Y,X) & \iff F(F(X,Y), i(X)) = F(F(Y,X), i(X)) \\
+        & \iff F(X, F(Y, i(X))) = Y.
+    \end{aligned}\]
+
+    \textit{Proof of Part (2):}
+    \[
+    \begin{aligned}
+        F(X,Y) = F(Y,X) & \iff F(X, F(Y, i(X))) = Y \\
+        & \iff F(F(X, F(Y, i(X))), i(Y)) = F(Y, i(Y)) \\
+        & \iff F(X, F(Y, F(i(X), i(Y)))) = 0.
+    \end{aligned}\]
+\end{proof}
+
+\begin{lemma}[{\cite[Chap.~1 Lemma 6.2.1]{hazewinkel1978formal}}]
+    Let $F(X,Y)$ be a non-commutative one-dimensional formal group law over a ring
+    $R$. Then there exists a nonzero homomorphism from $F(X,Y)$ into $\GG_a(X,Y)$ or into
+    $\GG_m(X,Y)$.
+    \label{lem: non_com_hom}
+\end{lemma}
+
+
+\begin{proof}
     For simplicity, we denote $F(X,Y)$ by $X +_F Y$ and its inverse $i(X)$ by $-_F X$.
-    Let $H(X,Y) = X + _F Y + (-_F X)$. We have $H(0,Y) = Y$. Since $F(X,Y)$ is non-commutative,
+    Let $H(X,Y) = F(X, F(Y, i(X)))$.
+    By Lemma \ref{lem: comm_iff} and $F(X,Y)$ is non-commutative,
     we have
-    \begin{equation}
-        H(X,Y) = Y + \sum _{i=1}^\infty r_n(X) Y ^ n
-    \end{equation}
-
-    with $r_n(X) \neq 0$ for some $n$. Otherwise, $H(X,Y) = Y$, which means that $F(X,Y)$
-    is commutative. Since $H(0,Y) = Y$, we have $r_n(0) = 0$ for all $n$. By
+    \[H(X,Y) = Y + \sum _{i=1}^\infty r_n(X) Y ^ n,\]
+    with $r_n(X) \neq 0$ for some $n$. Since $H(0,Y) = F(0, F(Y, i(0))) = Y$, we have $r_n(0) = 0$ for all $n$. By
     associativity of $F(X,Y)$, we have
-
-    \begin{equation}
-        H(X_1,H(X_2,Y)) = H(X_1+_F X_2, Y)
-        \label{eq: H eq}
-    \end{equation}
+    \[
+    \begin{aligned}
+        H(X_1,H(X_2,Y)) &= X_1 +_F H(X_2,Y) +_F (-_F (X_1)) \\
+        & = X_1 +_F (X_2 +_F Y +_F (-_F X_2)) +_F (-_F (X_1)) \\
+        & = (X_1 +_F X_2) +_F Y +_F (-_F (X_1 +_F X_2)) \\
+        &= H(X_1+_F X_2, Y)
+    \end{aligned}
+    \]
+    % \begin{equation}
+    %     H(X_1,H(X_2,Y)) = H(X_1+_F X_2, Y)
+    %     \label{eq: H eq}
+    % \end{equation}
 
     Let $i$ be the least integer such that $r_i(X) \neq 0$.
 
-    For the case $i = 1$, we have
+    \textit{For the case $i = 1$:} we have
     \begin{equation*}
         H(X,Y) \equiv (1+ r_1(X)) Y \pmod{Y ^ 2}
     \end{equation*}
-    Combining this with equation $\ref{eq: H eq}$, we have
 
-    \begin{equation}
-        H(X_1, H(X_2,Y)) \equiv (1 + r_1(X_1)) H(X_2,Y) \equiv (1+ r_1(X_1)) (1 + r_1(X_2)) Y
-        \pmod{Y ^ 2}
-    \end{equation}
-    \begin{equation}
-        H(X_1+_F X_2, Y) \equiv (1+ r_1(X_1+_F X_2)) Y \pmod{Y ^ 2}
-    \end{equation}
+    Combining this with equation $H(X_1,H(X_2,Y)) = H(X_1+_F X_2, Y)$, we have
+    \[
+    \begin{aligned}
+        H(X_1, H(X_2,Y)) &\equiv (1 + r_1(X_1)) H(X_2,Y) \\
+         &\equiv (1+ r_1(X_1)) (1 + r_1(X_2)) Y
+        \pmod{Y ^ 2}, \\
+        H(X_1+_F X_2, Y) &\equiv (1+ r_1(X_1+_F X_2)) Y \pmod{Y ^ 2}.
+    \end{aligned}\]
+
     Therefore, $(1 + r_1(X_1)) (1+ r_1(X_2)) = 1 + r_1(X_1 + _F X_2)$, i.e.
-    \begin{equation}
-        r_1(X_1+_F X_2) = r_1(X_1) + r_1(X_2) + r_1(X_1) r_1(X_2).
-    \end{equation}
-    This means $r_1(X)$ is a formal group homomorphism from $F$ to $\bfG_m$. \par
-    For the case $i > 1$, we have
-    \begin{equation*}
-        H(X,Y) \equiv Y + r_i(X) Y ^ i \pmod{Y ^ {i+ 1}}
-    \end{equation*}
-    According to equation $\ref{eq: H eq}$, we have
-    \begin{equation}
-        H (X_1, H(X_2, Y)) \equiv H(X_2, Y) + r_i(X_1) H(X_2, Y) ^ i \equiv Y + r_i(X_2)Y ^ i +
-            r_i(X_1) Y ^ i \pmod{Y ^ i}.
-    \end{equation}
-    \begin{equation}
-        H (X_1+_F X_2, Y) \equiv Y + r_i(X_1+_F X_2) Y ^ i \pmod{Y ^ {i + 1}}.
-    \end{equation}
+    \[r_1(X_1+_F X_2) = r_1(X_1) + r_1(X_2) + r_1(X_1) r_1(X_2).\]
+
+    This means $r_1(X)$ is a formal group homomorphism from $F$ to $\GG_m$.
+
+    \textit{For the case $i > 1$:} we have
+
+    \[H(X,Y) \equiv Y + r_i(X) Y ^ i \pmod{Y ^ {i+ 1}}.\]
+
+    Note that we have
+    \[
+    \begin{aligned}
+    H(X_1, H(X_2,Y)) &\equiv H(X_2,Y) + r_i(X_1) H(X_2,Y)^i \\
+        &\equiv Y + r_i(X_2)Y^i + r_i(X_1)Y^i \pmod{Y^{i+1}}, \\
+    H(X_1 +_F X_2,Y) &\equiv Y + r_i(X_1 +_F X_2)Y^i \pmod{Y^{i+1}}, \\
+    H(X_1,H(X_2,Y)) &= H(X_1 +_F X_2,Y).
+    \end{aligned}
+    \]
+
     Therefore, $r_i(X_1+_F X_2) = r_i(X_1) + r_i(X_2)$, which means $r_i(X)$ is a formal group
-    homomorphism from $F$ to $\bfG_a$.
+    homomorphism from $F$ to $\GG_a$.
 \end{proof}
 
 \begin{lemma}[{\cite[Chap.~1 Lemma 6.2.11]{hazewinkel1978formal}}]
@@ -83,9 +121,11 @@ Before proving the theorem, we first discuss several lemmas.
     Let $r$ be the order of $\alpha (X) = \sum_{n=1} ^ \infty a_n X^n$, i.e. the least $n$ such
     that $a_n$ is nonzero. Let $C(X,Y) = X +_F Y +_F (-_F X) +_F (-_F Y) $ be the
     commutator of $X$ and $Y$ with respect to $F$. \par
-    We can prove that a formal group law $F$ is commutative if and only if the commutator
-    $C(X,Y)$ with respect to $F$ is zero. \par
-    Since $F'$ is commutative, we have \[ \alpha (C(X,Y)) = 0.\]
+    By Lemma \ref{lem: comm_iff}, a formal group law $F$ is commutative if and only if the commutator
+    $C(X,Y)$ with respect to $F$ is zero.
+
+    Since $F'$ is commutative, we have
+    \[ \alpha (C(X,Y)) = \alpha(X)+_G \alpha(Y)+_G(-_G \alpha(X))+_G(-_G\alpha(Y)) = 0.\]
     Suppose $F$ is non-commutative, i.e. $C(X,Y) \neq 0$. Let $C_n(X,Y)$ be the homogeneous
     component in $C(X,Y)$ of degree $n$, and let $m$ be the least integer such that
     $C_m(X,Y)$ is non-zero. We have
@@ -114,43 +154,47 @@ Before proving the theorem, we first discuss several lemmas.
 % \begin{proof}
 %     Let $F(X,Y)$ be a formal group law over $R$, suppose that $F(X,Y)$ is non-commutative, then by
 %     lemma $\ref{lem: non_com_hom}$, there is a non zero formal group homomorphism from $F(X,Y)$ to
-%     $\bfG_a(X,Y)$ or $\bfG_m(X,Y)$. According to lemma $\ref{lem: target_com}$ and
-%     $\bfG_a(X,Y), \bfG_m (X,Y)$ is commutative formal group law, then $F(X,Y)$ is commutative. This
+%     $\GG_a(X,Y)$ or $\GG_m(X,Y)$. According to lemma $\ref{lem: target_com}$ and
+%     $\GG_a(X,Y), \GG_m (X,Y)$ is commutative formal group law, then $F(X,Y)$ is commutative. This
 %     leads to a contradiction.
 % \end{proof}
 
-\begin{proof}[Proof of Commutativity theorem \ref{comm_thm}]
+\begin{proof}[Proof of Theorem \ref{comm_thm}]
     First, we prove the necessity of the condition on $R$.\par
-    Let $0 \neq a \in R$ be an element of $R$ that is nilpotent and $\ZZ$-torsion. Then there exists
+    Let $a \in R$ be an nonzero element of $R$ that is nilpotent and $\ZZ$-torsion. We need to show
+    that there exists
     a formal group law $F(X,Y)$ over $R$ such that $F(X,Y)$ is non-commutative. \par
-    Let $n$ be the least integer such that $n a = 0$. Then $n>1$ and there exists a prime number
+    Let $n$ be the least positive integer such that $n a = 0$. Then $n>1$ and there exists a prime number
     $p$ such that $p \mid n$. Let $b = \frac{n}{p} a$. Then $b\neq 0$ and $p b = 0$, since $n$ is
-    minimal. Let $m$ be the least integer such that $b^m= 0$ and $c = b^{m-1}$. Therefore, this $c$
+    minimal. Let $m$ be the least integer such that $b^m= 0$ and let $c = b^{m-1}$. Therefore, this $c$
     satisfies $c \neq 0, c ^ 2 = 0, p c = 0$. Denote $F(X,Y) = X + Y + c X Y ^ p$. Then
     \begin{equation*}
-        F(F(X,Y), Z) = X + Y + Z + c(X Y^p+ XZ^p + YZ^p) = F(X,F(Y,Z))
+        F(F(X,Y), Z) = X + Y + Z + c(X Y^p+ XZ^p + YZ^p) = F(X,F(Y,Z)).
     \end{equation*}
-    Therefore, $F(X,Y)$ is a non-commutative formal group law over $R$. \par
-    Secondly, we prove sufficiency for the case where $R$ is an integral domain. Let $F(X,Y)$ be a formal
+    Therefore, $F(X,Y)$ is a non-commutative formal group law over $R$.
+
+    Now we prove sufficiency of the condition on $R$. Suppose first that $R$ is a integral domain.
+    Let $F(X,Y)$ be a formal
     group law over $R$, where $R$ is an integral domain. Suppose that $F(X,Y)$ is non-commutative.
     Then, by Lemma $\ref{lem: non_com_hom}$, there exists a nonzero formal group homomorphism from $F(X,Y)$ to
-    $\bfG_a(X,Y)$ or $\bfG_m(X,Y)$. Since $\bfG_a(X,Y)$ and $\bfG_m (X,Y)$ are commutative formal group laws,
+    $\GG_a(X,Y)$ or $\GG_m(X,Y)$. Since $\GG_a(X,Y)$ and $\GG_m (X,Y)$ are commutative formal group laws,
     Lemma $\ref{lem: target_com}$ implies that $F(X,Y)$ is commutative. This
     leads to a contradiction.\par
 
-    Thirdly, the proof of sufficiency for the case where $R$ is $\ZZ$-torsion free follows directly
-    from computations involving the associativity condition of a formal group law.
-    A proof is given later in Corollary \ref{cor: torsion_free_comm}.
-    It can also be found in {\cite[Chap.~1 Lemma 6.1.3]{hazewinkel1978formal}}. \par
+    Suppose that $R$ is $\ZZ$-torsion free. A proof that $F$ is commutative over $R$ is given
+    later in Corollary \ref{cor: torsion_free_comm}.
+    Also, there is a different proof in {\cite[Chap.~1 Lemma 6.1.3]{hazewinkel1978formal}}. \par
 
-    Now we prove the sufficiency of the condition on $R$ for Theorem \ref{comm_thm}.\par
+    Finally, let $R$ be a ring such that $R$ has no nonzero element $a$ that is both nilpotent and
+    $\ZZ$-torsion.
+
     Given a prime ideal $\gothp$ in $R$, consider the ring homomorphism $\phi : R \to R / \gothp$.
     Since $R / \gothp$ is an integral domain, $\phi_* F(X,Y)$ is commutative. If we denote
     $F(X,Y) = \sum_{i, j} a_{ij} X ^ i Y ^ j$, then it follows that
     $\phi_* (a_{ij} - a_{ji}) = 0 \in R / \gothp$, which is equivalent to
     $a_{ij} - a_{ji} \in \gothp$. Since this holds for all prime ideals $\gothp$, we have
     \begin{equation*}
-        a_{ij} - a_{ji} \in \bigcap _{\gothp \ prime} \gothp
+        a_{ij} - a_{ji} \in \bigcap _{\gothp \ prime} \gothp.
     \end{equation*}
 
     Therefore, for any $i, j$, $a_{ij} - a_{ji}$ is nilpotent in $R$.
@@ -160,6 +204,6 @@ Before proving the theorem, we first discuss several lemmas.
     Therefore, $\phi_\infty (a_{ij} - a_{ji}) = 0 \in R \otimes_\ZZ \QQ$, which means
     $a_{ij} -a_{ji}$ is $\ZZ$-torsion. Since there is no nonzero element in $R$ that is
     nilpotent and $\ZZ$-torsion at the same time, it follows that for any $i, j$,
-    $a_{ij} - a_{ji} = 0$, which implies $F(X,Y)$ is commutative.
+    $a_{ij} - a_{ji} = 0$, which implies that $F(X,Y)$ is commutative.
 
 \end{proof}
