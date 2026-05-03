@@ -1,1 +1,90 @@
-\chapter{Introduction}
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+
+
+A \emph{proof assistant} is a software tool that provides a formal language for
+defining mathematical objects, stating their properties, and constructing
+proofs to verify those claims. The system then rigorously verifies
+these proofs down to their fundamental logical axioms.
+
+While traditionally used to verify software correctness, proof assistants
+are increasingly applied to abstract mathematics—a primary focus of the
+mathlib community. Through formalization, every definition becomes strictly
+unambiguous, ensuring that all resulting proofs are virtually guaranteed
+to be free of errors. The Lean theorem prover is a proof assistant
+developed principally by Leonardo de Moura. The latest version is called Lean 4.
+More of the technical details can be found in \cite{deMoura2021}.
+
+Built on this foundation is \emph{mathlib}, a highly active, community-driven
+initiative aiming to create a comprehensive, unified library of formalized
+mathematics in Lean. Alongside its mathematical core, the library includes
+foundational definitions for programming, sustained by daily updates from a
+dedicated network of contributors.
+
+Since the
+establishment of the Lean Focused Research Organization \cite{fro2024} in 2023, the Lean 4 ecosystem has experienced explosive growth. This
+has made Lean an ideal tool not only for students undertaking smaller
+mathematical projects but also the platform of choice for scientists managing
+large-scale collaborative endeavors. Early landmark achievements, such as
+\emph{Liquid Tensor Experiment} \cite{commelin2022liquid} and
+there is a related work about the categorical foundations of formalizated of
+condensed mathematics in \cite{asgeirsson2024categorical}.
+Moreover, the
+formalization of sphere eversions in differential topology \cite{vandoorn2023},
+demonstrated the feasibility of handling complex, abstract mathematics in Lean.
+
+Between 2024 and 2026, formalized mathematics witnessed several milestone
+breakthroughs. In the field of analysis, a team led by Floris van Doorn
+completed the complete formalization of Carleson's theorem and its
+generalizations, overcoming long-standing computational
+complexity bottlenecks in fourier analysis. This is a large cooperation project and its blue print can be found in
+\cite{becker2025blueprintformalizationcarlesonstheorem}. In number theory, Fermat's Last
+Theorem for regular primes is completely formalized in 2025 and their paper can be
+found in \cite{best2025completeformalizationfermatstheorem}.
+
+Simultaneously, the intersection of auto-formalization and artificial
+intelligence has emerged as the frontier of growth in this field. An
+epoch-making development was the verification of the sphere packing problem
+in late 2025. Building upon Maryna Viazovska's work
+\cite{viazovska2017sphere},
+researchers utilized large language models to assist in code translation,
+rapidly completing a ``sorry-free'' formalized verification of
+optimal sphere packings
+in dimensions 8 and 24 \cite{hariharan2026milestoneformalizationspherepacking}.
+
+Given the results on the formalization of substitution and evaluation of
+multivariate power series in \cite{chambertloir2025formalizationdividedpowerslean},
+this thesis aims to formalize the definitions and applications of formal
+group laws in Lean. A standard reference for formal group laws
+is \cite{hazewinkel1978formal}. Our mathematical discussion will mainly
+be based on \cite{hazewinkel1978formal, cassels1967algebraic, LubinTate1965,
+silverman2009arithmetic}.
+
+In Chapter 1, we will discuss the theory of formal group laws from a purely
+mathematical perspective. In Chapter 2, we will discuss Lubin--Tate theory,
+which is one of the most important applications of formal group laws. Chapter
+3 provides a brief introduction to the aspects of Lean necessary for
+understanding the formalization of Chapter 1's content, which we will
+then present in Chapter 4. The accompanying code can be found at
+https://github.com/WenrongZou/FormalGroupLaws.
+Throughout this thesis, we will link to code from either our formalization
+or Mathlib. These links will be marked with this symbol: \href{https://github.com/WenrongZou/FormalGroupLaws/blob/main/FormalGroupLaws/Basic.lean}{\faExternalLink}.
+
+% Given the results of formalization of subtitution and evaluation
+% of multivariate power series
+% in \cite{chambertloir2025formalizationdividedpowerslean}.
+% This thesis aims to
+% formalize definitions and applications formal group laws in Lean. A standard reference
+% of formal group laws is \cite{hazewinkel1978formal}. Our mathematical discussion will
+% mainly be based on \cite{hazewinkel1978formal}, \cite{cassels1967algebraic},
+% \cite{LubinTate1965} and \cite{silverman2009arithmetic}.
+
+% In chapter 1, we will discuss the theory of formal group laws from a purely
+% mathematical perspective. In chapter 2, we will discuss Lubin--Tate theory, which is
+% one of the most important applications of formal group laws. Chapter 3 gives a brief
+% introduction to some aspects of Lean that will be useful to understand the
+% formalisation of somem of content of chapter 1 which we will cover in chapter 4.
+% The accompanying code can be found at
+% https://github.com/WenrongZou/FormalGroupLaws. Throughout this thesis we will link
+% to code either from our formalisation or from mathlib. These links will be mark with this
+% symbol: \href{https://github.com/WenrongZou/FormalGroupLaws/blob/main/FormalGroupLaws/Basic.lean}{\faExternalLink}.

@@ -5,7 +5,7 @@
 \lstdefinelanguage{lean} {
 
 % Anything between $ becomes LaTeX math mode
-mathescape=false,
+mathescape=true,
 % Comments may or not include Latex commands
 texcl=false,
 
@@ -147,6 +147,7 @@ literate=
 
 {↦}{{\color{symbolcolor}\ensuremath{\mapsto}}}1
 {→}{{\color{symbolcolor}\ensuremath{\rightarrow}}}1
+{→ₗ}{{\color{symbolcolor}\ensuremath{\rightarrow_{\ell}}}}2
 {←}{{\color{symbolcolor}\ensuremath{\leftarrow}}}1
 {↔}{{\color{symbolcolor}\ensuremath{\leftrightarrow}}}1
 {⇒}{{\color{symbolcolor}\ensuremath{\Rightarrow}}}1
@@ -185,6 +186,7 @@ literate=
 {ℝ}{{\ensuremath{\mathbb{R}}}}1
 {ℚ}{{\ensuremath{\mathbb{Q}}}}1
 {ℂ}{{\ensuremath{\mathbb{C}}}}1
+{𝔾}{{\ensuremath{\mathbb{G}}}}1
 {𝓝}{{\ensuremath{\mathcal{N}}}}1
 {𝓟}{{\ensuremath{\mathcal{P}}}}1
 {𝒳}{{\ensuremath{\mathcal{X}}}}1
@@ -258,7 +260,6 @@ literate=
 {+}{{\color{symbolcolor}+}}1
 {*}{{\color{symbolcolor}\ensuremath{{}^{*}}}}1
 {\#}{{\color{keywordcolor}\#}}1, % is usually part of a keyword, like #check
-
 
 % Comments
 %comment=[s][\itshape \color{commentcolor}]{/-}{-/},

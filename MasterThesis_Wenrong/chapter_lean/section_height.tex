@@ -1,1 +1,83 @@
 \section{Height}
+
+We now introduce the height of a commutative formal group law.  In this
+part, we assume that \lstinline|F| is commutative. Throughout
+this section, we fix a field $K$ of characteristic $p$, and we consider a
+commutative formal group law \lstinline|F| over $K$.
+
+The first step is to define the multiplication-by-\lstinline|n| series of
+the formal group law.  Since we have already constructed an
+\lstinline|AddCommGroup| instance on \lstinline|F.Point σ| under the
+assumption \lstinline|F.IsComm|, we can directly use the scalar
+multiplication notation \lstinline|n • x| for repeated addition of a
+point.
+
+\begin{lstlisting}
+def series (n : ℕ) : FormalGroupHom F F where
+  toPowerSeries := (n • ⟨PowerSeries.X, PowerSeries.HasSubst.X _⟩ : F.Point Unit).val
+  zero_constantCoeff := ...
+  hom := ...
+\end{lstlisting}
+
+Here \lstinline|⟨PowerSeries.X, ...⟩| is the point
+of \lstinline|F.Point Unit| corresponding to the coordinate power series
+\lstinline|PowerSeries.X|.  The expression
+\lstinline|n • ⟨PowerSeries.X, ...⟩| means the
+\lstinline|n|-fold sum of this point with respect to the addition induced
+by the formal group law \lstinline|F|.  Taking \lstinline|.val| extracts
+the underlying power series.  Thus \lstinline|F.series n| is the formal
+group homomorphism corresponding to multiplication by \lstinline|n|,
+usually denoted by $[n]_F(X)$.
+
+The proof of \lstinline|zero_constantCoeff| shows that this power series
+has constant coefficient zero.  The field \lstinline|hom| proves that the
+multiplication-by-\lstinline|n| series is compatible with the formal group
+law structure, and hence defines a formal group homomorphism from
+\lstinline|F| to itself.  We omit the details of this proof here.
+
+For the definition of height, we focus on the multiplication-by-\lstinline|p|
+series \lstinline|F.series p|.  The following theorem shows that, if this
+power series is nonzero, then it has a nonzero coefficient in some degree
+of the form \lstinline|p ^ n|.
+
+\begin{lstlisting}
+theorem exist_coeff_pow_ne_zero_iff_ne_zero :
+    (∃ n, (F.series p).toPowerSeries.coeff (p ^ n) ≠ 0) ↔
+      (F.series p).toPowerSeries ≠ 0 := ...
+\end{lstlisting}
+
+This theorem is the key input for the definition of height.  It says that
+\lstinline|F.series p| is nonzero if and only if one of the coefficients
+of degree \lstinline|p ^ n| is nonzero.  Hence, when
+\lstinline|F.series p| is nonzero, there is a smallest natural number
+\lstinline|n| such that the coefficient of degree \lstinline|p ^ n| is
+nonzero.
+
+The height of \lstinline|F| is then defined as follows:
+\begin{lstlisting}
+/-- the height of a formal group. -/
+def height : ℕ∞ :=
+  letI := Classical.decEq K
+  letI := Classical.decEq (PowerSeries K)
+  if h : (F.series p).toPowerSeries = 0 then ⊤ else
+    Nat.find ((F.exist_coeff_pow_ne_zero_iff_ne_zero).mpr h)
+\end{lstlisting}
+
+The value of \lstinline|height| lies in \lstinline|ℕ∞|, the type of
+natural numbers together with an extra top element \lstinline|⊤|.  If
+the multiplication-by-\lstinline|p| series \lstinline|F.series p| is zero,
+then the height is defined to be \lstinline|⊤|.  Otherwise, the theorem
+\lstinline|exist_coeff_pow_ne_zero_iff_ne_zero| gives the existence of
+some \lstinline|n| such that the coefficient of degree \lstinline|p ^ n|
+is nonzero, and \lstinline|Nat.find| chooses the smallest such
+\lstinline|n|.
+
+Therefore, the height records the first degree of the form
+\lstinline|p ^ n| in which the multiplication-by-\lstinline|p| series has
+a nonzero coefficient.  In ordinary notation, \lstinline|F| has height
+\lstinline|n| if
+\[
+  [p]_F(X) = a X^{p^n} + \text{higher order terms}
+\]
+with \lstinline|a| nonzero, and it has infinite height if
+\lstinline|[p]_F(X) = 0|.

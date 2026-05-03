@@ -1,0 +1,105 @@
+\chapter*{Conclusion and future work}
+\addcontentsline{toc}{chapter}{Conclusion and future work}
+
+\section*{Conclusion}
+
+In this thesis, we formalized several foundational aspects of formal
+group laws in Lean.  The main contribution is the development of a
+Mathlib-compatible framework for formal group laws, their associated
+algebraic structures, and the functional equation lemma.
+
+We first formalized the definition of a formal group law over a
+commutative ring.  In this formalization, a formal group law is represented
+as a bivariate multivariate power series satisfying the usual linear
+coefficient conditions and the associativity identity.  We also introduced
+a typeclass formulation of commutativity, namely
+\lstinline|FormalGroup.IsComm|, so that commutativity can be used as an
+additional assumption on an existing formal group law rather than by
+introducing a separate structure.
+
+We then developed several algebraic structures associated to a formal
+group law.  For a formal group law \lstinline|F|, we defined the type
+\lstinline|F.Point σ| of points with values in multivariate power series.
+The addition on these points is defined by evaluating the formal group law
+\lstinline|F|.  We proved that this operation gives rise to the expected
+algebraic structures, including instances of
+\lstinline|AddGroup| and, under the assumption \lstinline|F.IsComm|,
+\lstinline|AddCommGroup|.  This shows that the formal group law naturally
+induces a group structure on suitable power series.
+
+We also formalized homomorphisms and isomorphisms of formal group laws.
+A homomorphism between two formal group laws is represented by a
+power series satisfying the compatibility condition with the
+two formal group laws.  An isomorphism is then packaged as a homomorphism
+together with an inverse homomorphism and proofs that the two compositions
+are identities.  These definitions provide the basic categorical language
+needed to compare formal group laws.
+
+Another central part of the project is the formalization of the
+functional equation lemma.  We defined the power series \lstinline|RecurFun|
+by specifying its coefficients recursively, and then proved that it
+satisfies the desired functional equation.  We also formalized the descent
+statement showing that the power series
+\[
+  F_g(X,Y) = f_g^{-1}(f_g(X) + f_g(Y))
+\]
+has coefficients in the required subring.  This completes the
+formalization of the functional equation lemma in Lean.
+
+In addition, this thesis develops several supporting results about
+multivariate power series.  These include results about the order of
+substitution, the expansion operation, the tactic
+\lstinline|name_power_vars| for naming power series variables,
+substitution inverses and so on.  These auxiliary results are not only useful for
+the formalization of formal group laws, but also provide reusable
+infrastructure for future work involving power series in mathlib.
+
+Finally, we introduced the definition and basic properties of the height
+of a formal group law.  This provides a bridge from the basic algebraic
+theory of formal group laws to deeper classification results and
+arithmetic applications.
+
+\section*{Future Work}
+
+There are several natural directions for future work.
+
+One important direction is the application of formal group laws to
+Lubin--Tate theory.  Lubin--Tate theory constructs highly structured
+extensions of local fields using formal group laws.  A formalization of
+this theory would require combining the formal group law API developed
+here with mathlib's existing theory of local fields, valuations, and
+ramification.  This would be a significant step toward the formalization
+of local class field theory.
+
+Another direction is the study of formal group laws arising from elliptic
+curves.  Every elliptic curve has an associated formal group law obtained
+by completing the curve at the identity point.  In positive characteristic,
+the height of this formal group law reflects important arithmetic
+information about the elliptic curve.  For example, over a field of
+positive characteristic, the formal group law of an elliptic curve has
+height $1$ in the ordinary case and height $2$ in the supersingular case.
+Formalizing this connection would provide a useful link between the theory
+of formal group laws and the existing formalization of elliptic curves.
+
+Another further goal is the formalization of Lazard's theorem.  Lazard's
+theorem states that there is a universal formal group law and identifies
+its coefficient ring.  This theorem is fundamental in the algebraic theory
+of formal group laws and plays an important role in algebraic topology,
+especially in complex cobordism.  Formalizing Lazard's theorem would
+require a substantial development of universal constructions for formal
+group laws and a careful treatment of the Lazard ring.
+
+Another possible direction is the classification of formal group laws by
+height.  Over suitable fields of positive characteristic, the height is a
+central invariant of a formal group law.  A natural long-term goal is to
+formalize classification theorems for formal group laws of the same
+height, including the construction of isomorphisms after suitable base
+change.  This would extend the basic theory developed in this thesis to a
+more structural understanding of formal group laws.
+
+More generally, the results of this thesis provide a foundation for
+further formalization of the arithmetic and geometric applications of
+formal group laws.  The definitions of formal group laws, their points,
+homomorphisms, isomorphisms, height, and the functional equation lemma can
+serve as reusable infrastructure for future developments in algebraic
+number theory, algebraic geometry, and arithmetic geometry.

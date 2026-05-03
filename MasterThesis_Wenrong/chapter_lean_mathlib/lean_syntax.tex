@@ -1,0 +1,223 @@
+\section{A Brief Introduction to Lean Syntax}
+
+Lean operates as both an interactive theorem prover and a functional programming language. In Lean, definitions, statements, and proofs are written in a strictly formalized syntax that is subsequently verified by the Lean kernel. In this section, we introduce several foundational pieces of Lean syntax that will appear frequently in later chapters.
+
+\subsection{Basic declarations}
+
+A typical Lean file consists of a series of declarations. Beyond the foundational
+\lstinline|def|, \lstinline|theorem|, and \lstinline|axiom|, Lean provides
+powerful organizational tools such as \lstinline|abbrev|, \lstinline|structure|,
+\lstinline|class|, and \lstinline|instance|.
+
+The keyword \lstinline|def| is used to define new data, functions, or values.
+For example, the following code defines the successor of a natural number:
+
+\begin{lstlisting}[language=Lean]
+def succ (n : Nat) : Nat := n + 1
+\end{lstlisting}
+
+Here, \lstinline|succ| is the name of the definition. The expression \lstinline|(n : Nat)| declares an explicit input variable \lstinline|n| of type \lstinline|Nat|, and the final \lstinline|: Nat| dictates that the output also has type \lstinline|Nat|. The symbol \lstinline|:=| indicates that the expression on the right-hand side serves as the actual definition.
+
+Closely related to \lstinline|def| is the keyword \lstinline|abbrev|. It also creates a definition, but it instructs Lean's elaborator to treat the new name as completely transparent during unification. It is frequently used for type aliases:
+
+\begin{lstlisting}[language=Lean]
+abbrev Vector3 := Float × Float × Float
+\end{lstlisting}
+
+By using \lstinline|abbrev|, Lean will automatically unfold \lstinline|Vector3| into a triplet of floats whenever it needs to check types, preventing strict type-mismatch errors that might occur with a standard \lstinline|def|.
+
+The keyword \lstinline|theorem| is reserved for stating and proving propositions. A theorem requires a name, a logical statement, and a formal proof. For example:
+
+\begin{lstlisting}[language=Lean]
+theorem add_zero (a : Nat) : a + 0 = a := by
+  rw [Nat.add_zero]
+\end{lstlisting}
+
+This theorem asserts that for every natural number \lstinline|a|, the equality \lstinline|a + 0 = a| holds. The portion before \lstinline|:=| is the mathematical statement, while the portion after \lstinline|:= by| enters ``tactic mode'' to construct the proof.
+
+The keyword \lstinline|axiom| introduces a statement assumed to be true without providing a proof:
+
+\begin{lstlisting}[language=Lean]
+axiom my_axiom : P
+\end{lstlisting}
+
+Axioms instruct Lean's kernel to accept \lstinline|P| unconditionally and must be used sparingly to avoid compromising the soundness of the logical system.
+
+To bundle multiple pieces of data together into a single mathematical object or record, Lean uses the \lstinline|structure| keyword.
+
+\begin{lstlisting}[language=Lean]
+structure Point where
+  x : Float
+  y : Float
+\end{lstlisting}
+
+This declaration creates a new type called \lstinline|Point|. It automatically generates a constructor to build points and projection functions (\lstinline|Point.x| and \lstinline|Point.y|) to access the underlying fields.
+
+Finally, Lean handles algebraic hierarchies and overloading via the \lstinline|class| and \lstinline|instance| keywords. A \lstinline|class| is essentially a \lstinline|structure| that registers itself with Lean's typeclass synthesis mechanism (which resolves the square brackets \lstinline|[]| discussed later).
+
+\begin{lstlisting}[language=Lean]
+class Add (α : Type) where
+  add : α → α → α
+\end{lstlisting}
+
+This defines an interface requiring an addition operation for some type \lstinline|α|. To fulfill this requirement for a specific type, we use the \lstinline|instance| keyword to provide the concrete implementation:
+
+\begin{lstlisting}[language=Lean]
+instance : Add Nat where
+  add x y := x + y
+\end{lstlisting}
+
+Once this instance is declared, any function requiring an \lstinline|AdditiveMagma| on \lstinline|Nat| will automatically find and use this specific implementation.
+
+\subsection{The meaning of different brackets}
+
+Lean utilizes different types of brackets to distinguish how arguments should be provided or inferred by the system.
+
+Parentheses \lstinline|()| denote \emph{explicit arguments}. These are arguments that the user must manually provide when calling a function or applying a theorem.
+
+\begin{lstlisting}[language=Lean]
+def double (n : Nat) : Nat := n + n
+\end{lstlisting}
+
+In this example, \lstinline|(n : Nat)| signifies that \lstinline|n| is an explicit argument. Whenever \lstinline|double| is used, the user must explicitly pass a natural number.
+
+Curly brackets \lstinline|{}| denote \emph{implicit arguments}. Lean attempts to infer these arguments automatically from the surrounding context using unification.
+
+\begin{lstlisting}[language=Lean]
+def identity {α : Type} (x : α) : α := x
+\end{lstlisting}
+
+Here, \lstinline|{α : Type}| indicates that \lstinline|α| is an implicit type parameter. If we apply \lstinline|identity| to a specific natural number, Lean automatically infers that \lstinline|α| must be \lstinline|Nat|, saving the user from writing redundant types.
+
+Square brackets \lstinline|[]| are designated for \emph{typeclass arguments}. While also inferred automatically, they rely on Lean's typeclass synthesis mechanism rather than simple unification.
+
+\begin{lstlisting}[language=Lean]
+def addSelf [Add α] (x : α) : α := x + x
+\end{lstlisting}
+
+The expression \lstinline|[Add α]| specifies that Lean must find a registered addition structure (a typeclass instance) for the type \lstinline|α|. Lean searches its database to satisfy this requirement automatically when the function is invoked.
+
+\subsection{Attribute tags}
+\label{sec: tag_ext_simp}
+
+Lean supports attribute tags, which append special metadata to declarations
+to guide automated tools. An attribute is declared directly above a
+definition, theorem, or structure using square brackets preceded by an
+\lstinline|@| symbol.
+
+The \lstinline{simp} tactic invokes Lean's powerful simplification engine.
+It systematically applies a vast library of pre-registered simplification
+lemmas to reduce the goal to a trivial state, often solving straightforward
+goals entirely automatically.
+
+A highly utilized attribute is \lstinline|@[simp]|. Tagging a theorem with \lstinline|@[simp]| adds it to Lean's active simplification database, allowing the \lstinline|simp| tactic to use it autonomously in future proofs.
+
+\begin{lstlisting}[language=Lean]
+@[simp]
+theorem add_zero (a : Nat) : a + 0 = a := by
+  rw [Nat.add_zero]
+\end{lstlisting}
+
+Once marked, whenever the simplifier encounters an expression matching \lstinline|a + 0|, it will automatically rewrite it to \lstinline|a| without requiring explicit user instruction.
+
+Another essential attribute is \lstinline|@[ext]|, which is used to establish extensionality principles. Extensionality asserts that two mathematical objects are equal if all their corresponding components are equal. In Lean, you can apply the \lstinline|@[ext]| attribute directly to a \lstinline|structure| to automatically generate the corresponding extensionality lemma.
+
+\begin{lstlisting}[language=Lean]
+@[ext]
+structure Point where
+  x : Float
+  y : Float
+\end{lstlisting}
+
+Tagging the \lstinline|Point| structure with \lstinline|@[ext]| instructs Lean's metaprogramming framework to automatically generate a behind-the-scenes theorem. If written manually, this generated theorem would look exactly like this:
+
+\begin{lstlisting}[language=Lean]
+theorem Point.ext {p q : Point} (h₁ : p.x = q.x) (h₂ : p.y = q.y) : p = q :=
+\end{lstlisting}
+
+The \lstinline|@[ext]| tag registers this logic so that invoking the \lstinline|ext| tactic on a goal of \lstinline|p = q| will automatically apply \lstinline|Point.ext|, splitting the goal into the simpler subgoals \lstinline|p.x = q.x| and \lstinline|p.y = q.y|.
+
+Attributes are indispensable for scaling mathematical libraries.
+Rather than manually proving and referencing hundreds of structural lemmas
+by name, developers register them with tags like \lstinline|@[simp]| and
+\lstinline|@[ext]|, enabling Lean's automation to carry the burden in complex
+proofs.
+
+\subsection{Namespaces}
+\label{sec: namespace}
+
+% \subsection{Namespaces and the \lstinline|open| Keyword}
+
+As mathematical libraries grow, it is common to have multiple theorems or definitions with similar names. Lean uses namespaces to organize declarations and prevent these naming conflicts. When working extensively within a specific mathematical context, such as multivariate power series, repeatedly typing the full prefix \lstinline|MvPowerSeries| can become tedious and clutter the code. By encapsulating our code within a \lstinline|namespace| block, Lean automatically resolves local names, allowing us to omit the prefix for any definitions or theorems belonging to that namespace.
+
+For instance, consider the following explicit definition of a variable $X$:
+
+\begin{lstlisting}[language=Lean]
+def MvPowerSeries.X (s : σ) : MvPowerSeries σ R :=
+    (MvPowerSeries.monomial (Finsupp.single s 1)) 1
+\end{lstlisting}
+
+If we declare that we are operating inside the \lstinline|MvPowerSeries| namespace, the code becomes significantly cleaner. We can drop the prefix from both the new definition's name (\lstinline|X|) and any internal references to existing functions in that namespace (such as \lstinline|monomial|):
+
+\begin{lstlisting}[language=Lean]
+namespace MvPowerSeries
+
+def X (s : σ) : MvPowerSeries σ R :=
+    monomial (Finsupp.single s 1) 1
+
+end MvPowerSeries
+\end{lstlisting}
+
+Once outside the \lstinline|end MvPowerSeries| boundary, a user would once again need to refer to this definition by its fully qualified name: \lstinline|MvPowerSeries.X|.
+
+A complementary tool for managing scopes is the \lstinline|open| keyword. While \lstinline|namespace| is typically used when \textit{defining} new objects within a specific theory, \lstinline|open| is used when we simply want to \textit{access} existing results from another namespace without typing its prefix. For example, our definition relies on \lstinline|Finsupp.single|. If we want to use results from the finitely supported functions library frequently, we can open the \lstinline|Finsupp| namespace directly:
+
+\begin{lstlisting}[language=Lean]
+open Finsupp
+namespace MvPowerSeries
+
+def X (s : σ) : MvPowerSeries σ R :=
+    monomial (single s 1) 1
+
+end MvPowerSeries
+\end{lstlisting}
+
+By writing \lstinline|open Finsupp|, we instruct Lean to look inside the \lstinline|Finsupp| namespace during name resolution, allowing us to reduce \lstinline|Finsupp.single| to just \lstinline|single|.
+
+\begin{remark}
+The specific functions presented in this example, such as
+\lstinline|monomial| and \lstinline|single|, are utilized here purely
+to illustrate Lean's syntax and scoping mechanisms. We will formally discuss
+the detailed mathematical API for each of these components in Section~\ref{sec:mvpowerseries}.
+\end{remark}
+
+
+% As mathematical libraries grow, it is common to have multiple theorems or
+% definitions with similar names. Lean uses namespaces to organize declarations
+% and prevent these naming conflicts. When working extensively within a
+% specific mathematical context, such as multivariate power series,
+% repeatedly typing the full prefix \lstinline|MvPowerSeries| can become
+% tedious and clutter the code. By encapsulating our code within a
+% \lstinline|namespace| block, Lean automatically resolves local
+% names, allowing us to omit the prefix for any definitions or theorems
+% belonging to that namespace.
+
+% For instance, consider the following explicit definition of a variable $X$:
+
+% \begin{lstlisting}[language=Lean]
+% def MvPowerSeries.X (s : σ) : MvPowerSeries σ R :=
+%     (MvPowerSeries.monomial (Finsupp.single s 1)) 1
+% \end{lstlisting}
+
+% If we declare that we are operating inside the \lstinline|MvPowerSeries| namespace, the code becomes significantly cleaner. We can drop the prefix from both the new definition's name (\lstinline|X|) and any internal references to existing functions in that namespace (such as \lstinline|monomial|):
+
+% \begin{lstlisting}[language=Lean]
+% namespace MvPowerSeries
+
+% def X (s : σ) : MvPowerSeries σ R :=
+%     monomial (Finsupp.single s 1) 1
+
+% end MvPowerSeries
+% \end{lstlisting}
+
+% Once outside the \lstinline|end MvPowerSeries| boundary, a user would once again need to refer to this definition by its full, fully qualified name: \lstinline|MvPowerSeries.X|. This mechanism keeps the global namespace clean while ensuring that local development remains readable and concise.
