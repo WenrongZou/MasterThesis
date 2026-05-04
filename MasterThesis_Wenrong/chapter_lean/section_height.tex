@@ -46,7 +46,8 @@ theorem exist_coeff_pow_ne_zero_iff_ne_zero :
       (F.series p).toPowerSeries ≠ 0 := ...
 \end{lstlisting}
 
-This theorem is the key input for the definition of height.  It says that
+We formalize the definition of height using the alternative definition
+in Remark \ref{rem: alter_def_height}. This theorem is the key input for the definition of height.  It says that
 \lstinline|F.series p| is nonzero if and only if one of the coefficients
 of degree \lstinline|p ^ n| is nonzero.  Hence, when
 \lstinline|F.series p| is nonzero, there is a smallest natural number

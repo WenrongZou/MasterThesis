@@ -8,13 +8,13 @@ Let $R$ be a commutative ring throughtout this chapter.
     series $F(X, Y) \in R[\![X,Y]\!]$ with the following properties:
     \begin{enumerate}
         \item $F(X,Y)$ is of the form
-        \begin{equation}
+        \begin{equation*}
             F(X,Y) = X + Y + \sum_{i, j\ge 1}c_{ij} X^i Y^j.
-        \end{equation}
+        \end{equation*}
         \item $F(X,Y)$ satisfies the associativity condition, namely
-        \begin{equation}
+        \begin{equation*}
             F(F(X,Y),Z) = F(X,F(Y,Z)).
-        \end{equation}
+        \end{equation*}
     \end{enumerate}
     For convention, we use formal group law to refer to one-dimensional formal group law.
     Furthermore, if $F(X,Y)$ satisfies $F(X,Y) = F(Y,X)$, then it is called
@@ -40,10 +40,19 @@ Let $R$ be a commutative ring throughtout this chapter.
 
 \begin{example}
     Two examples of commutative formal group laws are:
-    \begin{align}
+    \begin{align*}
         & \GG_a (X,Y) = X + Y \quad \text{(the additive formal group law)} \\
         & \GG_m (X,Y) = X + Y + XY \quad \text{(the multiplicative formal group law)}
-    \end{align}
+    \end{align*}
+
+    These names describe how each power series mimics standard operations with the identity
+    element placed at $0$. The \emph{additive formal group law},
+    $\mathbb{G}_a(X,Y) = X + Y$, is simply standard addition.
+    The \emph{multiplicative formal group law}, $\mathbb{G}_m(X,Y) = X + Y + XY$,
+    is standard multiplication shifted from an identity of $1$ to $0$. If we define
+    variables centered at $1$ as $U = 1+X$ and $V = 1+Y$, their standard product is
+    $(1+X)(1+Y) = 1 + X + Y + XY$. Subtracting $1$ to recenter the identity back to $0$
+    yields exactly the multiplicative law: $X + Y + XY$.
     %% TODO: explain why there are called additive or multiplicative formal group law.
 \end{example}
 
@@ -94,9 +103,9 @@ Let $R$ be a commutative ring throughtout this chapter.
     Let $F(X,Y)$ and $G(X,Y)$ be two formal group laws over a ring $R$.
     A \emph{homomorphism of formal group laws}
     $F(X,Y) \to G(X,Y)$ is a power series $\alpha (X) = \sum_{i=1}^{\infty}a_i X ^ i \in R[\![X]\!]$ such that
-    \begin{equation}
+    \begin{equation*}
         \alpha (F(X,Y))= G(\alpha(X), \alpha(Y))
-    \end{equation}
+    \end{equation*}
     An \emph{endomorphism of formal group law} $F(X,Y)$ is a homomorphism $F(X,Y) \to F(X,Y)$.
     A homomorphism $\alpha(X)$ is an \emph{isomorphism} if there exists a homomorphism
     $\beta(X) : G(X,Y) \to F(X,Y)$ such that $\alpha (\beta(X)) = \beta (\alpha (X))= X$.
@@ -141,9 +150,9 @@ Let $R$ be a commutative ring throughtout this chapter.
     $\beta (X)$ such that $\alpha (\beta (X)) =\beta (\alpha (X)) = X$. We need to prove that
     this $\beta (X)$ is a formal group homomorphism from $G(X,Y)$ to $F(X,Y)$, namely
     $\beta (G(X,Y)) = F (\beta (X), \beta (Y))$. \par
-    Since $\alpha (X)$ is a homomorphism from $F(X,Y)$ to $G(X,Y)$,
+    Since $\alpha (X)$ is a homomorphism from $F(X,Y)$ to $G(X,Y)$, we have that
     \[ \alpha (F(\beta(X), \beta (Y))) = G(\alpha (\beta (X)), \alpha (\beta (Y))) = G(X,Y).\]
-    The desired equality follows by composing both sides with $\beta (X)$.
+    The desired equality follows by composing both sides with $\beta (X)$ and using $\beta \circ \alpha = \id$.
 
     Sufficiency: assume that $\alpha(X)$ is an formal group isomorphism, then there
     is formal group homomorphism $\beta(X) : G(X) \to F(X)$ such that $\alpha(\beta(X)) = X$.
@@ -243,19 +252,92 @@ One of the most important endomorphisms of a commutative formal group is the $n$
 \end{proposition}
 
 \begin{proof}
-    The proof can be found in Corollary \ref{cor: p_series_form}.
+    Assume that $[p](X) \neq 0$. Let $k$ be the order of $[p](X)$, i.e.,
+    the smallest natural number $i$ such that the $i$-th coefficient of
+    $[p](X)$ is nonzero, and let $a$ be this leading coefficient. It is enough to show that $k$ is of the form $p^n$ for
+    some $n$.
 
-    TODO: need more detailed.
+    Since $[p](X)$ is an endomorphism of the formal group law $F$, we have
+    \[ [p](F(X,Y)) = F([p](X), [p](Y)). \]
+
+    Reducing both sides of the above equation modulo degree $k + 1$,
+    we obtain the following congruences:
+    \[
+    \begin{aligned}
+    [p](F(X,Y)) &\equiv a(X + Y)^k \pmod{\deg (k + 1)}, \\
+    F([p](X), [p](Y)) &\equiv aX^k + aY^k \pmod{\deg (k + 1)}.
+    \end{aligned}
+    \]
+
+    Comparing the two sides, we have $a(X + Y)^k \equiv a(X^k + Y^k) \pmod{\deg (k + 1)}$.
+    Since $a \neq 0$ and $R$ has characteristic $p$, it follows that the intermediate binomial coefficients must vanish, which means:
+    \begin{equation}
+        \forall i \in [1, k - 1], \quad p \mid \binom{k}{i}.
+        \label{eq: dvd_choose}
+    \end{equation}
+
+    Recall Lucas's theorem: let $p$ be a prime number, and let $b, m, n$ be natural numbers. Then
+    \[ \binom{p^b m}{p^b n} \equiv \binom{m}{n} \pmod{p}. \]
+
+    If $k$ is not a power of $p$, then there exists a natural number $m > 1$
+    such that $k = p^t m$ and $p \nmid m$. Taking $i = p^t$ in
+    relation \eqref{eq: dvd_choose}, we have
+    \[ p \mid \binom{p^t m}{p^t}. \]
+    By Lucas's theorem, we have
+    \[ \binom{p^t m}{p^t} \equiv \binom{m}{1} \equiv m \pmod{p}. \]
+
+    This yields the contradiction that $m \equiv 0 \pmod{p}$, since we originally assumed $p \nmid m$. Therefore, $k$ must be a power of $p$.
 \end{proof}
+
+% \begin{proof}
+%     Assume that $[p](X) \neq 0$. Let $k$ be the order of $[p](X)$, i.e.
+%     the minimal natural number $i$ such that the $i$-th coefficient of
+%     $[p](X)$ is nonzero. It is enough to show that $k$ is of form $p^n$ for
+%     some $n$.
+
+%     Since $[p](X)$ is an endomorphism of formal group law $F$, we have that
+%     \[[p](F(X,Y)) = F([p](X), [p](Y)). \]
+
+%     We module $\deg (k + 1)$ at the both side of the above equation.
+%     Then we have the following equalities
+%     \[
+%     \begin{aligned}
+%     [p] (F(X,Y)) &\equiv (X + Y) ^ k \pmod{\deg (k + 1)} \\
+%     F([p](X), [p](Y)) &\equiv X ^ k + Y ^ k \pmod{\deg (k + 1)}.
+%     \end{aligned}
+%     \]
+
+%     Then we have that $(X + Y) ^ k \equiv X ^ k + Y ^ k \pmod{\deg (k + 1)}$.
+%     It follows that
+%     \begin{equation}
+%         \forall i \in [1, k - 1], \quad p \mid \binom{k}{i}.
+%         \label{eq: dvd_choose}
+%     \end{equation}
+
+%     Recall that Lucas theorem: let  $p$ be a prime number,
+%     $a, m, n$ be natural number, then
+%     \[\binom{p^ a m }{p ^ a n} \equiv \binom{m}{n} \pmod{p}.  \]
+
+%     If $k$ is not a power of $p$, then there is a natural number $m$
+%     greater than $1$
+%     such that $k = p ^ t m$ and $p \nmid m$. Taking $i = p ^ t$ in
+%     relation \eqref{eq: dvd_choose}, then we have that
+%     \[p \mid \binom{p ^ t m}{ p ^ t}. \]
+%     By Lucas theorem, we have that
+%     \[\binom{p ^ t m}{p ^ t} \equiv \binom{m}{1} \equiv m \pmod{p}. \]
+
+%     Then we obtain a contradiction that $m \equiv 0 \pmod{p}$ and $p \nmid m$.
+
+% \end{proof}
 
 \begin{definition}[{\cite[Definition 1.5]{hazewinkel1978formal}}]
     Let $F(X,Y)= X + Y + \sum_{i, j \ge 1} c_{ij} X ^i Y^j$ be a formal group law over a ring $R$,
     and let $\phi : R \to R'$ be a ring homomorphism.
     By applying
     $\phi$ to the coefficients of $F(X,Y)$, we obtain a formal group law over $R'$
-    \begin{equation}
+    \begin{equation*}
         \phi_* F(X,Y) = X + Y + \sum_{i,j \ge 1} \phi (c_{ij}) X ^i Y^j.
-    \end{equation}
+    \end{equation*}
     \label{defn: pushforward of coeff ring}
 \end{definition}
 

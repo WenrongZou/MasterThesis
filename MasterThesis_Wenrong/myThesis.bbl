@@ -26,14 +26,7 @@ Lars Becker, María~Inés de~Frutos-Fernández, Leo Diedering, Floris van
 Alex Best, Christopher Birkbeck, Riccardo Brasca, Eric~Rodriguez Boidi, Ruben
   van De~Velde, and Andrew Yang.
 \newblock A complete formalization of fermat's last theorem for regular primes
-  in lean, 2025.
-
-\bibitem{Carneiro2019}
-Mario Carneiro.
-\newblock {\em The Type Theory of Lean}.
-\newblock Master's thesis, Carnegie Mellon University, 2019.
-\newblock Available online at
-  \url{https://github.com/digama0/lean-type-theory}.
+  in {L}ean, 2025.
 
 \bibitem{cassels1967algebraic}
 J.~W.~S. Cassels and A.~Fr{\"o}hlich, editors.
@@ -42,7 +35,7 @@ J.~W.~S. Cassels and A.~Fr{\"o}hlich, editors.
 
 \bibitem{chambertloir2025formalizationdividedpowerslean}
 Antoine Chambert-Loir and María~Inés de~Frutos-Fernández.
-\newblock A formalization of divided powers in lean, 2025.
+\newblock A formalization of divided powers in {L}ean, 2025.
 
 \bibitem{commelin2022liquid}
 Johan Commelin.
@@ -58,13 +51,13 @@ Thierry Coquand.
 \bibitem{demoura2015lean}
 Leonardo de~Moura, Soonho Kong, Jeremy Avigad, Floris van Doorn, and Jakob von
   Raumer.
-\newblock The lean theorem prover (system description).
+\newblock The {L}ean theorem prover (system description).
 \newblock In {\em Automated Deduction -- CADE-25}, pages 378--388. Springer
   International Publishing, 2015.
 
 \bibitem{deMoura2021}
 Leonardo de~Moura and Sebastian Ullrich.
-\newblock The lean 4 theorem prover and programming language.
+\newblock The {L}ean 4 theorem prover and programming language.
 \newblock In {\em Automated Deduction -- CADE 28}, pages 625--635. Springer
   International Publishing, 2021.
 
@@ -93,7 +86,7 @@ Michel Lazard.
 \bibitem{LubinTate1965}
 Jonathan Lubin and John Tate.
 \newblock Formal complex multiplication in local fields.
-\newblock {\em Annals of Mathematics}, 81(2):380--387, Mar 1965.
+\newblock {\em Annals of Mathematics}, 81(2):380--387, 1965.
 
 \bibitem{matlis1958injective}
 Eben Matlis.
@@ -105,11 +98,6 @@ Joseph~H. Silverman.
 \newblock {\em The Arithmetic of Elliptic Curves}, volume 106 of {\em Graduate
   Texts in Mathematics}.
 \newblock Springer, New York, 2nd edition, 2009.
-
-\bibitem{vandoorn2023}
-Floris van Doorn, Patrick Massot, and Oliver Nash.
-\newblock Formalising the $h$-principle and sphere eversion.
-\newblock pages 121--134, 2023.
 
 \bibitem{viazovska2017sphere}
 Maryna~S. Viazovska.

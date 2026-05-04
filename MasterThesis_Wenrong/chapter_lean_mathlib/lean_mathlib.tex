@@ -1,4 +1,4 @@
-\chapter{Lean and Mathlib}
+\chapter{Lean and mathlib}
 \label{chap:introduction}
 
 The practice of mathematics is fundamentally rooted in the rigorous verification of proofs.
@@ -10,7 +10,7 @@ software.
 This chapter introduces the Lean theorem prover and its mathematical library,
 called \lstinline|Mathlib|.
 
-\section{The Lean Theorem Prover}
+\section{The lean theorem prover}
 \label{sec:lean_theorem_prover}
 
 Lean is a functional programming language and interactive theorem prover initially developed
@@ -35,7 +35,7 @@ kernel that verifies the final proof term.
 % like Lean are designed to reason about abstract mathematical concepts, properties, and
 % logical deductions.
 
-\section{Dependent Type Theory}
+\section{Dependent type theory}
 \label{sec:dependent_type_theory}
 
 Traditional set theory (such as Zermelo--Fraenkel with Choice, ZFC) has historically served
@@ -324,7 +324,7 @@ single theorem can be stated for all rings, groups, or modules, and then
 applied to any concrete type for which Lean can synthesize the required
 instances.
 
-\subsection{The Algebraic Hierarchy}
+\subsection{The algebraic hierarchy}
 
 In \textsf{mathlib}, algebraic structures are organized into a large
 hierarchy.  More complicated structures extend simpler ones.  For example,
@@ -353,7 +353,7 @@ one.  For instance, a theorem about additive commutative groups can be
 used for any commutative ring, because a commutative ring contains an
 additive commutative group structure.
 
-This design is essential for theorem reuse in \textsf{mathlib}.  Instead
+This design is essential for theorem reuse in mathlib.  Instead
 of reproving the same basic facts separately for groups, rings, fields,
 and other structures, one proves a theorem at the appropriate level of
 generality, and type class inference makes it available in all more
