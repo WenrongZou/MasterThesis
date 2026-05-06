@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.9)  4 MAY 2026 16:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.9)  6 MAY 2026 16:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -985,37 +985,37 @@ File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 chapter 2.
 (./chapter_mathematics/section_LubinTate.tex [24
 
-] [25] [26] [27] [28] [29])) (./chapter_lean_mathlib/lean_mathlib.tex [30]
+] [25] [26] [27] [28] [29] [30] [31] [32] [33])) (./chapter_lean_mathlib/lean_mathlib.tex [34]
 chapter 3.
-[31
+[35
 
-] (./chapter_lean_mathlib/lean_syntax.tex [32] [33] [34]) [35]) [36] (./chapter_lean/lean_part.tex [37]
+] (./chapter_lean_mathlib/lean_syntax.tex [36] [37] [38]) [39]) [40] (./chapter_lean/lean_part.tex [41]
 chapter 4.
-(./chapter_lean/section_mvpower.tex [38
+(./chapter_lean/section_mvpower.tex [42
 
-] [39]) (./chapter_lean/section_definition.tex [40] [41]
+] [43]) (./chapter_lean/section_definition.tex [44] [45]
 LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 106.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/base/ts1cmtt.fd
 File: ts1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-) [42] [43] [44] [45]) (./chapter_lean/section_function_eq.tex [46] [47] [48] [49]) (./chapter_lean/section_universal.tex [50]) (./chapter_lean/section_height.tex [51])) (./Conclusion.tex [52] [53
+) [46] [47] [48] [49]) (./chapter_lean/section_function_eq.tex [50] [51] [52] [53]) (./chapter_lean/section_universal.tex [54]) (./chapter_lean/section_height.tex [55])) (./Conclusion.tex [56] [57
 
-]) [54] (./myThesis.bbl [55
+]) [58] (./myThesis.bbl [59
 
 
-]) [56] (./myThesis.aux) ) 
+]) [60] (./myThesis.aux) ) 
 Here is how much of TeX's memory you used:
- 38050 strings out of 478268
- 712205 string characters out of 5846348
- 1314657 words of memory out of 5000000
- 54966 multiletter control sequences out of 15000+600000
+ 38069 strings out of 478268
+ 712458 string characters out of 5846348
+ 1314943 words of memory out of 5000000
+ 54973 multiletter control sequences out of 15000+600000
  489727 words of font info for 112 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  108i,15n,106p,10663b,1301s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/fontawesome/fontawesometwo.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/fontawesome/FontAwesome.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on myThesis.pdf (58 pages, 559977 bytes).
+Output written on myThesis.pdf (62 pages, 579155 bytes).
 PDF statistics:
- 1330 PDF objects out of 1440 (max. 8388607)
- 1198 compressed objects within 12 object streams
- 563 named destinations out of 1000 (max. 500000)
+ 1372 PDF objects out of 1440 (max. 8388607)
+ 1235 compressed objects within 13 object streams
+ 575 named destinations out of 1000 (max. 500000)
  293 words of extra memory for PDF output out of 10000 (max. 10000000)
 

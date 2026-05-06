@@ -242,7 +242,7 @@ $x = u\pi^n$, where $u\in \mathcal O_K^\times$ is a unit and $n\in \mathbb Z$.
 \end{remark}
 
 \section{Applications}
-Fix an algebraic closure $\overline{K}$ of $K$, and let $K^{sep}$ be a separable closure of $K$.
+Fix an algebraic closure $\overline{K}$ of $K$, and let $\Fsep{K}$ be a separable closure of $K$.
 Given $f\in \calF_\pi$, for each integer $n \ge 1$, let $f^n(X)$ be $n$-th iterate of $f(X)$.
 Let $\Lambda_{f,n}$ be the set of all roots of $f^n(X)$ in $\overline{K}$ and let
 $K(\Lambda_{f,n})$ be the field generated over $K$ by these elements.
@@ -286,9 +286,9 @@ Denote $\Lambda_f = \bigcup_{n=1}^\infty \Lambda _{f,n} $.
 \end{remark}
 
 According to the Remark $\ref{rem: A-module}$, $F_f$ defines a $\calO_K$-module structure on
-$\gothm_{K^{sep}}$ and we denote this $\calO_K$-module as $M_f(\Ksep)$.
+$\gothm_{\Fsep{K}}$ and we denote this $\calO_K$-module as $M_f(\Fsep{K})$.
 Then $\Lambda_{f,n}$ is those
-elements in $\lambda \in \gothm_{K^{sep}}$ such that $\pi ^n \lambda = 0$.
+elements in $\lambda \in \gothm_{\Fsep{K}}$ such that $\pi ^n \lambda = 0$.
 
 \begin{theorem}[{\cite[Chap.~VI 3.3 Theorem 3]{cassels1967algebraic}}]
     $\Lambda_{f,n}$ is isomorphic to $\calO_K/ \pi^n \calO_K$ as $\calO_K$-module and
@@ -343,16 +343,16 @@ Equivalently, $E(S)$ can be characterized as:
 
 \begin{proof}[Proof of theorem $\ref{thm: Lam_iso_K_quot_O}$]
     The first claim follows from the fact that $\Lambda_{f,n}$ is the $\pi^n$-torsion of
-        the $\calO_K$-module $M_f(\Ksep)$.
+        the $\calO_K$-module $M_f(\Fsep{K})$.
 
     According to theorem \ref{thm: Lubin_Tate_independet_f_g}, we are free to choose
     $f\in \calF_\pi$ as we please. We take $f(X)= \pi X + X ^ q$. Since
     $f'(X) = q X^{q-1} + \pi \neq 0$, then $\Lambda_{f, 1}$ consists of $q$ distinct roots
-    of the equation $X^q + \pi X = 0 $. For any given $\alpha \in \gothm_{K^{sep}}$, since
-    $\pi X + X ^ q = \alpha$ is separable, then $\Lambda_{f,1} \subset \gothm_{\Ksep}$. This means
-    that for any given $\alpha \in \gothm_\Ksep$, there is a $\beta$ such that
-    $\pi \cdot \beta = \alpha$ in $M_f(\Ksep)$. It follows that for any given $r \in \calO_K$,
-    $r M_f(\Ksep) = M_f (\Ksep)$ which means that $M_f(\Ksep)$ is divisible $\calO_K$-module.
+    of the equation $X^q + \pi X = 0 $. For any given $\alpha \in \gothm_{\Fsep{K}}$, since
+    $\pi X + X ^ q = \alpha$ is separable, then $\Lambda_{f,1} \subset \gothm_{\Fsep{K}}$. This means
+    that for any given $\alpha \in \gothm_\Fsep{K}$, there is a $\beta$ such that
+    $\pi \cdot \beta = \alpha$ in $M_f(\Fsep{K})$. It follows that for any given $r \in \calO_K$,
+    $r M_f(\Fsep{K}) = M_f (\Fsep{K})$ which means that $M_f(\Fsep{K})$ is divisible $\calO_K$-module.
     Then $\Lambda_f$ is a divisible torsion $\calO_K$-module.
 
     By Theorem \ref{thm: structure_div_mod_PID} and the fact that $\calO_k$ is a PID,
@@ -369,26 +369,26 @@ Equivalently, $E(S)$ can be characterized as:
 
     Moreover, $\Lambda_{f,1}$ is a one dimensional vector space over residue field $k$ (since $\Lambda_{f,1}$
     has the same cardinality as the residue field $k$).
-    It follows from the fact that $|J| = \dim_k M_f(\Ksep)[\pi] = \dim_k \Lambda_{f,1} = 1$,
+    It follows from the fact that $|J| = \dim_k M_f(\Fsep{K})[\pi] = \dim_k \Lambda_{f,1} = 1$,
     where $J$ is the index set of copies of $K/ \calO_K$. We conclude that
     $\Lambda_f \cong K / \calO_K$.
 \end{proof}
 
-There is a natural homomorphism $\Gal (\Ksep/ K) \to \End(\Lambda_f)$; this follows from
+There is a natural homomorphism $\Gal (\Fsep{K}/ K) \to \End(\Lambda_f)$; this follows from
 the action of the Galois group on the set of roots of a polynomial. Moreover,
 since $\Lambda _f \cong K / \calO_K$ and $\End(K/\calO_K) \cong \calO_K$,
 then this induces a
-homomorphism $\Gal(\Ksep/ K) \to \Aut(K / \calO_K) \cong U_K$.
+homomorphism $\Gal(\Fsep{K}/ K) \to \Aut(K / \calO_K) \cong U_K$.
 
 \begin{theorem}[{\cite[Chap.~VI 3.3 Theorem 3]{cassels1967algebraic}}]
-    The natural homomorphism $\Gal(\Ksep/K) \to \Aut (\Lambda_f)$ is an isomorphism.
+    The natural homomorphism $\Gal(\Fsep{K}/K) \to \Aut (\Lambda_f)$ is an isomorphism.
 \end{theorem}
 
 \begin{proof}
     This map is injective by definition; it remains to prove that it is surjective.
     We have an injection $\Gal(K_{\pi,n}/ K) \to U_K/ U _K^n$, where $U_K = 1 + \pi ^ n \calO_K$.
     Let $\alpha \in \Lambda_{f,n}$ be a primitive element, that is a element such that
-    $[\pi ^ {n - 1}]_f \alpha \neq 0$ or $\pi ^ {n - 1} \cdot \alpha \neq 0$ in $M_f(\Ksep)$.
+    $[\pi ^ {n - 1}]_f \alpha \neq 0$ or $\pi ^ {n - 1} \cdot \alpha \neq 0$ in $M_f(\Fsep{K})$.
     Then $\alpha$ is one of the roots of polynomial $f^{(n)}(X)/ f^{(n-1)}(X)$,
     where $f^{(n)}(X)$ is $n$-th iterate of $f(X)$.
     Since $f(X)/X = X ^ {q -1} + \pi$, then
@@ -400,11 +400,13 @@ homomorphism $\Gal(\Ksep/ K) \to \Aut(K / \calO_K) \cong U_K$.
     $(q-1) q ^ {n-1}$. On the other hand, $U_K/ U_K ^ m$ has exactly $(q-1)q ^ {n -1}$
     elements. Therefore, $\Gal(L_{\pi,n}/K) \cong U_K/ U_K^n$.
     Taking a inverse limit, it follows that
-    \[ \Gal(\Ksep/K) \cong \varprojlim \Gal(L_{\pi,n}/ K) \cong \varprojlim U_K / U_K^n \cong U_K. \]
+    \[ \Gal(\Fsep{K}/K) \cong \varprojlim \Gal(L_{\pi,n}/ K) \cong \varprojlim U_K / U_K^n \cong U_K. \]
 \end{proof}
 
 \begin{corollary}[{\cite[Chap.~VI 3.3 Theorem 3]{cassels1967algebraic}}]
     The element $\pi$ is a norm from $K_{\pi,n}$.
+
+    \label{cor: norm_Lpi}
 \end{corollary}
 
 \begin{proof}
@@ -412,26 +414,220 @@ homomorphism $\Gal(\Ksep/ K) \to \Aut(K / \calO_K) \cong U_K$.
     monic polynomial with constant coefficient $\pi$, and the norm of $-\alpha$ is $\pi$.
 \end{proof}
 
-Let $\Kun$ be the maximal unramified extension of $K$. Since $K_\pi$ is a totally ramified extension
-of $K$, $K_\pi$ and $\Kun$ are linearly disjoint. As a result, the Galois group
-$\Gal(K_\pi \Kun/K)$ is the direct product of $\Gal(K_\pi/K)$ and $\Gal(\Kun/K)$.
+Let $\Kur$ be the maximal unramified extension of $K$. Since $K_\pi$ is a totally ramified extension
+of $K$, $K_\pi$ and $\Kur$ are linearly disjoint. As a result, the Galois group
+$\Gal(K_\pi \Kur/K)$ is the direct product of $\Gal(K_\pi/K)$ and $\Gal(\Kur/K)$.
 
-Let $\pi \in \calO_K$ be a uniformizer and let $L_\pi$ be the field $K_\pi \Kun$. We define a group homomorphism
+Let $\pi \in \calO_K$ be a uniformizer and let $L_\pi$ be the field $K_\pi \Kur$. We define a group homomorphism
 $r_\pi : K^\times \to \Gal(L_\pi / K)$ as follows
 \begin{enumerate}
     \item $r_\pi (\pi)$ acts as identity on $K_\pi$ and acts as Frobenius automorphism $\sigma$ on
-        $\Kun$.
+        $\Kur$.
     \item Given a $u \in U_K$, we define $r_\pi (u)$ to act as $[u^{-1}]_f$ on $K_\pi$ and
-        acts as identity on $\Kun$.
+        acts as identity on $\Kur$.
 \end{enumerate}
 
-Next, one can prove that the field $L_\pi$ and the homomorphism $r_\pi$ are independent of the
-uniformizer $\pi$, and that $L_\pi$ is a maximal abelian extension of $K$.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Next, we will prove that the field $L_\pi$ and the homomorphism $r_\pi$ are independent of the
+% uniformizer $\pi$, and that $L_\pi$ is a maximal abelian extension of $K$.
 
-% Moreover, $r_\pi$ coincides with
-% the local reciprocity map in local class field theory, i.e. for all $a \in \calO_K$,
-% $r_\pi(a) = (a, L_\pi \Kun / K ^ \times)$. The references of these can be found in
-% \cite{LubinTate1965} and \cite{cassels1967algebraic}.
+% % Moreover, $r_\pi$ coincides with
+% % the local reciprocity map in local class field theory, i.e. for all $a \in \calO_K$,
+% % $r_\pi(a) = (a, L_\pi \Kur / K ^ \times)$. The references of these can be found in
+% % \cite{LubinTate1965} and \cite{cassels1967algebraic}.
+
+% To prove thess results, we first prove two auxiliary lemmas.
+
+% \begin{lemma}
+%     Let $E$ be an algebraic extension (finite or infinite) of a local field
+%     and let $\alpha \in \widehat{E}$, where $\widehat{E}$ is the completion of $E$.
+%     Then, if $\alpha$ is separable algebraic
+%     over $E$, then $\alpha$ belongs to $E$.
+
+%     \label{lem: sep_mem}
+% \end{lemma}
+
+% \begin{proof}
+%     Let $\Fsep{E}$ be the separable closure of $E$ and let $E'$ be the adherence
+%     (topological closure) of $E$ in $\Fsep{E}$. Then we can view $\alpha$ as
+%     an element in $E'$, as $\alpha \in \widehat{E}$. Hence, it is enough to
+%     show that $E' = E$.
+
+%     Let $g \in \Gal(\Fsep{E} / E)$. Since $g$ is continuous and $g$ is identity
+%     one $E$, it follows that $g$ is identity on $E'$. Hence, we have that
+%     \[\Gal(\Fsep{E}/ E) = \Gal(\Fsep{E}/ E'). \]
+%     Then we conclude that $E' = E$.
+% \end{proof}
+
+% Let $\sigma \in \Gal(\Kur/ K)$ be the Frobenius automorphism. We claim
+% that $\sigma$ can be extended to $\widehat{\Kur}$ by continuity.
+
+% \begin{proof}[Proof of the claim: ]
+% Let $v$ denote the normalized valuation on $K$. Since $K$ is complete,
+% $v$ extends uniquely to every algebraic extension of $K$, hence in particular
+% to $K^{\mathrm{ur}}$. Therefore every $K$-automorphism of $K^{\mathrm{ur}}$
+% preserves this valuation. Thus, for all $x,y\in K^{\mathrm{ur}}$,
+% \[ v(\sigma(x)-\sigma(y)) = v(\sigma(x-y)) = v(x-y).
+% \]
+% Equivalently, $\sigma$ is an isometry for the nonarchimedean absolute value
+% on $K^{\mathrm{ur}}$.
+
+% Hence $\sigma$ is uniformly continuous. Since $K^{\mathrm{ur}}$ is dense in
+% its completion $\widehat{K^{\mathrm{ur}}}$, the map $\sigma$ extends uniquely
+% by continuity to a map
+% \[
+% \widehat{\sigma}:\widehat{K^{\mathrm{ur}}}\longrightarrow
+% \widehat{K^{\mathrm{ur}}}.
+% \]
+
+% The inverse $\sigma^{-1}$ is also an isometry, so it extends as well, and its
+% extension is inverse to $\widehat{\sigma}$. Therefore $\widehat{\sigma}$ is an
+% automorphism of $\widehat{K^{\mathrm{ur}}}$ extending $\sigma$.
+% For convention, we will denote $\widehat{\sigma}$ as $\sigma$.
+% \end{proof}
+
+% Let $\pi$ be a uniformizer of $\calO_K$ and $\omega$ be another uniformizer,
+% i.e. $\omega = \pi u$ with $u \in U_K$. Let $f \in \calF_\pi$ and
+% $g \in \calF_\omega$.
+
+% \begin{lemma}
+%     Let $\sigma \in \Gal(\Kur/ K)$ be the Frobenius automorphism and it can
+%     be extended to $\widehat{\Kur}$. Then there is a power series
+%     $\phi(X) \in \widehat{\calO_{\Kur}}[\![X]\!]$ with
+%     $\phi(X) \equiv \epsilon X \pmod{\deg 2}$ with
+%     $\epsilon$ a unit in $\calO_{\Kur}$
+%     such that
+%     \begin{align}
+%         \leftsup{\sigma}{\phi}& = \phi \circ [u]_f, \label{eq: phi_u} \\
+%         \phi(F_f(X,Y)) &= F_g(\phi(X), \phi(Y)), \label{eq: phi_hom_fg} \\
+%         \phi \circ [a]_f &= [a]_g \circ \phi, \quad \forall a \in \calO_K \label{eq: phi_a} .
+%     \end{align}
+
+%     Here, $\leftsup{\sigma}{\phi}$ is the power series obtained by
+%     $\sigma$ acting on each coefficient of $\phi$.
+
+%     \label{lem: phi_lemma}
+% \end{lemma}
+
+% \begin{proof}
+%     We first construct a power series $\varphi(X) \in\widehat{\calO_{\Kur}}[\![X]\!]$
+%     satisfying equation \eqref{eq: phi_u} and modify it to satisfy
+%     equation \eqref{eq: phi_hom_fg} and equation \eqref{eq: phi_a}.
+
+%     Recall that $\sigma - 1$ is surjective on the additive group
+%     of $\widehat{\calO_{\Kur}}$ and it is also surjective
+%     on the group of units in $\widehat{\calO_{\Kur}}$. Then there
+%     is an element $\epsilon$ which is a unit in $\widehat{\calO_{\Kur}}$
+%     such that $\sigma \epsilon = \epsilon u$.
+
+%     Let $\varphi_1 (X) = \epsilon X$, then we have that
+%     \[\leftsup{\sigma}{\varphi_1}(X) \equiv \sigma \epsilon X
+%         \equiv \epsilon u X \equiv \varphi_1 \circ [u]_f (X) \pmod{\deg 2}.   \]
+
+%     Suppose that
+%     \[\leftsup{\sigma}{\varphi_n} (X) \equiv \varphi_n \circ [u]_f (X)
+%     \pmod{\deg (n+1)}.   \]
+
+%     Then we claim that $\varphi_{n+1}(X) \coloneqq \varphi_n(X)
+%     + a \epsilon^{n +1} X ^ {n +1}$, where $a$ satisfies
+%     \[a - \sigma a = \frac{c}{(\sigma \epsilon)^{n+1}}, \]
+
+%     and $c$ is the $n+1$-th coefficient of
+%     power series $\leftsup{\sigma}{\varphi_n} (X) - \varphi_n \circ [u]_f (X)$.
+%     The $a$ always exists since $\sigma - 1$ is surjective. Now we prove by
+%     calculation the $\varphi_{n+1}(X)$ satisfies
+%     \begin{equation}
+%         \leftsup{\sigma}{\varphi_{n+1}}(X) \equiv \varphi_{n+1} \circ [u]_f (X)
+%     \pmod{\deg (n + 2)}.
+%     \label{eq: ind_lem_phi}
+%     \end{equation}
+
+%     Since $\varphi_{n+1}(X) \coloneqq \varphi_n(X) + a \epsilon ^{n+1} X ^ {n+1}$,
+%     it is enough to check that the $n+1$-th coefficient of both
+%     side coincide.
+
+%     On the one hand, the $n+1$-th coefficient of $\leftsup{\sigma}{\varphi_{n+1}}(X)$
+%     is
+%     \[ \text{$n+1$-th coefficient of $\leftsup{\sigma}{\varphi_{n}}(X)$}
+%     + \sigma a \sigma (\epsilon^{n+1}).  \]
+
+%     On the other hand, the $n+1$-th coefficient of $\varphi_{n+1} \circ [u]_f (X)$ is
+%     \[\text{$n+1$-th coefficient of $\varphi_{n} \circ [u]_f (X)$}
+%     + a \epsilon^{n+1} u^{n+1}.  \]
+
+%     Then the equation \eqref{eq: ind_lem_phi} follows from
+%     the definition of $a$ and the fact $\sigma \epsilon = \epsilon u$.
+%     By induction, equation \ref{eq: ind_lem_phi} holds for all $n$. We obtain
+%     a power series $\varphi \coloneqq \lim \varphi_n$ over
+%     $\widehat{\calO_{\Kur}}$. Since $\varphi (X) \equiv \epsilon X \pmod{\deg 2}$,
+%     there is a substitution inverse of $\varphi$ and we denote it as $\varphi^{-1}$.
+
+%     Consider the power series
+%     \[h \coloneqq \leftsup{\sigma}{\varphi} f \varphi^{-1}. \]
+%     Then we have that
+%     \[h = \leftsup{\sigma}{\varphi} f \varphi^{-1} =
+%     \varphi [u]_f f \varphi^{-1} = \varphi [u]_f [\pi]_f \varphi^{-1}
+%     = \varphi [\omega]_f \varphi^{-1}.
+%     \]
+%     The power series $h$ has its coefficients in $\calO_K$, because
+%     \[
+%     \leftsup{\sigma}{h} = \leftsup{\sigma}{\varphi} \leftsup{\sigma}{[\omega]_f}
+%     \leftsup{\sigma}{\varphi^{-1}} =
+%     \leftsup{\sigma}{\varphi} [\omega]_f
+%     \leftsup{\sigma}{\varphi^{-1}} =
+%     \leftsup{\sigma}{\varphi} f [u]_f
+%     \leftsup{\sigma}{\varphi^{-1}} = \leftsup{\sigma}{\varphi} f \varphi^{-1} = h.
+%     \]
+%     where the second-to-last equality use the fact that
+%     \[\varphi \circ  [u]_f \leftsup{\sigma}{\varphi}^{-1} =
+%     \leftsup{\sigma}{\varphi} \leftsup{\sigma}{\varphi}^{-1} = X, \]
+%     and the uniqueness of substitution inverse.
+
+%     Moreover, we have that
+%     \[h(X) \equiv \epsilon \omega \epsilon^{-1} X \equiv \omega X \pmod{\deg 2},  \]
+%     and
+%     \[h(X) \equiv \leftsup{\sigma}{\varphi}(f (\varphi^{-1}(X))) \equiv
+%     \leftsup{\sigma}{\varphi}(\varphi^{-1}(X)^q) \equiv
+%     \leftsup{\sigma}{\varphi}(\leftsup{\sigma}{\varphi}^{-1}(X^q)) \pmod{\pi}.
+%     \]
+
+%     Hence, we have that $h \in \calF_\omega$.
+%     Now, we define $\phi$ to be $[1]_{g,h} \varphi$. And we check that this $\phi$
+%     satisfies three equations in the lemma. Equation \eqref{eq: phi_u} follows from
+%     the equality
+%     $\leftsup{\sigma}{[1]_{g,h}} = [1]_{g,h}$.
+
+%     Note that $g = \phi [\omega]_f \phi^{-1}$. It is proved as follow:
+%     \[g = [1]_{g,h} h [1]_{g,h}^{-1} =
+%     \leftsup{\sigma}{[1]_{g,h}} \leftsup{\sigma}{\varphi} f \varphi^{-1} [1]_{g,h}^{-1}
+%     = \leftsup{\sigma}{\phi} f \phi^{-1} =\phi [u]_f f \phi^{-1}
+%     = \phi [\omega]_f \phi^{-1}.
+%     \]
+
+%     To show the equation \eqref{eq: phi_hom_fg}, we verify that
+%     the power series
+%     \[F(X,Y) \coloneqq \phi (F_f(\phi^{-1}(X), \phi^{-1}(Y))) =
+%     \phi F_f \phi^{-1} \]
+%     satisfies the same properties characterizing $F_g(X,Y)$ in Lemma
+%     \ref{lemma: constructive_lemma_lubin_Tate}. We need to
+%     prove that $F(X,Y) \equiv X + Y \pmod{\deg 2}$ and $g (F(X,Y)) = F(g(X), g(Y))$.
+%     The first equality follows by computing coefficient of $X$ and $Y$.
+%     The second follows from the following computation
+%     \[gF = \phi [\omega]_f \phi^{-1} \phi F_f \phi^{-1}
+%     = \phi [\omega]_f F_f \phi^{-1} =
+%     \phi F_f [\omega]_f \phi^{-1} = \phi F_f \phi^{-1} (\phi [\omega]_f \phi^{-1})
+%     = \phi F_f \phi^{-1} g= F g.
+%     \]
+
+%     For equation \eqref{eq: phi_a}, it is enough to verify $\phi [a]_f \phi^{-1}$
+%     satisfies the characterizing properties of $[a]_g$ in
+%     Lemma \ref{lemma: constructive_lemma_lubin_Tate}. And this follows from
+%     \[ \phi [a]_f \phi^{-1} g =\phi [a]_f \phi^{-1} \phi [\omega]_f \phi^{-1}
+%     = \phi [a]_f [\omega]_f \phi^{-1} = \phi [a \omega]_f \phi^{-1} =
+%     \phi [\omega]_f \phi^{-1} \phi [a]_f\phi^{-1} = g \phi [a]_f\phi^{-1}. \]
+
+%     We conclude that this $\phi$ satisfies all three equation.
+% \end{proof}
 
 % \begin{theorem}
 %     Let $\omega \in \calO_K$ be another uniformizer; that is,
@@ -439,12 +635,455 @@ uniformizer $\pi$, and that $L_\pi$ is a maximal abelian extension of $K$.
 %     \[ L_\pi = L_\omega. \]
 % \end{theorem}
 
-% Before we begin to prove this theorem, we will state a lemma and
-% skip the proof of this lemma.
+% \begin{proof}
+%     Let $f\in \calO_\pi$ and $g \in \calO_\omega$.
+%     Then $L_\pi = K (\Lambda_f)$ and $L_\omega = K(\Lambda_g)$.
+%     By Lemma \ref{lem: phi_lemma}, there is a power series $\phi$ such that
+%     $\phi$ is a isomorphism from formal $\calO_K$-module $\Lambda_f$ to
+%     formal $\calO_K$-module $\Lambda_g$.
+%     Then we have that $\phi (\Lambda_f) = \Lambda_g$.
+%     It follows that $\Lambda_g = \phi(\Lambda_f) \subset
+%     \widehat{\Kur (\Lambda_f)} = \widehat{L_\pi}$. By symmetry, we have that
+%     $\widehat{L_\pi} = \widehat{L_\omega}$. And the the theorem
+%     follows from Lemma \ref{lem: sep_mem}.
+% \end{proof}
 
-% \begin{lemma}
+% \begin{theorem}
+%     Let $\omega \in \calO_K$ be another uniformizer; that is,
+%     $\omega = u \pi$ for some $u \in U_K$. Then $r_\pi = r_\omega$.
+% \end{theorem}
 
-% \end{lemma}
+% \begin{proof}
+%     Let $f\in \calO_\pi$ and $g \in \calO_\omega$.
+%     Then $L_\pi = K (\Lambda_f)$ and $L_\omega = K(\Lambda_g)$.
+
+%     It is enough to show that $r_\pi(\omega) = r_\omega(\omega)$, since $\omega$
+%     generates $K^\times$. On the field $\Kur$, the automorphism
+%     $r_\pi(\omega)$ and $r_\omega(\omega)$ acts as Frobenius automorphism.
+%     It is enough to show that their actions on $L_\omega$ are the same.
+%     By definition, $r_\omega(\omega)$ is identity on $L_\omega$.
+
+%     By Lemma \ref{lem: phi_lemma}, there is a power series $\phi$ over
+%     $\widehat{\calO_{\Kur}}$ such that $\phi$ is a isomorphism from
+%     formal $\calO_K$-module $\Lambda_f$ to
+%     formal $\calO_K$-module $\Lambda_g$. Then $\phi(\Lambda_f) = \Lambda_g$.
+%     Since $L_\omega = K (\Lambda_g)$, it is enough to show that
+%     \[ \leftsup{r_\pi(\omega)}{\phi(\lambda)} = \phi(\lambda), \quad
+%     \forall \lambda \in \Lambda_f.  \]
+
+%     Now, we write $r_\pi(\omega) = r_\pi(u) r_\pi(\pi)$. Denote $r_\pi(u)$ as
+%     $\tau$ and $r_\pi(\pi)$ as $\sigma$.
+%     And by definition of $r_\pi$,
+%     $\sigma$ is Frobenius on $\widehat{\Kur}$ and identity on $\lambda$,
+%     whereas $\tau$ is identity on $\widehat{\Kur}$ and maps $\lambda$ to
+%     $[u^{-1}]_f(\lambda)$. Note that $\phi \in \widehat{\calO_{\Kur}}[\![X]\!]$,
+
+%     \[\leftsup{r_\pi(\omega)}{\phi(\lambda)} =
+%     \leftsup{\tau \sigma}{\phi(\lambda)} =
+%     \leftsup{\sigma}{\phi}(\tau \lambda) =
+%     \phi ([u]_f [u^{-1}]_f (\lambda))
+%     = \phi(\lambda).  \]
+
+
+% \end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Next, we prove that the field $L_\pi$ and the homomorphism $r_\pi$ are
+independent of the choice of the uniformizer $\pi$.
+Moreover, $L_\pi$ is a maximal abelian extension of $K$.
+
+To prove these results, we first prove two auxiliary lemmas.
+
+\begin{lemma}
+    Let $E$ be an algebraic extension, finite or infinite, of a local field, and
+    let $\alpha \in \widehat{E}$, where $\widehat{E}$ denotes the completion of
+    $E$. If $\alpha$ is separable algebraic over $E$, then $\alpha \in E$.
+    \label{lem: sep_mem}
+\end{lemma}
+
+\begin{proof}
+    Let $\Fsep{E}$ be the separable closure of $E$, and let $E'$ be the
+    adherence, that is, the topological closure, of $E$ in $\Fsep{E}$.
+    Since $\alpha$ is separable algebraic over $E$, after choosing an
+    $E$-embedding of $E(\alpha)$ into $\Fsep{E}$, we may view $\alpha$ as
+    an element of $E'$. Hence it is enough to show that $E'=E$.
+
+    Let $g \in \Gal(\Fsep{E}/E)$. Since $g$ is continuous and is the identity
+    on $E$, it is also the identity on the closure $E'$. Therefore
+    $\Gal(\Fsep{E}/E)=\Gal(\Fsep{E}/E')$. By the fundamental theorem of
+    Galois theory, applied to the Galois extension $\Fsep{E}/E$, the fixed
+    fields of these two groups are equal. Thus $E'=E$.
+\end{proof}
+
+Let $\sigma \in \Gal(\Kur/K)$ be the Frobenius automorphism. We claim that
+$\sigma$ extends uniquely to $\widehat{\Kur}$ by continuity.
+
+\begin{proof}[Proof of the claim]
+    Let $v$ denote the normalized valuation on $K$. Since $K$ is complete,
+    $v$ extends uniquely to every algebraic extension of $K$, and hence in
+    particular to $\Kur$. Therefore every $K$-automorphism of $\Kur$ preserves
+    this valuation. Thus, for all $x,y \in \Kur$,
+    \[
+        v(\sigma(x)-\sigma(y)) = v(\sigma(x-y)) = v(x-y).
+    \]
+    Equivalently, $\sigma$ is an isometry for the corresponding
+    nonarchimedean absolute value.
+
+    Hence $\sigma$ is uniformly continuous. Since $\Kur$ is dense in
+    $\widehat{\Kur}$, the map $\sigma$ extends uniquely to a continuous map
+    $\widehat{\sigma}:\widehat{\Kur}\to \widehat{\Kur}$. The inverse
+    $\sigma^{-1}$ is also an isometry, so it extends as well, and its extension
+    is inverse to $\widehat{\sigma}$. Thus $\widehat{\sigma}$ is an
+    automorphism of $\widehat{\Kur}$ extending $\sigma$. By abuse of notation,
+    we shall again denote this extension by $\sigma$.
+\end{proof}
+
+Let $\pi$ be a uniformizer of $\calO_K$, and let $\omega$ be another
+uniformizer. Write $\omega=u\pi$ with $u \in U_K$. Let
+$f \in \calF_\pi$ and $g \in \calF_\omega$.
+
+\begin{lemma}
+    There exists a power series
+    $\phi(X)$ over $\widehat{\calO_{\Kur}}$ such that
+    $\phi(X) \equiv \epsilon X \pmod{\deg 2}$ for some unit
+    $\epsilon \in \widehat{\calO_{\Kur}}^\times$, and such that
+    \begin{align}
+        \leftsup{\sigma}{\phi} &= \phi \circ [u]_f,
+            \label{eq: phi_u} \\
+        \phi(F_f(X,Y)) &= F_g(\phi(X),\phi(Y)),
+            \label{eq: phi_hom_fg} \\
+        \phi \circ [a]_f &= [a]_g \circ \phi,
+            \qquad \forall a \in \calO_K .
+            \label{eq: phi_a}
+    \end{align}
+    Here $\leftsup{\sigma}{\phi}$ denotes the power series obtained by applying
+    $\sigma$ to each coefficient of $\phi$.
+    \label{lem: phi_lemma}
+\end{lemma}
+
+\begin{proof}
+    We first construct a power series
+    $\varphi(X) \in \widehat{\calO_{\Kur}}[\![X]\!]$ satisfying
+    \eqref{eq: phi_u}. We will then modify it so that it also satisfies
+    \eqref{eq: phi_hom_fg} and \eqref{eq: phi_a}.
+
+    Recall that $\sigma-1$ is surjective on the additive group of
+    $\widehat{\calO_{\Kur}}$, and also on the group
+    $\widehat{\calO_{\Kur}}^\times$ of units. Hence there exists a unit
+    $\epsilon \in \widehat{\calO_{\Kur}}^\times$ such that
+    $\leftsup{\sigma}{\epsilon}=\epsilon u$.
+
+    Set $\varphi_1(X)=\epsilon X$. Then
+    $\leftsup{\sigma}{\varphi_1}(X) \equiv
+    \varphi_1([u]_f(X)) \pmod{\deg 2}$.
+
+    Suppose inductively that
+    \[
+        \leftsup{\sigma}{\varphi_n}(X)
+        \equiv
+        \varphi_n([u]_f(X))
+        \pmod{\deg(n+1)}.
+    \]
+    Let $c$ be the coefficient of $X^{n+1}$ in
+    $\leftsup{\sigma}{\varphi_n}(X)-\varphi_n([u]_f(X))$. Choose
+    $a \in \widehat{\calO_{\Kur}}$ such that
+    \[
+        a-\leftsup{\sigma}{a}
+        =
+        \frac{c}{(\leftsup{\sigma}{\epsilon})^{n+1}},
+    \]
+    which is possible by the surjectivity of $\sigma-1$. Define
+    \[
+        \varphi_{n+1}(X)
+        =
+        \varphi_n(X)+a\epsilon^{n+1}X^{n+1}.
+    \]
+    Since $\leftsup{\sigma}{\epsilon}=\epsilon u$, the coefficient of
+    $X^{n+1}$ in
+    $\leftsup{\sigma}{\varphi_{n+1}}(X)-\varphi_{n+1}([u]_f(X))$
+    is
+    \[
+        c+\leftsup{\sigma}{a}(\leftsup{\sigma}{\epsilon})^{n+1}
+        -a\epsilon^{n+1}u^{n+1}
+        =
+        c-\bigl(a-\leftsup{\sigma}{a}\bigr)
+        (\leftsup{\sigma}{\epsilon})^{n+1}
+        =
+        0.
+    \]
+    Therefore
+    \[
+        \leftsup{\sigma}{\varphi_{n+1}}(X)
+        \equiv
+        \varphi_{n+1}([u]_f(X))
+        \pmod{\deg(n+2)}.
+    \]
+    Passing to the coefficientwise limit, we obtain a power series
+    $\varphi=\lim_n \varphi_n$ satisfying
+    $\leftsup{\sigma}{\varphi}=\varphi\circ [u]_f$. Since
+    $\varphi(X)\equiv \epsilon X \pmod{\deg 2}$ with $\epsilon$ a unit,
+    $\varphi$ has a substitution inverse, denoted by $\varphi^{-1}$.
+
+    Now define
+    \[
+        h
+        =
+        \leftsup{\sigma}{\varphi}\circ f\circ \varphi^{-1}.
+    \]
+    Since $\leftsup{\sigma}{\varphi}=\varphi\circ [u]_f$ and
+    $f=[\pi]_f$, we have
+    \[
+        h
+        =
+        \varphi\circ [u]_f\circ [\pi]_f\circ \varphi^{-1}
+        =
+        \varphi\circ [\omega]_f\circ \varphi^{-1}.
+    \]
+    Applying $\sigma$ to this equality gives
+    \[
+        \leftsup{\sigma}{h}
+        =
+        \leftsup{\sigma}{\varphi}\circ [\omega]_f
+        \circ (\leftsup{\sigma}{\varphi})^{-1}
+        =
+        \varphi\circ [u]_f\circ [\omega]_f\circ [u^{-1}]_f
+        \circ \varphi^{-1}
+        =
+        h.
+    \]
+    Hence the coefficients of $h$ are fixed by $\sigma$, and therefore lie in
+    $\calO_K$.
+
+    Moreover,
+    $h(X)\equiv \omega X \pmod{\deg 2}$. Also, using
+    $f(X)\equiv X^q \pmod{\pi}$ and the fact that $\sigma$ lifts the
+    $q$-power Frobenius on the residue field, we get
+    \[
+        h(X)
+        =
+        \leftsup{\sigma}{\varphi}(f(\varphi^{-1}(X)))
+        \equiv
+        \leftsup{\sigma}{\varphi}\bigl((\varphi^{-1}(X))^q\bigr)
+        \equiv
+        \leftsup{\sigma}{\varphi}
+        \bigl((\leftsup{\sigma}{\varphi})^{-1}(X^q)\bigr)
+        =
+        X^q
+        \pmod{\pi}.
+    \]
+    Since $\pi$ and $\omega$ generate the same maximal ideal, this shows that
+    $h \in \calF_\omega$.
+
+    We now replace $\varphi$ by
+    \[
+        \phi=[1]_{g,h}\circ \varphi.
+    \]
+    Since $[1]_{g,h}$ has coefficients in $\calO_K$, it is fixed by $\sigma$.
+    Thus
+    \[
+        \leftsup{\sigma}{\phi}
+        =
+        [1]_{g,h}\circ \leftsup{\sigma}{\varphi}
+        =
+        [1]_{g,h}\circ \varphi\circ [u]_f
+        =
+        \phi\circ [u]_f,
+    \]
+    so \eqref{eq: phi_u} still holds.
+
+    Next, since $[1]_{g,h}$ is an isomorphism from $F_h$ to $F_g$, it satisfies
+    $g\circ [1]_{g,h}=[1]_{g,h}\circ h$. Hence
+    \[
+        \leftsup{\sigma}{\phi}\circ f\circ \phi^{-1}
+        =
+        [1]_{g,h}\circ
+        \leftsup{\sigma}{\varphi}\circ f\circ \varphi^{-1}
+        \circ [1]_{g,h}^{-1}
+        =
+        [1]_{g,h}\circ h\circ [1]_{g,h}^{-1}
+        =
+        g.
+    \]
+    Combining this with \eqref{eq: phi_u}, we also have
+    $g=\phi\circ [\omega]_f\circ \phi^{-1}$.
+
+    To prove \eqref{eq: phi_hom_fg}, define
+    \[
+        F(X,Y)
+        =
+        \phi\bigl(F_f(\phi^{-1}(X),\phi^{-1}(Y))\bigr).
+    \]
+    Then $F(X,Y)\equiv X+Y \pmod{\deg 2}$. Moreover, using
+    $g=\phi\circ [\omega]_f\circ \phi^{-1}$ and the fact that $[\omega]_f$
+    is an endomorphism of $F_f$, we have
+    % \[
+    %     g(F(X,Y))
+    %     =
+    %     F(g(X),g(Y)).
+    % \]
+    \[gF = \phi [\omega]_f \phi^{-1} \phi F_f \phi^{-1}
+    = \phi [\omega]_f F_f \phi^{-1} =
+    \phi F_f [\omega]_f \phi^{-1} = \phi F_f \phi^{-1} (\phi [\omega]_f \phi^{-1})
+    = \phi F_f \phi^{-1} g= F g.
+    \]
+    By the uniqueness statement in Lemma~\ref{lemma: constructive_lemma_lubin_Tate},
+    it follows that $F=F_g$. This proves \eqref{eq: phi_hom_fg}.
+
+    Finally, fix $a\in \calO_K$ and set
+    $A_a=\phi\circ [a]_f\circ \phi^{-1}$. Then
+    $A_a(X)\equiv aX \pmod{\deg 2}$. Also,
+    \[
+        A_a\circ g
+        =
+        \phi\circ [a]_f\circ [\omega]_f\circ \phi^{-1}
+        =
+        \phi\circ [\omega]_f\circ [a]_f\circ \phi^{-1}
+        =
+        g\circ A_a.
+    \]
+    Again by the uniqueness statement in
+    Lemma~\ref{lemma: constructive_lemma_lubin_Tate}, we get
+    $A_a=[a]_g$. Hence \eqref{eq: phi_a} holds.
+\end{proof}
+
+\begin{theorem}
+    The field $L_\pi$ is independent of the choice of the uniformizer $\pi$.
+\end{theorem}
+
+\begin{proof}
+    In this proof, write
+    \[
+        L_\pi=\Kur(\Lambda_f)
+        \qquad\text{and}\qquad
+        L_\omega=\Kur(\Lambda_g),
+    \]
+    where $f\in \calF_\pi$ and $g\in \calF_\omega$.
+
+    By Lemma~\ref{lem: phi_lemma}, there exists a power series $\phi$ giving
+    an isomorphism from the formal $\calO_K$-module associated with $f$ to the
+    one associated with $g$. In particular, $\phi(\Lambda_f)=\Lambda_g$.
+
+    Since the coefficients of $\phi$ lie in $\widehat{\calO_{\Kur}}$, for every
+    $\lambda\in \Lambda_f$ we have
+    $\phi(\lambda)\in \widehat{\Kur(\Lambda_f)}=\widehat{L_\pi}$. Thus
+    $\Lambda_g\subset \widehat{L_\pi}$. Each element of $\Lambda_g$ is
+    separable algebraic over $L_\pi$, so Lemma~\ref{lem: sep_mem} implies that
+    $\Lambda_g\subset L_\pi$. Therefore $L_\omega\subset L_\pi$.
+
+    By symmetry, $L_\pi\subset L_\omega$. Hence $L_\pi=L_\omega$.
+\end{proof}
+
+\begin{theorem}
+    The homomorphism $r_\pi$ is independent of the choice of the uniformizer
+    $\pi$.
+\end{theorem}
+
+\begin{proof}
+    It is enough to prove the following assertion: if $\omega=u\pi$ is another
+    uniformizer, then
+    \[
+        r_\pi(\omega)=r_\omega(\omega).
+    \]
+    Indeed, applying this assertion with $\omega$ replaced by an arbitrary
+    uniformizer shows that all the maps $r_\pi$ have the same value on every
+    uniformizer. Since the set of uniformizers generates $K^\times$, the
+    homomorphisms $r_\pi$ are equal.
+
+    Fix $f\in \calF_\pi$ and $g\in \calF_\omega$. By the previous theorem,
+    we may identify
+    \[
+        L_\pi=L_\omega=\Kur(\Lambda_g).
+    \]
+    On $\Kur$, both $r_\pi(\omega)$ and $r_\omega(\omega)$ induce the
+    Frobenius automorphism. Hence it remains to compare their actions on
+    $\Lambda_g$. By definition, $r_\omega(\omega)$ is the identity on
+    $\Lambda_g$.
+
+    By Lemma~\ref{lem: phi_lemma}, there exists a power series $\phi$ such
+    that $\phi(\Lambda_f)=\Lambda_g$ and
+    $\leftsup{\sigma}{\phi}=\phi\circ [u]_f$. Therefore it is enough to prove
+    that, for every $\lambda\in \Lambda_f$,
+    \[
+        \leftsup{r_\pi(\omega)}{\phi(\lambda)}
+        =
+        \phi(\lambda).
+    \]
+
+    Write $r_\pi(\omega)=r_\pi(u)r_\pi(\pi)$, and set
+    $\tau=r_\pi(u)$ and $\sigma=r_\pi(\pi)$. By definition, $\sigma$ acts as
+    Frobenius on $\widehat{\Kur}$ and fixes $\Lambda_f$, while $\tau$ fixes
+    $\widehat{\Kur}$ and sends $\lambda\in\Lambda_f$ to
+    $[u^{-1}]_f(\lambda)$. Since the coefficients of $\phi$ lie in
+    $\widehat{\calO_{\Kur}}$, we get
+    \[
+        \leftsup{r_\pi(\omega)}{\phi(\lambda)}
+        =
+        \leftsup{\tau\sigma}{\phi(\lambda)}
+        =
+        \leftsup{\sigma}{\phi}(\leftsup{\tau}{\lambda})
+        =
+        \phi([u]_f([u^{-1}]_f(\lambda)))
+        =
+        \phi(\lambda).
+    \]
+    Thus $r_\pi(\omega)=r_\omega(\omega)$, and the theorem follows.
+\end{proof}
+
+
+\begin{corollary}
+    Let $\pi$ be a uniformizer of $\calO_K$. Then $L_\pi\Kur$ is the maximal
+    abelian extension of $K$, and $r_\pi$ is the local reciprocity homomorphism
+    for $L_\pi\Kur/K$. More precisely, for every $a\in K^\times$,
+    $r_\pi(a)=(a,L_\pi\Kur/K)$, with respect to our normalization of the
+    reciprocity map.
+\end{corollary}
+
+\begin{proof}
+    By the previous theorem, $r_\pi$ is independent of the choice of
+    uniformizer. Thus we may denote this common homomorphism simply by
+    $r:K^\times\to \Gal(L_\pi\Kur/K)$.
+
+    We first explain why the maximality of $L_\pi\Kur$ follows once we know
+    that $r$ is the local reciprocity homomorphism. Since $L_\pi\Kur$ contains
+    $\Kur$, if $r(a)$ is trivial on $L_\pi\Kur$, then its restriction to $\Kur$
+    is trivial. But this restriction is $\sigma^{v_K(a)}$, where $\sigma$ is
+    the Frobenius automorphism. Hence $v_K(a)=0$, so $a\in U_K$.
+
+    Now let $u\in U_K$. If $r(u)$ is trivial on $L_{\pi,m}$, then, by the
+    definition of $r_\pi$ on units, the endomorphism $[u^{-1}]_f$ acts
+    trivially on $\Lambda_{f,m}$. Equivalently, $u\equiv 1 \pmod{\pi^m}$.
+    If $r(u)$ is trivial on all of $L_\pi=\bigcup_{m\geq 1}L_{\pi,m}$, then
+    this congruence holds for every $m$, and therefore $u=1$. Hence the
+    restriction of $r$ to $U_K$ is injective, and consequently $r$ itself is
+    injective.
+
+    Therefore, if $r$ is the restriction of the local reciprocity map to
+    $L_\pi\Kur$, then the corresponding kernel is trivial. By the Galois
+    correspondence in local class field theory, this means that $L_\pi\Kur$
+    corresponds to the trivial subgroup of $K^\times$. Hence $L_\pi\Kur$ is
+    the maximal abelian extension of $K$.
+
+    It remains to show that $r$ agrees with the local reciprocity map. Let
+    $s:K^\times\to \Gal(L_\pi\Kur/K)$ be the local reciprocity homomorphism,
+    so that $s(a)=(a,L_\pi\Kur/K)$.
+
+    Let $\pi$ be any uniformizer of $\calO_K$. By Theorem~\ref{cor: norm_Lpi},
+    the element $\pi$ is a norm from $L_{\pi,m}/K$ for every $m$. Hence, by the
+    defining property of the local reciprocity map, $s(\pi)$ acts trivially on
+    $L_\pi=\bigcup_{m\geq 1}L_{\pi,m}$. On the other hand, its restriction to
+    $\Kur$ is the Frobenius automorphism $\sigma$.
+
+    By definition, $r_\pi(\pi)$ has exactly the same two properties: it is the
+    identity on $L_\pi$, and it acts as $\sigma$ on $\Kur$. Therefore
+    $s(\pi)=r_\pi(\pi)$. Since $r_\pi=r$ by the independence of the uniformizer,
+    we get $s(\pi)=r(\pi)$ for every uniformizer $\pi$.
+
+    Finally, the uniformizers generate $K^\times$. Indeed, after fixing one
+    uniformizer $\pi$, every element of $K^\times$ can be written as
+    $u\pi^n$ with $u\in U_K$. Thus $s$
+    and $r$ agree on a set of generators of $K^\times$, and hence $s=r$.
+    This proves that $r_\pi$ is the local reciprocity homomorphism.
+\end{proof}
 
 
 

@@ -11,27 +11,27 @@
 \contentsline {chapter}{\numberline {2}Lubin--Tate Theory}{24}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Lubin--Tate formal group laws}{24}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Applications}{27}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Connection with functional equation lemma}{30}{section.2.3}%
-\contentsline {chapter}{\numberline {3}Lean and mathlib}{31}{chapter.3}%
-\contentsline {section}{\numberline {3.1}The lean theorem prover}{31}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Dependent type theory}{31}{section.3.2}%
-\contentsline {section}{\numberline {3.3}A brief introduction to lean syntax}{32}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Basic declarations}{32}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}The meaning of different brackets}{33}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Attribute tags}{33}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}Namespaces}{34}{subsection.3.3.4}%
-\contentsline {section}{\numberline {3.4}Structures, classes, and type class inference}{35}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Structures and classes}{35}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Instances}{36}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Type class inference}{36}{subsection.3.4.3}%
-\contentsline {subsection}{\numberline {3.4.4}The algebraic hierarchy}{36}{subsection.3.4.4}%
-\contentsline {chapter}{\numberline {4}Lean formalization of formal group laws}{38}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Multivariate power series in mathlib}{38}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Definitions}{40}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Formal groups constructions}{44}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Homomorphism and isomorphism}{45}{subsection.4.2.2}%
-\contentsline {section}{\numberline {4.3}The functional equation lemma}{46}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Universal formal group laws}{50}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Height}{51}{section.4.5}%
-\contentsline {chapter}{Conclusion and future work}{53}{chapter*.3}%
+\contentsline {section}{\numberline {2.3}Connection with functional equation lemma}{33}{section.2.3}%
+\contentsline {chapter}{\numberline {3}Lean and mathlib}{35}{chapter.3}%
+\contentsline {section}{\numberline {3.1}The lean theorem prover}{35}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Dependent type theory}{35}{section.3.2}%
+\contentsline {section}{\numberline {3.3}A brief introduction to lean syntax}{36}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Basic declarations}{36}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}The meaning of different brackets}{37}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Attribute tags}{37}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Namespaces}{38}{subsection.3.3.4}%
+\contentsline {section}{\numberline {3.4}Structures, classes, and type class inference}{39}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Structures and classes}{39}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Instances}{40}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Type class inference}{40}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}The algebraic hierarchy}{40}{subsection.3.4.4}%
+\contentsline {chapter}{\numberline {4}Lean formalization of formal group laws}{42}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Multivariate power series in mathlib}{42}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Definitions}{44}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Formal groups constructions}{48}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Homomorphism and isomorphism}{49}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}The functional equation lemma}{50}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Universal formal group laws}{54}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Height}{55}{section.4.5}%
+\contentsline {chapter}{Conclusion and future work}{57}{chapter*.3}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
