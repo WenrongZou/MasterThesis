@@ -694,7 +694,7 @@ Moreover, $L_\pi$ is a maximal abelian extension of $K$.
 
 To prove these results, we first prove two auxiliary lemmas.
 
-\begin{lemma}
+\begin{lemma}[{\cite[Chap.~VI 3.3 Lemma 2]{cassels1967algebraic}}]
     Let $E$ be an algebraic extension, finite or infinite, of a local field, and
     let $\alpha \in \widehat{E}$, where $\widehat{E}$ denotes the completion of
     $E$. If $\alpha$ is separable algebraic over $E$, then $\alpha \in E$.
@@ -742,7 +742,7 @@ Let $\pi$ be a uniformizer of $\calO_K$, and let $\omega$ be another
 uniformizer. Write $\omega=u\pi$ with $u \in U_K$. Let
 $f \in \calF_\pi$ and $g \in \calF_\omega$.
 
-\begin{lemma}
+\begin{lemma}[{\cite[Lemma 2]{LubinTate1965}}]
     There exists a power series
     $\phi(X)$ over $\widehat{\calO_{\Kur}}$ such that
     $\phi(X) \equiv \epsilon X \pmod{\deg 2}$ for some unit
@@ -913,7 +913,10 @@ $f \in \calF_\pi$ and $g \in \calF_\omega$.
         =
         \phi\bigl(F_f(\phi^{-1}(X),\phi^{-1}(Y))\bigr).
     \]
-    Then $F(X,Y)\equiv X+Y \pmod{\deg 2}$. Moreover, using
+    Then $F(X,Y)\equiv X+Y \pmod{\deg 2}$.
+    Here and below, for any one-variable power series $h$, we abuse notation by
+writing $hF$ for $h\circ F$ and $Fh$ for $F(h(X),h(Y))$.
+    Moreover, using
     $g=\phi\circ [\omega]_f\circ \phi^{-1}$ and the fact that $[\omega]_f$
     is an endomorphism of $F_f$, we have
     % \[
@@ -946,7 +949,7 @@ $f \in \calF_\pi$ and $g \in \calF_\omega$.
     $A_a=[a]_g$. Hence \eqref{eq: phi_a} holds.
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}[{\cite[Theorem 3]{LubinTate1965}}]
     The field $L_\pi$ is independent of the choice of the uniformizer $\pi$.
 \end{theorem}
 
@@ -973,7 +976,7 @@ $f \in \calF_\pi$ and $g \in \calF_\omega$.
     By symmetry, $L_\pi\subset L_\omega$. Hence $L_\pi=L_\omega$.
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}[{\cite[Theorem 3]{LubinTate1965}}]
     The homomorphism $r_\pi$ is independent of the choice of the uniformizer
     $\pi$.
 \end{theorem}
@@ -1030,7 +1033,7 @@ $f \in \calF_\pi$ and $g \in \calF_\omega$.
 \end{proof}
 
 
-\begin{corollary}
+\begin{corollary}[{\cite[Corollary]{LubinTate1965}}]
     Let $\pi$ be a uniformizer of $\calO_K$. Then $L_\pi\Kur$ is the maximal
     abelian extension of $K$, and $r_\pi$ is the local reciprocity homomorphism
     for $L_\pi\Kur/K$. More precisely, for every $a\in K^\times$,
