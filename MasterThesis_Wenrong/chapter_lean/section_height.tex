@@ -1,7 +1,6 @@
-\section{Height}
+\section{Heights}
 
-We now introduce the height of a commutative formal group law.  In this
-part, we assume that \lstinline|F| is commutative. Throughout
+We now introduce the height of a commutative formal group law.
 this section, we fix a field $K$ of characteristic $p$, and we consider a
 commutative formal group law \lstinline|F| over $K$.
 
@@ -56,7 +55,7 @@ nonzero.
 
 The height of \lstinline|F| is then defined as follows:
 \begin{lstlisting}
-/-- the height of a formal group. -/
+/-- The height of a formal group. -/
 def height : ℕ∞ :=
   letI := Classical.decEq K
   letI := Classical.decEq (PowerSeries K)

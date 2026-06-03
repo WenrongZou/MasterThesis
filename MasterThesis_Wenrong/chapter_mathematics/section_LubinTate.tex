@@ -7,7 +7,7 @@ field, and let $\pi$ be a \emph{uniformizer} of $\calO_K$.
 A uniformizer of $K$ is an element $\pi \in \mathcal O_K$ such that
 $\gothm_K = (\pi)$.
 Equivalently, if $v_K$ is the normalized discrete valuation on $K$, then
-$\pi$ is a uniformizer if$ v_K(\pi)=1$.
+$\pi$ is a uniformizer if $v_K(\pi)=1$.
 Thus every nonzero element $x\in K^\times$ can be written uniquely as
 $x = u\pi^n$, where $u\in \mathcal O_K^\times$ is a unit and $n\in \mathbb Z$.
 
@@ -36,6 +36,72 @@ $x = u\pi^n$, where $u\in \mathcal O_K^\times$ is a unit and $n\in \mathbb Z$.
 \end{lemma}
 
 \begin{proof}
+    % First, we claim that for all $k \in \NN$,
+    % there is a polynomial $F_k(X_1, \ldots, X_n)$ of degree $k$ such that
+
+    % \begin{align*}
+    %     F_k(X_1, \ldots , X_n) &\equiv L (X_1, \ldots, X_n) \pmod{\deg 2} \quad \text{and} \\
+    %     f(F_k(X_1, \ldots , X_n)) &\equiv F_k(g(X_1), \ldots, g(X_n)) \pmod{\deg (k + 1)}.
+    % \end{align*}
+
+    % Then we obtain a sequence of polynomial $F_k(X_1, \ldots, X_n)$. Define
+    % $F$ to be $\lim F_k$. Then the $F$ satisfies the equation \eqref{eq: LT_trunc_two}
+    % and \eqref{eq: LT_subst}. Indeed, for equation \eqref{eq: LT_trunc_two}, it follows
+    % that $F_k(X_1, \ldots , X_n) \equiv L (X_1, \ldots, X_n) \pmod{\deg 2}$ for all $k$. For
+    % equation \eqref{eq: LT_subst}, we have that for all $k$,
+    % \[f(F(X_1, \ldots, X_n)) \equiv f(F_k(X_1, \ldots, X_n)) \equiv
+    % F_k(g(X_1), \ldots, g(X_n)) \pmod{\deg (k + 1)}. \]
+
+    % The first congruence follows from $f$ is of constant coefficient zero, and
+    % \begin{equation}
+    %     F(X_1, \ldots, X_n) \equiv F_k(X_1, \ldots, X_n) \pmod{\deg (k+1)}.
+    %     \label{eq: LT_trunc_k}
+    % \end{equation}
+
+    % Moreover, we have that
+
+    % \[F(g(X_1), \ldots, g(X_n)) \equiv F_k(g(X_1), \ldots, g(X_n)) \pmod{\deg (k + 1)}. \]
+
+    % Then we conclude that for all $k$,
+    % \[f(F(X_1, \ldots, X_n)) \equiv F(g(X_1), \ldots, g(X_n)) \pmod{\deg (k+1)}. \]
+
+    % It follows that $f(F(X_1, \ldots, X_n)) = F(g(X_1), \ldots, g(X_n))$.
+
+    % \textit{Proof of the claim:} For $k = 1$, we take $F_1(X_1, \ldots, X_n) = L(X_1, \ldots, X_n)$.
+
+    % Now assume that the result holds for $k$.
+    % Write
+    % \[f (F_k(X_1,\ldots, X_n )) \equiv
+    %     F_k(g(X_1), \ldots, g(X_n)) + E_{k+1} \pmod{\deg (k+ 2)}.\]
+
+    % According to the induction hypothesis, $E_{k+1}$ is homogeneous of
+    % degree $k + 1$. Define \[F_{k+1}(X_1, \ldots, X_n) \coloneqq F_k(X_1, \ldots, X_n) -
+    % E_{k+1}/ (\pi - \pi ^{k+1}).\]
+
+    % % On the other hand, since the uniqueness of $F_k(X_1, \ldots, X_n)$, then
+    % % $F_{k+1}(X_1,\ldots,X_n)$ should be of the form $F_{k+1}(X_1,\ldots, X_n) =
+    % %     F_k(X_1, \ldots, X_n) + \phi_{k+1}(X_1, \ldots, X_n)$, where
+    % %     $\phi_{k+1}(X_1, \ldots, X_n)$ is homogeneous of degree $(k+1)$, due to the definition of
+    % %     $\calF_\pi$.
+
+    % Since $f(X) \equiv \pi X \pmod{\deg 2}$ and $g(X) \equiv \pi X \pmod{\deg 2}$, then we have
+    % \begin{align*}
+    %     f(F_{k+1}(X_1, \ldots, X_n)) &\equiv F_k(g(X_1), \ldots, g(X_n)) -
+    %     \pi E_{k+1}/ (\pi - \pi ^{k+1}) \pmod{\deg (k + 2)}, \\
+    %     F_{k+1}(g(X_1), \ldots, g(X_n)) &\equiv  F_k(g(X_1), \ldots, g(X_n)) -
+    %     \pi ^ {k+1} E_{k+1}/ (\pi - \pi ^{k+1})\pmod{\deg (k + 2)}.
+    % \end{align*}
+
+    % The last congruence follows from the fact that for any $\phi$ is homogeneous of degree $(k+1)$,
+    % that is,
+    % \[\phi (g(X_1), \ldots, g(X_n)) \equiv \phi(\pi X_1, \ldots, \pi X_n)
+    % \equiv \pi ^ {k+1} \phi (X_1, \ldots, X_n) \pmod{\deg (k + 1)}. \]
+
+    % Therefore, we conclude that
+    % \[E_{k+1} + (\pi- \pi^{k+1}) \phi_{k+1} (X_1, \ldots, X_n) = 0.\]
+
+    % Then $\phi_{k+1}(X_1, \ldots, X_n) = - E_{k+1}/ (\pi - \pi^{k+1})$.
+
     First, we claim that for all $k \in \NN$,
     there is a unique polynomial $F_k(X_1, \ldots, X_n)$ of degree $k$ such that
 
@@ -44,15 +110,15 @@ $x = u\pi^n$, where $u\in \mathcal O_K^\times$ is a unit and $n\in \mathbb Z$.
         f(F_k(X_1, \ldots , X_n)) &\equiv F_k(g(X_1), \ldots, g(X_n)) \pmod{\deg (k + 1)}.
     \end{align*}
 
-    Then we obtain a sequence of polynomial $F_k(X_1, \ldots, X_n)$. Define
-    $F$ to be $\lim F_k$. Then the $F$ satisfies the equation \eqref{eq: LT_trunc_two}
-    and \eqref{eq: LT_subst}. Indeed, for equation \eqref{eq: LT_trunc_two}, it follows
+    Then we obtain a sequence of polynomials $F_k(X_1, \ldots, X_n)$. Define
+    $F$ to be $\lim F_k$. Then $F$ satisfies the equation~\eqref{eq: LT_trunc_two}
+    and~\eqref{eq: LT_subst}. Indeed, for equation~\eqref{eq: LT_trunc_two}, it follows
     that $F_k(X_1, \ldots , X_n) \equiv L (X_1, \ldots, X_n) \pmod{\deg 2}$ for all $k$. For
-    equation \eqref{eq: LT_subst}, we have that for all $k$,
+    equation~\eqref{eq: LT_subst}, we have that for all $k$,
     \[f(F(X_1, \ldots, X_n)) \equiv f(F_k(X_1, \ldots, X_n)) \equiv
     F_k(g(X_1), \ldots, g(X_n)) \pmod{\deg (k + 1)}. \]
 
-    The first congruence follows from $f$ is of constant coefficient zero, and
+    The first congruence follows from the fact that $f$ has constant coefficient zero, together with
     \begin{equation}
         F(X_1, \ldots, X_n) \equiv F_k(X_1, \ldots, X_n) \pmod{\deg (k+1)}.
         \label{eq: LT_trunc_k}
@@ -66,7 +132,7 @@ $x = u\pi^n$, where $u\in \mathcal O_K^\times$ is a unit and $n\in \mathbb Z$.
     \[f(F(X_1, \ldots, X_n)) \equiv F(g(X_1), \ldots, g(X_n)) \pmod{\deg (k+1)}. \]
 
     It follows that $f(F(X_1, \ldots, X_n)) = F(g(X_1), \ldots, g(X_n))$.
-    And the uniqueness of this proposition follows from equation \eqref{eq: LT_trunc_k} and the uniqueness in
+    Finally, the uniqueness in this proposition follows from equation~\eqref{eq: LT_trunc_k} and the uniqueness in
     the claim.
 
     \textit{Proof of the claim:} For $k = 1$, we take $F_1(X_1, \ldots, X_n) = L(X_1, \ldots, X_n)$. \par
@@ -77,7 +143,7 @@ $x = u\pi^n$, where $u\in \mathcal O_K^\times$ is a unit and $n\in \mathbb Z$.
     According to the induction hypothesis, $E_{k+1}$ is homogeneous of
     degree $k + 1$.
 
-    On the other hand, since the uniqueness of $F_k(X_1, \ldots, X_n)$, then
+    On the other hand, by the uniqueness of $F_k(X_1, \ldots, X_n)$,
     $F_{k+1}(X_1,\ldots,X_n)$ should be of the form $F_{k+1}(X_1,\ldots, X_n) =
         F_k(X_1, \ldots, X_n) + \phi_{k+1}(X_1, \ldots, X_n)$, where
         $\phi_{k+1}(X_1, \ldots, X_n)$ is homogeneous of degree $(k+1)$, due to the definition of
@@ -97,6 +163,10 @@ $x = u\pi^n$, where $u\in \mathcal O_K^\times$ is a unit and $n\in \mathbb Z$.
     Therefore, we conclude that
     \[E_{k+1} + (\pi- \pi^{k+1}) \phi_{k+1} (X_1, \ldots, X_n) = 0.\]
 
+    Note that $1 - \pi ^k$ is invertible in $\calO_K$. And
+    \[E_{k+1} \equiv f(F_k(X_1, \ldots, X_n)) - F_k(g(X_1), \ldots, g(X_n))
+    \equiv F_k^q - F_k(X_1 ^ q, \ldots, X_n^q) \equiv 0
+    \pmod{\pi}.  \]
     Then $\phi_{k+1}(X_1, \ldots, X_n) = - E_{k+1}/ (\pi - \pi^{k+1})$.
 \end{proof}
 
@@ -121,16 +191,16 @@ $x = u\pi^n$, where $u\in \mathcal O_K^\times$ is a unit and $n\in \mathbb Z$.
 \end{theorem}
 
 \begin{proof}
-    For equation \eqref{eq: lubin_Tate_comm}, let $G (X,Y)= F(Y,X)$. Then $G(X,Y)
+    For equation~\eqref{eq: lubin_Tate_comm}, let $G (X,Y)= F(Y,X)$. Then $G(X,Y)
     \equiv X+Y \pmod{\deg 2}$ and
     \[f(G(X,Y)) = f(F(Y,X)) = F(f(Y),f(X)) = G(f(X),f(Y)). \]
-    Therefore, by the uniqueness in Lemma \ref{lemma: constructive_lemma_lubin_Tate},
+    Therefore, by the uniqueness in Lemma~\ref{lemma: constructive_lemma_lubin_Tate},
     $F(X,Y) = G(X,Y) = F(Y,X)$.
 
-    For equation \eqref{eq: lubin-Tate_assoc}, let
+    For equation~\eqref{eq: lubin-Tate_assoc}, let
     \[ G_1(X,Y,Z) = F_f(F_f(X,Y),Z) \quad \text{and} \quad
     G_2(X,Y,Z) = F_f(X,F_f(Y,Z)).\]
-    And we can check that $G_i(X,Y,Z) \equiv X+Y+Z \pmod{\deg 2}$ and
+    We can check that $G_i(X,Y,Z) \equiv X+Y+Z \pmod{\deg 2}$ and
     \begin{equation*}
         f(G_i(X,Y,Z)) = G_i(f(X),f(Y),f(Z)).
     \end{equation*}
@@ -139,8 +209,8 @@ $x = u\pi^n$, where $u\in \mathcal O_K^\times$ is a unit and $n\in \mathbb Z$.
     F_f(F_f(f(X), f(Y)), f(Z)). \]
     \[f(G_2(X,Y,Z)) = f(F_f(X, F_f(Y,Z))) = F_f(f(X), f(F_f(Y,Z))) =
     F_f(f(X), F_f(f(Y), f(Z))).  \]
-    Then, by uniqueness in Lemma \ref{lemma: constructive_lemma_lubin_Tate},
-    we conclude the desired equation \eqref{eq: lubin-Tate_assoc}.
+    Then, by uniqueness in Lemma~\ref{lemma: constructive_lemma_lubin_Tate},
+    we conclude the desired equation~\eqref{eq: lubin-Tate_assoc}.
 \end{proof}
 
 
@@ -158,7 +228,7 @@ $x = u\pi^n$, where $u\in \mathcal O_K^\times$ is a unit and $n\in \mathbb Z$.
     Note that for any $f\in \calF_\pi$,
     \[f(X) \equiv \pi X \equiv [\pi]_f \pmod{\deg 2} \quad  \text{and} \quad
     f \circ [\pi]_f = [\pi]_f \circ f. \]
-    Then by uniqueness in Lemma \ref{lemma: constructive_lemma_lubin_Tate},
+    Then by uniqueness in Lemma~\ref{lemma: constructive_lemma_lubin_Tate},
     it follows that $[\pi]_f = f$.
 \end{remark}
 
@@ -172,10 +242,10 @@ $x = u\pi^n$, where $u\in \mathcal O_K^\times$ is a unit and $n\in \mathbb Z$.
     For simplicity, we denote $[a]_{f,g}$ by $h$. We have $h(F_g(X,Y)) \equiv aX+aY
     \pmod{\deg 2}$, $F_f(h(X), h(Y)) \equiv aX+ aY \pmod{\deg 2}$ and
     \begin{align*}
-        h\circ F_g(g(X),g(Y)) &= h\circ g(F_g(X,Y)) = f \circ h (F_f(X,Y)) \\
-        F_f(h(g(X), h(g(Y)))) &= F_f(f(h(X)), f(h(Y))) = f \circ F_f(h(X), h(Y))
+        h\circ F_g(g(X),g(Y)) &= h\circ g(F_g(X,Y)) = f \circ h (F_g(X,Y)) \\
+        F_f(h(g(X)), h(g(Y))) &= F_f(f(h(X)), f(h(Y))) = f \circ F_f(h(X), h(Y))
     \end{align*}
-    Then the result follows from uniqueness in Lemma \ref{lemma: constructive_lemma_lubin_Tate}.
+    Then the result follows from uniqueness in Lemma~\ref{lemma: constructive_lemma_lubin_Tate}.
     \end{proof}
 
 \begin{theorem}[{\cite[Theorem 1]{LubinTate1965}}]
@@ -190,7 +260,7 @@ $x = u\pi^n$, where $u\in \mathcal O_K^\times$ is a unit and $n\in \mathbb Z$.
         = [a]_{f,g}\circ [b]_{g,h} \circ h.
     \end{equation*}
     Thus, $[ab]_{f,h}$ and $[a]_{f,g} \circ [b]_{g,h}$ are solutions satisfying these conditions.
-    By uniqueness in Lemma \ref{lemma: constructive_lemma_lubin_Tate}, they coincide.
+    By uniqueness in Lemma~\ref{lemma: constructive_lemma_lubin_Tate}, they coincide.
 \end{proof}
 
 \begin{theorem}[{\cite[Theorem 1]{LubinTate1965}}]
@@ -204,7 +274,7 @@ $x = u\pi^n$, where $u\in \mathcal O_K^\times$ is a unit and $n\in \mathbb Z$.
         f(F_f([a]_{f,g}(X), [b]_{f,g}(X))) = F_f(f\circ [a]_{f,g}(X), f\circ [b]_{f,g}(X))
             = F_f([a]_{f,g}\circ f(X), [b]_{f,g}\circ f(X)).
     \end{equation*}
-    Therefore, by the uniqueness in Lemma \ref{lemma: constructive_lemma_lubin_Tate}, we have
+    Therefore, by the uniqueness in Lemma~\ref{lemma: constructive_lemma_lubin_Tate}, we have
     \[ F_f([a]_{f,g}(X), [b]_{f,g}(X)) = [a+b]_{f,g} (X).\]
 \end{proof}
 
@@ -243,7 +313,7 @@ $x = u\pi^n$, where $u\in \mathcal O_K^\times$ is a unit and $n\in \mathbb Z$.
 
 \section{Applications}
 Fix an algebraic closure $\overline{K}$ of $K$, and let $\Fsep{K}$ be a separable closure of $K$.
-Given $f\in \calF_\pi$, for each integer $n \ge 1$, let $f^n(X)$ be $n$-th iterate of $f(X)$.
+Given $f\in \calF_\pi$, for each integer $n \ge 1$, let $f^n(X)$ be the $n$-th iterate of $f(X)$.
 Let $\Lambda_{f,n}$ be the set of all roots of $f^n(X)$ in $\overline{K}$ and let
 $K(\Lambda_{f,n})$ be the field generated over $K$ by these elements.
 Denote $\Lambda_f = \bigcup_{n=1}^\infty \Lambda _{f,n} $.
@@ -254,15 +324,15 @@ Denote $\Lambda_f = \bigcup_{n=1}^\infty \Lambda _{f,n} $.
 \end{lemma}
 
 \begin{proof}
-    By equation \eqref{eq: LT_smul} and induction, we have that for
+    By equation~\eqref{eq: LT_smul} and induction, we have that for
     any $n \in \NN_{>0}$,
     \[g^n \circ [1]_{g,f} = [1]_{g,f} \circ f^n. \]
 
-    On the one hand, suppose that $\lambda \in \Lambda_{f, n}$, it follows that $f^n(\lambda) = 0$.
+    Suppose that $\lambda \in \Lambda_{f, n}$, so that $f^n(\lambda) = 0$.
     Then $g^n([1]_{g,f}(\lambda)) = [1]_{g,f} (f^n(\lambda)) = [1]_{g,f}(0) = 0$.
     We conclude that $[1]_{g,f} (\lambda) \in \Lambda_{g,n}$.
 
-    On the other hand, suppose $[1]_{g,f}(\lambda) \in \Lambda_{g, n}$. Denote
+    Suppose $[1]_{g,f}(\lambda) \in \Lambda_{g, n}$. Denote
     $[1]_{g,f}(\lambda)$ by $\mu$. Then by the discussion above, we have that
     $[1]_{f,g}(\mu) \in \Lambda_{f, n}$. Note that
     \[[1]_{f,g}(\mu) = [1]_{f,g}([1]_{g,f}(\lambda)) = \lambda. \]
@@ -285,14 +355,14 @@ Denote $\Lambda_f = \bigcup_{n=1}^\infty \Lambda _{f,n} $.
     and $\varprojlim G_{\pi,n}$ by $G_\pi$.
 \end{remark}
 
-According to the Remark $\ref{rem: A-module}$, $F_f$ defines a $\calO_K$-module structure on
+According to Remark~\ref{rem: A-module}, $F_f$ defines an $\calO_K$-module structure on
 $\gothm_{\Fsep{K}}$ and we denote this $\calO_K$-module as $M_f(\Fsep{K})$.
-Then $\Lambda_{f,n}$ is those
-elements in $\lambda \in \gothm_{\Fsep{K}}$ such that $\pi ^n \lambda = 0$.
+Then $\Lambda_{f,n}$ consists of those
+elements $\lambda \in \gothm_{\Fsep{K}}$ such that $\pi ^n \lambda = 0$.
 
 \begin{theorem}[{\cite[Chap.~VI 3.3 Theorem 3]{cassels1967algebraic}}]
-    $\Lambda_{f,n}$ is isomorphic to $\calO_K/ \pi^n \calO_K$ as $\calO_K$-module and
-    $\Lambda_f$ is isomorphic to $K / \calO_K $ as $\calO_K$-module.
+    $\Lambda_{f,n}$ is isomorphic to $\calO_K/ \pi^n \calO_K$ as an $\calO_K$-module and
+    $\Lambda_f$ is isomorphic to $K / \calO_K $ as an $\calO_K$-module.
     \label{thm: Lam_iso_K_quot_O}
 \end{theorem}
 
@@ -317,20 +387,20 @@ Equivalently, $E(S)$ can be characterized as:
     a direct sum of two nonzero submodules.
 \end{remark}
 
-\begin{theorem}[Structure theorem of divisible module over PID, {\cite{matlis1958injective},
+\begin{theorem}[Structure theorem of divisible modules over a PID, {\cite{matlis1958injective},
     Chap~10, Prop~3.1}]
     Let $R$ be a principal ideal domain and $K$ be its field of fractions. Then every divisible
     $R$-module is isomorphic to a direct sum of $K$ and copies of the injective hulls
     of the simple module $R/ (p)$, varying over prime elements $p\in R$. \par
     Let $M$ be a divisible $R$-module, then $M$ can be written as follows:
-    \[M \cong (\bigoplus_{i \in I} K) \oplus (\bigoplus_{p \ prime} \bigoplus_{j \in J_p}
-        E(R / (p))), \quad \text{where}  \]
+    \[M \cong \left(\bigoplus_{i \in I} K\right) \oplus \left(\bigoplus_{p \ prime} \bigoplus_{j \in J_p}
+        E(R / (p))\right), \quad \text{where}  \]
     \begin{itemize}
-        \item $I$ is an index set measuring how many copies of torison free part in $M$ are needed.
+        \item $I$ is an index set measuring how many copies of the torsion-free part of $M$ are needed.
         \item $p$ varies over all prime elements in $R$.
-        \item $J_p$ is an index set measuring how many copies of $p$-primary torison part
+        \item $J_p$ is an index set measuring how many copies of $p$-primary torsion part
                 $E(R/(p))$ are needed for each $p$.
-        \item $E(R/(p))$ is the injective hull of $R/(p)$. Over PID, this is isomorphic to
+        \item $E(R/(p))$ is the injective hull of $R/(p)$. Over a PID, this is isomorphic to
                 $K/R_{(p)}$.
     \end{itemize}
     \label{thm: structure_div_mod_PID}
@@ -345,31 +415,31 @@ Equivalently, $E(S)$ can be characterized as:
     The first claim follows from the fact that $\Lambda_{f,n}$ is the $\pi^n$-torsion of
         the $\calO_K$-module $M_f(\Fsep{K})$.
 
-    According to theorem \ref{thm: Lubin_Tate_independet_f_g}, we are free to choose
+    According to Theorem~\ref{thm: Lubin_Tate_independet_f_g}, we are free to choose
     $f\in \calF_\pi$ as we please. We take $f(X)= \pi X + X ^ q$. Since
-    $f'(X) = q X^{q-1} + \pi \neq 0$, then $\Lambda_{f, 1}$ consists of $q$ distinct roots
+    $f'(X) = q X^{q-1} + \pi \neq 0$, $\Lambda_{f, 1}$ consists of $q$ distinct roots
     of the equation $X^q + \pi X = 0 $. For any given $\alpha \in \gothm_{\Fsep{K}}$, since
-    $\pi X + X ^ q = \alpha$ is separable, then $\Lambda_{f,1} \subset \gothm_{\Fsep{K}}$. This means
+    $\pi X + X ^ q = \alpha$ is separable, $\Lambda_{f,1} \subset \gothm_{\Fsep{K}}$. This means
     that for any given $\alpha \in \gothm_\Fsep{K}$, there is a $\beta$ such that
     $\pi \cdot \beta = \alpha$ in $M_f(\Fsep{K})$. It follows that for any given $r \in \calO_K$,
-    $r M_f(\Fsep{K}) = M_f (\Fsep{K})$ which means that $M_f(\Fsep{K})$ is divisible $\calO_K$-module.
+    $r M_f(\Fsep{K}) = M_f (\Fsep{K})$, which means that $M_f(\Fsep{K})$ is a divisible $\calO_K$-module.
     Then $\Lambda_f$ is a divisible torsion $\calO_K$-module.
 
-    By Theorem \ref{thm: structure_div_mod_PID} and the fact that $\calO_k$ is a PID,
+    By Theorem~\ref{thm: structure_div_mod_PID} and the fact that $\calO_K$ is a PID,
     we have that
-    \[\Lambda_f \cong (\bigoplus_{i\in I} K) \oplus (\bigoplus_{p \ prime} \bigoplus_{j \in J_p}
-        E(R / (p))).  \]
+    \[\Lambda_f \cong \left(\bigoplus_{i\in I} K\right) \oplus \left(\bigoplus_{p \ prime} \bigoplus_{j \in J_p}
+        E(R / (p))\right).  \]
 
-    Since $\Lambda_f$ is torsion module, then the index $I$ should be empty, i.e.
-    there is no copies of $K$ in this decomposition.
-    Note that $E(R/(p))$ is isomorphic to $K/R_{(p)}$, since $\calO_K$ is PID.
+    Since $\Lambda_f$ is a torsion module, the index $I$ should be empty, i.e.
+    there are no copies of $K$ in this decomposition.
+    Note that $E(R/(p))$ is isomorphic to $K/R_{(p)}$, since $\calO_K$ is a PID.
     Since $\pi$ is the only prime element in $\calO_K$ and
-    $(\calO_K) _ {(\pi)} \cong \calO_K$, then it is enough to determine the index set
+    $(\calO_K) _ {(\pi)} \cong \calO_K$, it is enough to determine the index set
     $J$.
 
-    Moreover, $\Lambda_{f,1}$ is a one dimensional vector space over residue field $k$ (since $\Lambda_{f,1}$
+    Moreover, $\Lambda_{f,1}$ is a one-dimensional vector space over the residue field $k$ (since $\Lambda_{f,1}$
     has the same cardinality as the residue field $k$).
-    It follows from the fact that $|J| = \dim_k M_f(\Fsep{K})[\pi] = \dim_k \Lambda_{f,1} = 1$,
+    It follows that $|J| = \dim_k M_f(\Fsep{K})[\pi] = \dim_k \Lambda_{f,1} = 1$,
     where $J$ is the index set of copies of $K/ \calO_K$. We conclude that
     $\Lambda_f \cong K / \calO_K$.
 \end{proof}
@@ -386,21 +456,21 @@ homomorphism $\Gal(\Fsep{K}/ K) \to \Aut(K / \calO_K) \cong U_K$.
 
 \begin{proof}
     This map is injective by definition; it remains to prove that it is surjective.
-    We have an injection $\Gal(K_{\pi,n}/ K) \to U_K/ U _K^n$, where $U_K = 1 + \pi ^ n \calO_K$.
-    Let $\alpha \in \Lambda_{f,n}$ be a primitive element, that is a element such that
+    We have an injection $\Gal(K_{\pi,n}/ K) \to U_K/ U_K^{(n)}$, where $U_K^{(n)} = 1 + \pi ^ n \calO_K$.
+    Let $\alpha \in \Lambda_{f,n}$ be a primitive element, that is, an element such that
     $[\pi ^ {n - 1}]_f \alpha \neq 0$ or $\pi ^ {n - 1} \cdot \alpha \neq 0$ in $M_f(\Fsep{K})$.
-    Then $\alpha$ is one of the roots of polynomial $f^{(n)}(X)/ f^{(n-1)}(X)$,
+    Then $\alpha$ is one of the roots of the polynomial $f^{(n)}(X)/ f^{(n-1)}(X)$,
     where $f^{(n)}(X)$ is $n$-th iterate of $f(X)$.
     Since $f(X)/X = X ^ {q -1} + \pi$, then
 
     \[ \frac{f^{(n)}(X)}{f ^ {(n -1)}(X)} = f^ {(n -1)}(X)^{q-1} + \pi. \]
 
     By the Eisenstein criterion, this is an irreducible polynomial with degree $q ^ n - q ^{n -1}$.
-    Thus, according to Galois theory, the order of $\Gal(L_{\pi,n}/ K)$ is at least
-    $(q-1) q ^ {n-1}$. On the other hand, $U_K/ U_K ^ m$ has exactly $(q-1)q ^ {n -1}$
-    elements. Therefore, $\Gal(L_{\pi,n}/K) \cong U_K/ U_K^n$.
-    Taking a inverse limit, it follows that
-    \[ \Gal(\Fsep{K}/K) \cong \varprojlim \Gal(L_{\pi,n}/ K) \cong \varprojlim U_K / U_K^n \cong U_K. \]
+    Thus, according to Galois theory, the order of $\Gal(K_{\pi,n}/ K)$ is at least
+    $(q-1) q ^ {n-1}$. On the other hand, $U_K/ U_K^{(n)}$ has exactly $(q-1)q ^ {n -1}$
+    elements. Therefore, $\Gal(K_{\pi,n}/K) \cong U_K/ U_K^{(n)}$.
+    Taking an inverse limit, it follows that
+    \[ \Gal(\Fsep{K}/K) \cong \varprojlim \Gal(K_{\pi,n}/ K) \cong \varprojlim U_K / U_K^{(n)} \cong U_K. \]
 \end{proof}
 
 \begin{corollary}[{\cite[Chap.~VI 3.3 Theorem 3]{cassels1967algebraic}}]
@@ -424,7 +494,7 @@ $r_\pi : K^\times \to \Gal(L_\pi / K)$ as follows
     \item $r_\pi (\pi)$ acts as identity on $K_\pi$ and acts as Frobenius automorphism $\sigma$ on
         $\Kur$.
     \item Given a $u \in U_K$, we define $r_\pi (u)$ to act as $[u^{-1}]_f$ on $K_\pi$ and
-        acts as identity on $\Kur$.
+        as the identity on $\Kur$.
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -689,7 +759,7 @@ $r_\pi : K^\times \to \Gal(L_\pi / K)$ as follows
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Next, we prove that the field $L_\pi$ and the homomorphism $r_\pi$ are
-independent of the choice of the uniformizer $\pi$.
+independent of the choice of uniformizer $\pi$.
 Moreover, $L_\pi$ is a maximal abelian extension of $K$.
 
 To prove these results, we first prove two auxiliary lemmas.
@@ -703,7 +773,7 @@ To prove these results, we first prove two auxiliary lemmas.
 
 \begin{proof}
     Let $\Fsep{E}$ be the separable closure of $E$, and let $E'$ be the
-    adherence, that is, the topological closure, of $E$ in $\Fsep{E}$.
+    adherence, that is, the topological closure of $E$ in $\Fsep{E}$.
     Since $\alpha$ is separable algebraic over $E$, after choosing an
     $E$-embedding of $E(\alpha)$ into $\Fsep{E}$, we may view $\alpha$ as
     an element of $E'$. Hence it is enough to show that $E'=E$.
@@ -765,7 +835,7 @@ $f \in \calF_\pi$ and $g \in \calF_\omega$.
     We first construct a power series
     $\varphi(X) \in \widehat{\calO_{\Kur}}[\![X]\!]$ satisfying
     \eqref{eq: phi_u}. We will then modify it so that it also satisfies
-    \eqref{eq: phi_hom_fg} and \eqref{eq: phi_a}.
+    \eqref{eq: phi_hom_fg} and~\eqref{eq: phi_a}.
 
     Recall that $\sigma-1$ is surjective on the additive group of
     $\widehat{\calO_{\Kur}}$, and also on the group
@@ -818,7 +888,7 @@ $f \in \calF_\pi$ and $g \in \calF_\omega$.
         \varphi_{n+1}([u]_f(X))
         \pmod{\deg(n+2)}.
     \]
-    Passing to the coefficientwise limit, we obtain a power series
+    Passing to the coefficient-wise limit, we obtain a power series
     $\varphi=\lim_n \varphi_n$ satisfying
     $\leftsup{\sigma}{\varphi}=\varphi\circ [u]_f$. Since
     $\varphi(X)\equiv \epsilon X \pmod{\deg 2}$ with $\epsilon$ a unit,
@@ -889,7 +959,7 @@ $f \in \calF_\pi$ and $g \in \calF_\omega$.
         =
         \phi\circ [u]_f,
     \]
-    so \eqref{eq: phi_u} still holds.
+    so~\eqref{eq: phi_u} still holds.
 
     Next, since $[1]_{g,h}$ is an isomorphism from $F_h$ to $F_g$, it satisfies
     $g\circ [1]_{g,h}=[1]_{g,h}\circ h$. Hence
@@ -904,10 +974,10 @@ $f \in \calF_\pi$ and $g \in \calF_\omega$.
         =
         g.
     \]
-    Combining this with \eqref{eq: phi_u}, we also have
+    Combining this with~\eqref{eq: phi_u}, we also have
     $g=\phi\circ [\omega]_f\circ \phi^{-1}$.
 
-    To prove \eqref{eq: phi_hom_fg}, define
+    To prove~\eqref{eq: phi_hom_fg}, define
     \[
         F(X,Y)
         =
@@ -930,7 +1000,7 @@ writing $hF$ for $h\circ F$ and $Fh$ for $F(h(X),h(Y))$.
     = \phi F_f \phi^{-1} g= F g.
     \]
     By the uniqueness statement in Lemma~\ref{lemma: constructive_lemma_lubin_Tate},
-    it follows that $F=F_g$. This proves \eqref{eq: phi_hom_fg}.
+    it follows that $F=F_g$. This proves~\eqref{eq: phi_hom_fg}.
 
     Finally, fix $a\in \calO_K$ and set
     $A_a=\phi\circ [a]_f\circ \phi^{-1}$. Then
@@ -946,11 +1016,11 @@ writing $hF$ for $h\circ F$ and $Fh$ for $F(h(X),h(Y))$.
     \]
     Again by the uniqueness statement in
     Lemma~\ref{lemma: constructive_lemma_lubin_Tate}, we get
-    $A_a=[a]_g$. Hence \eqref{eq: phi_a} holds.
+    $A_a=[a]_g$. Hence~\eqref{eq: phi_a} holds.
 \end{proof}
 
 \begin{theorem}[{\cite[Theorem 3]{LubinTate1965}}]
-    The field $L_\pi$ is independent of the choice of the uniformizer $\pi$.
+    The field $L_\pi$ is independent of the choice of uniformizer $\pi$.
 \end{theorem}
 
 \begin{proof}
@@ -977,7 +1047,7 @@ writing $hF$ for $h\circ F$ and $Fh$ for $F(h(X),h(Y))$.
 \end{proof}
 
 \begin{theorem}[{\cite[Theorem 3]{LubinTate1965}}]
-    The homomorphism $r_\pi$ is independent of the choice of the uniformizer
+    The homomorphism $r_\pi$ is independent of the choice of uniformizer
     $\pi$.
 \end{theorem}
 
@@ -1117,7 +1187,7 @@ $\pi$ a uniformizer, and $q$ the cardinality of its residue field.
     \[f_g^{-1} (\pi f_g(X)) = f_g^{-1} (f_{\pi g}(X)) \in \calO_K[\![X]\!]. \]
     The formal group law obtained by the functional equation lemma is
     \[ F(X,Y) = f_g^{-1} (f_g(X) + f_g(Y)) . \]
-    By the existence and uniqueness in Theorem \ref{thm: Lubin_Tate}, it is enough
+    By the existence and uniqueness in Theorem~\ref{thm: Lubin_Tate}, it is enough
     to check that $f_g^{-1}(\pi f_g(X))$ is an endomorphism for $F(X,Y)$. This can be done as follows:
     \begin{align*}
         f_g^{-1} (\pi f_g(F(X,Y))) &= f_g^{-1} (\pi f_g(f_g^{-1} (f_g(X) + f_g(Y)))) \\

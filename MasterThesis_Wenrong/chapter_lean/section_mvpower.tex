@@ -1,12 +1,12 @@
 \section{Multivariate power series in mathlib}
 \label{sec:mvpowerseries}
 
-In this section, we discuss some formalization of multivariate power series in mathlib.
+In this section, we discuss the formalization of multivariate power series in mathlib.
 
-Multivariate power series is defined to be a function from
+A multivariate power series is defined to be a function from
 \lstinline|(σ →₀ ℕ)| to \lstinline|R|, where \lstinline|(σ →₀ ℕ)| is a
-finite supported function from index set \lstinline|σ| to natural number
-\lstinline|ℕ| and \lstinline|R| is a ring.
+finite supported function from an index type \lstinline|σ| to the natural numbers
+\lstinline|ℕ| and \lstinline|R| is usually a ring.
 
 \begin{lstlisting}
 def MvPowerSeries (σ : Type*) (R : Type*) := (σ →₀ ℕ) → R
@@ -18,11 +18,11 @@ series.  The constructor \lstinline|MvPowerSeries.monomial|
 builds a single monomial term.  More precisely, if \lstinline|n : σ →₀ ℕ| is a
 multi-index, then \lstinline|MvPowerSeries.monomial n| is an
 \lstinline|R|-linear map from \lstinline|R| to
-\lstinline|MvPowerSeries σ R|.
+\lstinline|MvPowerSeries σ R|, which maps \lstinline|n| to \lstinline|1| and other to
+\lstinline|0|.
 
 Throughout this section, unless otherwise stated, all Lean code examples
 are written inside the namespace \lstinline|MvPowerSeries|.
-The discussion of namespaces can be found in Section~\ref{sec: namespace}.
 
 \begin{lstlisting}
 noncomputable def monomial (n : σ →₀ ℕ) : R →ₗ[R] MvPowerSeries σ R :=
@@ -43,9 +43,9 @@ For theorem proving, this is usually not a problem: one can still use
 these definitions in statements and proofs in the same way as other
 definitions.
 
-A special case of monomials is indeterminate indexed by \lstinline|s : σ|,
-denoted as \lstinline|MvPowerSeries.X s|.
-In mathlib, \lstinline|MvPowerSeries.X s|
+A special case of monomial is the indeterminate indexed by \lstinline|s : σ|,
+denoted as \lstinline|X s|.
+In mathlib, \lstinline|X s|
 \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/RingTheory/MvPowerSeries/Basic.html#MvPowerSeries.X}{\faExternalLink}
 is defined as the monomial whose exponent
 is \lstinline|1| at \lstinline|s| and \lstinline|0| elsewhere.
@@ -61,8 +61,8 @@ with value \lstinline|1|.
 The constant multivariate power series
 \lstinline|MvPowerSeries.C|
 \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/RingTheory/MvPowerSeries/Basic.html#MvPowerSeries.C}{\faExternalLink}
-is defined to be a ring homomorphism from a semiring \lstinline|R| to
-\lstinline|MvPowerSeries σ R|. And its underlying function is
+is defined to be the ring homomorphism from a semiring \lstinline|R| to
+\lstinline|MvPowerSeries σ R|, whose underlying function is
 \lstinline|monomial (0 : σ →₀ ℕ)|.
 
 
@@ -102,7 +102,6 @@ theorem coeff_C (n : σ →₀ ℕ) (a : R) :
 theorem coeff_X (n : σ →₀ ℕ) (s : σ) :
     coeff n (X s) = if n = Finsupp.single s 1 then 1 else 0
 
-@[simp]
 theorem coeff_monomial_same (n : σ →₀ ℕ) (a : R) : coeff n (monomial n a) = a
 \end{lstlisting}
 
@@ -124,8 +123,7 @@ of their coefficients are equal.
 %       ∀ n : σ →₀ ℕ, (MvPowerSeries.coeff n) φ = (MvPowerSeries.coeff n) ψ
 % \end{lstlisting}
 
-Another important operation on multivariate power series is \emph{formal
-substitution}.  Suppose that \lstinline|f : MvPowerSeries σ R| is a power
+Another important operation on multivariate power series is \emph{substitution}.  Suppose that \lstinline|f : MvPowerSeries σ R| is a power
 series in variables indexed by \lstinline|σ|.  To substitute into
 \lstinline|f|, we give, for each old variable \lstinline|s : σ|, a new
 power series \lstinline|a s : MvPowerSeries τ S|.  Then
@@ -139,7 +137,7 @@ infinite power series, not every formal substitution is mathematically
 well-behaved.  Mathlib therefore introduces the predicate
 \lstinline|HasSubst a|
 \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/RingTheory/MvPowerSeries/Substitution.html#MvPowerSeries.HasSubst}{\faExternalLink}
-, which records the condition under which the
+, which records the conditions under which the
 family \lstinline|a : σ → MvPowerSeries τ S| can be substituted into a
 multivariate power series.
 
@@ -151,7 +149,7 @@ structure HasSubst (a : σ → MvPowerSeries τ S) : Prop where
 
 The first condition says that the constant coefficient of each
 \lstinline|a s| is nilpotent.  The second condition says that, for each
-fixed exponent \lstinline|d : τ →₀ ℕ|, only finitely many of the series
+fixed exponent \lstinline|d : τ →₀ ℕ|, finitely many of the series
 \lstinline|a s| have a nonzero coefficient at \lstinline|d|.  These
 conditions ensure that the coefficients arising after substitution are
 finite sums.
@@ -204,14 +202,14 @@ Here \lstinline|∑ᶠ| denotes a finitely supported sum, called
 \lstinline|finsum|
 \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/BigOperators/Finprod.html#finsum}{\faExternalLink}
 in mathlib.
-If a function is finite supported, then
+If a function is finitely supported, then
 \lstinline|finsum| of this function is defined to be the finite sum over
 its support, otherwise it is defined to be zero.
 
 The operation \lstinline|MvPowerSeries.expand|
 \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/RingTheory/MvPowerSeries/Expand.html#MvPowerSeries.expand}{\faExternalLink}
 is a special case of
-formal substitution.  Given a nonzero natural number \lstinline|p|,
+substitution.  Given a nonzero natural number \lstinline|p|,
 \lstinline|expand p hp| replaces every variable \lstinline|X i| by
 \lstinline|X i ^ p|.  In other words, it sends a monomial with exponent
 \lstinline|d| to the monomial with exponent \lstinline|p • d|, where the
@@ -238,12 +236,13 @@ theorem expand_monomial (p : ℕ) (hp : p ≠ 0) (d : σ →₀ ℕ) (r : R) :
     expand p hp (monomial d r) = monomial (p • d) r
 \end{lstlisting}
 
-In mathlib, power series
+In mathlib, \lstinline|PowerSeries|
 \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/RingTheory/PowerSeries/Basic.html#PowerSeries}{\faExternalLink}
 is defined to be a special case of multivariate
 power series where \lstinline|σ| is \lstinline|Unit|.
 
-For convenience, mathlib provides the command \lstinline|name_power_vars|,
+For convenience, mathlib provides the command \lstinline|name_power_vars|
+\href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Ring/NamePowerVars.html#Mathlib.Tactic.elabNamePowerSeriesVariablesOver}{\faExternalLink},
 which introduces local names for the variables of a multivariate power
 series ring of the form \lstinline|MvPowerSeries (Fin n) R|.  Here
 \lstinline|Fin n|

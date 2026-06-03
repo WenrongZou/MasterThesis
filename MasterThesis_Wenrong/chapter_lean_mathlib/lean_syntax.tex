@@ -1,6 +1,9 @@
-\section{A brief introduction to lean syntax}
+\section{A brief introduction to Lean syntax}
 
-Lean operates as both an interactive theorem prover and a functional programming language. In Lean, definitions, statements, and proofs are written in a strictly formalized syntax that is subsequently verified by the Lean kernel. In this section, we introduce several foundational pieces of Lean syntax that will appear frequently in later chapters.
+Lean operates as both an interactive theorem prover and a functional programming language.
+In Lean, definitions, statements, and proofs are written in a syntax that is
+subsequently verified by the Lean kernel. In this section, we introduce several
+foundational pieces of Lean syntax that will appear frequently in later chapters.
 
 \subsection{Basic declarations}
 
@@ -51,9 +54,14 @@ structure Point where
   y : Float
 \end{lstlisting}
 
-This declaration creates a new type called \lstinline|Point|. It automatically generates a constructor to build points and projection functions (\lstinline|Point.x| and \lstinline|Point.y|) to access the underlying fields.
+This declaration creates a new type called \lstinline|Point|. It automatically generates a
+constructor to build points and projection functions (\lstinline|Point.x| and \lstinline|Point.y|) to access the underlying fields.
 
-Finally, Lean handles algebraic hierarchies and overloading via the \lstinline|class| and \lstinline|instance| keywords. A \lstinline|class| is essentially a \lstinline|structure| that registers itself with Lean's typeclass synthesis mechanism (which resolves the square brackets \lstinline|[]| discussed later).
+Finally, Lean handles algebraic hierarchies and overloading via the
+\lstinline|class| and \lstinline|instance| keywords. A \lstinline|class| is
+essentially a \lstinline|structure| that registers itself with Lean's typeclass
+synthesis mechanism (which resolves the square brackets \lstinline|[]| discussed in
+Section~\ref{sec:brackets}).
 
 \begin{lstlisting}[language=Lean]
 class Add (α : Type) where
@@ -70,6 +78,7 @@ instance : Add Nat where
 Once this instance is declared, any function requiring an \lstinline|AdditiveMagma| on \lstinline|Nat| will automatically find and use this specific implementation.
 
 \subsection{The meaning of different brackets}
+\label{sec:brackets}
 
 Lean utilizes different types of brackets to distinguish how arguments should be provided or inferred by the system.
 
@@ -170,7 +179,14 @@ end MvPowerSeries
 
 Once outside the \lstinline|end MvPowerSeries| boundary, a user would once again need to refer to this definition by its fully qualified name: \lstinline|MvPowerSeries.X|.
 
-A complementary tool for managing scopes is the \lstinline|open| keyword. While \lstinline|namespace| is typically used when \textit{defining} new objects within a specific theory, \lstinline|open| is used when we simply want to \textit{access} existing results from another namespace without typing its prefix. For example, our definition relies on \lstinline|Finsupp.single|. If we want to use results from the finitely supported functions library frequently, we can open the \lstinline|Finsupp| namespace directly:
+A complementary tool for managing scopes is the \lstinline|open| keyword.
+While \lstinline|namespace| is typically used when \textit{defining} new
+objects within a specific theory, \lstinline|open| is used when we simply
+want to \textit{access} existing results from another namespace without
+typing its prefix. For example, suppose we have a definition that relies on
+\lstinline|Finsupp.single|. If we want to use results from the
+finitely supported functions library frequently, we can open the
+\lstinline|Finsupp| namespace directly:
 
 \begin{lstlisting}[language=Lean]
 open Finsupp
@@ -184,12 +200,12 @@ end MvPowerSeries
 
 By writing \lstinline|open Finsupp|, we instruct Lean to look inside the \lstinline|Finsupp| namespace during name resolution, allowing us to reduce \lstinline|Finsupp.single| to just \lstinline|single|.
 
-\begin{remark}
-The specific functions presented in this example, such as
-\lstinline|monomial| and \lstinline|single|, are utilized here purely
-to illustrate Lean's syntax and scoping mechanisms. We will formally discuss
-the detailed mathematical API for each of these components in Section~\ref{sec:mvpowerseries}.
-\end{remark}
+% \begin{remark}
+% The specific functions presented in this example, such as
+% \lstinline|monomial| and \lstinline|single|, are utilized here purely
+% to illustrate Lean's syntax and scoping mechanisms. We will formally discuss
+% the detailed mathematical API for each of these components in Section~\ref{sec:mvpowerseries}.
+% \end{remark}
 
 
 % As mathematical libraries grow, it is common to have multiple theorems or

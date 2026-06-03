@@ -1,18 +1,18 @@
-\section{Height}
+\section{Heights}
 
-In this section, we fix a prime number $p$ and a field $k$ with characteristic $p$.
-Let $F$ be a commutative formal group law over $k$. In this section,
+In this section, we fix a prime number $p$ and a field $k$ of characteristic $p$.
+In this section,
 unless otherwise specified, all formal group laws are assumed to be
 commutative.
 
 In this section, we discuss the definition and properties of the height of a formal group law.
 
-\begin{definition}[Height of homomorphism, {\cite[Chap.~4 Definition 7.1]{silverman2009arithmetic}}]
-    Let $F, G$ be formal group laws over $k$, and let $f \in R[\![X]\!]$ be a homomorphism from
-    $F(X,Y)$ to $G(X,Y)$. Then the \emph{height of homomorphism} $f$, denoted by $\htt(f)$,
+\begin{definition}[Height of a homomorphism, {\cite[Chap.~4 Definition 7.1]{silverman2009arithmetic}}]
+    Let $F, G$ be formal group laws over $k$, and let $f \in k[\![X]\!]$ be a homomorphism from
+    $F(X,Y)$ to $G(X,Y)$. Then the \emph{height of the homomorphism} $f$, denoted by $\htt(f)$,
     is the largest number $h$ such that
-    \[f(X) = g(X ^ {p ^ h}), \]
-    for some power series $g(X)$ over $R$. If $f= 0$, then we set $\htt(f) = \infty$.
+    \[f(X) = g\left(X ^ {p ^ h}\right), \]
+    for some power series $g(X)$ over $k$. If $f= 0$, then we set $\htt(f) = \infty$.
 \end{definition}
 
 \begin{remark}
@@ -27,9 +27,9 @@ In this section, we discuss the definition and properties of the height of a for
     \begin{enumerate}
         \item If $f'(0) = 0$, then $f(X) = f_1(X ^ p)$ for some $f_1(X) \in k[\![X]\!]$. That is,
             $\htt(f) \ge 1$.
-        \item There is a natural number $m$ such that $f(X) = h(X^{p^m})$ such that
+        \item There is a natural number $m$ such that $f(X) = h\left(X^{p^m}\right)$ for some $h$ such that
             $h'(0) \neq 0$.
-        \item Write $f(X) = g(X^ {p^{\htt(f)}})$. Then $g'(0) \neq 0$.
+        \item Write $f(X) = g\left(X^ {p^{\htt(f)}}\right)$. Then $g'(0) \neq 0$.
     \end{enumerate}
     \label{prop: equiv_def_height}
 \end{proposition}
@@ -50,7 +50,7 @@ In this section, we discuss the definition and properties of the height of a for
     $f(X) = f_1(X^p)$.
 
     \textit{Proof of Part (2):} if $f'(0) \neq 0$, then take $m$ to be $0$.
-    If $f'(0) = 0$, then by the Part (1) of this proposition, we have that
+    If $f'(0) = 0$, then by Part (1) of this proposition, we have that
     $f(X) = f_1(X ^ p)$ for some $f_1(X) \in k[\![X]\!]$. If $f_1'(0) = 0$, then
     we just take $m = 1$. If $f_1'(0) = 0$, we denote $F_p = \varphi_* F$,
     where $\varphi$ is an endomorphism of $k$,
@@ -64,10 +64,10 @@ In this section, we discuss the definition and properties of the height of a for
         & = f_1 \circ F.
     \end{align*}
 
-    Then again by the Part (1) of this proposition, we have that there is a $f_2(X) \in k[\![X]\!]$,
+    Then again by Part (1) of this proposition, we have that there is an $f_2(X) \in k[\![X]\!]$,
     such that $f_1(X) = f_2(X^p)$. Recall that the order of a nonzero power series
     is defined to be the least natural number $n$ sucht that the $n$-th coefficient
-    of it is nonzero. Notice that the order $f_i$ decline after each process.
+    of it is nonzero. Notice that the order $f_i$ decline after each step.
     Then repeating this process at most $n$ times where $n$ is the order
     of $f(X)$, we will get a natural number $m$ satisfying the condition.
 
@@ -89,17 +89,17 @@ In this section, we discuss the definition and properties of the height of a for
 \end{proof}
 
 \begin{remark}
-    If we write $f(X) = \sum_{n=1}^{\infty} a_n X ^ n$.
-    Let $n$ be the least postive integer such that $a_n$ is nonzero, by Part (2) and (3) of the
+    Write $f(X) = \sum_{n=n_0}^{\infty} a_n X ^ n$, with $a_{n_0} \neq 0$.
+    By Part (2) and (3) of the
     Proposition \ref{prop: equiv_def_height},
-    $n$ is of the form $p ^ t$ for some natural number $t$.
-    Then we have a alternative description of height of formal group
+    $n_0$ is of the form $p ^ t$ for some natural number $t$.
+    Then we have a alternative description of the height of a formal group
     homomorphism $f(X)$ from $F$ to $G$, that is the height of $f(X)$ can be
     defined to be the this $t$.
     \label{rem: alter_def_height}
 \end{remark}
 
-\begin{definition}[Height of formal group]
+\begin{definition}[Height of a formal group]
     The \emph{height of a formal group law} $F$ is defined to be the height of
     the $p$-series $[p]_F(X)$, denoted by $\htt (F)$.
     % More precisely, let $v_n$ be the $p^n$-th coefficient of the $p$-series $[p](X)$. We say
@@ -143,8 +143,8 @@ In this section, we discuss the definition and properties of the height of a for
 % \end{remark}
 
 \begin{proposition}
-    Let $F, G$ be formal group law over $k$. Assume that
-    $\htt(F) \neq \htt(G)$, then there is only zero homomorphism from $F$ to $G$.
+    Let $F, G$ be formal group laws over $k$. Assume that
+    $\htt(F) \neq \htt(G)$, then the only homomorphism from $F$ to $G$, is the zero homomorphism.
 \end{proposition}
 
 \begin{proof}
@@ -167,47 +167,50 @@ In this section, we discuss the definition and properties of the height of a for
 \end{proposition}
 
 \begin{proof}
-    Denote $f (X) = f_1 (X ^ {p ^ {\htt (f)}})$ and $g(X) = g_1 (X ^ {p ^ {\htt (g)}})$. Then
-    \[(g\circ f) (X) = g_1 (f_1 (X ^ {p ^ {\htt (f)}}) ^ {\htt (g)})
-        = g_1 (\tilde{f}_1(X ^ {\htt(f) + \htt(g)}))\]
+    Denote $f (X) = f_1 \left(X ^ {p ^ {\htt (f)}}\right)$ and $g(X) = g_1 \left(X ^ {p ^ {\htt (g)}}\right)$. Then
+    \[(g\circ f) (X) = g_1 \left(f_1 (X ^ {p ^ {\htt (f)}}) ^ {\htt (g)}\right)
+        = g_1 \left(\tilde{f}_1(X ^ {\htt(f) + \htt(g)})\right), \]
     where $\tilde{f}_1 (X)$ is obtained from $f_1(X)$ raising each coefficient of
     $f_1(X)$ to the $p^{\htt(g)}$-th power.
 \end{proof}
 
 \begin{lemma}
-    Let $R$ be a commutative ring, $I, J$ be an index set and
-    $F \in R[\![X_I]\!]$. Let $f_i, i\in I$ be a set of power series in
+    Let $R$ be a commutative ring, $I, J$ be two index sets and
+    $F \in R[\![X_I]\!]$. Let $\{f_i\}_{i\in I}$ be a set of power series in
     $R[\![X_J]\!]$ with the property that the constant
-    coefficient of each $f_i, i\in I$ is nilpotent in $R$.
+    coefficient of each $f_i$ is nilpotent in $R$.
     Let $G(X_J)$ be the power series obtained by substituting
-    $f_i$ into $F$. Then we have that
-    the order of $G(X_J)$ is at least the multiplication of the order of $F$
-    and the least of the order of $f_i$.
+    $f_i$ into $F$.
+    We denote the order of power series $f$ to be $o(f)$.
+    Then we have that
+    \[o(G(X_J)) \ge o(F) \cdot  \min_{i\in I}\{o(f_i)\}. \]
+
+    % the order of $G(X_J)$ is at least the multiplication of the order of $F$
+    % and the least of the order of $f_i$.
 
     \label{lem: order_subst}
 \end{lemma}
 
 \begin{proof}
-    Recall that for any power series $f(X)$, the order of $f(X)$ is at least
-    $n$ is equivalent to for all $j < n$, the $j$-th homogeneous component
+    Recall that for any power series $f(X)$, $n \le o(f)$ is equivalent to for all $j < n$, the $j$-th homogeneous component
     $f(X)$ is zero.
 
-    Then it is enough to show that for any $j$ less than the multiplication of
-    the order of $F$ and the least of the order of $f_i$, then the $j$-th homogeneous
+    Then it is enough to show that, for any $j$ less than $o(F) \cdot  \min_{i\in I}\{o(f_i)\}$,
+    the $j$-th homogeneous
     component of $G$ is zero. However, the least possible nonzero homogeneous component in
-    $G(X)$ is at least of degree the multiplication of
-    the order of $F$ and the least of the order of $f_i$.
+    $G(X)$ is at least of degree the product of
+    the order of $F$ and the least of the order of the $f_i$.
 \end{proof}
 
 \begin{proposition}[{\cite{hazewinkel1978formal}, Definition 18.3.2}]
-    Let $F$ be a formal group law over $k$, $f$ and $g$ be two formal group
+    Let $F$ be a formal group law over $k$, and let $f$ and $g$ be two formal group
     endomorphisms of $F$. Then $F(f, g)$ is an endomorphism of $F$ and
     $\htt (F(f,g)) \ge \min \{\htt (f), \htt(g)\}$.
     \label{prop: height_add}
 \end{proposition}
 
 \begin{proof}
-    First, we show that $F(f,g)$ is an endomorphism of $F$. It follows from
+    First, we show that $F(f,g)$ is an endomorphism of $F$. This follows from
     the following calculation:
     \begin{align*}
         F(f(X), g(X)) \circ F(X,Y) &= F(f(F(X,Y)), g(F(X,Y))) \\
@@ -215,27 +218,30 @@ In this section, we discuss the definition and properties of the height of a for
         & = F(F(f(X), g(X)), F(f(Y), g(Y))) \\
         & = F(X,Y) \circ F(f(X), g(X)).
     \end{align*}
-    By Lemma \ref{lem: order_subst} the fact that order of $F(X,Y)$ is $1$,
-    then the order $F(f(X), g(X))$ is lower order $f$ and $g$. Therefore,
+    By Lemma \ref{lem: order_subst} and the fact that order of $F(X,Y)$ is $1$,
+    then we have that
+    \[ o(F(f(X), g(X))) \ge o(F) \cdot \min\{o(f),o(g)\} = \min\{o(f),o(g)\}. \]
+    Therefore,
     by Remark \ref{rem: alter_def_height}, it follows that
     $\htt (F(f,g)) \ge \min \{\htt (f), \htt(g)\}$.
 \end{proof}
 
 \begin{remark}
-    Let $i(X)$ be the additive inverse of formal group law $F$, i.e. the power
+    Let $i(X)$ be the additive inverse of the formal group law $F$, i.e. the power
     series such that $F(X, i(X)) = 0$.
     Note that
     \[i(X) \circ F(X,Y) = i(F(X,Y)) = F(i(Y), i(X)) = F(i(X), i(Y)). \]
 
     Then $i(X)$ is an endomorphism of $F$. By Proposition \ref{prop: height_add} and
-    \ref{prop: height_mul}, we have that set of all endomorphisms over $k$ of $F$ form a
-    ring, denote as $\End_k(F)$. The multiplication is given by composition of power series and the addition
-    of $f, g \in \End_k(F)$ is defined to be $F(f,g)$. And the height function
+    Proposition \ref{prop: height_mul}, we have that the set of all endomorphisms over $k$ of $F$ form a
+    ring, which we denote as $\End_k(F)$. The multiplication is given by composition of power series and the addition
+    of $f, g \in \End_k(F)$ is defined to be $F(f,g)$. The height function
     $\htt$ defines a valuation on the ring $\End_k(F)$.
 \end{remark}
 
-Let $k$ be an algebraic closed field with characteristic $p$,
-formal group laws over $k$ is classified by the heights of them.
+If $k$ is an algebraically closed field of characteristic $p$,
+then the following result shows that formal group laws over $k$ are classified by
+their heights.
 
 \begin{theorem}[Lazard {\cite[Theorem IV]{lazard1955sur}}]
     Let $k$ be an algebraically closed field of characteristic $p$. Then two formal group laws

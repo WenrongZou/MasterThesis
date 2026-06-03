@@ -2,14 +2,14 @@
 
 \bibitem{anderson1992rings}
 Frank~W. Anderson and Kent~R. Fuller.
-\newblock {\em Rings and Categories of Modules}, volume~13 of {\em Graduate
+\newblock {\em {Rings and Categories of Modules}}, volume~13 of {\em Graduate
   Texts in Mathematics}.
 \newblock Springer-Verlag, New York, 2 edition, 1992.
 
 \bibitem{asgeirsson2024categorical}
 Dagur Asgeirsson, Riccardo Brasca, Nikolas Kuhn, Filippo A.~E. Nuccio Mortarino
   Majno Di~Capriglio, and Adam Topaz.
-\newblock Categorical foundations of formalized condensed mathematics.
+\newblock {Categorical Foundations of Formalized Condensed Mathematics}.
 \newblock {\em Journal of Symbolic Logic}, 2024.
 \newblock Advance online publication.
 
@@ -19,57 +19,57 @@ Lars Becker, María~Inés de~Frutos-Fernández, Leo Diedering, Floris van
   Meent, Pietro Monticone, Jasper Mulder-Sohn, Jim Portegies, Joris Roos,
   Michael Rothgang, Rajula Srivastava, James Sundstrom, Jeremy Tan, and
   Christoph Thiele.
-\newblock A blueprint for the formalization of carleson's theorem on
-  convergence of fourier series, 2025.
+\newblock {A Blueprint for the Formalization of Carleson's Theorem on
+  Convergence of Fourier Series}, 2025.
 
 \bibitem{best2025completeformalizationfermatstheorem}
 Alex Best, Christopher Birkbeck, Riccardo Brasca, Eric~Rodriguez Boidi, Ruben
   van De~Velde, and Andrew Yang.
-\newblock A complete formalization of fermat's last theorem for regular primes
-  in {L}ean, 2025.
+\newblock {A Complete Formalization of Fermat's Last Theorem for Regular Primes
+  in {L}ean}, 2025.
 
 \bibitem{cassels1967algebraic}
 J.~W.~S. Cassels and A.~Fr{\"o}hlich, editors.
-\newblock {\em Algebraic Number Theory}.
+\newblock {\em {Algebraic Number Theory}}.
 \newblock Academic Press, London, 1967.
 
 \bibitem{chambertloir2025formalizationdividedpowerslean}
 Antoine Chambert-Loir and María~Inés de~Frutos-Fernández.
-\newblock A formalization of divided powers in {L}ean, 2025.
+\newblock {A Formalization of Divided Powers in {L}ean}, 2025.
 
 \bibitem{commelin2022liquid}
 Johan Commelin.
-\newblock Liquid tensor experiment.
+\newblock {Liquid Tensor Experiment}.
 \newblock {\em Mitteilungen der Deutschen Mathematiker-Vereinigung},
   30(3):166--170, 2022.
 
 \bibitem{coquand1986analysis}
 Thierry Coquand.
-\newblock An analysis of girard's paradox.
+\newblock {An Analysis of Girard's Paradox}.
 \newblock Research Report RR-0531, Inria, 1986.
 
 \bibitem{demoura2015lean}
 Leonardo de~Moura, Soonho Kong, Jeremy Avigad, Floris van Doorn, and Jakob von
   Raumer.
-\newblock The {L}ean theorem prover (system description).
+\newblock {The {L}ean Theorem Prover (System Description)}.
 \newblock In {\em Automated Deduction -- CADE-25}, pages 378--388. Springer
   International Publishing, 2015.
 
 \bibitem{deMoura2021}
 Leonardo de~Moura and Sebastian Ullrich.
-\newblock The {L}ean 4 theorem prover and programming language.
+\newblock {The {L}ean 4 Theorem Prover and Programming Language}.
 \newblock In {\em Automated Deduction -- CADE 28}, pages 625--635. Springer
   International Publishing, 2021.
 
 \bibitem{hariharan2026milestoneformalizationspherepacking}
 Sidharth Hariharan, Christopher Birkbeck, Seewoo Lee, Ho~Kiu~Gareth Ma, Bhavik
   Mehta, Auguste Poiroux, and Maryna Viazovska.
-\newblock A milestone in formalization: The sphere packing problem in dimension
-  8, 2026.
+\newblock {A Milestone in Formalization: The Sphere Packing Problem in
+  Dimension 8}, 2026.
 
 \bibitem{hazewinkel1978formal}
 Michiel Hazewinkel.
-\newblock {\em Formal Groups and Applications}, volume~78 of {\em Pure and
+\newblock {\em {Formal Groups and Applications}}, volume~78 of {\em Pure and
   Applied Mathematics}.
 \newblock Academic Press, New York, 1978.
 
@@ -81,27 +81,27 @@ Michel Lazard.
 
 \bibitem{fro2024}
 {Lean FRO}.
-\newblock Lean focused research organization: Progress and roadmap, 2024.
+\newblock {Lean Focused Research Organization: Progress and Roadmap}, 2024.
 
 \bibitem{LubinTate1965}
 Jonathan Lubin and John Tate.
-\newblock Formal complex multiplication in local fields.
+\newblock {Formal Complex Multiplication in Local Fields}.
 \newblock {\em Annals of Mathematics}, 81(2):380--387, 1965.
 
 \bibitem{matlis1958injective}
 Eben Matlis.
-\newblock Injective modules over {N}oetherian rings.
+\newblock {Injective Modules over {N}oetherian Rings}.
 \newblock {\em Pacific Journal of Mathematics}, 8(3):511--528, 1958.
 
 \bibitem{silverman2009arithmetic}
 Joseph~H. Silverman.
-\newblock {\em The Arithmetic of Elliptic Curves}, volume 106 of {\em Graduate
-  Texts in Mathematics}.
+\newblock {\em {The Arithmetic of Elliptic Curves}}, volume 106 of {\em
+  Graduate Texts in Mathematics}.
 \newblock Springer, New York, 2nd edition, 2009.
 
 \bibitem{viazovska2017sphere}
 Maryna~S. Viazovska.
-\newblock The sphere packing problem in dimension 8.
+\newblock {The Sphere Packing Problem in Dimension 8}.
 \newblock {\em Annals of Mathematics}, 185(3):991--1015, 2017.
 
 \end{thebibliography}
