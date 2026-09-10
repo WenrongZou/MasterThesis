@@ -1,9 +1,9 @@
 \section{A brief introduction to Lean syntax}
 
-Lean operates as both an interactive theorem prover and a functional programming language.
-In Lean, definitions, statements, and proofs are written in a syntax that is
+Lean is both an interactive theorem prover and a functional programming language.
+Definitions, statements, and proofs are written in a syntax that is
 subsequently verified by the Lean kernel. In this section, we introduce several
-foundational pieces of Lean syntax that will appear frequently in later chapters.
+foundational pieces of Lean syntax that appear frequently in later chapters.
 
 \subsection{Basic declarations}
 
@@ -19,15 +19,15 @@ For example, the following code defines the successor of a natural number:
 def succ (n : Nat) : Nat := n + 1
 \end{lstlisting}
 
-Here, \lstinline|succ| is the name of the definition. The expression \lstinline|(n : Nat)| declares an explicit input variable \lstinline|n| of type \lstinline|Nat|, and the final \lstinline|: Nat| dictates that the output also has type \lstinline|Nat|. The symbol \lstinline|:=| indicates that the expression on the right-hand side serves as the actual definition.
+Here, \lstinline|succ| is the name; \lstinline|(n : Nat)| declares an explicit input \lstinline|n| of type \lstinline|Nat|; the final \lstinline|: Nat| gives the return type; and \lstinline|:=| introduces the defining expression on the right.
 
-Closely related to \lstinline|def| is the keyword \lstinline|abbrev|. It also creates a definition, but it instructs Lean's elaborator to treat the new name as completely transparent during unification. It is frequently used for type aliases:
+Closely related is the keyword \lstinline|abbrev|. It also creates a definition, but instructs Lean's elaborator to treat the new name as fully transparent during unification. It is frequently used for type aliases:
 
 \begin{lstlisting}[language=Lean]
 abbrev Vector3 := Float × Float × Float
 \end{lstlisting}
 
-By using \lstinline|abbrev|, Lean will automatically unfold \lstinline|Vector3| into a triplet of floats whenever it needs to check types, preventing strict type-mismatch errors that might occur with a standard \lstinline|def|.
+Lean then automatically unfolds \lstinline|Vector3| into a triplet of floats during type checking, avoiding the strict type-mismatch errors that a standard \lstinline|def| might cause.
 
 The keyword \lstinline|theorem| is reserved for stating and proving propositions. A theorem requires a name, a logical statement, and a formal proof. For example:
 
@@ -75,7 +75,7 @@ instance : Add Nat where
   add x y := x + y
 \end{lstlisting}
 
-Once this instance is declared, any function requiring an \lstinline|AdditiveMagma| on \lstinline|Nat| will automatically find and use this specific implementation.
+Once this instance is declared, any function requiring an \lstinline|Add| instance for \lstinline|Nat| will automatically find and use this implementation.
 
 \subsection{The meaning of different brackets}
 \label{sec:brackets}
@@ -114,12 +114,11 @@ to guide automated tools. An attribute is declared directly above a
 definition, theorem, or structure using square brackets preceded by an
 \lstinline|@| symbol.
 
-The \lstinline{simp} tactic invokes Lean's powerful simplification engine.
-It systematically applies a vast library of pre-registered simplification
-lemmas to reduce the goal to a trivial state, often solving straightforward
-goals entirely automatically.
+The \lstinline|simp| tactic invokes Lean's simplification engine, which applies
+a large library of pre-registered lemmas to reduce a goal, often solving
+straightforward goals automatically.
 
-A highly utilized attribute is \lstinline|@[simp]|. Tagging a theorem with \lstinline|@[simp]| adds it to Lean's active simplification database, allowing the \lstinline|simp| tactic to use it autonomously in future proofs.
+A widely used attribute is \lstinline|@[simp]|. Tagging a theorem with \lstinline|@[simp]| adds it to this simplification database, allowing the \lstinline|simp| tactic to apply it autonomously in future proofs.
 
 \begin{lstlisting}[language=Lean]
 @[simp]
@@ -129,7 +128,7 @@ theorem add_zero (a : Nat) : a + 0 = a := by
 
 Once marked, whenever the simplifier encounters an expression matching \lstinline|a + 0|, it will automatically rewrite it to \lstinline|a| without requiring explicit user instruction.
 
-Another essential attribute is \lstinline|@[ext]|, which is used to establish extensionality principles. Extensionality asserts that two mathematical objects are equal if all their corresponding components are equal. In Lean, you can apply the \lstinline|@[ext]| attribute directly to a \lstinline|structure| to automatically generate the corresponding extensionality lemma.
+Another essential attribute is \lstinline|@[ext]|, which establishes extensionality principles. Extensionality asserts that two objects are equal whenever all their corresponding components are equal. Applying \lstinline|@[ext]| directly to a \lstinline|structure| automatically generates the corresponding extensionality lemma.
 
 \begin{lstlisting}[language=Lean]
 @[ext]
@@ -138,10 +137,10 @@ structure Point where
   y : Float
 \end{lstlisting}
 
-Tagging the \lstinline|Point| structure with \lstinline|@[ext]| instructs Lean's metaprogramming framework to automatically generate a behind-the-scenes theorem. If written manually, this generated theorem would look exactly like this:
+Tagging the \lstinline|Point| structure with \lstinline|@[ext]| instructs Lean's metaprogramming framework to generate a theorem behind the scenes. Written manually, it would look like this:
 
 \begin{lstlisting}[language=Lean]
-theorem Point.ext {p q : Point} (h₁ : p.x = q.x) (h₂ : p.y = q.y) : p = q :=
+theorem Point.ext {p q : Point} (h₁ : p.x = q.x) (h₂ : p.y = q.y) : p = q
 \end{lstlisting}
 
 The \lstinline|@[ext]| tag registers this logic so that invoking the \lstinline|ext| tactic on a goal of \lstinline|p = q| will automatically apply \lstinline|Point.ext|, splitting the goal into the simpler subgoals \lstinline|p.x = q.x| and \lstinline|p.y = q.y|.
@@ -157,7 +156,7 @@ proofs.
 
 % \subsection{Namespaces and the \lstinline|open| Keyword}
 
-As mathematical libraries grow, it is common to have multiple theorems or definitions with similar names. Lean uses namespaces to organize declarations and prevent these naming conflicts. When working extensively within a specific mathematical context, such as multivariate power series, repeatedly typing the full prefix \lstinline|MvPowerSeries| can become tedious and clutter the code. By encapsulating our code within a \lstinline|namespace| block, Lean automatically resolves local names, allowing us to omit the prefix for any definitions or theorems belonging to that namespace.
+As mathematical libraries grow, multiple theorems or definitions with similar names become common. Lean uses namespaces to organize declarations and prevent such naming conflicts. When working extensively within a specific context, such as multivariate power series, repeatedly typing the full prefix \lstinline|MvPowerSeries| becomes tedious and clutters the code. Enclosing our code in a \lstinline|namespace| block lets Lean resolve local names automatically, so we may omit the prefix for any definition or theorem belonging to that namespace.
 
 For instance, consider the following explicit definition of a variable $X$:
 

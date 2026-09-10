@@ -228,10 +228,8 @@ monomials have their multi-index scaled by \lstinline|p|.
 \begin{lstlisting}
 theorem expand_C (p : ℕ) (hp : p ≠ 0) (r : R) : expand p hp (C r) = C r
 
-@[simp]
 theorem expand_X (p : ℕ) (hp : p ≠ 0) (i : σ) : expand p hp (X i) = X i ^ p
 
-@[simp]
 theorem expand_monomial (p : ℕ) (hp : p ≠ 0) (d : σ →₀ ℕ) (r : R) :
     expand p hp (monomial d r) = monomial (p • d) r
 \end{lstlisting}

@@ -20,9 +20,9 @@ variable {K : Type*} [CommRing K] {R : Subring K} {I : Ideal R}
 \end{lstlisting}
 
 Recall that $f_g(X)$ is defined to be
-the unique power series satisfying equation \eqref{equation: recurFunEq}.
+the unique power series satisfying equation~\eqref{equation: recurFunEq}.
 We formalize $f_g(X)$ using the recursive formula of coefficient in
-equation \eqref{eq: coeff_RecurFun} as
+equation~\eqref{eq: coeff_RecurFun} as
 
 \begin{lstlisting}
 def RecurFunAux (hg : g.constantCoeff = 0) : ℕ → K
@@ -101,7 +101,7 @@ is accepted as a structurally smaller call.  Without
 would not be directly available inside the summation, and Lean would not
 have enough information to justify the recursive definition.
 
-Recall that functional equation \eqref{equation: recurFunEq} is
+Recall that functional equation~\eqref{equation: recurFunEq} is
 \[f_g(X) = g(X) + \sum_{i=1}^{\infty} s_i \sigma_*^i f_g (X^{q ^ i}).\]
 
 And it is formalized as
@@ -190,7 +190,7 @@ Therefore, the whole expression defines the bivariate power series
   F_g(X,Y) = f_g^{-1}(f_g(X) + f_g(Y)).
 \]
 
-The first part of the functional equation lemma \ref{thm: fun_eq}
+The first part of the functional equation lemma~\ref{thm: fun_eq}
 states that $F_g(X,Y)$ actually has coefficients in the subring $R$.
 In Lean, this is
 formalized by proving that every coefficient of
@@ -278,11 +278,11 @@ Moreover, this formal group law is commutative.  This follows from the
 definition of $F_g(X,Y)$, since the expression
 $f_g(X) + f_g(Y)$ is symmetric in $X$ and $Y$.
 
-Thus the first part of the functional equation lemma \ref{thm: fun_eq}
+Thus the first part of the functional equation lemma~\ref{thm: fun_eq}
 gives a commutative formal group law over $R$, constructed from
 the recursive power series $f_g$.
 
-The second part of the functional equation lemma \ref{thm: fun_eq}
+The second part of the functional equation lemma~\ref{thm: fun_eq}
 concerns the comparison between two recursively defined power series.
 Suppose that $g$ and $g'$ are power series over $R$ with zero constant
 coefficient.  The lemma says that the relevant composition involving the
@@ -305,7 +305,7 @@ Here \lstinline|f_g'| denotes the recursive power series associated to
 states that every coefficient of \lstinline|G| lies in the subring
 \lstinline|R|.
 
-The third part of the functional equation lemma \ref{thm: fun_eq} gives a
+The third part of the functional equation lemma~\ref{thm: fun_eq} gives a
 stability result under substitution.  Let $h$
 be a power series over $R$ with zero constant coefficient.  The goal is to show
 that there exists a power series $\hat{h}$ over $R$ such that
@@ -313,7 +313,7 @@ that there exists a power series $\hat{h}$ over $R$ such that
   f_g(h(X)) = f_{\hat{h}}(X).
 \]
 
-Using the functional equation \eqref{equation: recurFunEq}, this is equivalent to showing that the
+Using the functional equation~\eqref{equation: recurFunEq}, this is equivalent to showing that the
 power series
 \[
   f_g(h(X)) -
@@ -331,7 +331,7 @@ lemma coeff_inv_RecurFun_g'_mem_Subring' [UniformSpace K] [T2Space K]
     (h₀ : h.constantCoeff = 0):
     let f := (RecurFun ht hq σ s hg)
     let f₁ : PowerSeries K := f.subst (h.map R.subtype)
-    ∀ n, (f₁ - ∑' i, (s i) • (f₁.expand (q ^ i) (q_pow_neZero hq)).map (σ ^ i)).coeff n ∈ R :=
+    ∀ n, (f₁ - ∑' i, (s i) • (f₁.expand (q ^ i) (q_pow_neZero hq)).map (σ ^ i)).coeff n ∈ R
 \end{lstlisting}
 
 In this statement, \lstinline|f₁| denotes the composition $f_g(h(X))$,
@@ -339,7 +339,7 @@ regarded as a power series over $K$.  The infinite sum is the correction
 term appearing in the functional equation.  The conclusion says that the
 coefficients of the resulting difference all lie in $R$.
 
-The fourth part of the functional equation lemma \ref{thm: fun_eq}
+The fourth part of the functional equation lemma~\ref{thm: fun_eq}
 proves a congruence statement.  It shows that congruence modulo a power of
 the ideal $I$ is preserved after substituting into the recursive power
 series $f_g$.
@@ -352,7 +352,7 @@ theorem congr_equiv [UniformSpace K] [T2Space K] [DiscreteUniformity K]
     let f := RecurFun ht hq σ s hg
     (∀ n, α.coeff n - β.coeff n ∈ R.subtype '' ↑(I ^ r)) ↔
       (∀ n, PowerSeries.coeff n (f.subst (α.map R.subtype)) -
-        PowerSeries.coeff n (f.subst β) ∈ R.subtype '' ↑(I ^ r)) :=
+        PowerSeries.coeff n (f.subst β) ∈ R.subtype '' ↑(I ^ r))
 \end{lstlisting}
 
 There is a small technical point in this statement.  The power series

@@ -70,7 +70,7 @@ is invertible in $R$. Then
     Due to equation (\ref{eq: coeff_RecurFun}), we have that the coefficient of $X$ in
     $f_g(X)$ and $g(X)$ is the same, denoted as $a_1$. Thus, the coefficient of $X$ in
     $f_g(X)$ is invertible in $R$ and
-    the power series $f_g^{-1} (X)$ is well defined by Lemma \ref{lem: substInv}. By computations,
+    the power series $f_g^{-1} (X)$ is well defined by Lemma~\ref{lem: substInv}. By computations,
     we have that the coefficient of $X$ and $Y$ in $F_g(X,Y)$ is $a_1^{-1} a_1 = 1$, since
     the coefficient of $X$ in $f_g^{-1} (X)$ is $a_1^{-1}$.
     Moreover, we notice that
@@ -150,7 +150,7 @@ technical lemmas.
     We do induction on $r$. The case for $r =0$ is trivial. Assume that
     the result holds for $r$, namely $F(X_J)^{q^r} \equiv G(X_J)^{q^r} \pmod{I ^{i + r}}$.
     Therefore, $F(X_J) ^ {q^r} = G(X_J)^{q^r} + H(X_J)$, where all coefficients of $H(X_J)$
-    are in $I^{i + r}$. Due to Lemma \ref{lem: exp_prime_pow}, there is a power series
+    are in $I^{i + r}$. Due to Lemma~\ref{lem: exp_prime_pow}, there is a power series
     $\alpha (X_J) \in R [\![X_J]\!]$ such that
     \[ (G(X_J)^{q^r} + H(X_J))^q
         = (G(X_J)^{q^r})^q + H(X_J) ^ q + p G(X_J)^{q^r} H(X_J) \alpha (X_J). \]
@@ -173,16 +173,16 @@ technical lemmas.
 
 \begin{proof}
     The case for $I = R$ is trivial. Now, we assume that $I \subsetneq R$. Then $R / I$ has
-    characteristic $p$, since $p \in I$. Given property \ref{property : frobenius}, then we have
+    characteristic $p$, since $p \in I$. Given property~\ref{property : frobenius}, then we have
     \begin{equation*}
         G(X_J) ^{q^l} \equiv \sigma^l_*G(X_J^{q^l}) \pmod{I}
     \end{equation*}
 
     %%%%%%%%% Here more detail: TODO.
-    We obtain the goal congruence from the above congruence and Lemma \ref{lemma: tech_lem pow_congruence}.
+    We obtain the goal congruence from the above congruence and Lemma~\ref{lemma: tech_lem pow_congruence}.
 \end{proof}
 
-\begin{proof}[Proof of the Functional Equation Lemma \ref{thm: fun_eq}]
+\begin{proof}[Proof of the Functional Equation Lemma~\ref{thm: fun_eq}]
 For simplicity, we write $F (X, Y)$ and $f (X)$ for $F_g(X, Y)$ and $f_g(X)$ respectively. Let $F_i(X,Y)$ be the
 homogeneous component of $F(X,Y)$ of degree $i$. We denote
 $g(X) = \sum_{i = 1}^{\infty} b_i X ^ i$ and $f(X) = \sum_{n=1}^{\infty}a_n X ^ n$ throughout
@@ -214,7 +214,7 @@ we obtain that
             \sigma ^ i (a _n) (F(X, Y))^{q ^i n}.
 \end{align*}
 
-Next, by Lemma \ref{lem: tech_lem_two}, we have
+Next, by Lemma~\ref{lem: tech_lem_two}, we have
 \[s_i \sigma^i(a_n) F(X, Y)^{q^i n} \equiv s_i\sigma^i(a_n) (\sigma_*^i F(X^{q^i}, Y^{q^i}))^n
 \pmod{(R, \deg(n + 1))}. \]
 
@@ -258,7 +258,7 @@ It follows that $g(G(X)) \equiv h(X) \pmod{(R, \deg(n + 1))}$. We then have
 \[h(X) \equiv g(G(X)) \equiv b_1 G_n(X) \pmod{(R, \deg(n + 1))}.\]
 Because $b_1$ is invertible, we conclude that the coefficients of $G_n(X)$ lie in $R$.
 
-\textit{Proof of part (3):} Let $\hat{f}(X) = f(h(X))$. By the functional equation \eqref{equation: recurFunEq}, it suffices to show that the coefficients of $\hat{f}(X) - \sum_{i=1}^\infty s_i \sigma_*^i \hat{f}(X^{q^i})$ lie in $R$. Working modulo $R$, we have the following sequence of equalities and congruences:
+\textit{Proof of part (3):} Let $\hat{f}(X) = f(h(X))$. By the functional equation~\eqref{equation: recurFunEq}, it suffices to show that the coefficients of $\hat{f}(X) - \sum_{i=1}^\infty s_i \sigma_*^i \hat{f}(X^{q^i})$ lie in $R$. Working modulo $R$, we have the following sequence of equalities and congruences:
 \[\begin{aligned}
     \hat{f}(X) - \sum_{i=1}^\infty s_i \sigma_*^i\hat{f}(X^{q^i}) &= f(h(X)) - \sum_{i=1}^\infty s_i \sigma_*^i f(\sigma_*^i h(X^{q^i})) \\
     &= f(h(X)) - \sum_{i=1}^\infty s_i \sum_{n=1}^\infty \sigma^i(a_n)(\sigma_*^i h(X^{q^i}))^n \\
@@ -270,9 +270,9 @@ Since the expression reduces to $0$ modulo $R$, we conclude that all its coeffic
 
 \textit{Proof of part (4):}
 For the forward implication, assume that $\alpha(X) \equiv \beta(X) \pmod{I^r R[\![X]\!]}$.
-Then $\beta(X) \in R[\![X]\!]$. By Lemma \ref{lemma: tech_lem pow_congruence},
+Then $\beta(X) \in R[\![X]\!]$. By Lemma~\ref{lemma: tech_lem pow_congruence},
 we have $\alpha(X)^n \equiv \beta(X)^n \pmod{I^{r + t}}$, where $t$ is the multiplicity of
-$q$ in $n$. Denote $f(X) = \sum_{i=1}^\infty a_i X^i$. By Lemma \ref{lemma : tech_lemma_one},
+$q$ in $n$. Denote $f(X) = \sum_{i=1}^\infty a_i X^i$. By Lemma~\ref{lemma : tech_lemma_one},
 we have $a_n\alpha(X)^t \equiv a_n\beta(X)^t \pmod{I^r}$, where $t$ is the multiplicity of
 $q$ in $n$. Therefore, $f(\alpha(X)) \equiv f(\beta(X)) \pmod{I^r}$.
 
@@ -301,13 +301,13 @@ We claim that:
     \label{eq: claim_trunc}
 \end{equation}
 
-Comparing the coefficients of degree $k+1$ on both sides of equation \eqref{eq: decomp alpha gamma},
+Comparing the coefficients of degree $k+1$ on both sides of equation~\eqref{eq: decomp alpha gamma},
 we obtain $b_1 c_{k+1} \in I^r$, where $\gamma(X) = \sum_{i=1}^\infty c_i X^i$ and
 $g(X) = \sum_{i=1}^\infty b_i X^i$. Since $b_1$ is a unit in $R$, it follows that $c_{k+1} \in I^r$.
 
-\textit{Proof of Claim \eqref{eq: claim_trunc}:} By Lemma \ref{lemma: tech_lem pow_congruence}
+\textit{Proof of Claim~\eqref{eq: claim_trunc}:} By Lemma~\ref{lemma: tech_lem pow_congruence}
 and the induction hypothesis, we have $\gamma_k(X)^n \equiv 0 \pmod{I^{r + t}}$,
-where $t$ is the multiplicity of $q$ in $n$. By assumption \eqref{property 4},
+where $t$ is the multiplicity of $q$ in $n$. By assumption~\eqref{property 4},
 it suffices to show that
 
 \[\sigma_*^i f(\gamma(X)^{q^i}) \in I^{r+1} R[\![X]\!] \pmod{\deg(k + 2)},\]
@@ -320,8 +320,8 @@ which is equivalent to
 \end{equation}
 
 Since $\gamma(X)^{q^i n} \equiv \gamma_k(X)^{q^i n} \pmod{\deg(k + 2)}$, it follows from
-Lemma \ref{lemma : tech_lemma_one} that the congruence \eqref{eq: sigma_gamma_mem} holds.
-This proves the implication \eqref{eq: implication_f_inv}.
+Lemma~\ref{lemma : tech_lemma_one} that the congruence~\eqref{eq: sigma_gamma_mem} holds.
+This proves the implication~\eqref{eq: implication_f_inv}.
 
 By assumption, $f(\beta(X)) - f(\alpha(X)) \in I^r R[\![X]\!]$. Thus, applying
 \eqref{eq: implication_f_inv}, we have
@@ -332,7 +332,7 @@ Then
     \beta(X) &= f^{-1}(f(\delta(X)) + f(\alpha(X))).
 \end{aligned} \]
 
-By Remark \ref{rem: fun_eq_FG}, $f^{-1}(f(X) + f(Y))$ is a formal group law. Hence, we can write
+By Remark~\ref{rem: fun_eq_FG}, $f^{-1}(f(X) + f(Y))$ is a formal group law. Hence, we can write
 
 \[\beta(X) = f^{-1}(f(\delta(X)) + f(\alpha(X))) = \alpha(X) + \delta(X) G(\delta(X), \alpha(X))\]
 

@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2022)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: myThesis.aux
+The style file: plain.bst
+Database file #1: refs.bib
+Warning--entry type for "fro2024" isn't style-file defined
+--line 129 of file refs.bib
+You've used 19 entries,
+            2118 wiz_defined-function locations,
+            613 strings with 7294 characters,
+and the built_in function-call counts, 6475 in all, are:
+= -- 614
+> -- 344
+< -- 8
++ -- 146
+- -- 118
+* -- 454
+:= -- 1075
+add.period$ -- 56
+call.type$ -- 19
+change.case$ -- 114
+chr.to.int$ -- 0
+cite$ -- 19
+duplicate$ -- 231
+empty$ -- 494
+format.name$ -- 118
+if$ -- 1342
+int.to.chr$ -- 0
+int.to.str$ -- 19
+missing$ -- 16
+newline$ -- 94
+num.names$ -- 39
+pop$ -- 140
+preamble$ -- 1
+purify$ -- 97
+quote$ -- 0
+skip$ -- 172
+stack$ -- 0
+substring$ -- 328
+swap$ -- 57
+text.length$ -- 8
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 68
+warning$ -- 0
+while$ -- 57
+width$ -- 21
+write$ -- 206
+(There was 1 warning)

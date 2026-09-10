@@ -28,45 +28,37 @@ deeper classification results and arithmetic applications.
 
 \section*{Future Work}
 
-There are several natural directions for future work.
+The framework developed in this thesis opens up several natural
+directions for further work.
 
-One important direction is the application of formal group laws to
-Lubin--Tate theory.  Lubin--Tate theory constructs highly structured
-extensions of local fields using formal group laws.  A formalization of
-this theory would require combining the formal group law API developed
-here with Mathlib's existing theory of local fields, valuations, and
-ramification.  This would be a significant step toward the formalization
-of explicit local class field theory.
+The most immediate is Lubin--Tate theory, which uses formal group laws to
+construct highly structured abelian extensions of local fields.
+Formalizing it would combine our formal group law API with Mathlib's
+existing theory of local fields, valuations, and ramification, and would
+be a significant step toward explicit local class field theory.
 
-Another direction is the study of formal group laws arising from elliptic
-curves.  Every elliptic curve has an associated formal group law obtained
-by completing the curve at the identity point.  In positive characteristic,
-the height of this formal group law reflects important arithmetic
-information about the elliptic curve.  For example, over a field of
-positive characteristic, the formal group law of an elliptic curve has
-height $1$ in the ordinary case and height $2$ in the supersingular case.
-Formalizing this connection would provide a useful link between the theory
-of formal group laws and the existing formalization of elliptic curves.
+A second direction concerns the formal group laws of elliptic curves.
+Every elliptic curve has an associated formal group law, obtained by
+completing the curve at the identity.  Over a field of positive
+characteristic, the height of this law records important arithmetic
+information: it equals $1$ in the ordinary case and $2$ in the
+supersingular case.  Formalizing this link would connect our theory to
+Mathlib's existing formalization of elliptic curves.
 
-A further goal is the formalization of Lazard's theorem.  Lazard's
-theorem states that there is a universal formal group law and identifies
-its coefficient ring.  This theorem is fundamental in the algebraic theory
-of formal group laws and plays an important role in algebraic topology,
-especially in complex cobordism.  Formalizing Lazard's theorem would
-require a substantial development of universal constructions for formal
-group laws and a careful treatment of the Lazard ring.
+A third goal is Lazard's theorem, which asserts the existence of a
+universal formal group law and identifies its coefficient ring as a
+polynomial ring.  Fundamental in the algebraic theory of formal group
+laws and central to complex cobordism in algebraic topology, its
+formalization would require a careful development of the Lazard ring and
+the accompanying universal constructions.
 
-A fourth direction is the classification of formal group laws by
-height.  Over suitable fields of positive characteristic, the height is a
-central invariant of a formal group law.  A natural long-term goal is to
-formalize classification theorems for formal group laws of the same
-height, including the construction of isomorphisms after suitable base
-change.  This would extend the basic theory developed in this thesis to a
-more structural understanding of formal group laws.
+A fourth direction is the classification of formal group laws by height,
+the central invariant in positive characteristic.  A natural long-term
+goal is to formalize the classification of formal group laws of a given
+height, including the construction of isomorphisms after a suitable base
+change, thereby extending the basic theory of this thesis to a more
+structural understanding.
 
-More generally, the results of this thesis provide a foundation for
-further formalization of the arithmetic and geometric applications of
-formal group laws.  The definitions of formal group laws, their points,
-homomorphisms, isomorphisms, height, and the functional equation lemma can
-serve as reusable infrastructure for future developments in algebraic
-number theory, algebraic geometry, and arithmetic geometry.
+Taken together, these directions build on the reusable infrastructure
+developed in this thesis as a foundation for further work in arithmetic
+geometry.

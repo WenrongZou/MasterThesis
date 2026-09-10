@@ -22,16 +22,16 @@
 \contentsline {subsection}{\numberline {3.3.4}Namespaces}{38}{subsection.3.3.4}%
 \contentsline {section}{\numberline {3.4}Structures, classes, and type class inference}{39}{section.3.4}%
 \contentsline {subsection}{\numberline {3.4.1}Structures and classes}{39}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Instances}{40}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.2}Instances}{39}{subsection.3.4.2}%
 \contentsline {subsection}{\numberline {3.4.3}Type class inference}{40}{subsection.3.4.3}%
 \contentsline {subsection}{\numberline {3.4.4}The algebraic hierarchy}{40}{subsection.3.4.4}%
 \contentsline {chapter}{\numberline {4}Lean formalization of formal group laws}{41}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Multivariate power series in mathlib}{41}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Definitions}{43}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}Formal groups constructions}{47}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Homomorphism and isomorphism}{48}{subsection.4.2.2}%
-\contentsline {section}{\numberline {4.3}The functional equation lemma}{49}{section.4.3}%
+\contentsline {subsection}{\numberline {4.2.2}Homomorphism and isomorphism}{47}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}The functional equation lemma}{50}{section.4.3}%
 \contentsline {section}{\numberline {4.4}Universal formal group laws}{53}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Heights}{54}{section.4.5}%
+\contentsline {section}{\numberline {4.5}Heights}{55}{section.4.5}%
 \contentsline {chapter}{Conclusion and future work}{56}{chapter*.3}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

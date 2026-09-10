@@ -182,39 +182,31 @@ shows that these operations satisfy the usual algebraic laws.  The main
 idea is that the formal group law axioms for \lstinline|F| induce the
 corresponding group laws on the type of points \lstinline|F.Point σ|.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Now we discuss by steps to prove the group instance for
+Now we discuss how to obtain the group instance for
 \lstinline|F.Point σ|.
 
-The first step is to prove that the zero point is a left and right
-identity for the addition defined by \lstinline|F|:
+The additive monoid structure bundles together the identity and
+associativity laws.  The zero point is a left and right identity for the
+addition defined by \lstinline|F|, and associativity of the formal group
+law gives associativity of the addition on points:
 \begin{lstlisting}
-instance : AddZeroClass (F.Point σ) where
+instance : AddMonoid (F.Point σ) where
   zero_add x := Subtype.ext (zero_add F x.prop)
   add_zero x := Subtype.ext (add_zero F x.prop)
+  nsmul := nsmulRec
+  add_assoc x y z := Subtype.ext <| F.assoc' x.prop y.prop z.prop
 \end{lstlisting}
 
 Here \lstinline|zero_add| and \lstinline|add_zero| say that adding the
 zero point on either side gives back the original point.  Since
 \lstinline|F.Point σ| is a subtype, Lean proves equality of two points by
 using \lstinline|Subtype.ext|, reducing the goal to an equality of their
-underlying power series.
-
-Next, associativity of the formal group law gives associativity of the
-addition on points:
-\begin{lstlisting}
-instance : AddMonoid (F.Point σ) where
-  nsmul := nsmulRec
-  add_assoc x y z := Subtype.ext <| F.assoc' x.prop y.prop z.prop
-\end{lstlisting}
-
-The theorem \lstinline|F.assoc'| is the pointwise form of the associativity
-condition of the formal group law.  It says that substituting three valid
-points into the two sides of the associativity identity gives the same
-power series.  Therefore the operation on \lstinline|F.Point σ| is
-associative.  The field \lstinline|nsmulRec| tells Lean to use
-the usual recursive definition of repeated addition by natural numbers.
+underlying power series.  The theorem \lstinline|F.assoc'| is the
+pointwise form of the associativity condition of the formal group law: it
+says that substituting three valid points into the two sides of the
+associativity identity gives the same power series.  The field
+\lstinline|nsmul := nsmulRec| tells Lean to use the usual recursive
+definition of repeated addition by natural numbers.
 
 If \lstinline|F| is commutative, then the addition on
 \lstinline|F.Point σ| is also commutative:
@@ -227,16 +219,6 @@ Here the assumption \lstinline|[F.IsComm]| means that the formal group law
 itself satisfies \lstinline|F(X,Y) = F(Y,X)|.  The theorem
 \lstinline|F.comm'| transfers this identity to points, proving that
 \lstinline|x + y = y + x| for \lstinline|x y : F.Point σ|.
-
-We could also records the semigroup structure separately:
-\begin{lstlisting}
-instance : AddSemigroup (F.Point σ) where
-  add_assoc x y z := Subtype.ext <| F.assoc' x.prop y.prop z.prop
-\end{lstlisting}
-
-This contains only the associativity part of the structure.  Again, the
-proof is obtained directly from the associativity of the formal group law
-\lstinline|F|.
 
 The next important step is the additive group structure:
 \begin{lstlisting}
@@ -480,6 +462,50 @@ The left-hand side represents $f(F(X,Y))$, while the right-hand side
 represents $G(f(X), f(Y))$. And the usage of the tag \lstinline|@[ext]|
 can be found in Section~\ref{sec: tag_ext_simp}.
 
+A formal group homomorphism does more than relate the two underlying
+power series: it induces an actual map between the groups of points
+\lstinline|F.Point σ| and \lstinline|G.Point σ|.  Given a homomorphism
+\lstinline|f : FormalGroupHom F G| and a point \lstinline|x : F.Point σ|,
+we substitute the power series \lstinline|x.val| into the power series of
+\lstinline|f| to obtain a point of \lstinline|G|:
+
+\begin{lstlisting}
+def FormalGroupHom.applyPoint (f : FormalGroupHom F G) (x : F.Point σ) :
+    G.Point σ := ⟨f.toPowerSeries.subst x.val, ...⟩
+\end{lstlisting}
+
+To make this induced map convenient to use, we register
+\lstinline|applyPoint| as a \lstinline|CoeFun| instance.  This lets us
+apply a homomorphism \lstinline|f| directly to a point, writing
+\lstinline|f x| instead of \lstinline|f.applyPoint x|:
+
+\begin{lstlisting}
+instance : CoeFun (FormalGroupHom F G)
+    (fun _ ↦ {σ : Type*} → F.Point σ → G.Point σ) where
+  coe f := f.applyPoint
+\end{lstlisting}
+
+The homomorphism condition is precisely the statement that this induced
+map respects the formal group addition.  We therefore prove that it
+preserves addition, and then bundle the map together with the proofs
+that it preserves zero and addition into an \lstinline|AddMonoidHom|:
+
+\begin{lstlisting}
+lemma FormalGroupHom.map_add (f : FormalGroupHom F G) {x y : F.Point σ} :
+    f (x + y) = f x + f y := ...
+
+def FormalGroupHom.toAddMonoidHom (f : FormalGroupHom F G) :
+    F.Point σ →+ G.Point σ where
+  toFun := f.applyPoint
+  map_zero' := ...
+  map_add' _ _ := f.map_add
+\end{lstlisting}
+
+In this way, every formal group homomorphism gives rise to a genuine
+homomorphism of additive monoids between the associated groups of points.
+This allows us to reuse the entire Mathlib API for \lstinline|AddMonoidHom|
+when reasoning about the map induced by a formal group homomorphism.
+
 A formal group isomorphism is a formal group homomorphism which has an
 inverse formal group homomorphism.  In Lean, this is packaged as the
 following structure:
@@ -510,6 +536,33 @@ Therefore, a term of type \lstinline|FormalGroupIso F G| is not merely a
 map from \lstinline|F| to \lstinline|G|.  It contains a homomorphism, an
 inverse homomorphism, and proofs that the two compositions are the
 identity.
+
+Just as a homomorphism induces a map on points, an isomorphism induces an
+isomorphism between the groups of points.  Using the maps
+\lstinline|applyPoint| of \lstinline|toHom| and \lstinline|invHom|
+together with the two inverse conditions, we package a formal group
+isomorphism into an \lstinline|AddEquiv| between \lstinline|F.Point σ|
+and \lstinline|G.Point σ|:
+
+\begin{lstlisting}
+def FormalGroupIso.toEquiv (α : FormalGroupIso F G) :
+    F.Point σ ≃+ G.Point σ where
+  toFun := α.toHom.applyPoint
+  invFun := α.invHom.applyPoint
+  left_inv x := ...
+  right_inv y := ...
+  map_add' _ _ := α.toHom.map_add
+\end{lstlisting}
+
+Here the fields \lstinline|toFun| and \lstinline|invFun| are the maps on
+points induced by \lstinline|toHom| and \lstinline|invHom|, while
+\lstinline|left_inv| and \lstinline|right_inv| follow from the
+\lstinline|left_inv| and \lstinline|right_inv| fields of the
+isomorphism.  The field \lstinline|map_add'| reuses
+\lstinline|FormalGroupHom.map_add| for \lstinline|toHom|.  Thus a formal
+group isomorphism yields an isomorphism of additive groups
+\lstinline|F.Point σ ≃+ G.Point σ|, and we may again invoke the Mathlib
+API for \lstinline|AddEquiv|.
 
 % An formal group isomorphism from $F$ to $G$ is defined as
 % \begin{lstlisting}

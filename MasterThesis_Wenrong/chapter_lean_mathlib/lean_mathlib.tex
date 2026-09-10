@@ -14,7 +14,7 @@ called \lstinline|Mathlib|.
 \label{sec:lean_theorem_prover}
 
 Lean is a functional programming language and interactive theorem prover initially developed
-by Leonardo de Moura at Microsoft Research in 2013 \cite{demoura2015lean}.
+by Leonardo de Moura at Microsoft Research in 2013~\cite{demoura2015lean}.
 The current version, Lean 4,
 is a complete reimplementation that serves simultaneously as a proof assistant and a
 general-purpose, practically efficient programming language.
@@ -65,7 +65,7 @@ especially those allowing a ``type of all types.'' It is the
 type-theoretic analogue of Russell's paradox in naive set theory. Roughly
 speaking, if a system allows types to quantify over themselves too freely,
 then one can construct a self-referential type that leads to a contradiction.
-More discussion of this can be found in \cite{coquand1986analysis}.
+More discussion of this can be found in~\cite{coquand1986analysis}.
 % \cite{Coquand1986}.
 
 In hierarchy of type, the type of \lstinline|Type| is \lstinline|Type 1|, the
@@ -327,7 +327,9 @@ instances.
 \subsection{The algebraic hierarchy}
 
 In \textsf{mathlib}, algebraic structures are organized into a large
-hierarchy.  More complicated structures extend simpler ones.  For example,
+hierarchy; we refer to~\cite{wieser2023multiple} for a more detailed
+discussion of its design and the subtleties of multiple inheritance in
+a dependently-typed setting.  More complicated structures extend simpler ones.  For example,
 a ring contains an additive commutative group structure and a
 multiplicative monoid structure, together with distributivity laws.
 A commutative ring further extends a ring by adding commutativity of
@@ -346,15 +348,10 @@ class CommRing (α : Type u) extends Ring α, CommMonoid α
 
 Because of this hierarchy, an instance of \lstinline|CommRing R| also
 provides access to the structures inherited from its parent classes, such
-as \lstinline|Ring R|, \lstinline|AddCommGroup R|, and the underlying
-addition and multiplication operations.  Therefore, a theorem proved for a
-more general structure can automatically be applied to a more specific
-one.  For instance, a theorem about additive commutative groups can be
-used for any commutative ring, because a commutative ring contains an
-additive commutative group structure.
-
-This design is essential for theorem reuse in mathlib.  Instead
-of reproving the same basic facts separately for groups, rings, fields,
-and other structures, one proves a theorem at the appropriate level of
-generality, and type class inference makes it available in all more
-specialized contexts.
+as \lstinline|Ring R| and \lstinline|AddCommGroup R|.  A theorem proved for
+a more general structure therefore applies automatically to a more specific
+one: a theorem about additive commutative groups can be used for any
+commutative ring.  This design is essential for theorem reuse in mathlib.
+Instead of reproving the same basic facts separately for groups, rings, and
+fields, one proves a theorem at the appropriate level of generality, and
+type class inference makes it available in all more specialized contexts.
